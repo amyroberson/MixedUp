@@ -1,0 +1,107 @@
+Types and Classes
+-----------------
+enum IngredientType- baseSpirit, berries, brandy, decoration, fruits, gin, mixers, ice, others, rum,spices-herbs, spirits-other, tequila, vodka, whiskey)
+
+Enum Glass - Champagne Glass, Cocktail Glass, Highball Glass, Rocks Glass, Shot Glass, Wine Glass, Shot Glass,
+
+Enum Tools -Barspoon, blender, boston shaker, opener, citrus press, cobble shaker, freezer, ice crusher, ice tong, jigger, knife, mixing glass, muddler, pourer, strainer, twist knife
+
+
+-Ingredients
+	-type - ingredientType
+	-isAlcoholic- Bool
+	-id- string
+	-name - string
+
+
+-Drink
+	-ingredients - [ingredient]
+	-isAlcoholic- Bool
+	-color- String
+	- tools -[Tools]
+	-description - string (descriptionPlain from api)
+ 	-name- string
+	-id- string
+	-glass - Glass
+	-image - URL?
+
+-User
+	-favoriteDrinks - [Drink]
+	-inventory - [Ingredient]
+	-isBarManager - Bool
+	-barsManaged - [Bar]
+	-email- String?
+	-password - String?
+
+-bar
+	-manager - User
+	-inventory- [ingredients]
+	-activeMenu - [Drink]
+	-activeSpecials - [Drink]
+	-savedSpecials - [Drink]
+	-generateBaseMenu() -> [Drink]
+	-location- Location
+
+-Location
+	-address
+	-long/lat
+
+
+
+Classes
+--------------
+-Location
+-bar
+-user
+-Ingredients
+-drink
+
+-ageSetViewController
+-loginViewController
+-registerViewController
+-tabsViewController
+-FavoriteDrinksViewController
+-BrowseRecipesViewController
+-HomeInventroyViewController(TableView)
+-TableViewCell
+-IngredientListViewController(TableView)
+-TableViewCell
+-AddToInventoryViewController
+-DrinksFromInventoryViewController
+-MoreOptionsViewController (tableView)
+-TableViewCell
+-profileViewController
+-BarMenuViewController
+-BarSpecialsViewController
+-BarMenuFromInventoryViewController
+-specialsViewController
+-DrinkDetailViewController
+-SavedSpecialsViewController
+-DrinkCreatorViewController
+-ingredientSelectorViewController
+-addIngredientViewContoller
+-editMenusViewController(TableView)
+-TableViewCell
+
+-userStore
+-imageStore
+-coreDataStack
+
+
+Endpoints
+---------
+
+add/create user
+
+login
+
+currentLocation -> Bars
+
+publish menus
+
+publish specials
+
+
+
+
+

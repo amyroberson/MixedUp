@@ -1,0 +1,60 @@
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool
+Drink App Features-
+Type of Users
+---------------
+- Customer/Home User
+- Bar Manager/ Menu Creator
+- System
+
+
+
+
+- Users able to register as Bar Managers
+- Users able to register as non-Bar managers
+- User able to view profile information (name, number if fave drinks?, BM at:)
+
+-----Home User  activites ---
+- User Able to enter list of ingredents 
+- User able to generate list of drinks from their ingredents
+- User able to see list of IBA offical drinks
+- User able to view drink details
+- User can search drinks by ingredients
+- User able to view ingredents they are missing from selected drink
+- User able to save List of Favorite Drinks
+- User able to log out
+
+-----Bar Manager Use------
+-The Bar Manager User able to enter inventory
+-BM able to update inventory
+-BM Able to generate list of possible drinks to make
+-BM able to create custom menu of specials
+-BM able to create list of drinks they can/will make 
+-BM able to blacklist certain drinks
+-BM able to create special drinks
+-BM able to publish/push menu to public
+
+----Customer Bar Use ------
+-User able to select/confirm location
+	- User able to view bar specials
+	- User able to view drink menu
+	-User able to view drink details
+	- User able to save drinks from menu as favorite   
+
+---System Stories----
+-dont allow people under 21 to register
+-sends email to ask for BM Verification
+
+
+
+
+
+
+---Extras----
+- able to mark off drinks by tools ex. no blender
+- user able to select Designated Drive Mode
+- if DD mode is set show non-alcholic drinks
+- system able to display list of non alcholic drinks
+- User able to view locations using service in the area
+- User able to send bartender drink details if its a custom/special drink
+- User can get a random drink suggestion
+- able to toggle settings based on enviroment light level
