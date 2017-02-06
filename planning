@@ -1,0 +1,7 @@
+-Create Entities and Relationships in coredata model
+-set base images in assets
+-set up welcome/birthday page and NSUserDefaults
+-set up api/ url class
+-set up services, stores, and coredatastack 
+-set up tabs view controller
+	-initial view will be IBA drinks
