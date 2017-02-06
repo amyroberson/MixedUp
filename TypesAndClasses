@@ -1,50 +1,84 @@
 Types and Classes
 -----------------
-enum IngredientType- baseSpirit, berries, brandy, decoration, fruits, gin, mixers, ice, others, rum,spices-herbs, spirits-other, tequila, vodka, whiskey)
+enum IngredientType
+-baseSpirit, berries, brandy, decoration, fruits, gin, mixers, ice, others, rum,spices-herbs, spirits-other, tequila, vodka, whiskey
+- name
+-displayName
 
-Enum Glass - Champagne Glass, Cocktail Glass, Highball Glass, Rocks Glass, Shot Glass, Wine Glass, Shot Glass,
 
-Enum Tools -Barspoon, blender, boston shaker, opener, citrus press, cobble shaker, freezer, ice crusher, ice tong, jigger, knife, mixing glass, muddler, pourer, strainer, twist knife
+Enum Glass 
+- Champagne Glass, Cocktail Glass, Highball Glass, Rocks Glass, Shot Glass, Wine Glass, Shot Glass,
+-name - string
+-displayName - string
 
+Enum Tools 
+-Barspoon, blender, boston shaker, opener, citrus press, cobble shaker, 
+freezer, ice crusher, ice tong, jigger, knife, mixing glass, muddler, pourer, strainer, twist knife
+-name - string
+-displayName - string
+-description - string
+
+enum Color
+-Decide on color options
+-name- string
+-displayName- string
+-red- int
+-green - int
+-blue - int
+-alpha - int
 
 -Ingredients
 	-type - ingredientType
 	-isAlcoholic- Bool
-	-id- string
 	-name - string
+	-displayName -string
+
 
 
 -Drink
+	-name- string
+	-displayName- string
 	-ingredients - [ingredient]
 	-isAlcoholic- Bool
-	-color- String
-	- tools -[Tools]
-	-description - string (descriptionPlain from api)
- 	-name- string
-	-id- string
+	-color- Color
+	- tools -[Tool]
 	-glass - Glass
-	-image - URL?
+	-imageURl - string
+	-isIBAOfficial
+	-description - string
+
+-DrinkPhoto
+	-drink - Drink
+	-url - String
 
 -User
-	-favoriteDrinks - [Drink]
-	-inventory - [Ingredient]
-	-isBarManager - Bool
-	-barsManaged - [Bar]
 	-email- String?
-	-password - String?
+	-password - String? /// not sure how to handle this it shouldnt be stored though
+	-inventory - [Ingredient]
+	-favoriteDrinks - [Drink]
+	-barsManaged - [Bar]
 
 -bar
-	-manager - User
 	-inventory- [ingredients]
-	-activeMenu - [Drink]
-	-activeSpecials - [Drink]
-	-savedSpecials - [Drink]
+	-drinks - [Drink] -- all of the iba drinks the bar can make from inventory
+	-menu - [Drink] --- the menu the bar manager publishes
+	-specialties - [Drink] --- special drinks the barManager creates
+	-managers - [User]
+	-location - [location]
+	
 	-generateBaseMenu() -> [Drink]
-	-location- Location
+	
 
 -Location
-	-address
-	-long/lat
+	-streetNum - string
+	-street - string
+	-town - string
+	-state - string
+	-stateAbbr - string
+	-zipCode - int
+	-zipExp - int
+	-lat - double
+	-long - double
 
 
 
@@ -84,6 +118,8 @@ Classes
 -TableViewCell
 
 -userStore
+-drinkstore?
+
 -imageStore
 -coreDataStack
 
