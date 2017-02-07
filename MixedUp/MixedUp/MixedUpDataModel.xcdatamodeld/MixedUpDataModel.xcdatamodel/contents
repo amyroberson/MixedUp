@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1217" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Bar" representedClassName="Bar" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="drinks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Drink" inverseName="bardrinks" inverseEntity="Drink" syncable="YES"/>
+        <relationship name="inventory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="bar" inverseEntity="Ingredient" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="bar" inverseEntity="Location" syncable="YES"/>
+        <relationship name="managers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="barsManaged" inverseEntity="User" syncable="YES"/>
+        <relationship name="menu" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Drink" inverseName="barmenu" inverseEntity="Drink" syncable="YES"/>
+        <relationship name="specialties" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Drink" inverseName="barspecialties" inverseEntity="Drink" syncable="YES"/>
+    </entity>
+    <entity name="Color" representedClassName="Color" syncable="YES">
+        <attribute name="alpha" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="blue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="displayName" attributeType="String" syncable="YES"/>
+        <attribute name="green" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="red" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="drink" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Drink" inverseName="color" inverseEntity="Drink" syncable="YES"/>
+    </entity>
+    <entity name="Drink" representedClassName="Drink" syncable="YES">
+        <attribute name="displayName" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isAlcoholic" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isIBAOfficial" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stringDescription" attributeType="String" syncable="YES"/>
+        <relationship name="bardrinks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bar" inverseName="drinks" inverseEntity="Bar" syncable="YES"/>
+        <relationship name="barmenu" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bar" inverseName="menu" inverseEntity="Bar" syncable="YES"/>
+        <relationship name="barspecialties" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bar" inverseName="specialties" inverseEntity="Bar" syncable="YES"/>
+        <relationship name="color" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Color" inverseName="drink" inverseEntity="Color" syncable="YES"/>
+        <relationship name="glass" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Glass" inverseName="drink" inverseEntity="Glass" syncable="YES"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="drink" inverseEntity="Ingredient" syncable="YES"/>
+        <relationship name="tools" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tool" inverseName="drinks" inverseEntity="Tool" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favoriteDrinks" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Glass" representedClassName="Glass" syncable="YES">
+        <attribute name="displayName" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="drink" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Drink" inverseName="glass" inverseEntity="Drink" syncable="YES"/>
+    </entity>
+    <entity name="Ingredient" representedClassName="Ingredient" syncable="YES">
+        <attribute name="displayName" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isAlcoholic" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="bar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bar" inverseName="inventory" inverseEntity="Bar" syncable="YES"/>
+        <relationship name="drink" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Drink" inverseName="ingredients" inverseEntity="Drink" syncable="YES"/>
+        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IngredientType" inverseName="ingredient" inverseEntity="IngredientType" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="inventory" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="IngredientType" representedClassName="IngredientType" syncable="YES">
+        <attribute name="displayName" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ingredient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="type" inverseEntity="Ingredient" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lat" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="long" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="state" attributeType="String" syncable="YES"/>
+        <attribute name="stateAbbr" attributeType="String" syncable="YES"/>
+        <attribute name="street" attributeType="String" syncable="YES"/>
+        <attribute name="streetNum" attributeType="String" syncable="YES"/>
+        <attribute name="town" attributeType="String" syncable="YES"/>
+        <attribute name="zipCode" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="zipExp" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="bar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bar" inverseName="location" inverseEntity="Bar" syncable="YES"/>
+    </entity>
+    <entity name="Tool" representedClassName="Tool" syncable="YES">
+        <attribute name="displayName" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="drinks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Drink" inverseName="tools" inverseEntity="Drink" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="barsManaged" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bar" inverseName="managers" inverseEntity="Bar" syncable="YES"/>
+        <relationship name="favoriteDrinks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Drink" inverseName="user" inverseEntity="Drink" syncable="YES"/>
+        <relationship name="inventory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="user" inverseEntity="Ingredient" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="User" positionX="-837" positionY="-144" width="128" height="118"/>
+        <element name="Bar" positionX="-533" positionY="-187" width="128" height="148"/>
+        <element name="Drink" positionX="-612" positionY="20" width="128" height="253"/>
+        <element name="Location" positionX="-243" positionY="-288" width="128" height="208"/>
+        <element name="Ingredient" positionX="-351" positionY="255" width="128" height="163"/>
+        <element name="Glass" positionX="-216" positionY="6" width="128" height="103"/>
+        <element name="Tool" positionX="-216" positionY="132" width="128" height="103"/>
+        <element name="IngredientType" positionX="-191" positionY="294" width="128" height="103"/>
+        <element name="Color" positionX="-722" positionY="234" width="128" height="163"/>
+    </elements>
+</model>
