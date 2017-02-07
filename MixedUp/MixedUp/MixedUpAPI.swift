@@ -25,12 +25,17 @@ class MixedUpAPI {
         return jsonObject
     }
     
+    static func dictionaryToJson(_ dictionary: [String:Any])throws -> Data {
+        let jsonRepresentation = try JSONSerialization.data(withJSONObject: dictionary, options: [])
+        return jsonRepresentation
+    }
+    
     static func getUserFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> User?{
         guard let id = dictionary["id"] as? String else { return nil}
         
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        let predicate = NSPredicate(format: "id == \(id)")
+        let predicate = NSPredicate(format: "id == \"\(id)\"")
         fetchRequest.predicate = predicate
         
         let fetchedUsers: [User] = {
@@ -49,7 +54,7 @@ class MixedUpAPI {
             user = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
                                                        into: context) as! User
             user.email = dictionary["email"] as? String
-            let inventory = dictionary["inventory"] as? [[String: Any?]]
+            let inventory = dictionary["inventory"] as? [[String: Any]]
             var actualIngredients: [Ingredient] = []
             if let ingredients = inventory{
                 for theIngredient in ingredients {
@@ -66,7 +71,7 @@ class MixedUpAPI {
             } else {
                 user.inventory = []
             }
-            let favDrinks = dictionary["favoriteDrink"] as? [[String: Any?]]
+            let favDrinks = dictionary["favoriteDrinks"] as? [[String: Any]]
             var actualDrinks: [Drink] = []
             if let drinks = favDrinks{
                 for drink in drinks {
@@ -83,7 +88,7 @@ class MixedUpAPI {
             }  else {
                 user.favoriteDrinks = []
             }
-            let theBars = dictionary["barsManaged"] as? [[String: Any?]]
+            let theBars = dictionary["barsManaged"] as? [[String: Any]]
             var actualBars: [Bar] = []
             if let bars = theBars{
                 for bar in bars {
@@ -106,10 +111,19 @@ class MixedUpAPI {
     
    
     static func getDrinksFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> ResourceResult<[Drink]>{
-        guard let dictionaries = dictionary["drinks"] as? [[String: NSObject]] else {
-            // The JSON structure doesn't match our expectations
+        let dictionaries: [[String: Any]]
+        if dictionary["drinks"] as? [[String: Any]] != nil {
+            dictionaries = (dictionary["drinks"] as? [[String: Any]])!
+        } else if dictionary["favoriteDrinks"] as? [[String: Any]] != nil {
+            dictionaries = (dictionary["favoriteDrinks"] as? [[String: Any]])!
+        } else if dictionary["menu"] as? [[String: Any]] != nil {
+            dictionaries = (dictionary["menu"] as? [[String: Any]])!
+        } else if dictionary["specialties"] as? [[String: Any]] != nil {
+            dictionaries = (dictionary["specialties"] as? [[String: Any]])!
+        } else {
             return .failure(Errors.invalidJSONData)
         }
+
         var actualDrinks: [Drink] = []
         for dictionary in dictionaries {
             if let drink = getDrinkFromDictionary(dictionary, inContext: context){
@@ -123,7 +137,7 @@ class MixedUpAPI {
         return .success(actualDrinks)
     }
     
-    fileprivate static func getDrinkFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Drink? {
+    static func getDrinkFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Drink? {
         
         guard let display = dictionary["displayName"] as? String,
              let isAlcoholic = dictionary["isAlcoholic"] as? Bool,
@@ -133,7 +147,7 @@ class MixedUpAPI {
         
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Drink")
-        let predicate = NSPredicate(format: "id == \(id)")
+        let predicate = NSPredicate(format: "id == \"\(id)\"")
         fetchRequest.predicate = predicate
         
         let fetchedDrinks: [Drink] = {
@@ -207,13 +221,13 @@ class MixedUpAPI {
         return drink
     }
     
-    fileprivate static func getIngredientTypeFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> IngredientType? {
+     static func getIngredientTypeFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> IngredientType? {
         
         guard let display = dictionary["displayName"] as? String,
             let id = dictionary["id"] as? String else { return nil}
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "IngredientType")
-        let predicate = NSPredicate(format: "id == \(id)")
+        let predicate = NSPredicate(format: "id == \"\(id)\"")
         fetchRequest.predicate = predicate
         
         let fetchedTypes: [IngredientType] = {
@@ -242,12 +256,12 @@ class MixedUpAPI {
         
     }
     
-    fileprivate static func getGlassFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Glass? {
+    static func getGlassFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Glass? {
         guard let display = dictionary["displayName"] as? String,
             let id = dictionary["id"] as? String else { return nil}
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Glass")
-        let predicate = NSPredicate(format: "id == \(id)")
+        let predicate = NSPredicate(format: "id == \"\(id)\"")
         fetchRequest.predicate = predicate
         
         let fetchedGlasses: [Glass] = {
@@ -275,8 +289,8 @@ class MixedUpAPI {
         return glass
     }
     
-    fileprivate static func getToolsFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> ResourceResult<[Tool]> {
-        guard let dictionaries = dictionary["tools"] as? [[String: NSObject]] else {
+    static func getToolsFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> ResourceResult<[Tool]> {
+        guard let dictionaries = dictionary["tools"] as? [[String: Any]] else {
             // The JSON structure doesn't match our expectations
             return .failure(Errors.invalidJSONData)
         }
@@ -287,18 +301,18 @@ class MixedUpAPI {
             }
         }
         
-        if actualTools.count == 0 && dictionaries.count > 0 {
+        if actualTools.count != dictionaries.count {
             return .failure(Errors.invalidJSONData)
         }
         return .success(actualTools)
     }
     
-    fileprivate static func getToolFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) ->  Tool? {
+    static func getToolFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) ->  Tool? {
         guard let display = dictionary["displayName"] as? String,
             let id = dictionary["id"] as? String else { return nil}
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Tool")
-        let predicate = NSPredicate(format: "id == \(id)")
+        let predicate = NSPredicate(format: "id == \"\(id)\"")
         fetchRequest.predicate = predicate
         
         let fetchedTools: [Tool] = {
@@ -328,7 +342,7 @@ class MixedUpAPI {
     }
     
     
-    fileprivate static func getColorFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Color?{
+    static func getColorFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Color?{
         
         guard let display = dictionary["displayName"] as? String,
             let red = dictionary["red"] as? Int16,
@@ -339,7 +353,7 @@ class MixedUpAPI {
         
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Color")
-        let predicate = NSPredicate(format: "id == \(id)")
+        let predicate = NSPredicate(format: "id == \"\(id)\"")
         fetchRequest.predicate = predicate
         
         let fetchedColors: [Color] = {
@@ -372,32 +386,39 @@ class MixedUpAPI {
     }
     
     static func getIngredientsFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> ResourceResult<[Ingredient]> {
-        guard let dictionaries = dictionary["Ingredients"] as? [[String: NSObject]] else {
-            // The JSON structure doesn't match our expectations
-            return .failure(Errors.invalidJSONData)
-        }
-        var actualIngredients: [Ingredient] = []
-        for dictionary in dictionaries {
-            if let ingredient = getIngredientFromDictionary(dictionary, inContext: context){
-                actualIngredients.append(ingredient)
-            }
-        }
+        let dictionaries: [[String: Any]]
         
-        if actualIngredients.count == 0 && dictionaries.count > 0 {
+        if dictionary["ingredients"] as? [[String: Any]] != nil {
+            dictionaries = (dictionary["ingredients"] as? [[String: Any]])!
+        } else if dictionary["inventory"] as? [[String: Any]] != nil {
+            dictionaries = (dictionary["inventory"] as? [[String: Any]])!
+        } else {
             return .failure(Errors.invalidJSONData)
         }
-        return .success(actualIngredients)
+
+            var actualIngredients: [Ingredient] = []
+            for dictionary in dictionaries {
+                if let ingredient = getIngredientFromDictionary(dictionary, inContext: context){
+                    actualIngredients.append(ingredient)
+                }
+            }
+            
+            if actualIngredients.count == 0 && dictionaries.count > 0 {
+                return .failure(Errors.invalidJSONData)
+            }
+            return .success(actualIngredients)
     }
     
     
-    fileprivate static func getIngredientFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Ingredient? {
+    
+    static func getIngredientFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Ingredient? {
        
         guard let display = dictionary["displayName"] as? String,
             let isAlcoholic = dictionary["isAlcoholic"] as? Bool,
             let id = dictionary["id"] as? String else { return nil}
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredient")
-        let predicate = NSPredicate(format: "id == \(id)")
+        let predicate = NSPredicate(format: "id == \"\(id)\"")
         fetchRequest.predicate = predicate
         
         let fetchedIngredients: [Ingredient] = {

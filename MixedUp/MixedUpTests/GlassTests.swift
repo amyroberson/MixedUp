@@ -49,4 +49,23 @@ class GlassTests: XCTestCase {
         XCTAssertEqual("martini-glass", name)
     }
     
+    func testFromDictionary(){
+        
+        let glass = NSEntityDescription.insertNewObject(forEntityName: Glass.entityName,
+                                                        into: self.stack.privateQueueContext) as! Glass
+        glass.displayName = "Martini"
+        glass.name = "martini-glass"
+        glass.id = "dgeag"
+        let dictionary = glass.toDictionary()
+        let object = MixedUpAPI.getGlassFromDictionary(dictionary, inContext: self.stack.privateQueueContext)
+        if let object = object {
+            XCTAssertEqual(object.displayName, "Martini")
+            XCTAssertEqual(object.id, "dgeag")
+            XCTAssertEqual(object.name, "martini-glass")
+        } else {
+            XCTAssert(false)
+        }
+        
+    }
+    
 }

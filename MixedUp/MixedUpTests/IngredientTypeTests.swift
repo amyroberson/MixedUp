@@ -49,4 +49,24 @@ class IngredientTypeTests: XCTestCase {
         XCTAssertEqual("mixer", name)
     }
     
+    func testFromDictionary(){
+        let type = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
+                                                       into: self.stack.privateQueueContext) as! IngredientType
+        type.displayName = "Mixer"
+        type.name = "mixer"
+        type.id = "twv4"
+        let dictionary = type.toDictionary()
+        let object = MixedUpAPI.getIngredientTypeFromDictionary(dictionary, inContext: self.stack.privateQueueContext)
+        if let object = object {
+            XCTAssertEqual(object.displayName, "Mixer")
+            XCTAssertEqual(object.id, "twv4")
+            XCTAssertEqual(object.name, "mixer")
+        } else {
+            XCTAssert(false)
+        }
+        
+    }
+    
+    
+    
 }

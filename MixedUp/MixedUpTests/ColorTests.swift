@@ -74,4 +74,27 @@ class ColorTests: XCTestCase {
         XCTAssertEqual(green, 232)
     }
     
+    func testFromDictionary(){
+        let color = NSEntityDescription.insertNewObject(forEntityName: Color.entityName,
+                                                        into: self.stack.privateQueueContext) as! Color
+        color.displayName = "Blue"
+        color.name = nil
+        color.id = "hello"
+        color.red = 2
+        color.alpha = 1
+        color.green = 20
+        color.blue = 230
+        let dict = color.toDictionary()
+        let object = MixedUpAPI.getColorFromDictionary(dict, inContext: self.stack.privateQueueContext)
+        if let object = object {
+            XCTAssertEqual(object.alpha, 1)
+            XCTAssertEqual(object.blue, 230)
+            XCTAssertEqual(object.name, nil)
+            XCTAssertEqual(object.displayName, "Blue")
+        } else {
+            XCTAssert(false)
+        }
+        
+    }
+    
 }

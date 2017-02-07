@@ -17,14 +17,22 @@ public class Color: NSManagedObject {
     }
     
     func toDictionary() -> [String: Any] {
-        let dictionary: [String: Any?] = [
-            "displayName" : self.displayName,
-            "red" : self.red,
-            "green" : self.green,
-            "blue" : self.blue,
-            "alpha" : self.alpha,
-            "id" : self.id,
-            "name" : self.name]
-        return dictionary
+        let keyValuePairs: [(String, Any?)] = [
+            ("displayName",  self.displayName),
+            ("red",  self.red),
+            ("green",  self.green),
+            ("blue", self.blue),
+            ("alpha", self.alpha),
+            ("id", self.id),
+            ("name", self.name)]
+        
+        var dict: [String: Any] = [:]
+        
+        for (key, optionalValue) in keyValuePairs {
+            if let value = optionalValue {
+                dict[key] = value
+            }
+        }
+        return dict
     }
 }

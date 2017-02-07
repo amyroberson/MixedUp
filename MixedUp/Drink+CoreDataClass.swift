@@ -15,8 +15,8 @@ public class Drink: NSManagedObject {
         return "Drink"
     }
     
-    func toDictionary() -> [String: Any?] {
-        var ingredients: [[String: Any?]] = []
+    func toDictionary() -> [String: Any] {
+        var ingredients: [[String: Any]] = []
         if let theIngredients = self.ingredients?.allObjects as? [Ingredient]{
             for ingredient in theIngredients {
                 let dict = ingredient.toDictionary()
@@ -24,7 +24,7 @@ public class Drink: NSManagedObject {
             }
         }
         
-        var tools: [[String: Any?]] = []
+        var tools: [[String: Any]] = []
         if let theTools = self.tools?.allObjects as? [Tool]{
             for tool in theTools {
                 let dict = tool.toDictionary()
@@ -32,18 +32,26 @@ public class Drink: NSManagedObject {
             }
         }
         
-        let dictionary: [String: Any?] = [
-            "name": self.name,
-            "displayName": self.displayName,
-            "isAlcoholic": self.isAlcoholic,
-            "isIBAOfficial" : self.isIBAOfficial,
-            "description" : self.stringDescription,
-            "id" : self.id,
-            "ingredients": ingredients,
-            "tools": tools,
-            "color" : self.color?.toDictionary(),
-            "glass" : self.glass?.toDictionary()
-            ]
-        return dictionary
+        let keyValuePairs: [(String, Any?)] = [
+            ("displayName",  self.displayName),
+            ("isAlcoholic", self.isAlcoholic),
+            ("id", self.id),
+            ( "description", self.stringDescription),
+            ("ingredients", ingredients),
+            ("tools", tools),
+            ("color", self.color?.toDictionary()),
+            ("glass", self.glass?.toDictionary()),
+            ("isIBAOfficial", self.isIBAOfficial),
+            ("name", self.name)]
+        
+        var dict: [String: Any] = [:]
+        
+        for (key, optionalValue) in keyValuePairs {
+            if let value = optionalValue {
+                dict[key] = value
+            }
+        }
+        return dict
+
     }
 }

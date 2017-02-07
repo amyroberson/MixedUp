@@ -16,12 +16,20 @@ public class Ingredient: NSManagedObject {
     }
     
     func toDictionary() -> [String: Any] {
-        let dictionary: [String: Any?] = [
-            "displayName" : self.displayName,
-            "id" : self.id,
-            "name" : self.name,
-            "isAlcoholic" : self.isAlcoholic,
-            "type" : self.type?.toDictionary()]
-        return dictionary
+        let keyValuePairs: [(String, Any?)] = [
+            ("displayName",  self.displayName),
+            ("type", self.type?.toDictionary()),
+            ("isAlcoholic", self.isAlcoholic),
+            ("id", self.id),
+            ("name", self.name)]
+        
+        var dict: [String: Any] = [:]
+        
+        for (key, optionalValue) in keyValuePairs {
+            if let value = optionalValue {
+                dict[key] = value
+            }
+        }
+        return dict
     }
 }

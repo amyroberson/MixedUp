@@ -43,6 +43,8 @@
 		E18853F01E4A332A005C8C37 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853EF1E4A332A005C8C37 /* ColorTests.swift */; };
 		E18853F21E4A3E1C005C8C37 /* IngredientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853F11E4A3E1C005C8C37 /* IngredientTests.swift */; };
 		E18853F41E4A4464005C8C37 /* DrinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853F31E4A4464005C8C37 /* DrinkTests.swift */; };
+		E18853F61E4A62C1005C8C37 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853F51E4A62C1005C8C37 /* UserTests.swift */; };
+		E18853F81E4A68EB005C8C37 /* MixedUpAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853F71E4A68EB005C8C37 /* MixedUpAPITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		E18853EF1E4A332A005C8C37 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		E18853F11E4A3E1C005C8C37 /* IngredientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientTests.swift; sourceTree = "<group>"; };
 		E18853F31E4A4464005C8C37 /* DrinkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkTests.swift; sourceTree = "<group>"; };
+		E18853F51E4A62C1005C8C37 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
+		E18853F71E4A68EB005C8C37 /* MixedUpAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixedUpAPITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,8 @@
 				E18853ED1E4A2A95005C8C37 /* IngredientTypeTests.swift */,
 				E18853F11E4A3E1C005C8C37 /* IngredientTests.swift */,
 				E18853EF1E4A332A005C8C37 /* ColorTests.swift */,
+				E18853F71E4A68EB005C8C37 /* MixedUpAPITests.swift */,
+				E18853F51E4A62C1005C8C37 /* UserTests.swift */,
 				E18853641E4921F9005C8C37 /* GlassTests.swift */,
 				E188535F1E492120005C8C37 /* ToolTests.swift */,
 			);
@@ -387,11 +393,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E18853EE1E4A2A95005C8C37 /* IngredientTypeTests.swift in Sources */,
+				E18853F81E4A68EB005C8C37 /* MixedUpAPITests.swift in Sources */,
 				E18853F21E4A3E1C005C8C37 /* IngredientTests.swift in Sources */,
 				E18853F01E4A332A005C8C37 /* ColorTests.swift in Sources */,
 				E18853651E4921F9005C8C37 /* GlassTests.swift in Sources */,
 				E18853B61E4956F4005C8C37 /* Util.swift in Sources */,
 				E18853601E492120005C8C37 /* ToolTests.swift in Sources */,
+				E18853F61E4A62C1005C8C37 /* UserTests.swift in Sources */,
 				E18853F41E4A4464005C8C37 /* DrinkTests.swift in Sources */,
 				E18853381E4914CD005C8C37 /* MixedUpTests.swift in Sources */,
 			);
