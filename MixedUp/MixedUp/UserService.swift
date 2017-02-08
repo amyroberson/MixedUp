@@ -74,7 +74,7 @@ final class UserService{
         return post
     }
     
-    func createUser(user: User, completion: @escaping (ResourceResult<[User]>) -> ())  {
+    func createUser(user: User, completion: @escaping (ResourceResult<[User]>) -> ()) {
         let dict = user.toDictionary()
         do{
             let data = try MixedUpAPI.dictionaryToJson(dict)
@@ -97,9 +97,9 @@ final class UserService{
                     do {
                         try self.coreDataStack?.saveChanges()
                         
-                        let mainQueuePosts = try self.fetchMainQueueUsers(predicate: predicate,
+                        let mainQueueUsers = try self.fetchMainQueueUsers(predicate: predicate,
                                                                           sortDescriptors: [])
-                        result = .success(mainQueuePosts)
+                        result = .success(mainQueueUsers)
                     }
                     catch let error {
                         result = .failure(error as! Errors)

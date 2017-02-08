@@ -16,7 +16,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
        
-        //instantiate coredataStack and pass to views
+        
+        let defaults = UserDefaults.standard
+        defaults.register(defaults: ["Over21": false])
+        
+        if defaults.bool(forKey: "Over21") {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "Tabs") as! TabsViewController
+            initialViewController.defaults = defaults
+            
+            window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+
+        } else {
+          //show age picker
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "Birthday") as! BirthdayViewController
+            initialViewController.defaults = defaults
+            
+            window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+
+        }
+        
+        
         return true
     }
 

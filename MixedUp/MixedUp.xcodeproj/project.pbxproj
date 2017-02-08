@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E18853231E4914CD005C8C37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853221E4914CD005C8C37 /* AppDelegate.swift */; };
-		E18853251E4914CD005C8C37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853241E4914CD005C8C37 /* ViewController.swift */; };
+		E18853251E4914CD005C8C37 /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853241E4914CD005C8C37 /* BirthdayViewController.swift */; };
 		E18853281E4914CD005C8C37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18853261E4914CD005C8C37 /* Main.storyboard */; };
 		E188532A1E4914CD005C8C37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18853291E4914CD005C8C37 /* Assets.xcassets */; };
 		E188532D1E4914CD005C8C37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E188532B1E4914CD005C8C37 /* LaunchScreen.storyboard */; };
@@ -47,6 +47,10 @@
 		E18853F81E4A68EB005C8C37 /* MixedUpAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853F71E4A68EB005C8C37 /* MixedUpAPITests.swift */; };
 		E18853FB1E4A9CC6005C8C37 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FA1E4A9CC6005C8C37 /* UserService.swift */; };
 		E18853FD1E4AB6B2005C8C37 /* DrinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FC1E4AB6B2005C8C37 /* DrinkService.swift */; };
+		E18853FF1E4AD77C005C8C37 /* IngredientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FE1E4AD77C005C8C37 /* IngredientService.swift */; };
+		E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18854001E4B5896005C8C37 /* TabsViewController.swift */; };
+		E1D00C361E4B6F7A00C478CA /* IBASCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C351E4B6F7A00C478CA /* IBASCollectionViewController.swift */; };
+		E1D00C381E4B702E00C478CA /* IBADataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C371E4B702E00C478CA /* IBADataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +73,7 @@
 /* Begin PBXFileReference section */
 		E188531F1E4914CD005C8C37 /* MixedUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MixedUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18853221E4914CD005C8C37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E18853241E4914CD005C8C37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E18853241E4914CD005C8C37 /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
 		E18853271E4914CD005C8C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E18853291E4914CD005C8C37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E188532C1E4914CD005C8C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -112,6 +116,10 @@
 		E18853F71E4A68EB005C8C37 /* MixedUpAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixedUpAPITests.swift; sourceTree = "<group>"; };
 		E18853FA1E4A9CC6005C8C37 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		E18853FC1E4AB6B2005C8C37 /* DrinkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkService.swift; sourceTree = "<group>"; };
+		E18853FE1E4AD77C005C8C37 /* IngredientService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientService.swift; sourceTree = "<group>"; };
+		E18854001E4B5896005C8C37 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
+		E1D00C351E4B6F7A00C478CA /* IBASCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBASCollectionViewController.swift; sourceTree = "<group>"; };
+		E1D00C371E4B702E00C478CA /* IBADataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBADataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,8 +171,11 @@
 			isa = PBXGroup;
 			children = (
 				E18853221E4914CD005C8C37 /* AppDelegate.swift */,
-				E18853241E4914CD005C8C37 /* ViewController.swift */,
+				E18853241E4914CD005C8C37 /* BirthdayViewController.swift */,
 				E18853261E4914CD005C8C37 /* Main.storyboard */,
+				E1D00C351E4B6F7A00C478CA /* IBASCollectionViewController.swift */,
+				E1D00C371E4B702E00C478CA /* IBADataSource.swift */,
+				E18854001E4B5896005C8C37 /* TabsViewController.swift */,
 				E18853F91E4A8E11005C8C37 /* Services/Storage */,
 				E18853611E4921A1005C8C37 /* Model */,
 				E18853291E4914CD005C8C37 /* Assets.xcassets */,
@@ -233,6 +244,7 @@
 				E18853B21E4954BD005C8C37 /* Util.swift */,
 				E18853FC1E4AB6B2005C8C37 /* DrinkService.swift */,
 				E18853FA1E4A9CC6005C8C37 /* UserService.swift */,
+				E18853FE1E4AD77C005C8C37 /* IngredientService.swift */,
 				E18853B01E4946FF005C8C37 /* MixedUpAPI.swift */,
 			);
 			name = Services/Storage;
@@ -379,12 +391,16 @@
 				E18853FB1E4A9CC6005C8C37 /* UserService.swift in Sources */,
 				E18853E01E497E8D005C8C37 /* Location+CoreDataClass.swift in Sources */,
 				E18853521E4914F4005C8C37 /* MixedUpDataModel.xcdatamodeld in Sources */,
+				E18853FF1E4AD77C005C8C37 /* IngredientService.swift in Sources */,
 				E18853E81E497EAA005C8C37 /* Color+CoreDataProperties.swift in Sources */,
 				E18853E71E497EA5005C8C37 /* Tool+CoreDataProperties.swift in Sources */,
 				E18853FD1E4AB6B2005C8C37 /* DrinkService.swift in Sources */,
+				E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */,
+				E1D00C381E4B702E00C478CA /* IBADataSource.swift in Sources */,
 				E18853DB1E497E72005C8C37 /* Color+CoreDataClass.swift in Sources */,
-				E18853251E4914CD005C8C37 /* ViewController.swift in Sources */,
+				E18853251E4914CD005C8C37 /* BirthdayViewController.swift in Sources */,
 				E18853EC1E497EBA005C8C37 /* Bar+CoreDataProperties.swift in Sources */,
+				E1D00C361E4B6F7A00C478CA /* IBASCollectionViewController.swift in Sources */,
 				E18853E11E497E90005C8C37 /* Location+CoreDataProperties.swift in Sources */,
 				E18853DD1E497E83005C8C37 /* Ingredient+CoreDataProperties.swift in Sources */,
 				E18853DE1E497E86005C8C37 /* IngredientType+CoreDataClass.swift in Sources */,
@@ -658,6 +674,7 @@
 				E18853491E4914CD005C8C37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E188534A1E4914CD005C8C37 /* Build configuration list for PBXNativeTarget "MixedUpTests" */ = {
 			isa = XCConfigurationList;
@@ -666,6 +683,7 @@
 				E188534C1E4914CD005C8C37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E188534D1E4914CD005C8C37 /* Build configuration list for PBXNativeTarget "MixedUpUITests" */ = {
 			isa = XCConfigurationList;
@@ -674,6 +692,7 @@
 				E188534F1E4914CD005C8C37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
