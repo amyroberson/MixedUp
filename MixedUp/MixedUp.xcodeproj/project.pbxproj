@@ -45,6 +45,8 @@
 		E18853F41E4A4464005C8C37 /* DrinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853F31E4A4464005C8C37 /* DrinkTests.swift */; };
 		E18853F61E4A62C1005C8C37 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853F51E4A62C1005C8C37 /* UserTests.swift */; };
 		E18853F81E4A68EB005C8C37 /* MixedUpAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853F71E4A68EB005C8C37 /* MixedUpAPITests.swift */; };
+		E18853FB1E4A9CC6005C8C37 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FA1E4A9CC6005C8C37 /* UserService.swift */; };
+		E18853FD1E4AB6B2005C8C37 /* DrinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FC1E4AB6B2005C8C37 /* DrinkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,8 @@
 		E18853F31E4A4464005C8C37 /* DrinkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkTests.swift; sourceTree = "<group>"; };
 		E18853F51E4A62C1005C8C37 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		E18853F71E4A68EB005C8C37 /* MixedUpAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixedUpAPITests.swift; sourceTree = "<group>"; };
+		E18853FA1E4A9CC6005C8C37 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		E18853FC1E4AB6B2005C8C37 /* DrinkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,13 +165,11 @@
 				E18853221E4914CD005C8C37 /* AppDelegate.swift */,
 				E18853241E4914CD005C8C37 /* ViewController.swift */,
 				E18853261E4914CD005C8C37 /* Main.storyboard */,
-				E18853AE1E4945E1005C8C37 /* CoreDataStack.swift */,
-				E18853B01E4946FF005C8C37 /* MixedUpAPI.swift */,
+				E18853F91E4A8E11005C8C37 /* Services/Storage */,
 				E18853611E4921A1005C8C37 /* Model */,
 				E18853291E4914CD005C8C37 /* Assets.xcassets */,
 				E18853501E4914F4005C8C37 /* MixedUpDataModel.xcdatamodeld */,
 				E188532B1E4914CD005C8C37 /* LaunchScreen.storyboard */,
-				E18853B21E4954BD005C8C37 /* Util.swift */,
 				E188532E1E4914CD005C8C37 /* Info.plist */,
 			);
 			path = MixedUp;
@@ -222,6 +224,18 @@
 				E18853C81E497E18005C8C37 /* Bar+CoreDataProperties.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		E18853F91E4A8E11005C8C37 /* Services/Storage */ = {
+			isa = PBXGroup;
+			children = (
+				E18853AE1E4945E1005C8C37 /* CoreDataStack.swift */,
+				E18853B21E4954BD005C8C37 /* Util.swift */,
+				E18853FC1E4AB6B2005C8C37 /* DrinkService.swift */,
+				E18853FA1E4A9CC6005C8C37 /* UserService.swift */,
+				E18853B01E4946FF005C8C37 /* MixedUpAPI.swift */,
+			);
+			name = Services/Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,10 +376,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E18853E41E497E9B005C8C37 /* Drink+CoreDataClass.swift in Sources */,
+				E18853FB1E4A9CC6005C8C37 /* UserService.swift in Sources */,
 				E18853E01E497E8D005C8C37 /* Location+CoreDataClass.swift in Sources */,
 				E18853521E4914F4005C8C37 /* MixedUpDataModel.xcdatamodeld in Sources */,
 				E18853E81E497EAA005C8C37 /* Color+CoreDataProperties.swift in Sources */,
 				E18853E71E497EA5005C8C37 /* Tool+CoreDataProperties.swift in Sources */,
+				E18853FD1E4AB6B2005C8C37 /* DrinkService.swift in Sources */,
 				E18853DB1E497E72005C8C37 /* Color+CoreDataClass.swift in Sources */,
 				E18853251E4914CD005C8C37 /* ViewController.swift in Sources */,
 				E18853EC1E497EBA005C8C37 /* Bar+CoreDataProperties.swift in Sources */,

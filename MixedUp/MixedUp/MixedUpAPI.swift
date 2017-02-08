@@ -30,6 +30,30 @@ class MixedUpAPI {
         return jsonRepresentation
     }
     
+    static func getUsersFromDictionary(_ dictionary: [String: Any], inContext context: NSManagedObjectContext) -> ResourceResult<[User]> {
+        var dictionaries: [[String: Any]]
+        if dictionary["users"] as? [[String: Any]] != nil {
+            dictionaries = (dictionary["users"] as? [[String: Any]])!
+        } else if dictionary["user"] as? [[String: Any]] != nil {
+            dictionaries = (dictionary["user"] as? [[String: Any]])!
+        } else {
+            return .failure(Errors.invalidJSONData)
+        }
+        
+        var actualUsers: [User] = []
+        for dictionary in dictionaries {
+            if let user = getUserFromDictionary(dictionary, inContext: context){
+                actualUsers.append(user)
+            }
+        }
+        
+        if actualUsers.count == 0 && dictionaries.count > 0 {
+            return .failure(Errors.invalidJSONData)
+        }
+        return .success(actualUsers)
+    }
+    
+    
     static func getUserFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> User?{
         guard let id = dictionary["id"] as? String else { return nil}
         

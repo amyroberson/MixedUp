@@ -20,10 +20,14 @@ enum Errors: Swift.Error{
     case system(Swift.Error)
     case resource(Util.Error)
     case invalidJSONData
+    case inValidParameter
 }
 
 struct Util {
     internal enum Error: Swift.Error {
         case invalidJSONData
+        
     }
+    
+  
 }

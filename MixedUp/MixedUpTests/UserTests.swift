@@ -88,4 +88,68 @@ class UserTests: XCTestCase {
         }
     }
     
+    func testGetUsers(){
+        let user = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
+                                                       into: self.stack.privateQueueContext) as! User
+        user.email = "bob@example.com"
+        user.id = "bob234"
+        let rum = NSEntityDescription.insertNewObject(forEntityName: Ingredient.entityName,
+                                                      into: self.stack.privateQueueContext) as! Ingredient
+        rum.name = "rum"
+        user.inventory = [rum]
+        
+        let drink = NSEntityDescription.insertNewObject(forEntityName: Drink.entityName,
+                                                        into: self.stack.privateQueueContext) as! Drink
+        drink.displayName = "Mixer"
+        drink.name = "mixer"
+        drink.id = "twv4"
+        let vodka = NSEntityDescription.insertNewObject(forEntityName: Ingredient.entityName,
+                                                        into: self.stack.privateQueueContext) as! Ingredient
+        vodka.name = "vodka"
+        drink.ingredients = [vodka]
+        let shaker = NSEntityDescription.insertNewObject(forEntityName: Tool.entityName,
+                                                         into: self.stack.privateQueueContext) as! Tool
+        shaker.name = "shaker"
+        drink.tools = [shaker]
+
+        let user2 = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
+                                                       into: self.stack.privateQueueContext) as! User
+        user2.email = "Jane@example.com"
+        user2.id = "Jane234"
+        let rum2 = NSEntityDescription.insertNewObject(forEntityName: Ingredient.entityName,
+                                                      into: self.stack.privateQueueContext) as! Ingredient
+        rum2.name = "rum"
+        user.inventory = [rum]
+        
+        let drink2 = NSEntityDescription.insertNewObject(forEntityName: Drink.entityName,
+                                                        into: self.stack.privateQueueContext) as! Drink
+        drink2.displayName = "Mixer"
+        drink2.name = "mixer"
+        drink2.id = "twv45"
+        let vodka2 = NSEntityDescription.insertNewObject(forEntityName: Ingredient.entityName,
+                                                        into: self.stack.privateQueueContext) as! Ingredient
+        vodka2.name = "vodka"
+        drink2.ingredients = [vodka]
+        let shaker2 = NSEntityDescription.insertNewObject(forEntityName: Tool.entityName,
+                                                         into: self.stack.privateQueueContext) as! Tool
+        shaker2.name = "shaker"
+        drink2.tools = [shaker]
+        
+        let dictionary1 = user.toDictionary()
+        let dictionary2 = user2.toDictionary()
+        let theDictionary: [String: Any] = ["users" : [dictionary1, dictionary2]]
+        
+        let users = MixedUpAPI.getUsersFromDictionary(theDictionary, inContext: self.stack.privateQueueContext)
+        switch users{
+        case .success(let users):
+            XCTAssertEqual(users.count, 2)
+        default:
+            XCTAssert(false)
+        }
+        
+    
+
+    }
+    
+    
 }
