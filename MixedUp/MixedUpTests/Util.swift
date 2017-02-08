@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 enum ResourceResult<A> {
     case success(A)
@@ -28,6 +29,5 @@ struct Util {
         case invalidJSONData
         
     }
-    
-  
 }
+

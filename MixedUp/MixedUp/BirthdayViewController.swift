@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
 class BirthdayViewController: UIViewController {
 
     var defaults: UserDefaults? = nil
+    var coreDataStack: CoreDataStack? = nil
+    var userStore: UserService? = nil
+    var ingredientStore: IngredientService? = nil
+    var drinkStore: DrinkService? = nil
+    var user: User? = nil
     
     @IBOutlet weak var mustBeLabel: UILabel!
     
@@ -22,9 +28,31 @@ class BirthdayViewController: UIViewController {
         if birthdayPicker.date > twentyOneYearsAgo!{
             mustBeLabel.isHidden = false
         } else {
+            //create user request
+            let user = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
+                                                           into: (coreDataStack?.privateQueueContext)!) as! User
+            
+            userStore?.createUser(user: user, completion: {result in
+                switch result{
+                case .success(let users):
+                    if users.count > 0{
+                        self.user = users[0]
+                    }
+                    print("error creating user")
+                default:
+                    print("error creating user")
+                }
+            })
             defaults?.set(true, forKey: "Over21")
+            defaults?.set(user.id, forKey: "userID")
             let storyBoard = UIStoryboard(name: "Main", bundle: .main)
             let tabsVC = storyBoard.instantiateViewController(withIdentifier: "Tabs") as! TabsViewController
+            tabsVC.defaults = defaults
+            tabsVC.coreDataStack = coreDataStack
+            tabsVC.userStore = userStore
+            tabsVC.ingredientStore = ingredientStore
+            tabsVC.drinkStore = drinkStore
+            tabsVC.user = user
             self.show(tabsVC, sender: nil)
         }
         

@@ -20,7 +20,6 @@
 		E18853AF1E4945E1005C8C37 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853AE1E4945E1005C8C37 /* CoreDataStack.swift */; };
 		E18853B11E4946FF005C8C37 /* MixedUpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853B01E4946FF005C8C37 /* MixedUpAPI.swift */; };
 		E18853B41E4956EB005C8C37 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853B21E4954BD005C8C37 /* Util.swift */; };
-		E18853B61E4956F4005C8C37 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853B21E4954BD005C8C37 /* Util.swift */; };
 		E18853DB1E497E72005C8C37 /* Color+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853C31E497E18005C8C37 /* Color+CoreDataClass.swift */; };
 		E18853DC1E497E78005C8C37 /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853B71E497E18005C8C37 /* Ingredient+CoreDataClass.swift */; };
 		E18853DD1E497E83005C8C37 /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853B81E497E18005C8C37 /* Ingredient+CoreDataProperties.swift */; };
@@ -49,9 +48,9 @@
 		E18853FD1E4AB6B2005C8C37 /* DrinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FC1E4AB6B2005C8C37 /* DrinkService.swift */; };
 		E18853FF1E4AD77C005C8C37 /* IngredientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FE1E4AD77C005C8C37 /* IngredientService.swift */; };
 		E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18854001E4B5896005C8C37 /* TabsViewController.swift */; };
-		E1D00C381E4B702E00C478CA /* IBADataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C371E4B702E00C478CA /* IBADataSource.swift */; };
 		E1D00C3A1E4B743600C478CA /* IBACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C391E4B743600C478CA /* IBACell.swift */; };
 		E1D00C3C1E4B7A2200C478CA /* IBAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */; };
+		E1D00C3D1E4B917E00C478CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853221E4914CD005C8C37 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,7 +118,6 @@
 		E18853FC1E4AB6B2005C8C37 /* DrinkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkService.swift; sourceTree = "<group>"; };
 		E18853FE1E4AD77C005C8C37 /* IngredientService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientService.swift; sourceTree = "<group>"; };
 		E18854001E4B5896005C8C37 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
-		E1D00C371E4B702E00C478CA /* IBADataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBADataSource.swift; sourceTree = "<group>"; };
 		E1D00C391E4B743600C478CA /* IBACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBACell.swift; sourceTree = "<group>"; };
 		E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBAViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,11 +172,10 @@
 			children = (
 				E18853221E4914CD005C8C37 /* AppDelegate.swift */,
 				E18853241E4914CD005C8C37 /* BirthdayViewController.swift */,
-				E18853261E4914CD005C8C37 /* Main.storyboard */,
-				E1D00C391E4B743600C478CA /* IBACell.swift */,
-				E1D00C371E4B702E00C478CA /* IBADataSource.swift */,
-				E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */,
 				E18854001E4B5896005C8C37 /* TabsViewController.swift */,
+				E1D00C391E4B743600C478CA /* IBACell.swift */,
+				E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */,
+				E18853261E4914CD005C8C37 /* Main.storyboard */,
 				E18853F91E4A8E11005C8C37 /* Services/Storage */,
 				E18853611E4921A1005C8C37 /* Model */,
 				E18853291E4914CD005C8C37 /* Assets.xcassets */,
@@ -399,7 +396,6 @@
 				E18853E71E497EA5005C8C37 /* Tool+CoreDataProperties.swift in Sources */,
 				E18853FD1E4AB6B2005C8C37 /* DrinkService.swift in Sources */,
 				E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */,
-				E1D00C381E4B702E00C478CA /* IBADataSource.swift in Sources */,
 				E18853DB1E497E72005C8C37 /* Color+CoreDataClass.swift in Sources */,
 				E18853251E4914CD005C8C37 /* BirthdayViewController.swift in Sources */,
 				E18853EC1E497EBA005C8C37 /* Bar+CoreDataProperties.swift in Sources */,
@@ -433,10 +429,10 @@
 				E18853F21E4A3E1C005C8C37 /* IngredientTests.swift in Sources */,
 				E18853F01E4A332A005C8C37 /* ColorTests.swift in Sources */,
 				E18853651E4921F9005C8C37 /* GlassTests.swift in Sources */,
-				E18853B61E4956F4005C8C37 /* Util.swift in Sources */,
 				E18853601E492120005C8C37 /* ToolTests.swift in Sources */,
 				E18853F61E4A62C1005C8C37 /* UserTests.swift in Sources */,
 				E18853F41E4A4464005C8C37 /* DrinkTests.swift in Sources */,
+				E1D00C3D1E4B917E00C478CA /* AppDelegate.swift in Sources */,
 				E18853381E4914CD005C8C37 /* MixedUpTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

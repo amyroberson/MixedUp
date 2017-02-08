@@ -7,18 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
-class IBAViewController: UIViewController, UICollectionViewDelegate{
+class IBAViewController: UIViewController, UICollectionViewDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    var dataSource: IBADataSource? = IBADataSource()
     
+    var coreDataStack: CoreDataStack? = nil
+    var drinkStore: DrinkService? = nil
+    var userStore: UserService? = nil
+    var user: User? = nil
+    
+    var drinks: [Drink] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "IBA")
-        self.collectionView?.dataSource = dataSource
+        self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
+        self.title = "IBA Drink Recipes"
     }
 
 
@@ -26,4 +33,29 @@ class IBAViewController: UIViewController, UICollectionViewDelegate{
         
     }
 
+}
+
+extension IBAViewController: UICollectionViewDataSource{
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of items
+        
+        return drinks.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IBACell", for: indexPath) as! IBACell
+        
+        
+        let drink = drinks[indexPath.row]
+        
+        cell.drinkNameLabel.text = drink.displayName
+        
+        return cell
+    }
 }

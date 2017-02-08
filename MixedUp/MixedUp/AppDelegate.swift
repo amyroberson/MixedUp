@@ -12,21 +12,47 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let defaults = UserDefaults.standard
+    var coreDataStack = CoreDataStack(modelName: "MixedUpDataModel")
+    var userStore: UserService? = nil
+    var ingredientStore: IngredientService? = nil
+    var drinkStore: DrinkService? = nil
+    var user: User? = nil
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
        
-        
-        let defaults = UserDefaults.standard
         defaults.register(defaults: ["Over21": false])
+        defaults.register(defaults: ["userID" : ""])
+        userStore = UserService(coreDataStack)
+        ingredientStore = IngredientService(coreDataStack)
+        drinkStore = DrinkService(coreDataStack)
+        
+        if defaults.bool(forKey: "over21") && defaults.string(forKey: "userId") != "" {
+            userStore?.getUser(id: defaults.string(forKey: "userID") ?? "", completion: {result in
+                switch result{
+                case .success(let users):
+                    if users.count > 0{
+                        self.user = users[0]
+                    }
+                default:
+                    print("did not get initial user")
+                }
+            })
+        }
         
         if defaults.bool(forKey: "Over21") {
             self.window = UIWindow(frame: UIScreen.main.bounds)
+           
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "Tabs") as! TabsViewController
             initialViewController.defaults = defaults
+            initialViewController.coreDataStack = coreDataStack
+            initialViewController.userStore = userStore
+            initialViewController.ingredientStore = ingredientStore
+            initialViewController.drinkStore = drinkStore
+            initialViewController.user = user
             
             window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
@@ -38,6 +64,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "Birthday") as! BirthdayViewController
             initialViewController.defaults = defaults
+            initialViewController.coreDataStack = coreDataStack
+            initialViewController.userStore = userStore
+            initialViewController.ingredientStore = ingredientStore
+
             
             window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()

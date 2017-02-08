@@ -11,7 +11,11 @@ import CoreData
 
 final class DrinkService{
     
-    var coreDataStack: CoreDataStack? = nil
+    var coreDataStack: CoreDataStack
+    
+    init(_ coreDataStack: CoreDataStack){
+        self.coreDataStack = coreDataStack
+    }
     
     fileprivate let session: URLSession = {
         let config = URLSessionConfiguration.default
@@ -41,7 +45,7 @@ final class DrinkService{
         
         do{
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
-            return MixedUpAPI.getDrinksFromDictionary(jsonDict, inContext: (self.coreDataStack?.privateQueueContext)!)
+            return MixedUpAPI.getDrinksFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
             print(error)
             return .failure((error) as! (Errors))
@@ -54,12 +58,12 @@ final class DrinkService{
         let fetchRequest = NSFetchRequest<Drink>(entityName: "Drink")
         fetchRequest.sortDescriptors = sortDescriptors
         
-        let mainQueueContext = self.coreDataStack?.mainQueueContext
+        let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueDrink: [Drink]?
         var fetchRequestError: Error?
-        mainQueueContext?.performAndWait({
+        mainQueueContext.performAndWait({
             do {
-                mainQueueDrink = try mainQueueContext?.fetch(fetchRequest)
+                mainQueueDrink = try mainQueueContext.fetch(fetchRequest)
             }
             catch let error {
                 fetchRequestError = error
@@ -82,16 +86,16 @@ final class DrinkService{
             var result = self.processDrinkRequest(data: data, error: error as NSError?)
             
             if case .success(let drinks) = result {
-                let privateQueueContext = self.coreDataStack?.privateQueueContext
-                privateQueueContext?.performAndWait({
-                    try! privateQueueContext?.obtainPermanentIDs(for: drinks)
+                let privateQueueContext = self.coreDataStack.privateQueueContext
+                privateQueueContext.performAndWait({
+                    try! privateQueueContext.obtainPermanentIDs(for: drinks)
                 })
                 let objectIDs = drinks.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
                 let sortByDateTaken = NSSortDescriptor(key: "createdAt", ascending: false)
                 
                 do {
-                    try self.coreDataStack?.saveChanges()
+                    try self.coreDataStack.saveChanges()
                     
                     let mainQueueDrinks = try self.fetchMainQueueDrinks(predicate: predicate,
                                                                       sortDescriptors: [sortByDateTaken])

@@ -11,8 +11,11 @@ import CoreData
 
 final class IngredientService{
     
-    var coreDataStack: CoreDataStack? = nil
+    var coreDataStack: CoreDataStack
     
+    init(_ coreDataStack: CoreDataStack){
+        self.coreDataStack = coreDataStack
+    }
     fileprivate let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
@@ -41,7 +44,7 @@ final class IngredientService{
         
         do{
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
-            return MixedUpAPI.getIngredientsFromDictionary(jsonDict, inContext: (self.coreDataStack?.privateQueueContext)!)
+            return MixedUpAPI.getIngredientsFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
             print(error)
             return .failure((error) as! (Errors))
@@ -54,12 +57,12 @@ final class IngredientService{
         let fetchRequest = NSFetchRequest<Ingredient>(entityName: "Ingredient")
         fetchRequest.sortDescriptors = sortDescriptors
         
-        let mainQueueContext = self.coreDataStack?.mainQueueContext
+        let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueIngredient: [Ingredient]?
         var fetchRequestError: Error?
-        mainQueueContext?.performAndWait({
+        mainQueueContext.performAndWait({
             do {
-                mainQueueIngredient = try mainQueueContext?.fetch(fetchRequest)
+                mainQueueIngredient = try mainQueueContext.fetch(fetchRequest)
             }
             catch let error {
                 fetchRequestError = error
@@ -86,15 +89,15 @@ final class IngredientService{
                 var result = self.processIngredientRequest(data: data, error: error as NSError?)
                 
                 if case .success(let ingredients) = result {
-                    let privateQueueContext = self.coreDataStack?.privateQueueContext
-                    privateQueueContext?.performAndWait({
-                        try! privateQueueContext?.obtainPermanentIDs(for: ingredients)
+                    let privateQueueContext = self.coreDataStack.privateQueueContext
+                    privateQueueContext.performAndWait({
+                        try! privateQueueContext.obtainPermanentIDs(for: ingredients)
                     })
                     let objectIDs = ingredients.map{ $0.objectID }
                     let predicate = NSPredicate(format: "self IN %@", objectIDs)
                     
                     do {
-                        try self.coreDataStack?.saveChanges()
+                        try self.coreDataStack.saveChanges()
                         
                         let mainQueueIngredients = try self.fetchMainQueueIngredients(predicate: predicate,
                                                                           sortDescriptors: [])

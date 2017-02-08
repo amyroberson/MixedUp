@@ -11,8 +11,11 @@ import CoreData
 
 final class UserService{
     
-    var coreDataStack: CoreDataStack? = nil
+    var coreDataStack: CoreDataStack
     
+    init(_ coreDataStack: CoreDataStack){
+        self.coreDataStack = coreDataStack
+    }
     
     fileprivate let session: URLSession = {
         let config = URLSessionConfiguration.default
@@ -42,7 +45,7 @@ final class UserService{
         
         do{
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
-            return MixedUpAPI.getUsersFromDictionary(jsonDict, inContext: (self.coreDataStack?.privateQueueContext)!)
+            return MixedUpAPI.getUsersFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
             print(error)
             return .failure((error) as! (Errors))
@@ -55,12 +58,12 @@ final class UserService{
         let fetchRequest = NSFetchRequest<User>(entityName: "User")
         fetchRequest.sortDescriptors = sortDescriptors
         
-        let mainQueueContext = self.coreDataStack?.mainQueueContext
+        let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueUser: [User]?
         var fetchRequestError: Error?
-        mainQueueContext?.performAndWait({
+        mainQueueContext.performAndWait({
             do {
-                mainQueueUser = try mainQueueContext?.fetch(fetchRequest)
+                mainQueueUser = try mainQueueContext.fetch(fetchRequest)
             }
             catch let error {
                 fetchRequestError = error
@@ -87,15 +90,15 @@ final class UserService{
                 var result = self.processUserRequest(data: data, error: error as NSError?)
                 
                 if case .success(let users) = result {
-                    let privateQueueContext = self.coreDataStack?.privateQueueContext
-                    privateQueueContext?.performAndWait({
-                        try! privateQueueContext?.obtainPermanentIDs(for: users)
+                    let privateQueueContext = self.coreDataStack.privateQueueContext
+                    privateQueueContext.performAndWait({
+                        try! privateQueueContext.obtainPermanentIDs(for: users)
                     })
                     let objectIDs = users.map{ $0.objectID }
                     let predicate = NSPredicate(format: "self IN %@", objectIDs)
                     
                     do {
-                        try self.coreDataStack?.saveChanges()
+                        try self.coreDataStack.saveChanges()
                         
                         let mainQueueUsers = try self.fetchMainQueueUsers(predicate: predicate,
                                                                           sortDescriptors: [])
@@ -111,6 +114,38 @@ final class UserService{
         } catch {
             print("toJsonError")
         }
+    }
+    
+    func getUser(id: String, completion: @escaping (ResourceResult<[User]>) -> ()) {
+        let url = URL(string: "www.example.com/0/users/id")!
+        let request = requestBuilder(url: url, method: "Get")
+        let task = session.dataTask(with: request,  completionHandler: {
+            (data, response, error) -> Void in
+            
+            var result = self.processUserRequest(data: data, error: error as NSError?)
+            
+            if case .success(let users) = result {
+                let privateQueueContext = self.coreDataStack.privateQueueContext
+                privateQueueContext.performAndWait({
+                    try! privateQueueContext.obtainPermanentIDs(for: users)
+                })
+                let objectIDs = users.map{ $0.objectID }
+                let predicate = NSPredicate(format: "self IN %@", objectIDs)
+                
+                do {
+                    try self.coreDataStack.saveChanges()
+                    
+                    let mainQueuePosts = try self.fetchMainQueueUsers(predicate: predicate,
+                                                                      sortDescriptors: [])
+                    result = .success(mainQueuePosts)
+                }
+                catch let error {
+                    result = .failure(error as! Errors)
+                }
+            }
+            completion(result)
+        })
+        task.resume()
     }
     
     //user updates inventory, favorite drinks, and during registration
@@ -145,15 +180,15 @@ final class UserService{
             var result = self.processUserRequest(data: data, error: error as NSError?)
             
             if case .success(let users) = result {
-                let privateQueueContext = self.coreDataStack?.privateQueueContext
-                privateQueueContext?.performAndWait({
-                    try! privateQueueContext?.obtainPermanentIDs(for: users)
+                let privateQueueContext = self.coreDataStack.privateQueueContext
+                privateQueueContext.performAndWait({
+                    try! privateQueueContext.obtainPermanentIDs(for: users)
                 })
                 let objectIDs = users.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
                 
                 do {
-                    try self.coreDataStack?.saveChanges()
+                    try self.coreDataStack.saveChanges()
                     
                     let mainQueuePosts = try self.fetchMainQueueUsers(predicate: predicate,
                                                                       sortDescriptors: [])
