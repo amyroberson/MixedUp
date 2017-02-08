@@ -51,6 +51,8 @@
 		E1D00C3A1E4B743600C478CA /* IBACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C391E4B743600C478CA /* IBACell.swift */; };
 		E1D00C3C1E4B7A2200C478CA /* IBAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */; };
 		E1D00C3D1E4B917E00C478CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853221E4914CD005C8C37 /* AppDelegate.swift */; };
+		E1D00C3F1E4BA05B00C478CA /* InventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */; };
+		E1D00C411E4BBB8700C478CA /* IngredientTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C401E4BBB8700C478CA /* IngredientTypeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,8 @@
 		E18854001E4B5896005C8C37 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
 		E1D00C391E4B743600C478CA /* IBACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBACell.swift; sourceTree = "<group>"; };
 		E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBAViewController.swift; sourceTree = "<group>"; };
+		E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableViewController.swift; sourceTree = "<group>"; };
+		E1D00C401E4BBB8700C478CA /* IngredientTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientTypeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,8 @@
 				E18854001E4B5896005C8C37 /* TabsViewController.swift */,
 				E1D00C391E4B743600C478CA /* IBACell.swift */,
 				E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */,
+				E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */,
+				E1D00C401E4BBB8700C478CA /* IngredientTypeCell.swift */,
 				E18853261E4914CD005C8C37 /* Main.storyboard */,
 				E18853F91E4A8E11005C8C37 /* Services/Storage */,
 				E18853611E4921A1005C8C37 /* Model */,
@@ -391,6 +397,7 @@
 				E18853FB1E4A9CC6005C8C37 /* UserService.swift in Sources */,
 				E18853E01E497E8D005C8C37 /* Location+CoreDataClass.swift in Sources */,
 				E18853521E4914F4005C8C37 /* MixedUpDataModel.xcdatamodeld in Sources */,
+				E1D00C3F1E4BA05B00C478CA /* InventoryTableViewController.swift in Sources */,
 				E18853FF1E4AD77C005C8C37 /* IngredientService.swift in Sources */,
 				E18853E81E497EAA005C8C37 /* Color+CoreDataProperties.swift in Sources */,
 				E18853E71E497EA5005C8C37 /* Tool+CoreDataProperties.swift in Sources */,
@@ -416,6 +423,7 @@
 				E18853DC1E497E78005C8C37 /* Ingredient+CoreDataClass.swift in Sources */,
 				E1D00C3C1E4B7A2200C478CA /* IBAViewController.swift in Sources */,
 				E18853B11E4946FF005C8C37 /* MixedUpAPI.swift in Sources */,
+				E1D00C411E4BBB8700C478CA /* IngredientTypeCell.swift in Sources */,
 				E18853E91E497EAE005C8C37 /* User+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

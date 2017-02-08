@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class IBAViewController: UIViewController, UICollectionViewDelegate {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var coreDataStack: CoreDataStack? = nil
@@ -22,17 +22,26 @@ class IBAViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        drinkStore?.getIBADrinks(completion: {result in
+            switch result{
+            case .success(let ibas):
+                self.drinks = ibas
+            default:
+                print("could not get drinks")
+            }
+        })
+        
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "IBA")
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
         self.title = "IBA Drink Recipes"
     }
-
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
     }
-
+    
 }
 
 extension IBAViewController: UICollectionViewDataSource{

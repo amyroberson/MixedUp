@@ -18,8 +18,8 @@ class MixedUpAPI {
     
     internal static let baseURL: URL = URL(string:"www.example.com")!
     
-     static func jsonToDictionary(_ data: Data)throws -> [String:Any] {
-       guard let jsonObject: [String: Any] = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+    static func jsonToDictionary(_ data: Data)throws -> [String:Any] {
+        guard let jsonObject: [String: Any] = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
             throw Error.invalidJSONData
         }
         return jsonObject
@@ -133,7 +133,7 @@ class MixedUpAPI {
         return user
     }
     
-   
+    
     static func getDrinksFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> ResourceResult<[Drink]>{
         let dictionaries: [[String: Any]]
         if dictionary["drinks"] as? [[String: Any]] != nil {
@@ -147,7 +147,7 @@ class MixedUpAPI {
         } else {
             return .failure(Errors.invalidJSONData)
         }
-
+        
         var actualDrinks: [Drink] = []
         for dictionary in dictionaries {
             if let drink = getDrinkFromDictionary(dictionary, inContext: context){
@@ -164,7 +164,7 @@ class MixedUpAPI {
     static func getDrinkFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Drink? {
         
         guard let display = dictionary["displayName"] as? String,
-             let isAlcoholic = dictionary["isAlcoholic"] as? Bool,
+            let isAlcoholic = dictionary["isAlcoholic"] as? Bool,
             let isIBA = dictionary["isIBAOfficial"] as? Bool,
             let name = dictionary["name"] as? String,
             let id = dictionary["id"] as? String else { return nil}
@@ -188,14 +188,14 @@ class MixedUpAPI {
         var drink: Drink!
         context.performAndWait({ () -> Void in
             drink = NSEntityDescription.insertNewObject(forEntityName: Drink.entityName,
-                                                       into: context) as! Drink
+                                                        into: context) as! Drink
             drink.name = name
             drink.stringDescription = dictionary["description"] as? String
             drink.id = id
             drink.displayName = display
             drink.isAlcoholic = isAlcoholic
             drink.isIBAOfficial = isIBA
-
+            
             let ingredients = dictionary["ingredients"] as? [[String: Any]]
             var actualIngredients: [Ingredient] = []
             if let ingredients = ingredients{
@@ -245,7 +245,7 @@ class MixedUpAPI {
         return drink
     }
     
-     static func getIngredientTypeFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> IngredientType? {
+    static func getIngredientTypeFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> IngredientType? {
         
         guard let display = dictionary["displayName"] as? String,
             let id = dictionary["id"] as? String else { return nil}
@@ -264,7 +264,7 @@ class MixedUpAPI {
         if let firstType = fetchedTypes.first {
             return firstType
         }
-
+        
         
         var type: IngredientType!
         context.performAndWait({ () -> Void in
@@ -298,11 +298,11 @@ class MixedUpAPI {
         if let firstGlass = fetchedGlasses.first {
             return firstGlass
         }
-
+        
         var glass: Glass!
         context.performAndWait({ () -> Void in
             glass = NSEntityDescription.insertNewObject(forEntityName: Glass.entityName,
-                                                       into: context) as! Glass
+                                                        into: context) as! Glass
             glass.name = dictionary["name"] as? String
             glass.id = id
             glass.displayName = display
@@ -353,11 +353,11 @@ class MixedUpAPI {
         var tool: Tool!
         context.performAndWait({ () -> Void in
             tool = NSEntityDescription.insertNewObject(forEntityName: Tool.entityName,
-                                                        into: context) as! Tool
+                                                       into: context) as! Tool
             tool.name = dictionary["name"] as? String
             tool.id = id
             tool.displayName = display
-
+            
             
             //need to set relationship to drink
             
@@ -394,7 +394,7 @@ class MixedUpAPI {
         var color: Color!
         context.performAndWait({ () -> Void in
             color = NSEntityDescription.insertNewObject(forEntityName: Color.entityName,
-                                                             into: context) as! Color
+                                                        into: context) as! Color
             color.name = dictionary["name"] as? String
             color.id = id
             color.displayName = display
@@ -419,24 +419,24 @@ class MixedUpAPI {
         } else {
             return .failure(Errors.invalidJSONData)
         }
-
-            var actualIngredients: [Ingredient] = []
-            for dictionary in dictionaries {
-                if let ingredient = getIngredientFromDictionary(dictionary, inContext: context){
-                    actualIngredients.append(ingredient)
-                }
+        
+        var actualIngredients: [Ingredient] = []
+        for dictionary in dictionaries {
+            if let ingredient = getIngredientFromDictionary(dictionary, inContext: context){
+                actualIngredients.append(ingredient)
             }
-            
-            if actualIngredients.count == 0 && dictionaries.count > 0 {
-                return .failure(Errors.invalidJSONData)
-            }
-            return .success(actualIngredients)
+        }
+        
+        if actualIngredients.count == 0 && dictionaries.count > 0 {
+            return .failure(Errors.invalidJSONData)
+        }
+        return .success(actualIngredients)
     }
     
     
     
     static func getIngredientFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Ingredient? {
-       
+        
         guard let display = dictionary["displayName"] as? String,
             let isAlcoholic = dictionary["isAlcoholic"] as? Bool,
             let id = dictionary["id"] as? String else { return nil}
@@ -463,7 +463,7 @@ class MixedUpAPI {
             ingredient.id = id
             ingredient.displayName = display
             ingredient.isAlcoholic = isAlcoholic
-        
+            
             if let type = dictionary["ingredientType"] as? [String: Any] {
                 let theType = getIngredientTypeFromDictionary(type, inContext: context)
                 ingredient.type = theType

@@ -40,7 +40,7 @@ final class UserService{
     
     func processUserRequest(data: Data?, error: NSError?) -> ResourceResult<[User]>{
         guard let jsonData = data else {
-            return .failure((error!) as! (Errors))
+            return .fail(error!)
         }
         
         do{
@@ -152,7 +152,7 @@ final class UserService{
     func updateUser(user: User, caseString: String, completion: @escaping (ResourceResult<[User]>) -> ()) {
         
         let url = URL(string: "www.example.com/0/users/\(user.id)")!
-            var request = requestBuilder(url: url, method: "PUT")
+        var request = requestBuilder(url: url, method: "PUT")
         switch caseString{
         case "inventory":
             var ingredients: [[String: Any]] = []

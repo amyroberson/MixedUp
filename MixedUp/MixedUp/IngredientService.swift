@@ -100,7 +100,7 @@ final class IngredientService{
                         try self.coreDataStack.saveChanges()
                         
                         let mainQueueIngredients = try self.fetchMainQueueIngredients(predicate: predicate,
-                                                                          sortDescriptors: [])
+                                                                                      sortDescriptors: [])
                         result = .success(mainQueueIngredients)
                     }
                     catch let error {

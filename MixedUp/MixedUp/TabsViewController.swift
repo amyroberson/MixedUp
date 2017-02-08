@@ -9,7 +9,7 @@
 import UIKit
 
 class TabsViewController: UITabBarController {
-
+    
     var defaults: UserDefaults? = nil
     var coreDataStack: CoreDataStack? = nil
     var userStore: UserService? = nil
@@ -20,8 +20,6 @@ class TabsViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-
         for item in self.viewControllers!{
             if let controller = item as? UINavigationController{
                 if let iBAVC = controller.topViewController as? IBAViewController{
@@ -29,31 +27,16 @@ class TabsViewController: UITabBarController {
                     iBAVC.drinkStore = drinkStore
                     iBAVC.userStore = userStore
                     iBAVC.user = user
+                } else if let inventoryVC = controller.topViewController as? InventoryTableViewController {
+                    inventoryVC.coreDataStack = coreDataStack
+                    inventoryVC.ingredientStore = ingredientStore
+                    inventoryVC.user = user
+                    inventoryVC.userStore = userStore
                 }
-                
             }
         }
-
-        
-        /*
-         for item in self.viewControllers!{
-         if let controller = item as? UINavigationController{
-         if let eventsVC = controller.topViewController as? EventsViewController{
-         eventsVC.user = user
-         } else if let contactsVC = controller.topViewController as? UserContactsViewController{
-         contactsVC.user = user
-         } else if let requestVC = controller.topViewController as? RequestsViewController{
-         requestVC.user = user
-         }
-         }
-         else if let controller = item as? ProfileViewController{
-         controller.user = user
-         }
-         
-         }
-
-        */
+    
     }
-
-
+    
+    
 }

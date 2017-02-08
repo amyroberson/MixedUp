@@ -57,8 +57,8 @@
                                             <action selector="enterPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8CJ-7P-Ewa"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Must Be 21 or Older to Continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PV6-as-5Sm">
-                                        <rect key="frame" x="36.5" y="534" width="247" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Must be 21 or older to continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PV6-as-5Sm">
+                                        <rect key="frame" x="40.5" y="534" width="239.5" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.76325261780104714" green="0.0" blue="0.015671832960608364" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -81,25 +81,6 @@
             </objects>
             <point key="canvasLocation" x="140" y="138.98050974512745"/>
         </scene>
-        <!--Inventory-->
-        <scene sceneID="ZYX-kN-teE">
-            <objects>
-                <viewController id="RzI-dE-hBT" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zLi-5Y-xPo"/>
-                        <viewControllerLayoutGuide type="bottom" id="CGQ-2O-ZLf"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VOd-Bc-1PY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Inventory" id="hWt-xt-Okv"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1wV-vf-j1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2086" y="760"/>
-        </scene>
         <!--Tabs View Controller-->
         <scene sceneID="asv-5b-hLW">
             <objects>
@@ -111,12 +92,56 @@
                     </tabBar>
                     <connections>
                         <segue destination="wga-vP-thv" kind="relationship" relationship="viewControllers" id="Dvs-9N-XIS"/>
-                        <segue destination="RzI-dE-hBT" kind="relationship" relationship="viewControllers" id="Pvq-pc-WqF"/>
+                        <segue destination="Gwn-ez-7nD" kind="relationship" relationship="viewControllers" id="4O8-MS-UDI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iJc-VP-Z9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1142" y="134"/>
+        </scene>
+        <!--Inventory Table View Controller-->
+        <scene sceneID="lWG-C3-Ril">
+            <objects>
+                <tableViewController storyboardIdentifier="Inventory" id="zoH-j2-eCT" customClass="InventoryTableViewController" customModule="MixedUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6A5-SM-sx2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Type" id="h45-E5-Py4" customClass="IngredientTypeCell" customModule="MixedUp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h45-E5-Py4" id="3Bo-dn-e4i">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sls-fT-jK8">
+                                            <rect key="frame" x="15" y="11" width="120" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="sls-fT-jK8" firstAttribute="centerY" secondItem="3Bo-dn-e4i" secondAttribute="centerY" id="IgX-gr-KXh"/>
+                                        <constraint firstItem="sls-fT-jK8" firstAttribute="leading" secondItem="3Bo-dn-e4i" secondAttribute="leading" constant="15" id="vMH-bz-9Da"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="typeNameLabel" destination="sls-fT-jK8" id="fLc-CH-ixg"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="zoH-j2-eCT" id="QSX-EJ-fMe"/>
+                            <outlet property="delegate" destination="zoH-j2-eCT" id="EFC-O4-xQs"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="O2D-pM-wM5"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ut7-QT-LtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2920.8000000000002" y="546.47676161919048"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="IiJ-Q5-RzE">
@@ -200,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oaS-c4-WiZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2976.8000000000002" y="9.4452773613193415"/>
+            <point key="canvasLocation" x="2783" y="-163"/>
         </scene>
         <!--IBA Drinks-->
         <scene sceneID="XYu-I1-OXW">
@@ -219,7 +244,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Lo-nz-h7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2086" y="10"/>
+            <point key="canvasLocation" x="1958" y="-163"/>
+        </scene>
+        <!--Inventory-->
+        <scene sceneID="sYm-7Y-DwO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gwn-ez-7nD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Inventory" id="Tjt-TZ-qHQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="umz-Nq-KwV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zoH-j2-eCT" kind="relationship" relationship="rootViewController" id="4o1-80-ahs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e1U-bq-rig" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1981.5999999999999" y="546.47676161919048"/>
         </scene>
     </scenes>
     <resources>

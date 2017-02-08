@@ -40,7 +40,8 @@ final class DrinkService{
     
     func processDrinkRequest(data: Data?, error: NSError?) -> ResourceResult<[Drink]>{
         guard let jsonData = data else {
-            return .failure((error!) as! (Errors))
+            print(error!)
+            return .fail(error!)
         }
         
         do{
@@ -53,7 +54,7 @@ final class DrinkService{
     }
     
     internal func fetchMainQueueDrinks(predicate: NSPredicate? = nil,
-                                      sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Drink] {
+                                       sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Drink] {
         
         let fetchRequest = NSFetchRequest<Drink>(entityName: "Drink")
         fetchRequest.sortDescriptors = sortDescriptors
@@ -77,7 +78,7 @@ final class DrinkService{
         return drink
     }
     
-    func getIBADrinks(json: Data, completion: @escaping (ResourceResult<[Drink]>) -> ()){
+    func getIBADrinks(completion: @escaping (ResourceResult<[Drink]>) -> ()){
         let url = URL(string: "www.example.com/0/drinks?isIBAOfficial=true")!
         let request = requestBuilder(url: url, method: "GET")
         let task = session.dataTask(with: request,  completionHandler: {
@@ -98,7 +99,7 @@ final class DrinkService{
                     try self.coreDataStack.saveChanges()
                     
                     let mainQueueDrinks = try self.fetchMainQueueDrinks(predicate: predicate,
-                                                                      sortDescriptors: [sortByDateTaken])
+                                                                        sortDescriptors: [sortByDateTaken])
                     result = .success(mainQueueDrinks)
                 }
                 catch let error {

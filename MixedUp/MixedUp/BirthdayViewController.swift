@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class BirthdayViewController: UIViewController {
-
+    
     var defaults: UserDefaults? = nil
     var coreDataStack: CoreDataStack? = nil
     var userStore: UserService? = nil
@@ -67,7 +67,7 @@ class BirthdayViewController: UIViewController {
         mustBeLabel.isHidden = true
         
     }
-
-
+    
+    
 }
 

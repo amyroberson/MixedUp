@@ -13,6 +13,7 @@ enum ResourceResult<A> {
     case success(A)
     case sucess(Bool)
     case failure(Errors)
+    case fail(NSError)
     
 }
 
@@ -22,6 +23,7 @@ enum Errors: Swift.Error{
     case resource(Util.Error)
     case invalidJSONData
     case inValidParameter
+    
 }
 
 struct Util {

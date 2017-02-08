@@ -34,8 +34,6 @@ enum Color
 	-displayName -string
 	
 
-
-
 -Drink
 	-name- string
 	-displayName- string
