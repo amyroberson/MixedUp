@@ -31,19 +31,20 @@ class BirthdayViewController: UIViewController {
             mustBeLabel.isHidden = false
         } else {
             //create user request
-            let user = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
+            let user1 = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
                                                            into: (coreDataStack?.privateQueueContext)!) as! User
             
-            userStore?.createUser(user: user, completion: {result in
+            userStore?.createUser(user: user1, completion: {result in
                 switch result{
                 case .success(let user):
                     self.user = user
+                    self.defaults?.set(user.id, forKey: "userID")
                 default:
                     print("error creating user")
+                    //self.user = user1 to build in default user?
                 }
             })
             defaults?.set(true, forKey: "Over21")
-            defaults?.set(user.id, forKey: "userID")
             let storyBoard = UIStoryboard(name: "Main", bundle: .main)
             let tabsVC = storyBoard.instantiateViewController(withIdentifier: "Tabs") as! TabsViewController
             tabsVC.defaults = defaults

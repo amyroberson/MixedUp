@@ -39,7 +39,7 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
             }
         })
         
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "IBA")
+        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "IBA")
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
         self.title = "IBA Drink Recipes"
@@ -58,6 +58,17 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        let drink = drinks[indexPath.row]
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let detailVC = storyBoard.instantiateViewController(withIdentifier: "DrinkDetail") as! DrinkDetailViewController
+        detailVC.coreDataStack = coreDataStack
+        detailVC.user = user
+        detailVC.drink = drink
+        detailVC.userStore = userStore
+        detailVC.drinkStore = drinkStore
+        detailVC.defaults = defaults
+        self.show(detailVC, sender: nil)
         
     }
     
@@ -100,10 +111,7 @@ extension IBAViewController: UICollectionViewDataSource{
         return 1
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        
         return drinks.count
     }
     
@@ -113,15 +121,20 @@ extension IBAViewController: UICollectionViewDataSource{
         
         let drink = drinks[indexPath.row]
         
+        cell.drinkNameLabel.textColor = Theme.labelColor
+        cell.drinkNameLabel.font = Theme.labelFont
         cell.drinkNameLabel.text = drink.displayName
         
         return cell
     }
+    
+    
     
     func refresh(){
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
     }
+    
     
 }

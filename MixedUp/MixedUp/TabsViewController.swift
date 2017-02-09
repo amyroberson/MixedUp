@@ -33,10 +33,22 @@ class TabsViewController: UITabBarController {
                     inventoryVC.ingredientStore = ingredientStore
                     inventoryVC.user = user
                     inventoryVC.userStore = userStore
+                } else if let favoriteVC = controller.topViewController as? FavoritesViewController {
+                    favoriteVC.defaults = defaults
+                    favoriteVC.coreDataStack = coreDataStack
+                    favoriteVC.userStore = userStore
+                    favoriteVC.drinkStore = drinkStore
+                    favoriteVC.user = user
+                 } else if let generatedVC = controller.topViewController as? GeneratedRecipesViewController {
+                    generatedVC.defaults = defaults
+                    generatedVC.coreDataStack = coreDataStack
+                    generatedVC.userStore = userStore
+                    generatedVC.drinkStore = drinkStore
+                    generatedVC.user = user
                 }
             }
         }
-    
+        
     }
     
     

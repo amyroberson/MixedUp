@@ -49,7 +49,7 @@ final class DrinkService{
             return MixedUpAPI.getDrinksFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
             print(error)
-            return .failure((error) as! (Errors))
+            return .fail(error as NSError)
         }
     }
     
