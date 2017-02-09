@@ -20,6 +20,8 @@ class BirthdayViewController: UIViewController {
     
     @IBOutlet weak var mustBeLabel: UILabel!
     
+    @IBOutlet weak var pleaseEnterLabel: UILabel!
+    @IBOutlet weak var headerLabel: UILabel!
     
     @IBAction func enterPressed(_ sender: UIButton) {
         let today = Date()
@@ -68,6 +70,19 @@ class BirthdayViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if defaults?.string(forKey: "theme") == "Light"{
+            Theme.styleLight()
+        } else {
+            Theme.styleDark()
+        }
+        pleaseEnterLabel.textColor = Theme.labelColor
+        pleaseEnterLabel.font = Theme.labelFont
+        self.view.backgroundColor = Theme.viewBackgroundColor
+        headerLabel.textColor = Theme.labelColor
+        headerLabel.font = Theme.mainLabelFont
+        
+    }
     
 }
 

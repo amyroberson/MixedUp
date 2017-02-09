@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="wkJ-J3-8Ly">
-                                <rect key="frame" x="27.5" y="57" width="320" height="554"/>
+                                <rect key="frame" x="27.5" y="90" width="320" height="488"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mixed Up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdI-G3-2jP">
                                         <rect key="frame" x="77.5" y="0.0" width="165.5" height="42"/>
@@ -30,26 +30,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2M-qe-Kdb">
-                                        <rect key="frame" x="111.5" y="82" width="97" height="26"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Your Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fZ-YC-VYw">
-                                        <rect key="frame" x="59" y="148" width="202.5" height="20"/>
+                                        <rect key="frame" x="59" y="82" width="202.5" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nge-at-KJO">
-                                        <rect key="frame" x="0.0" y="208" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="142" width="320" height="216"/>
                                         <date key="date" timeIntervalSinceReferenceDate="508118922.948412">
                                             <!--2017-02-07 00:08:42 +0000-->
                                         </date>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yn-QV-uVR">
-                                        <rect key="frame" x="141.5" y="464" width="37" height="30"/>
+                                        <rect key="frame" x="141.5" y="398" width="37" height="30"/>
                                         <state key="normal" title="Enter">
                                             <color key="titleColor" red="0.44007820880594101" green="0.44863486858723489" blue="0.48850621727748689" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -58,7 +52,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Must be 21 or older to continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PV6-as-5Sm">
-                                        <rect key="frame" x="40.5" y="534" width="239.5" height="20"/>
+                                        <rect key="frame" x="40.5" y="468" width="239.5" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.76325261780104714" green="0.0" blue="0.015671832960608364" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -74,7 +68,9 @@
                     </view>
                     <connections>
                         <outlet property="birthdayPicker" destination="nge-at-KJO" id="fZb-Bx-KXF"/>
+                        <outlet property="headerLabel" destination="kdI-G3-2jP" id="Cs0-yJ-rMs"/>
                         <outlet property="mustBeLabel" destination="PV6-as-5Sm" id="jvr-3r-3de"/>
+                        <outlet property="pleaseEnterLabel" destination="9fZ-YC-VYw" id="70m-vj-i9d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

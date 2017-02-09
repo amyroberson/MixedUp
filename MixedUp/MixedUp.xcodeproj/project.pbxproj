@@ -56,6 +56,7 @@
 		E1D00C431E4BC1E200C478CA /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C421E4BC1E200C478CA /* IngredientCell.swift */; };
 		E1D00C451E4BC20100C478CA /* IngredientListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C441E4BC20100C478CA /* IngredientListController.swift */; };
 		E1D00C471E4BCC2A00C478CA /* addInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C461E4BCC2A00C478CA /* addInventoryViewController.swift */; };
+		E1D00C491E4C12DB00C478CA /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C481E4C12DB00C478CA /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		E1D00C421E4BC1E200C478CA /* IngredientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		E1D00C441E4BC20100C478CA /* IngredientListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientListController.swift; sourceTree = "<group>"; };
 		E1D00C461E4BCC2A00C478CA /* addInventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addInventoryViewController.swift; sourceTree = "<group>"; };
+		E1D00C481E4C12DB00C478CA /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				E1D00C391E4B743600C478CA /* IBACell.swift */,
 				E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */,
 				E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */,
+				E1D00C481E4C12DB00C478CA /* Theme.swift */,
 				E1D00C401E4BBB8700C478CA /* IngredientTypeCell.swift */,
 				E1D00C461E4BCC2A00C478CA /* addInventoryViewController.swift */,
 				E1D00C441E4BC20100C478CA /* IngredientListController.swift */,
@@ -411,6 +414,7 @@
 				E18853E81E497EAA005C8C37 /* Color+CoreDataProperties.swift in Sources */,
 				E18853E71E497EA5005C8C37 /* Tool+CoreDataProperties.swift in Sources */,
 				E18853FD1E4AB6B2005C8C37 /* DrinkService.swift in Sources */,
+				E1D00C491E4C12DB00C478CA /* Theme.swift in Sources */,
 				E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */,
 				E18853DB1E497E72005C8C37 /* Color+CoreDataClass.swift in Sources */,
 				E18853251E4914CD005C8C37 /* BirthdayViewController.swift in Sources */,
