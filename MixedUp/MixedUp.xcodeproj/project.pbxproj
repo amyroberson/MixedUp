@@ -53,6 +53,9 @@
 		E1D00C3D1E4B917E00C478CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853221E4914CD005C8C37 /* AppDelegate.swift */; };
 		E1D00C3F1E4BA05B00C478CA /* InventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */; };
 		E1D00C411E4BBB8700C478CA /* IngredientTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C401E4BBB8700C478CA /* IngredientTypeCell.swift */; };
+		E1D00C431E4BC1E200C478CA /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C421E4BC1E200C478CA /* IngredientCell.swift */; };
+		E1D00C451E4BC20100C478CA /* IngredientListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C441E4BC20100C478CA /* IngredientListController.swift */; };
+		E1D00C471E4BCC2A00C478CA /* addInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C461E4BCC2A00C478CA /* addInventoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +127,9 @@
 		E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBAViewController.swift; sourceTree = "<group>"; };
 		E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableViewController.swift; sourceTree = "<group>"; };
 		E1D00C401E4BBB8700C478CA /* IngredientTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientTypeCell.swift; sourceTree = "<group>"; };
+		E1D00C421E4BC1E200C478CA /* IngredientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
+		E1D00C441E4BC20100C478CA /* IngredientListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientListController.swift; sourceTree = "<group>"; };
+		E1D00C461E4BCC2A00C478CA /* addInventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addInventoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +187,9 @@
 				E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */,
 				E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */,
 				E1D00C401E4BBB8700C478CA /* IngredientTypeCell.swift */,
+				E1D00C461E4BCC2A00C478CA /* addInventoryViewController.swift */,
+				E1D00C441E4BC20100C478CA /* IngredientListController.swift */,
+				E1D00C421E4BC1E200C478CA /* IngredientCell.swift */,
 				E18853261E4914CD005C8C37 /* Main.storyboard */,
 				E18853F91E4A8E11005C8C37 /* Services/Storage */,
 				E18853611E4921A1005C8C37 /* Model */,
@@ -405,11 +414,13 @@
 				E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */,
 				E18853DB1E497E72005C8C37 /* Color+CoreDataClass.swift in Sources */,
 				E18853251E4914CD005C8C37 /* BirthdayViewController.swift in Sources */,
+				E1D00C451E4BC20100C478CA /* IngredientListController.swift in Sources */,
 				E18853EC1E497EBA005C8C37 /* Bar+CoreDataProperties.swift in Sources */,
 				E18853E11E497E90005C8C37 /* Location+CoreDataProperties.swift in Sources */,
 				E18853DD1E497E83005C8C37 /* Ingredient+CoreDataProperties.swift in Sources */,
 				E18853DE1E497E86005C8C37 /* IngredientType+CoreDataClass.swift in Sources */,
 				E1D00C3A1E4B743600C478CA /* IBACell.swift in Sources */,
+				E1D00C431E4BC1E200C478CA /* IngredientCell.swift in Sources */,
 				E18853E51E497E9E005C8C37 /* Drink+CoreDataProperties.swift in Sources */,
 				E18853E61E497EA1005C8C37 /* Tool+CoreDataClass.swift in Sources */,
 				E18853AF1E4945E1005C8C37 /* CoreDataStack.swift in Sources */,
@@ -422,6 +433,7 @@
 				E18853EA1E497EB2005C8C37 /* User+CoreDataProperties.swift in Sources */,
 				E18853DC1E497E78005C8C37 /* Ingredient+CoreDataClass.swift in Sources */,
 				E1D00C3C1E4B7A2200C478CA /* IBAViewController.swift in Sources */,
+				E1D00C471E4BCC2A00C478CA /* addInventoryViewController.swift in Sources */,
 				E18853B11E4946FF005C8C37 /* MixedUpAPI.swift in Sources */,
 				E1D00C411E4BBB8700C478CA /* IngredientTypeCell.swift in Sources */,
 				E18853E91E497EAE005C8C37 /* User+CoreDataClass.swift in Sources */,

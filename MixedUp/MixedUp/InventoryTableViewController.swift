@@ -67,7 +67,18 @@ class InventoryTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //pass along ingredient type for adding ingedients later
+        let type = types[indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        let ingredientTableVC = storyboard.instantiateViewController(withIdentifier: "ingredientStock") as! IngredientListController
+        ingredientTableVC.user = user
+        ingredientTableVC.userStore = userStore
+        ingredientTableVC.ingredientStore = ingredientStore
+        ingredientTableVC.coreDataStack = coreDataStack
+        ingredientTableVC.ingredientType = type
+        
+        self.show(ingredientTableVC, sender: nil)
+        
+        
     }
 
 }

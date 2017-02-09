@@ -143,6 +143,117 @@
             </objects>
             <point key="canvasLocation" x="2920.8000000000002" y="546.47676161919048"/>
         </scene>
+        <!--IngredientListVC-->
+        <scene sceneID="n4I-QW-QH0">
+            <objects>
+                <tableViewController storyboardIdentifier="ingredientStock" id="YD6-pw-vyd" userLabel="IngredientListVC" customClass="IngredientListController" customModule="MixedUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tGH-O0-25y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ingredient" selectionStyle="default" indentationWidth="10" reuseIdentifier="ingredient" id="E3G-S4-IiZ" customClass="IngredientCell" customModule="MixedUp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E3G-S4-IiZ" id="8d7-fi-zgA">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBx-hu-Qgn">
+                                            <rect key="frame" x="15" y="11.5" width="127" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="yBx-hu-Qgn" firstAttribute="leading" secondItem="8d7-fi-zgA" secondAttribute="leading" constant="15" id="Yp8-aO-jdt"/>
+                                        <constraint firstItem="yBx-hu-Qgn" firstAttribute="centerY" secondItem="8d7-fi-zgA" secondAttribute="centerY" id="aJb-C1-8N9"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ingredientNameLabel" destination="yBx-hu-Qgn" id="AaU-Ni-zn1"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YD6-pw-vyd" id="IWu-dF-NyJ"/>
+                            <outlet property="delegate" destination="YD6-pw-vyd" id="iwg-kX-1Q2"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lqg-aB-ntd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3865" y="549"/>
+        </scene>
+        <!--Add Inventory View Controller-->
+        <scene sceneID="ECy-bu-Srf">
+            <objects>
+                <viewController storyboardIdentifier="AddInventory" id="0lA-cM-xrg" customClass="addInventoryViewController" customModule="MixedUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mhQ-l5-mue"/>
+                        <viewControllerLayoutGuide type="bottom" id="9gd-AR-mlc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k2f-3v-cKe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="hJ3-KC-vCA">
+                                <rect key="frame" x="99.5" y="193.5" width="176.5" height="281.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aiz-GS-cRl">
+                                        <rect key="frame" x="26.5" y="0.0" width="124" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFE-IQ-Mjl">
+                                        <rect key="frame" x="69.5" y="60.5" width="37.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Ingredient Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKw-a3-GkU">
+                                        <rect key="frame" x="0.0" y="121" width="176.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XUS-mh-rTW">
+                                        <rect key="frame" x="0.0" y="181.5" width="176.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBr-g6-nYA">
+                                        <rect key="frame" x="38" y="251.5" width="101" height="30"/>
+                                        <state key="normal" title="Add Ingredient"/>
+                                        <connections>
+                                            <action selector="addIngredientPressed:" destination="0lA-cM-xrg" eventType="touchUpInside" id="veo-eA-0mI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="XUS-mh-rTW" secondAttribute="trailing" id="VIE-KJ-GhM"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hJ3-KC-vCA" firstAttribute="centerX" secondItem="k2f-3v-cKe" secondAttribute="centerX" id="WiO-cO-ZkT"/>
+                            <constraint firstItem="hJ3-KC-vCA" firstAttribute="centerY" secondItem="k2f-3v-cKe" secondAttribute="centerY" id="blp-Gw-GFl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="displayNameTextField" destination="XUS-mh-rTW" id="qZ8-bV-3ih"/>
+                        <outlet property="typeDisplayLabel" destination="GFE-IQ-Mjl" id="KC0-KB-Gg3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ocj-Va-kjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4879" y="555"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="IiJ-Q5-RzE">
             <objects>

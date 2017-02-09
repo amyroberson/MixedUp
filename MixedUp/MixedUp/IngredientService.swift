@@ -39,7 +39,7 @@ final class IngredientService{
     
     func processIngredientRequest(data: Data?, error: NSError?) -> ResourceResult<[Ingredient]>{
         guard let jsonData = data else {
-            return .failure((error!) as! (Errors))
+            return .fail((error!))
         }
         
         do{
@@ -47,7 +47,7 @@ final class IngredientService{
             return MixedUpAPI.getIngredientsFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
             print(error)
-            return .failure((error) as! (Errors))
+            return .fail((error as NSError))
         }
     }
     
