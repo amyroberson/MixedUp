@@ -48,7 +48,27 @@ final class UserService{
             return MixedUpAPI.getUsersFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
             print(error)
-            return .failure((error) as! (Errors))
+            return .fail((error as NSError))
+        }
+    }
+    
+    func processCreateUserRequest(data: Data?, error: NSError?) -> ResourceResult<User>{
+        guard let jsonData = data else {
+            return .fail(error!)
+        }
+        
+        do{
+            let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
+            let result = MixedUpAPI.getUserFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
+            if let result = result{
+                return .success(result)
+            } else {
+                return .failure(Errors.invalidJSONData)
+            }
+            
+        } catch {
+            print(error)
+            return .fail((error as NSError))
         }
     }
     
@@ -77,32 +97,34 @@ final class UserService{
         return post
     }
     
-    func createUser(user: User, completion: @escaping (ResourceResult<[User]>) -> ()) {
+    func createUser(user: User, completion: @escaping (ResourceResult<User>) -> ()) {
         let dict = user.toDictionary()
         do{
             let data = try MixedUpAPI.dictionaryToJson(dict)
-            let url = URL(string: "www.example.com")!
+            let url = URL(string: "https://arcane-journey-22728.herokuapp.com/users/")!
             var request = requestBuilder(url: url, method: "POST")
             request.httpBody = data
             let task = session.dataTask(with: request,  completionHandler: {
                 (data, response, error) -> Void in
                 
-                var result = self.processUserRequest(data: data, error: error as NSError?)
+                var result = self.processCreateUserRequest(data: data, error: error as NSError?)
                 
-                if case .success(let users) = result {
+                if case .success(let user) = result {
                     let privateQueueContext = self.coreDataStack.privateQueueContext
                     privateQueueContext.performAndWait({
-                        try! privateQueueContext.obtainPermanentIDs(for: users)
+                        try! privateQueueContext.obtainPermanentIDs(for: [user])
                     })
-                    let objectIDs = users.map{ $0.objectID }
+                    let objectIDs = [user.objectID]
                     let predicate = NSPredicate(format: "self IN %@", objectIDs)
                     
                     do {
                         try self.coreDataStack.saveChanges()
                         
-                        let mainQueueUsers = try self.fetchMainQueueUsers(predicate: predicate,
+                        let mainQueueUser = try self.fetchMainQueueUsers(predicate: predicate,
                                                                           sortDescriptors: [])
-                        result = .success(mainQueueUsers)
+                        if mainQueueUser.count > 0 {
+                            result = .success(mainQueueUser[0])
+                        }
                     }
                     catch let error {
                         result = .failure(error as! Errors)

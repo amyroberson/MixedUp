@@ -55,6 +55,12 @@ class MixedUpAPI {
     
     
     static func getUserFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> User?{
+        
+        var dictionary = dictionary
+        if dictionary["user"] != nil {
+            dictionary = (dictionary["user"] as? [String: Any])!
+        }
+        
         guard let id = dictionary["id"] as? String else { return nil}
         
         
@@ -77,7 +83,7 @@ class MixedUpAPI {
         context.performAndWait({ () -> Void in
             user = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
                                                        into: context) as! User
-            user.email = dictionary["email"] as? String
+            user.email = dictionary["email"] as? String ?? nil
             let inventory = dictionary["inventory"] as? [[String: Any]]
             var actualIngredients: [Ingredient] = []
             if let ingredients = inventory{
@@ -95,6 +101,7 @@ class MixedUpAPI {
             } else {
                 user.inventory = []
             }
+            user.id = id
             let favDrinks = dictionary["favoriteDrinks"] as? [[String: Any]]
             var actualDrinks: [Drink] = []
             if let drinks = favDrinks{
@@ -164,10 +171,10 @@ class MixedUpAPI {
     static func getDrinkFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Drink? {
         
         guard let display = dictionary["displayName"] as? String,
-            let isAlcoholic = dictionary["isAlcoholic"] as? Bool,
-            let isIBA = dictionary["isIBAOfficial"] as? Bool,
-            let name = dictionary["name"] as? String,
             let id = dictionary["id"] as? String else { return nil}
+        let name = dictionary["name"] as? String ?? ""
+        let isAlcoholic = dictionary["isAlcoholic"] as? Bool ?? true
+        let isIBA = dictionary["isIBAOfficial"] as? Bool ?? true
         
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Drink")
@@ -190,7 +197,7 @@ class MixedUpAPI {
             drink = NSEntityDescription.insertNewObject(forEntityName: Drink.entityName,
                                                         into: context) as! Drink
             drink.name = name
-            drink.stringDescription = dictionary["description"] as? String
+            drink.stringDescription = dictionary["description"] as? String ?? ""
             drink.id = id
             drink.displayName = display
             drink.isAlcoholic = isAlcoholic

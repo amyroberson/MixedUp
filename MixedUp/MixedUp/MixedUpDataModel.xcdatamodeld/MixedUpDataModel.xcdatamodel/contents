@@ -25,7 +25,7 @@
         <attribute name="isAlcoholic" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isIBAOfficial" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stringDescription" attributeType="String" syncable="YES"/>
+        <attribute name="stringDescription" attributeType="String" defaultValueString="&quot; &quot;" syncable="YES"/>
         <relationship name="bardrinks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bar" inverseName="drinks" inverseEntity="Bar" syncable="YES"/>
         <relationship name="barmenu" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bar" inverseName="menu" inverseEntity="Bar" syncable="YES"/>
         <relationship name="barspecialties" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bar" inverseName="specialties" inverseEntity="Bar" syncable="YES"/>
@@ -84,14 +84,14 @@
         <relationship name="inventory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="user" inverseEntity="Ingredient" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-837" positionY="-144" width="128" height="118"/>
         <element name="Bar" positionX="-533" positionY="-187" width="128" height="148"/>
-        <element name="Drink" positionX="-612" positionY="20" width="128" height="253"/>
-        <element name="Location" positionX="-243" positionY="-288" width="128" height="208"/>
-        <element name="Ingredient" positionX="-351" positionY="255" width="128" height="163"/>
-        <element name="Glass" positionX="-216" positionY="6" width="128" height="103"/>
-        <element name="Tool" positionX="-216" positionY="132" width="128" height="103"/>
-        <element name="IngredientType" positionX="-191" positionY="294" width="128" height="103"/>
         <element name="Color" positionX="-722" positionY="234" width="128" height="163"/>
+        <element name="Drink" positionX="-612" positionY="20" width="128" height="255"/>
+        <element name="Glass" positionX="-216" positionY="6" width="128" height="103"/>
+        <element name="Ingredient" positionX="-351" positionY="255" width="128" height="163"/>
+        <element name="IngredientType" positionX="-191" positionY="294" width="128" height="103"/>
+        <element name="Location" positionX="-243" positionY="-288" width="128" height="208"/>
+        <element name="Tool" positionX="-216" positionY="132" width="128" height="103"/>
+        <element name="User" positionX="-837" positionY="-144" width="128" height="118"/>
     </elements>
 </model>

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class IBAViewController: UIViewController, UICollectionViewDelegate {
+class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -17,8 +17,13 @@ class IBAViewController: UIViewController, UICollectionViewDelegate {
     var drinkStore: DrinkService? = nil
     var userStore: UserService? = nil
     var user: User? = nil
-    
+    var defaults: UserDefaults? = nil
     var drinks: [Drink] = []
+    var allDrinks: [Drink] = []
+    var filteredDrinks: Set<Drink> = []
+    var inSearchMode = false
+    
+    @IBOutlet weak var drinkSearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +31,9 @@ class IBAViewController: UIViewController, UICollectionViewDelegate {
             switch result{
             case .success(let ibas):
                 self.drinks = ibas
+                self.allDrinks = ibas
+                self.refresh()
+                
             default:
                 print("could not get drinks")
             }
@@ -35,11 +43,53 @@ class IBAViewController: UIViewController, UICollectionViewDelegate {
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
         self.title = "IBA Drink Recipes"
+        drinkSearchBar.delegate = self
+        drinkSearchBar.returnKeyType = UIReturnKeyType.done
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if defaults?.string(forKey: "theme") == "Light"{
+            Theme.styleLight()
+        } else {
+            Theme.styleDark()
+        }
+        self.view.backgroundColor = Theme.viewBackgroundColor
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if drinkSearchBar.text == nil || drinkSearchBar.text == ""{
+            inSearchMode = false
+            drinks = allDrinks
+            collectionView.reloadData()
+            view.endEditing(true)
+            
+        } else {
+            inSearchMode = true
+            let text = drinkSearchBar.text?.lowercased()
+            for drink in drinks{
+                for ingredient in drink.ingredients!{
+                    if (ingredient as! Ingredient).displayName?.lowercased().range(of: text!) != nil {
+                        filteredDrinks.insert(drink)
+                    } else {
+                        filteredDrinks.remove(drink)
+                    }
+                }
+            }
+            drinks = Array(filteredDrinks)
+            collectionView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
     }
     
 }
@@ -67,4 +117,11 @@ extension IBAViewController: UICollectionViewDataSource{
         
         return cell
     }
+    
+    func refresh(){
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
 }

@@ -36,11 +36,8 @@ class BirthdayViewController: UIViewController {
             
             userStore?.createUser(user: user, completion: {result in
                 switch result{
-                case .success(let users):
-                    if users.count > 0{
-                        self.user = users[0]
-                    }
-                    print("error creating user")
+                case .success(let user):
+                    self.user = user
                 default:
                     print("error creating user")
                 }

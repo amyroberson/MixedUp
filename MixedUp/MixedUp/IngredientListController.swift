@@ -16,6 +16,7 @@ class IngredientListController: UITableViewController {
     var user: User? = nil
     var ingredientType: IngredientType? = nil
     var ingredients: [Ingredient] = []
+    var defaults: UserDefaults? = nil
     
     
     
@@ -34,6 +35,14 @@ class IngredientListController: UITableViewController {
         self.title = ingredientType?.displayName
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if defaults?.string(forKey: "theme") == "Light"{
+            Theme.styleLight()
+        } else {
+            Theme.styleDark()
+        }
     }
 
     func addTapped(_ sender: UIBarButtonItem){

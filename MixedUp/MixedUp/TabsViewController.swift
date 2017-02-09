@@ -27,6 +27,7 @@ class TabsViewController: UITabBarController {
                     iBAVC.drinkStore = drinkStore
                     iBAVC.userStore = userStore
                     iBAVC.user = user
+                    iBAVC.defaults = defaults
                 } else if let inventoryVC = controller.topViewController as? InventoryTableViewController {
                     inventoryVC.coreDataStack = coreDataStack
                     inventoryVC.ingredientStore = ingredientStore

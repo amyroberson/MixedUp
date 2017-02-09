@@ -79,7 +79,7 @@ final class DrinkService{
     }
     
     func getIBADrinks(completion: @escaping (ResourceResult<[Drink]>) -> ()){
-        let url = URL(string: "www.example.com/0/drinks?isIBAOfficial=true")!
+        let url = URL(string: "https://arcane-journey-22728.herokuapp.com/drinks")!
         let request = requestBuilder(url: url, method: "GET")
         let task = session.dataTask(with: request,  completionHandler: {
             (data, response, error) -> Void in
@@ -93,17 +93,15 @@ final class DrinkService{
                 })
                 let objectIDs = drinks.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
-                let sortByDateTaken = NSSortDescriptor(key: "createdAt", ascending: false)
                 
                 do {
                     try self.coreDataStack.saveChanges()
                     
-                    let mainQueueDrinks = try self.fetchMainQueueDrinks(predicate: predicate,
-                                                                        sortDescriptors: [sortByDateTaken])
+                    let mainQueueDrinks = try self.fetchMainQueueDrinks(predicate: predicate, sortDescriptors: [])
                     result = .success(mainQueueDrinks)
                 }
                 catch let error {
-                    result = .failure(error as! Errors)
+                    result = .fail(error as NSError)
                 }
             }
             completion(result)
