@@ -254,9 +254,8 @@ class MixedUpAPI {
     
     static func getIngredientTypeFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> IngredientType? {
         
-        guard let display = dictionary["displayName"] as? String,
-            let id = dictionary["id"] as? String else { return nil}
-        
+        guard let display = dictionary["displayName"] as? String else { return nil}
+        let id = dictionary["id"] as? String ?? UUID().uuidString
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "IngredientType")
         let predicate = NSPredicate(format: "id == \"\(id)\"")
         fetchRequest.predicate = predicate
@@ -277,11 +276,11 @@ class MixedUpAPI {
         context.performAndWait({ () -> Void in
             type = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
                                                        into: context) as! IngredientType
-            type.name = dictionary["name"] as? String
+            type.name = dictionary["name"] as? String ?? ""
             type.id = id
             type.displayName = display
             
-            //need to set relationship to ingredient
+            
         })
         return type
         

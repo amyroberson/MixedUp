@@ -112,7 +112,7 @@ final class IngredientService{
             ingredient.displayName = dictionary["displayName"] as? String ?? ""
             ingredient.isAlcoholic = dictionary["isAlcoholic"] as? Bool ?? false
             
-            if let type = dictionary["ingredientType"] as? [String: Any] {
+            if let type = dictionary["type"] as? [String: Any] {
                 let theType = MixedUpAPI.getIngredientTypeFromDictionary(type, inContext: context)
                 ingredient.type = theType
             }

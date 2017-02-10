@@ -35,9 +35,6 @@ class addInventoryViewController: UIViewController, UITextFieldDelegate {
                 print("ingredient did not get created")
             }
     
-        if let user = user, let inventory = user.inventory{
-                user.inventory = (inventory.adding(ingredient) as NSSet)
-        }
         let arrayCount: Int = Int((navigationController?.viewControllers.count)!)
         if arrayCount >= 2 {
             let uiVC: UIViewController = (navigationController?.viewControllers[arrayCount - 2])!

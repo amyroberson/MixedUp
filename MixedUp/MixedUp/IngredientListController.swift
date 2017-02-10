@@ -24,7 +24,7 @@ class IngredientListController: UITableViewController {
         super.viewDidLoad()
         
         
-        refresh()
+        refreshView()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped(_:)))
         self.title = ingredientType?.displayName
         tableView.delegate = self
@@ -37,7 +37,7 @@ class IngredientListController: UITableViewController {
         } else {
             Theme.styleDark()
         }
-        refresh()
+        refreshView()
     }
 
     func addTapped(_ sender: UIBarButtonItem){
@@ -74,11 +74,11 @@ class IngredientListController: UITableViewController {
         return false
     }
     
-    func refresh(){
+    func refreshView(){
         let inventory = user?.inventory
         if let inventory = inventory {
             for ingredient in inventory{
-                if (ingredient as! Ingredient).type == ingredientType{
+                if (ingredient as! Ingredient).type?.displayName == ingredientType?.displayName{
                     ingredients.append((ingredient as! Ingredient))
                 }
             }
