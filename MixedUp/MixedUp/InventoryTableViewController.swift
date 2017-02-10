@@ -20,17 +20,17 @@ class InventoryTableViewController: UITableViewController {
     
     func setTypes(){
         let type1 = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
-                                                                    into: (coreDataStack?.privateQueueContext)!) as! IngredientType
+                                                                    into: (coreDataStack?.mainQueueContext)!) as! IngredientType
         type1.displayName = "Mixer"
         
         let type2 = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
-                                                        into: (coreDataStack?.privateQueueContext)!) as! IngredientType
+                                                        into: (coreDataStack?.mainQueueContext)!) as! IngredientType
         type2.displayName = "Liquor"
         let type3 = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
-                                                        into: (coreDataStack?.privateQueueContext)!) as! IngredientType
+                                                        into: (coreDataStack?.mainQueueContext)!) as! IngredientType
         type3.displayName = "Liquers"
         let type4 = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
-                                                        into: (coreDataStack?.privateQueueContext)!) as! IngredientType
+                                                        into: (coreDataStack?.mainQueueContext)!) as! IngredientType
         type4.displayName = "Garnishes"
         types = [type1, type2, type3, type4]
     }

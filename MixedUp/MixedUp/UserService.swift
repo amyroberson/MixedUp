@@ -97,12 +97,108 @@ final class UserService{
         return post
     }
     
+    func createCoreDataUser(newUser: User, inContext context: NSManagedObjectContext) -> ResourceResult<User> {
+        
+        let dictionary = newUser.toDictionary()
+        
+        var user: User!
+        context.performAndWait({ () -> Void in
+            user = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
+                                                       into: context) as! User
+            user.email = dictionary["email"] as? String ?? nil
+            let inventory = dictionary["inventory"] as? [[String: Any]]
+            var actualIngredients: [Ingredient] = []
+            if let ingredients = inventory{
+                for theIngredient in ingredients {
+                    if let ingredient = MixedUpAPI.getIngredientFromDictionary(theIngredient, inContext: context){
+                        actualIngredients.append(ingredient)
+                    }
+                }
+                if actualIngredients.count == ingredients.count {
+                    let set: Set<Ingredient> = Set(actualIngredients)
+                    user.inventory = set as NSSet?
+                } else{
+                    user.inventory = []
+                }
+            } else {
+                user.inventory = []
+            }
+            user.id = dictionary["id"] as? String ?? UUID().uuidString
+            let favDrinks = dictionary["favoriteDrinks"] as? [[String: Any]]
+            var actualDrinks: [Drink] = []
+            if let drinks = favDrinks{
+                for drink in drinks {
+                    if let drink = MixedUpAPI.getDrinkFromDictionary(drink, inContext: context){
+                        actualDrinks.append(drink)
+                    }
+                }
+                if drinks.count == actualDrinks.count {
+                    let set: Set<Drink> = Set(actualDrinks)
+                    user.favoriteDrinks = set as NSSet?
+                } else{
+                    user.favoriteDrinks = []
+                }
+            }  else {
+                user.favoriteDrinks = []
+            }
+            let theBars = dictionary["barsManaged"] as? [[String: Any]]
+            var actualBars: [Bar] = []
+            if let bars = theBars{
+                for bar in bars {
+                    if let bar = MixedUpAPI.getBarfromDictionary(bar, inContext: context){
+                        actualBars.append(bar)
+                    }
+                }
+                if bars.count == actualBars.count {
+                    let set: Set<Bar> = Set(actualBars)
+                    user.barsManaged = set as NSSet?
+                } else{
+                    user.barsManaged = []
+                }
+            } else {
+                user.barsManaged = []
+            }
+            do{
+                try self.coreDataStack.saveChanges()
+            }catch {
+                print("did not save User in coreData")
+            }
+        })
+        return .success(user)
+        
+    }
+    
+    func fetchUser(user: User, inContext context: NSManagedObjectContext) -> ResourceResult<User> {
+        let dictionary = user.toDictionary()
+        guard let id = dictionary["id"] as? String else { return .failure(.inValidParameter)}
+        
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        let predicate = NSPredicate(format: "id == \"\(id)\"")
+        fetchRequest.predicate = predicate
+        
+        let fetchedUsers: [User] = {
+            var users: [User]!
+            context.performAndWait() {
+                users = try! context.fetch(fetchRequest) as! [User]
+            }
+            return users
+        }()
+        if let firstUser = fetchedUsers.first {
+            return  .success(firstUser)
+        } else {
+            return .failure(.inValidParameter)
+        }
+    }
+    
+    
     func createUser(user: User, completion: @escaping (ResourceResult<User>) -> ()) {
         let dict = user.toDictionary()
         do{
             let data = try MixedUpAPI.dictionaryToJson(dict)
-            let url = URL(string: "https://arcane-journey-22728.herokuapp.com/users/")!
-            var request = requestBuilder(url: url, method: "POST")
+            let uuid = user.id
+            let url = URL(string: "https://arcane-journey-22728.herokuapp.com/users/")!.appendingPathComponent(uuid!)
+            var request = requestBuilder(url: url, method: "PUT")
             request.httpBody = data
             let task = session.dataTask(with: request,  completionHandler: {
                 (data, response, error) -> Void in
@@ -121,7 +217,7 @@ final class UserService{
                         try self.coreDataStack.saveChanges()
                         
                         let mainQueueUser = try self.fetchMainQueueUsers(predicate: predicate,
-                                                                          sortDescriptors: [])
+                                                                         sortDescriptors: [])
                         if mainQueueUser.count > 0 {
                             result = .success(mainQueueUser[0])
                         }

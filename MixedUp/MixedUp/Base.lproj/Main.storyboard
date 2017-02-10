@@ -192,6 +192,10 @@
                                             <constraint firstItem="CBw-FC-DRa" firstAttribute="top" secondItem="QE5-CY-bXF" secondAttribute="top" constant="5" id="FRd-ly-BnI"/>
                                             <constraint firstAttribute="bottom" secondItem="xGY-Sa-TyD" secondAttribute="bottom" constant="5" id="JNp-3x-gn6"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="drinkImage" destination="CBw-FC-DRa" id="Gdc-Qi-0TS"/>
+                                            <outlet property="drinkNameLabel" destination="xGY-Sa-TyD" id="x27-JJ-KHV"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -375,6 +379,10 @@
                                             <constraint firstAttribute="trailing" secondItem="4gr-xj-HI1" secondAttribute="trailing" constant="10" id="nm8-qA-Z9p"/>
                                             <constraint firstItem="4gr-xj-HI1" firstAttribute="top" secondItem="Ers-gk-tC7" secondAttribute="top" constant="5" id="uUb-Mj-L1f"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="drinkImage" destination="4gr-xj-HI1" id="NuE-Yp-GWo"/>
+                                            <outlet property="drinkNameLabel" destination="hdp-wG-cjn" id="5Za-fr-09k"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -422,7 +430,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="IBACell" id="sZb-g5-SKj" customClass="IBACell" customModule="MixedUp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" restorationIdentifier="IBACell" reuseIdentifier="IBACell" id="sZb-g5-SKj" customClass="IBACell" customModule="MixedUp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

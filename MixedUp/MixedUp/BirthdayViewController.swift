@@ -33,17 +33,23 @@ class BirthdayViewController: UIViewController {
             //create user request
             let user1 = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
                                                            into: (coreDataStack?.privateQueueContext)!) as! User
+            user1.id = UUID().uuidString
+            self.user = user1
+        
             
-            userStore?.createUser(user: user1, completion: {result in
-                switch result{
+           let result = (userStore?.createCoreDataUser(newUser: user1, inContext: (coreDataStack?.mainQueueContext)!))!
+            switch result{
                 case .success(let user):
                     self.user = user
                     self.defaults?.set(user.id, forKey: "userID")
                 default:
                     print("error creating user")
-                    //self.user = user1 to build in default user?
-                }
-            })
+                    self.user = user1
+            }
+        
+            if self.user == nil{
+                self.user = user1
+            }
             defaults?.set(true, forKey: "Over21")
             let storyBoard = UIStoryboard(name: "Main", bundle: .main)
             let tabsVC = storyBoard.instantiateViewController(withIdentifier: "Tabs") as! TabsViewController

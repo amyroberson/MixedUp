@@ -23,14 +23,8 @@ class IngredientListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let inventory = user?.inventory
-        if let inventory = inventory {
-            for ingredient in inventory{
-                if (ingredient as! Ingredient).type == ingredientType{
-                    ingredients.append((ingredient as! Ingredient))
-                }
-            }
-        }
+        
+        refresh()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped(_:)))
         self.title = ingredientType?.displayName
         tableView.delegate = self
@@ -43,6 +37,7 @@ class IngredientListController: UITableViewController {
         } else {
             Theme.styleDark()
         }
+        refresh()
     }
 
     func addTapped(_ sender: UIBarButtonItem){
@@ -57,8 +52,6 @@ class IngredientListController: UITableViewController {
         
     }
     
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -80,18 +73,20 @@ class IngredientListController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
- 
+    
+    func refresh(){
+        let inventory = user?.inventory
+        if let inventory = inventory {
+            for ingredient in inventory{
+                if (ingredient as! Ingredient).type == ingredientType{
+                    ingredients.append((ingredient as! Ingredient))
+                }
+            }
+        }
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
-    */
 
 }

@@ -21,6 +21,7 @@ final class IngredientService{
         return URLSession(configuration: config)
     }()
     
+    
     fileprivate func requestBuilder(url: URL, method: String) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method
@@ -74,6 +75,50 @@ final class IngredientService{
         }
         
         return ingredient
+    }
+    
+    func fetchIngredient(ingredient: User, inContext context: NSManagedObjectContext) -> ResourceResult<Ingredient> {
+        let dictionary = ingredient.toDictionary()
+        
+        guard let id = dictionary["id"] as? String else { return .failure(.inValidParameter)}
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredient")
+        let predicate = NSPredicate(format: "id == \"\(id)\"")
+        fetchRequest.predicate = predicate
+        
+        let fetchedIngredient: [Ingredient] = {
+            var ingredients: [Ingredient]!
+            context.performAndWait() {
+                ingredients = try! context.fetch(fetchRequest) as! [Ingredient]
+            }
+            return ingredients
+        }()
+        if let firstIngredient = fetchedIngredient.first {
+            return  .success(firstIngredient)
+        } else {
+            return .failure(.inValidParameter)
+        }
+
+    }
+    
+    func createCoreDataIngredient( newIngredient: Ingredient, inContext context: NSManagedObjectContext) -> ResourceResult<Ingredient> {
+        let dictionary = newIngredient.toDictionary()
+        var ingredient: Ingredient!
+        context.performAndWait({ () -> Void in
+            ingredient = NSEntityDescription.insertNewObject(forEntityName: Ingredient.entityName,
+                                                       into: context) as! Ingredient
+            ingredient.name = dictionary["name"] as? String ?? ""
+            ingredient.id = dictionary["id"] as? String? ?? UUID().uuidString
+            ingredient.displayName = dictionary["displayName"] as? String ?? ""
+            ingredient.isAlcoholic = dictionary["isAlcoholic"] as? Bool ?? false
+            
+            if let type = dictionary["ingredientType"] as? [String: Any] {
+                let theType = MixedUpAPI.getIngredientTypeFromDictionary(type, inContext: context)
+                ingredient.type = theType
+            }
+        })
+        
+        return .success(ingredient)
     }
     
     func createIngredient(ingredient: Ingredient, completion: @escaping (ResourceResult<[Ingredient]>) -> ()){

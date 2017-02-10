@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,30 +22,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var ingredientStore: IngredientService? = nil
     var drinkStore: DrinkService? = nil
     var user: User? = nil
+    let userID = "userID"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         defaults.register(defaults: ["Over21": false])
-        defaults.register(defaults: ["userID" : ""])
+        defaults.register(defaults: [userID : ""])
         defaults.register(defaults: ["theme": "Light"])
         userStore = UserService(coreDataStack)
         ingredientStore = IngredientService(coreDataStack)
         drinkStore = DrinkService(coreDataStack)
         
-        if defaults.bool(forKey: "over21") && defaults.string(forKey: "userId") != "" {
-            userStore?.getUser(id: defaults.string(forKey: "userID") ?? "", completion: {result in
-                switch result{
-                case .success(let users):
-                    if users.count > 0{
-                        self.user = users[0]
-                    }
-                default:
-                    print("did not get initial user")
-                }
-            })
+        if let userIDString = defaults.string(forKey: userID), userIDString.isEmpty == false{
+            
+            let tempUser = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
+                                                               into: coreDataStack.privateQueueContext) as! User
+            tempUser.id = userIDString
+            
+            let result = (userStore?.fetchUser(user: tempUser, inContext: coreDataStack.mainQueueContext))!
+            switch result{
+            case .success(let user):
+                self.user = user
+            default:
+                print("error user was not created")
+                //needs to be handled differently or throw
+            }
         }
         
-        if defaults.bool(forKey: "Over21") {
+        if user != nil {
+            // pass user on to the rest of the app
+            //but for now the user is waiting
             self.window = UIWindow(frame: UIScreen.main.bounds)
             
             
@@ -62,8 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
             
-        } else {
+        } else if user == nil {
             //show age picker
+            //to be able to create new user
             self.window = UIWindow(frame: UIScreen.main.bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
@@ -72,11 +79,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController.coreDataStack = coreDataStack
             initialViewController.userStore = userStore
             initialViewController.ingredientStore = ingredientStore
-            
+            initialViewController.drinkStore = drinkStore
             
             window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
-            
         }
         
         

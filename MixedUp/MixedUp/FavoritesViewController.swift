@@ -43,7 +43,6 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
         detailVC.userStore = userStore
         detailVC.drinkStore = drinkStore
         detailVC.defaults = defaults
-        detailVC.addToFavoritesButton.isEnabled = false
         self.show(detailVC, sender: nil)
     }
 

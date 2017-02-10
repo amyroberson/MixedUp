@@ -489,11 +489,11 @@ class MixedUpAPI {
         return .success([])
     }
     
-    fileprivate static func getBarfromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Bar? {
+    static func getBarfromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Bar? {
         return nil
     }
     
-    fileprivate static func getLocationfromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Location? {
+    static func getLocationfromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Location? {
         return nil
     }
     

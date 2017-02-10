@@ -10,11 +10,11 @@
 		E17F24451E4CDC5E00AD17A6 /* DrinkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F24441E4CDC5E00AD17A6 /* DrinkDetailViewController.swift */; };
 		E17F24471E4D09A300AD17A6 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F24461E4D09A300AD17A6 /* FavoritesViewController.swift */; };
 		E17F24491E4D122600AD17A6 /* GeneratedRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F24481E4D122600AD17A6 /* GeneratedRecipesViewController.swift */; };
-		E18211531E4CD11400D57380 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853221E4914CD005C8C37 /* AppDelegate.swift */; };
-		E18211541E4CD11B00D57380 /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853241E4914CD005C8C37 /* BirthdayViewController.swift */; };
-		E18211551E4CD12100D57380 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18854001E4B5896005C8C37 /* TabsViewController.swift */; };
+		E17F244A1E4E2FD300AD17A6 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853B21E4954BD005C8C37 /* Util.swift */; };
+		E17F244B1E4E555A00AD17A6 /* IBAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */; };
+		E17F244C1E4E556400AD17A6 /* DrinkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F24441E4CDC5E00AD17A6 /* DrinkDetailViewController.swift */; };
+		E17F244D1E4E556500AD17A6 /* DrinkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F24441E4CDC5E00AD17A6 /* DrinkDetailViewController.swift */; };
 		E18211561E4CD12600D57380 /* IBACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C391E4B743600C478CA /* IBACell.swift */; };
-		E18211571E4CD12900D57380 /* IBAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */; };
 		E18211581E4CD12C00D57380 /* InventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */; };
 		E18211591E4CD13000D57380 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C481E4C12DB00C478CA /* Theme.swift */; };
 		E182115A1E4CD1E600D57380 /* IngredientTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C401E4BBB8700C478CA /* IngredientTypeCell.swift */; };
@@ -22,7 +22,6 @@
 		E182115C1E4CD1E600D57380 /* IngredientListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C441E4BC20100C478CA /* IngredientListController.swift */; };
 		E182115D1E4CD1E600D57380 /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C421E4BC1E200C478CA /* IngredientCell.swift */; };
 		E182115F1E4CD1F300D57380 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853AE1E4945E1005C8C37 /* CoreDataStack.swift */; };
-		E18211601E4CD1F300D57380 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853B21E4954BD005C8C37 /* Util.swift */; };
 		E18211611E4CD1F300D57380 /* DrinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FC1E4AB6B2005C8C37 /* DrinkService.swift */; };
 		E18211621E4CD1F300D57380 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FA1E4A9CC6005C8C37 /* UserService.swift */; };
 		E18211631E4CD1F300D57380 /* IngredientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FE1E4AD77C005C8C37 /* IngredientService.swift */; };
@@ -573,6 +572,7 @@
 				E1A13ED91E4CD27600286B2B /* IngredientTypeCell.swift in Sources */,
 				E1A13ED81E4CD27600286B2B /* Theme.swift in Sources */,
 				E1A13EBC1E4CD25500286B2B /* Glass+CoreDataClass.swift in Sources */,
+				E17F244C1E4E556400AD17A6 /* DrinkDetailViewController.swift in Sources */,
 				E1A13ECE1E4CD26C00286B2B /* Util.swift in Sources */,
 				E1A13EBD1E4CD25500286B2B /* Glass+CoreDataProperties.swift in Sources */,
 				E18853381E4914CD005C8C37 /* MixedUpTests.swift in Sources */,
@@ -584,11 +584,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E182116F1E4CD1FA00D57380 /* Tool+CoreDataClass.swift in Sources */,
+				E17F244B1E4E555A00AD17A6 /* IBAViewController.swift in Sources */,
 				E182116E1E4CD1FA00D57380 /* Drink+CoreDataProperties.swift in Sources */,
-				E18211551E4CD12100D57380 /* TabsViewController.swift in Sources */,
 				E18211611E4CD1F300D57380 /* DrinkService.swift in Sources */,
 				E18211591E4CD13000D57380 /* Theme.swift in Sources */,
-				E18211531E4CD11400D57380 /* AppDelegate.swift in Sources */,
 				E18211671E4CD1FA00D57380 /* IngredientType+CoreDataClass.swift in Sources */,
 				E18853431E4914CD005C8C37 /* MixedUpUITests.swift in Sources */,
 				E18211731E4CD1FA00D57380 /* User+CoreDataClass.swift in Sources */,
@@ -598,21 +597,20 @@
 				E18211631E4CD1F300D57380 /* IngredientService.swift in Sources */,
 				E18211701E4CD1FA00D57380 /* Tool+CoreDataProperties.swift in Sources */,
 				E182116A1E4CD1FA00D57380 /* Location+CoreDataProperties.swift in Sources */,
-				E18211571E4CD12900D57380 /* IBAViewController.swift in Sources */,
 				E182115F1E4CD1F300D57380 /* CoreDataStack.swift in Sources */,
 				E18211691E4CD1FA00D57380 /* Location+CoreDataClass.swift in Sources */,
 				E182115B1E4CD1E600D57380 /* addInventoryViewController.swift in Sources */,
 				E18211751E4CD1FA00D57380 /* Bar+CoreDataClass.swift in Sources */,
 				E182115A1E4CD1E600D57380 /* IngredientTypeCell.swift in Sources */,
+				E17F244D1E4E556500AD17A6 /* DrinkDetailViewController.swift in Sources */,
 				E182115D1E4CD1E600D57380 /* IngredientCell.swift in Sources */,
 				E18211721E4CD1FA00D57380 /* Color+CoreDataProperties.swift in Sources */,
-				E18211541E4CD11B00D57380 /* BirthdayViewController.swift in Sources */,
 				E18211711E4CD1FA00D57380 /* Color+CoreDataClass.swift in Sources */,
 				E18211621E4CD1F300D57380 /* UserService.swift in Sources */,
+				E17F244A1E4E2FD300AD17A6 /* Util.swift in Sources */,
 				E182116B1E4CD1FA00D57380 /* Glass+CoreDataClass.swift in Sources */,
 				E18211661E4CD1FA00D57380 /* Ingredient+CoreDataProperties.swift in Sources */,
 				E18211651E4CD1FA00D57380 /* Ingredient+CoreDataClass.swift in Sources */,
-				E18211601E4CD1F300D57380 /* Util.swift in Sources */,
 				E18211681E4CD1FA00D57380 /* IngredientType+CoreDataProperties.swift in Sources */,
 				E182116D1E4CD1FA00D57380 /* Drink+CoreDataClass.swift in Sources */,
 				E18211761E4CD1FA00D57380 /* Bar+CoreDataProperties.swift in Sources */,

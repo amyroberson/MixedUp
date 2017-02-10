@@ -22,30 +22,22 @@ class addInventoryViewController: UIViewController, UITextFieldDelegate {
   
     @IBAction func addIngredientPressed(_ sender: UIButton) {
         let ingredient = NSEntityDescription.insertNewObject(forEntityName: Ingredient.entityName,
-                                                             into: (coreDataStack?.privateQueueContext)!) as! Ingredient
+                                                             into: (coreDataStack?.mainQueueContext)!) as! Ingredient
         ingredient.type = ingredientType!
         ingredient.displayName = displayNameTextField.text!
-        ingredientStore?.createIngredient(ingredient: ingredient, completion: {result in
-            switch result{
-            case .success(let ingredients):
-                if ingredients.count > 0{
-                    let ingredient = ingredients[0]
-                    self.user?.inventory?.adding(ingredient)
+        let result = ingredientStore?.createCoreDataIngredient(newIngredient: ingredient, inContext: (coreDataStack?.mainQueueContext)!)
+            switch result!{
+            case .success(let tempIngredient):
+                if let user = user, let inventory = user.inventory{
+                    user.inventory = (inventory.adding(tempIngredient) as NSSet)
                 }
             default:
                 print("ingredient did not get created")
             }
-        })
-        
-        userStore?.updateUser(user: user!, caseString: "inventory", completion: {result in
-            switch result{
-            case .success(let users):
-                if users.count > 0{
-                    self.user = users[0]
-                }
-            default:
-                print("user did not get updated")
-            }})
+    
+        if let user = user, let inventory = user.inventory{
+                user.inventory = (inventory.adding(ingredient) as NSSet)
+        }
         let arrayCount: Int = Int((navigationController?.viewControllers.count)!)
         if arrayCount >= 2 {
             let uiVC: UIViewController = (navigationController?.viewControllers[arrayCount - 2])!

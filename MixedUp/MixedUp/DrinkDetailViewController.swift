@@ -33,10 +33,16 @@ class DrinkDetailViewController: UIViewController {
     @IBOutlet weak var addToFavoritesButton: UIButton!
     
     @IBOutlet weak var addedSuccesLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpLabels()
         setUpStackViews()
+        if let drink = drink {
+            if (user?.favoriteDrinks?.contains(drink))!{
+                addToFavoritesButton.isEnabled = false
+            }
+        }
         self.view.backgroundColor = Theme.viewBackgroundColor
         addedSuccesLabel.isHidden = true
         
@@ -64,8 +70,9 @@ class DrinkDetailViewController: UIViewController {
     
     
     @IBAction func addToFavoritesTapped(_ sender: UIButton) {
-        if let drink = drink {
-            user?.favoriteDrinks?.adding(drink)
+        if let drink = drink , let user = user, let favorites = user.favoriteDrinks{
+            
+            user.favoriteDrinks = (favorites.adding(drink) as NSSet)
             addedSuccesLabel.isHidden = false
         }
     }
@@ -114,7 +121,7 @@ class DrinkDetailViewController: UIViewController {
         glassLabel.text = "Served in a \(glass ?? "HighBall Glass") "
         glassLabel.textColor = Theme.labelColor
         glassLabel.font = Theme.labelFont
-        drinkDescriptionLabel.text = drink?.stringDescription 
+        drinkDescriptionLabel.text = drink?.stringDescription
         drinkDescriptionLabel.textColor = Theme.labelColor
         drinkDescriptionLabel.font = Theme.labelFont
         toolsLabel.text = "Tools:"
