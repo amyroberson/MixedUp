@@ -21,15 +21,18 @@ class addInventoryViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var displayNameTextField: UITextField!
   
     @IBAction func addIngredientPressed(_ sender: UIButton) {
-        let ingredient = NSEntityDescription.insertNewObject(forEntityName: Ingredient.entityName,
-                                                             into: (coreDataStack?.mainQueueContext)!) as! Ingredient
-        ingredient.type = ingredientType!
-        ingredient.displayName = displayNameTextField.text!
-        let result = ingredientStore?.createCoreDataIngredient(newIngredient: ingredient, inContext: (coreDataStack?.mainQueueContext)!)
+        let dictionary: [String: Any] = ["displayName": displayNameTextField.text!,
+                                         "type": ingredientType!]
+        let result = ingredientStore?.createCoreDataIngredient(dictionary: dictionary, inContext: (coreDataStack?.privateQueueContext)!)
             switch result!{
             case .success(let tempIngredient):
                 if let user = user, let inventory = user.inventory{
                     user.inventory = (inventory.adding(tempIngredient) as NSSet)
+                    do{
+                        try coreDataStack?.saveChanges()
+                    }catch{
+                        print("could not save")
+                    }
                 }
             default:
                 print("ingredient did not get created")

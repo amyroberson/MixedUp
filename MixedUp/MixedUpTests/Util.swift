@@ -23,6 +23,7 @@ enum Errors: Swift.Error{
     case resource(Util.Error)
     case invalidJSONData
     case inValidParameter
+    case failedToSave
     
 }
 

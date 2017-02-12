@@ -24,7 +24,7 @@ class IngredientListController: UITableViewController {
         super.viewDidLoad()
         
         
-        refreshView()
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped(_:)))
         self.title = ingredientType?.displayName
         tableView.delegate = self
@@ -79,7 +79,9 @@ class IngredientListController: UITableViewController {
         if let inventory = inventory {
             for ingredient in inventory{
                 if (ingredient as! Ingredient).type?.displayName == ingredientType?.displayName{
-                    ingredients.append((ingredient as! Ingredient))
+                    if !ingredients.contains((ingredient as! Ingredient)){
+                        ingredients.append((ingredient as! Ingredient))
+                    }
                 }
             }
         }

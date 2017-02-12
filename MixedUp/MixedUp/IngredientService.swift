@@ -55,26 +55,26 @@ final class IngredientService{
     internal func fetchMainQueueIngredients(predicate: NSPredicate? = nil,
                                             sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Ingredient] {
         
-        let fetchRequest = NSFetchRequest<Ingredient>(entityName: "Ingredient")
+        let fetchRequest = NSFetchRequest<Ingredient>(entityName: Ingredient.entityName)
         fetchRequest.sortDescriptors = sortDescriptors
         
         let mainQueueContext = self.coreDataStack.mainQueueContext
-        var mainQueueIngredient: [Ingredient]?
+        var mainQueueIngredients: [Ingredient]?
         var fetchRequestError: Error?
         mainQueueContext.performAndWait({
             do {
-                mainQueueIngredient = try mainQueueContext.fetch(fetchRequest)
+                mainQueueIngredients = try mainQueueContext.fetch(fetchRequest)
             }
             catch let error {
                 fetchRequestError = error
             }
         })
         
-        guard let ingredient = mainQueueIngredient else {
+        guard let ingredients = mainQueueIngredients else {
             throw fetchRequestError!
         }
         
-        return ingredient
+        return ingredients
     }
     
     func fetchIngredient(ingredient: User, inContext context: NSManagedObjectContext) -> ResourceResult<Ingredient> {
@@ -98,28 +98,34 @@ final class IngredientService{
         } else {
             return .failure(.inValidParameter)
         }
-
+        
     }
     
-    func createCoreDataIngredient( newIngredient: Ingredient, inContext context: NSManagedObjectContext) -> ResourceResult<Ingredient> {
-        let dictionary = newIngredient.toDictionary()
+    func createCoreDataIngredient( dictionary: [String: Any], inContext context: NSManagedObjectContext) -> ResourceResult<Ingredient> {
         var ingredient: Ingredient!
         context.performAndWait({ () -> Void in
             ingredient = NSEntityDescription.insertNewObject(forEntityName: Ingredient.entityName,
-                                                       into: context) as! Ingredient
+                                                             into: context) as! Ingredient
             ingredient.name = dictionary["name"] as? String ?? ""
-            ingredient.id = dictionary["id"] as? String? ?? UUID().uuidString
+            ingredient.id = dictionary["id"] as? String ?? UUID().uuidString
             ingredient.displayName = dictionary["displayName"] as? String ?? ""
             ingredient.isAlcoholic = dictionary["isAlcoholic"] as? Bool ?? false
             
-            if let type = dictionary["type"] as? [String: Any] {
-                let theType = MixedUpAPI.getIngredientTypeFromDictionary(type, inContext: context)
+            if let type = dictionary["type"] as? IngredientType {
+                let dictionary = type.toDictionary()
+                let theType = MixedUpAPI.getIngredientTypeFromDictionary(dictionary, inContext: context)
                 ingredient.type = theType
             }
         })
-        
-        return .success(ingredient)
+        let result = saveIngredient(ingredient: ingredient, inContext: context)
+        if let result = result {
+            return .success(result)
+        } else {
+            return .failure(.failedToSave)
+        }
     }
+    
+    
     
     func createIngredient(ingredient: Ingredient, completion: @escaping (ResourceResult<[Ingredient]>) -> ()){
         let dict = ingredient.toDictionary()
@@ -160,5 +166,23 @@ final class IngredientService{
         }
     }
     
-    
+    func saveIngredient(ingredient: Ingredient, inContext context:NSManagedObjectContext) -> Ingredient?{
+        let privateQueueContext = context
+        privateQueueContext.performAndWait({
+            try! privateQueueContext.obtainPermanentIDs(for: [ingredient])
+        })
+        let objectIDs = [ingredient.objectID]
+        let predicate = NSPredicate(format: "self IN %@", objectIDs)
+        
+        do {
+            try self.coreDataStack.saveChanges()
+            
+            let mainQueueIngredients = try self.fetchMainQueueIngredients(predicate: predicate,
+                                                                          sortDescriptors: [])
+            return mainQueueIngredients.last
+        } catch let error {
+            print (error)
+            return nil
+        }
+    }
 }

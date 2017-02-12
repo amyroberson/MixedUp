@@ -74,6 +74,12 @@ class DrinkDetailViewController: UIViewController {
             
             user.favoriteDrinks = (favorites.adding(drink) as NSSet)
             addedSuccesLabel.isHidden = false
+            addToFavoritesButton.isEnabled = false
+            do{
+                try coreDataStack?.saveChanges()
+            } catch {
+                print("did not save drink to user")
+            }
         }
     }
     

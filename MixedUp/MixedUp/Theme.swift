@@ -12,9 +12,10 @@ import UIKit
 struct Theme {
     static var labelColor = UIColor.black
     static var viewBackgroundColor = UIColor(colorLiteralRed: (200/255), green: (212/255), blue: (226/255), alpha: 1.0)
-    static var labelFont = UIFont(name: "HelveticaNeue", size: 17)
+    static var labelFont = UIFont(name: "HelveticaNeue", size: 17)!
     static var mainLabelFont = UIFont(name: "HelveticaNeue", size: 35)!
     static var warningLabelColor = UIColor.red
+    static var cellLabelFont = UIFont(name: "HelveticaNeue", size: 13)!
     
     
     static func styleDark(){

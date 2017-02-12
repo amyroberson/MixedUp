@@ -64,7 +64,7 @@ extension GeneratedRecipesViewController: UICollectionViewDataSource{
         let drink = generatedDrinks[indexPath.row]
         
         cell.drinkNameLabel.textColor = Theme.labelColor
-        cell.drinkNameLabel.font = Theme.labelFont
+        cell.drinkNameLabel.font = Theme.cellLabelFont
         cell.drinkNameLabel.text = drink.displayName
         
         return cell

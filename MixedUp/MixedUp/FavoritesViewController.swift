@@ -28,9 +28,12 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
         if let user = user {
             favoriteDrinks = Array(user.favoriteDrinks ?? []) as! [Drink]
         }
-        refresh()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refresh()
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let drink = favoriteDrinks[indexPath.row]
@@ -65,7 +68,7 @@ extension FavoritesViewController: UICollectionViewDataSource{
         let drink = favoriteDrinks[indexPath.row]
         
         cell.drinkNameLabel.textColor = Theme.labelColor
-        cell.drinkNameLabel.font = Theme.labelFont
+        cell.drinkNameLabel.font = Theme.cellLabelFont
         cell.drinkNameLabel.text = drink.displayName
         
         return cell
@@ -75,6 +78,9 @@ extension FavoritesViewController: UICollectionViewDataSource{
     
     func refresh(){
         DispatchQueue.main.async {
+            if let user = self.user {
+                self.favoriteDrinks = Array(user.favoriteDrinks ?? []) as! [Drink]
+            }
             self.collectionView.reloadData()
         }
     }
