@@ -57,6 +57,7 @@ final class IngredientService{
         
         let fetchRequest = NSFetchRequest<Ingredient>(entityName: Ingredient.entityName)
         fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.predicate = predicate
         
         let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueIngredients: [Ingredient]?
@@ -185,4 +186,35 @@ final class IngredientService{
             return nil
         }
     }
+    
+    func getIngredientsOfType(type: IngredientType, completion: @escaping (ResourceResult<[Ingredient]>) -> ()){
+        let typeID = type.id!
+        let string = "https://n9hfoxnwqg.execute-api.us-east-2.amazonaws.com/alpha/ingredients?withTypeIds=\(typeID)"
+        let url = URL(string: string)!
+        let request = requestBuilder(url: url, method: "GET")
+        let task = session.dataTask(with: request,  completionHandler: {
+            (data, response, error) -> Void in
+            var result = self.processIngredientRequest(data: data, error: error as NSError?)
+            
+            if case .success(let ingredients) = result {
+                let ids = ingredients.map{$0.id}
+                let predicate = NSPredicate(format: "id IN %@ ",ids)
+                
+                do {
+                    try self.coreDataStack.saveChanges()
+                    
+                    let mainQueueIngredients = try self.fetchMainQueueIngredients(predicate: predicate, sortDescriptors: [])
+                    result = .success(mainQueueIngredients)
+                }
+                catch let error {
+                    result = .fail(error as NSError)
+                }
+            }
+            completion(result)
+        })
+        task.resume()
+        
+    }
+
+
 }

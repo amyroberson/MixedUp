@@ -77,6 +77,7 @@ final class UserService{
         
         let fetchRequest = NSFetchRequest<User>(entityName: "User")
         fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.predicate = predicate
         
         let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueUser: [User]?

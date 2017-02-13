@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var drinkStore: DrinkService? = nil
     var user: User? = nil
     let userID = "userID"
-    
+    var typeStore: TypeService? = nil
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         defaults.register(defaults: ["Over21": false])
@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         userStore = UserService(coreDataStack)
         ingredientStore = IngredientService(coreDataStack)
         drinkStore = DrinkService(coreDataStack)
+        typeStore = TypeService(coreDataStack)
         
         if let userIDString = defaults.string(forKey: userID), userIDString.isEmpty == false{
             
@@ -64,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController.ingredientStore = ingredientStore
             initialViewController.drinkStore = drinkStore
             initialViewController.user = user
+            initialViewController.typeStore = typeStore
             
             window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
@@ -80,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController.userStore = userStore
             initialViewController.ingredientStore = ingredientStore
             initialViewController.drinkStore = drinkStore
+            initialViewController.typeStore = typeStore
             
             window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()

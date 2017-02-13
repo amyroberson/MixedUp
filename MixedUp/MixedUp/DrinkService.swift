@@ -58,6 +58,7 @@ final class DrinkService{
         
         let fetchRequest = NSFetchRequest<Drink>(entityName: "Drink")
         fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.predicate = predicate
         
         let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueDrink: [Drink]?
@@ -79,7 +80,7 @@ final class DrinkService{
     }
     
     func getIBADrinks(completion: @escaping (ResourceResult<[Drink]>) -> ()){
-        let url = URL(string: "https://arcane-journey-22728.herokuapp.com/drinks")!
+        let url = URL(string: "https://n9hfoxnwqg.execute-api.us-east-2.amazonaws.com/alpha/drinks")!
         let request = requestBuilder(url: url, method: "GET")
         let task = session.dataTask(with: request,  completionHandler: {
             (data, response, error) -> Void in
@@ -107,6 +108,37 @@ final class DrinkService{
             completion(result)
         })
         task.resume()
+    }
+    
+    func getGeneratedDrinks(user: User, completion: @escaping (ResourceResult<[Drink]>) -> ()){
+        let inventory = user.inventory?.allObjects as! [Ingredient]
+        let names = inventory.map {$0.name!}
+        let string = names.joined(separator: ",")
+        let stringURL = "https://n9hfoxnwqg.execute-api.us-east-2.amazonaws.com/alpha/drinks?fromInventory=\(string)"
+        let url = URL(string: stringURL)!
+        let request = requestBuilder(url: url, method: "GET")
+        let task = session.dataTask(with: request,  completionHandler: {
+            (data, response, error) -> Void in
+            var result = self.processDrinkRequest(data: data, error: error as NSError?)
+            
+            if case .success(let drinks) = result {
+                let ids = drinks.map{$0.id}
+                let predicate = NSPredicate(format: "id IN %@ ",ids)
+                
+                do {
+                    try self.coreDataStack.saveChanges()
+                    
+                    let mainQueueDrinks = try self.fetchMainQueueDrinks(predicate: predicate, sortDescriptors: [])
+                    result = .success(mainQueueDrinks)
+                }
+                catch let error {
+                    result = .fail(error as NSError)
+                }
+            }
+            completion(result)
+        })
+        task.resume()
+
     }
     
 }

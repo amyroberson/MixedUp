@@ -29,17 +29,6 @@ class MixedUpUITests: XCTestCase {
         
         super.tearDown()
     }
-    
-    func testUnder21() {
-        
-        let app = XCUIApplication()
-        let datePickersQuery = app.datePickers
-        datePickersQuery.pickerWheels["2017"].swipeDown()
-        datePickersQuery.pickerWheels["1989"].swipeLeft()
-        app.buttons["Enter"].tap()
-        app.staticTexts["Must be 21 or older to continue"].tap()
-        XCTAssertEqual(app.buttons.count, 1)
-        XCTAssert(app.pickerWheels.count == 1)
-    }
+
     
 }

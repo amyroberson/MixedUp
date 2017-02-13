@@ -38,8 +38,7 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
                 print("could not get drinks")
             }
         })
-        
-        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "IBA")
+    
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
         self.title = "IBA Drink Recipes"

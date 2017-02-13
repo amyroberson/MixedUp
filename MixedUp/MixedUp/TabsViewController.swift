@@ -16,6 +16,9 @@ class TabsViewController: UITabBarController {
     var ingredientStore: IngredientService? = nil
     var drinkStore: DrinkService? = nil
     var user: User? = nil
+    var typeStore: TypeService? = nil
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,7 @@ class TabsViewController: UITabBarController {
                     inventoryVC.ingredientStore = ingredientStore
                     inventoryVC.user = user
                     inventoryVC.userStore = userStore
+                    inventoryVC.typeStore = typeStore
                 } else if let favoriteVC = controller.topViewController as? FavoritesViewController {
                     favoriteVC.defaults = defaults
                     favoriteVC.coreDataStack = coreDataStack

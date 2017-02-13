@@ -9,35 +9,36 @@
 import UIKit
 import CoreData
 
-class addInventoryViewController: UIViewController, UITextFieldDelegate {
+class addInventoryViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var coreDataStack: CoreDataStack? = nil
     var ingredientStore: IngredientService? = nil
     var userStore: UserService? = nil
     var user: User? = nil
     var ingredientType: IngredientType? = nil
+    var ingredients: [Ingredient] = []{
+        didSet {
+        self.ingredient = ingredients[0]
+        }
+    }
+    var ingredient: Ingredient? = nil
 
     @IBOutlet weak var typeDisplayLabel: UILabel!
     @IBOutlet weak var displayNameTextField: UITextField!
+    @IBOutlet weak var ingredientPicker: UIPickerView!
   
     @IBAction func addIngredientPressed(_ sender: UIButton) {
-        let dictionary: [String: Any] = ["displayName": displayNameTextField.text!,
-                                         "type": ingredientType!]
-        let result = ingredientStore?.createCoreDataIngredient(dictionary: dictionary, inContext: (coreDataStack?.privateQueueContext)!)
-            switch result!{
-            case .success(let tempIngredient):
-                if let user = user, let inventory = user.inventory{
-                    user.inventory = (inventory.adding(tempIngredient) as NSSet)
-                    do{
-                        try coreDataStack?.saveChanges()
-                    }catch{
-                        print("could not save")
-                    }
-                }
-            default:
-                print("ingredient did not get created")
+       if let user = user, let inventory = user.inventory, let ingredient = self.ingredient{
+            ingredient.type = ingredientType
+            user.inventory = (inventory.adding(ingredient) as NSSet)
+        do{
+            try coreDataStack?.saveChanges()
+            }catch{
+                print("could not save")
             }
-    
+       } else {
+            print("ingredient did not get saved to user")
+        }
         let arrayCount: Int = Int((navigationController?.viewControllers.count)!)
         if arrayCount >= 2 {
             let uiVC: UIViewController = (navigationController?.viewControllers[arrayCount - 2])!
@@ -51,27 +52,48 @@ class addInventoryViewController: UIViewController, UITextFieldDelegate {
         if let ingredientType = ingredientType{
             typeDisplayLabel.text = ingredientType.displayName
         }
-        displayNameTextField.delegate = self
+        ingredientPicker.delegate = self
+        ingredientPicker.dataSource = self
+        
         
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField.text?.isEmpty == true {
-            return false
-        } else {
-            textField.resignFirstResponder()
-            return true
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ingredientStore?.getIngredientsOfType(type: ingredientType!, completion: {result in
+            switch result{
+            case .success(let theIngredients):
+                self.ingredients = theIngredients
+                self.refresh()
+                
+            default:
+                print("could not get drinks")
+            }
+        })
+        
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.text?.isEmpty == true {
-            return false
-        } else {
-            textField.resignFirstResponder()
-            return true
-        }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return ingredients.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return ingredients[row].displayName
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        ingredient = ingredients[row]
+        
+    }
+    
+    func refresh(){
+        DispatchQueue.main.async {
+            self.ingredientPicker.reloadAllComponents()
+        }
+    }
 
 }

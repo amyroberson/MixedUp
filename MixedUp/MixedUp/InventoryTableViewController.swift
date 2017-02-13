@@ -16,23 +16,20 @@ class InventoryTableViewController: UITableViewController {
     var ingredientStore: IngredientService? = nil
     var userStore: UserService? = nil
     var user: User? = nil
+    var typeStore: TypeService? = nil
 
     
     func setTypes(){
-        let type1 = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
-                                                                    into: (coreDataStack?.privateQueueContext)!) as! IngredientType
-        type1.displayName = "Mixer"
-        
-        let type2 = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
-                                                        into: (coreDataStack?.privateQueueContext)!) as! IngredientType
-        type2.displayName = "Liquor"
-        let type3 = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
-                                                        into: (coreDataStack?.privateQueueContext)!) as! IngredientType
-        type3.displayName = "Liquers"
-        let type4 = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
-                                                        into: (coreDataStack?.privateQueueContext)!) as! IngredientType
-        type4.displayName = "Garnishes"
-        types = [type1, type2, type3, type4]
+        typeStore?.getAllTypes(completion: {result in
+            switch result{
+            case .success(let theTypes):
+                self.types = theTypes
+                self.refresh()
+                
+            default:
+                print("could not get types")
+            }
+        })
     }
     
     override func viewDidLoad() {
@@ -77,8 +74,12 @@ class InventoryTableViewController: UITableViewController {
         ingredientTableVC.ingredientType = type
         
         self.show(ingredientTableVC, sender: nil)
-        
-        
+    }
+    
+    func refresh(){
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
 }

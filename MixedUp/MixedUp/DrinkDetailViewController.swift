@@ -124,7 +124,7 @@ class DrinkDetailViewController: UIViewController {
         ingredientsLabel.textColor = Theme.labelColor
         ingredientsLabel.font = Theme.labelFont
         let glass = drink?.glass?.displayName
-        glassLabel.text = "Served in a \(glass ?? "HighBall Glass") "
+        glassLabel.text = "Served in a \(glass ?? "HighBall") Glass"
         glassLabel.textColor = Theme.labelColor
         glassLabel.font = Theme.labelFont
         drinkDescriptionLabel.text = drink?.stringDescription

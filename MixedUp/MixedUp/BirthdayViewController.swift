@@ -17,6 +17,7 @@ class BirthdayViewController: UIViewController {
     var ingredientStore: IngredientService? = nil
     var drinkStore: DrinkService? = nil
     var user: User? = nil
+    var typeStore: TypeService? = nil
     
     @IBOutlet weak var mustBeLabel: UILabel!
     
@@ -41,6 +42,7 @@ class BirthdayViewController: UIViewController {
             switch result{
                 case .success(let user):
                     self.user = user
+                    //send user to server
                     self.defaults?.set(user.id, forKey: "userID")
                 default:
                     print("error creating user")
@@ -59,6 +61,7 @@ class BirthdayViewController: UIViewController {
             tabsVC.ingredientStore = ingredientStore
             tabsVC.drinkStore = drinkStore
             tabsVC.user = user
+            tabsVC.typeStore = typeStore
             self.show(tabsVC, sender: nil)
         }
         
