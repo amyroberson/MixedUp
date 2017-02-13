@@ -490,66 +490,75 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2VV-5F-atu">
-                                <rect key="frame" x="66" y="35" width="243" height="597"/>
+                                <rect key="frame" x="16" y="35" width="343" height="597"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DisplayName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJV-GW-nDZ">
-                                        <rect key="frame" x="71" y="0.0" width="101" height="20.5"/>
+                                        <rect key="frame" x="121" y="0.0" width="101" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SummerMix" translatesAutoresizingMaskIntoConstraints="NO" id="htm-WQ-oPP">
-                                        <rect key="frame" x="71.5" y="35.5" width="100" height="90"/>
+                                        <rect key="frame" x="121.5" y="35.5" width="100" height="90"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ds9-p9-Xgo">
-                                        <rect key="frame" x="55.5" y="140.5" width="132.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ds9-p9-Xgo">
+                                        <rect key="frame" x="20" y="140.5" width="303" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="hte-ds-ejn"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serve in a &quot;Glass&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjf-XY-Ayv">
-                                        <rect key="frame" x="54" y="176" width="135.5" height="20.5"/>
+                                        <rect key="frame" x="104" y="176" width="135.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OL6-Va-vaM">
-                                        <rect key="frame" x="78.5" y="211.5" width="86" height="20.5"/>
+                                        <rect key="frame" x="128.5" y="211.5" width="86" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" placeholderIntrinsicWidth="243" placeholderIntrinsicHeight="20" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PUG-EF-MDQ" userLabel="IngredientsStack">
-                                        <rect key="frame" x="0.0" y="247" width="243" height="20"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" placeholderIntrinsicWidth="243" placeholderIntrinsicHeight="50" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PUG-EF-MDQ" userLabel="IngredientsStack">
+                                        <rect key="frame" x="50" y="247" width="243" height="50"/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqC-uR-dQb">
-                                        <rect key="frame" x="101" y="282" width="41" height="20.5"/>
+                                        <rect key="frame" x="151" y="312" width="41" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" placeholderIntrinsicWidth="243" placeholderIntrinsicHeight="20" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cE5-5f-ck9" userLabel="ToolStack">
-                                        <rect key="frame" x="0.0" y="317.5" width="243" height="20"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cE5-5f-ck9" userLabel="ToolStack">
+                                        <rect key="frame" x="50" y="347.5" width="243" height="50"/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink Added To Favorites!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gcf-AA-pk2">
-                                        <rect key="frame" x="23.5" y="352.5" width="196.5" height="20.5"/>
+                                        <rect key="frame" x="73.5" y="412.5" width="196.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIa-bO-Oe8">
-                                        <rect key="frame" x="64" y="388" width="115" height="209"/>
+                                        <rect key="frame" x="114" y="448" width="115" height="149"/>
                                         <state key="normal" title="Add To Favorites"/>
                                         <connections>
                                             <action selector="addToFavoritesTapped:" destination="v04-mj-bH8" eventType="touchUpInside" id="MZ2-qt-kT4"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="ds9-p9-Xgo" firstAttribute="leading" secondItem="2VV-5F-atu" secondAttribute="leading" constant="20" id="TmS-0M-F47"/>
+                                    <constraint firstAttribute="trailing" secondItem="ds9-p9-Xgo" secondAttribute="trailing" constant="20" id="f0S-qk-2S8"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.78490549269999998" green="0.83020515480000001" blue="0.88821171470000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="2VV-5F-atu" secondAttribute="trailing" id="Psm-4s-1qZ"/>
                             <constraint firstItem="2VV-5F-atu" firstAttribute="centerY" secondItem="Uyj-lR-V21" secondAttribute="centerY" id="guE-0P-DxW"/>
+                            <constraint firstItem="2VV-5F-atu" firstAttribute="leading" secondItem="Uyj-lR-V21" secondAttribute="leadingMargin" id="hwi-di-MFG"/>
                             <constraint firstItem="2VV-5F-atu" firstAttribute="top" secondItem="B4X-rz-0fk" secondAttribute="bottom" constant="15" id="wZe-3h-OTz"/>
                             <constraint firstItem="2VV-5F-atu" firstAttribute="centerX" secondItem="Uyj-lR-V21" secondAttribute="centerX" id="ydT-YY-ISd"/>
                         </constraints>

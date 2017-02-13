@@ -53,14 +53,14 @@ class DrinkDetailViewController: UIViewController {
             case "huricane":
                 drinkImage.image = UIImage(named: "BaseHuricane")
             case "lowball":
-                drinkImage.image = UIImage(named: "BaseLowballGarnish")
+                drinkImage.image = UIImage(named: "BaselowballGarnish")
             case "martini":
                 drinkImage.image = UIImage(named: "BaseMartini")
             case "shot":
                 drinkImage.image = UIImage(named: "BaseshotGlass")
-            case "wineGlass":
+            case "wineglass":
                 drinkImage.image = UIImage(named: "WineGlass")
-            case "ChampagneGlass":
+            case "champagneglass":
                 drinkImage.image = UIImage(named: "ChampagneGlass")
             default:
                 drinkImage.image = UIImage(named: "BaseMartiniSweet")
@@ -109,7 +109,7 @@ class DrinkDetailViewController: UIViewController {
             }
         } else {
             let theingredientLabel: UILabel = UILabel()
-            theingredientLabel.text = "No Tools Required!"
+            theingredientLabel.text = "No ingredients found."
             theingredientLabel.textColor = Theme.labelColor
             theingredientLabel.font = Theme.labelFont
             ingredientStackView.addSubview(theingredientLabel)
@@ -139,3 +139,4 @@ class DrinkDetailViewController: UIViewController {
     
     
 }
+

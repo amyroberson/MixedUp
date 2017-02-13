@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+
 enum ResourceResult<A> {
     case success(A)
     case sucess(Bool)
