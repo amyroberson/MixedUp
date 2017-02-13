@@ -154,8 +154,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You need more ingredients!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cID-k8-IPD">
+                                <rect key="frame" x="83" y="323" width="209.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NOX-h3-PKL">
-                                <rect key="frame" x="15" y="15" width="345" height="588"/>
+                                <rect key="frame" x="15" y="79" width="345" height="539"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fyD-W5-Ly5">
                                     <size key="itemSize" width="100" height="120"/>
@@ -179,7 +186,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGY-Sa-TyD">
-                                                    <rect key="frame" x="12.5" y="98" width="76" height="17"/>
+                                                    <rect key="frame" x="12" y="98" width="76" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -202,15 +209,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.78490549269999998" green="0.83020515480000001" blue="0.88821171470000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="NOX-h3-PKL" firstAttribute="leading" secondItem="p2m-Lo-e51" secondAttribute="leading" constant="15" id="JGY-yK-Wth"/>
-                            <constraint firstAttribute="trailing" secondItem="NOX-h3-PKL" secondAttribute="trailing" constant="15" id="XYX-iD-Gvq"/>
-                            <constraint firstItem="uas-G3-Xv8" firstAttribute="top" secondItem="NOX-h3-PKL" secondAttribute="bottom" constant="15" id="kho-Ug-Z3o"/>
-                            <constraint firstItem="NOX-h3-PKL" firstAttribute="top" secondItem="p2m-Lo-e51" secondAttribute="top" constant="15" id="ykv-sE-sqv"/>
+                            <constraint firstAttribute="trailing" secondItem="NOX-h3-PKL" secondAttribute="trailing" constant="15" id="4o4-yj-eaA"/>
+                            <constraint firstItem="uas-G3-Xv8" firstAttribute="top" secondItem="NOX-h3-PKL" secondAttribute="bottom" id="5BT-y9-GZp"/>
+                            <constraint firstItem="cID-k8-IPD" firstAttribute="centerX" secondItem="p2m-Lo-e51" secondAttribute="centerX" id="P1F-6u-sko"/>
+                            <constraint firstItem="NOX-h3-PKL" firstAttribute="leading" secondItem="p2m-Lo-e51" secondAttribute="leading" constant="15" id="lUf-uR-jJo"/>
+                            <constraint firstItem="NOX-h3-PKL" firstAttribute="top" secondItem="fIe-94-o8s" secondAttribute="bottom" constant="15" id="pNn-S9-k4D"/>
+                            <constraint firstItem="cID-k8-IPD" firstAttribute="centerY" secondItem="p2m-Lo-e51" secondAttribute="centerY" id="sTb-lr-GG6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="R8I-cv-pCf"/>
                     <connections>
                         <outlet property="collectionView" destination="NOX-h3-PKL" id="fQe-lE-Kpk"/>
+                        <outlet property="needMoreIngredientsLabel" destination="cID-k8-IPD" id="oE2-64-X2y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnc-Yh-LQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -329,7 +339,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mwX-l9-jmR">
-                                <rect key="frame" x="15" y="20" width="345" height="583"/>
+                                <rect key="frame" x="15" y="20" width="345" height="598"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Adh-hQ-axc">
                                     <size key="itemSize" width="100" height="120"/>
@@ -379,7 +389,7 @@
                         <constraints>
                             <constraint firstItem="mwX-l9-jmR" firstAttribute="leading" secondItem="Bs2-Gk-Egt" secondAttribute="leading" constant="15" id="0vE-Cj-4SX"/>
                             <constraint firstItem="mwX-l9-jmR" firstAttribute="top" secondItem="Bs2-Gk-Egt" secondAttribute="topMargin" constant="20" id="NR6-3T-cuf"/>
-                            <constraint firstItem="1zk-L5-S0f" firstAttribute="top" secondItem="mwX-l9-jmR" secondAttribute="bottom" constant="15" id="PJd-7A-tEF"/>
+                            <constraint firstItem="1zk-L5-S0f" firstAttribute="top" secondItem="mwX-l9-jmR" secondAttribute="bottom" id="PJd-7A-tEF"/>
                             <constraint firstAttribute="trailing" secondItem="mwX-l9-jmR" secondAttribute="trailing" constant="15" id="VMs-U5-i0k"/>
                         </constraints>
                     </view>
@@ -409,7 +419,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JTQ-1e-1N2">
-                                <rect key="frame" x="15" y="123" width="345" height="480"/>
+                                <rect key="frame" x="15" y="123" width="345" height="495"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mfj-ZD-73f">
                                     <size key="itemSize" width="100" height="120"/>
@@ -459,7 +469,7 @@
                         <constraints>
                             <constraint firstItem="8S8-JE-0G2" firstAttribute="top" secondItem="HHY-nj-lXb" secondAttribute="bottom" id="6ge-3b-rYl"/>
                             <constraint firstItem="8S8-JE-0G2" firstAttribute="leading" secondItem="4UA-lE-ud2" secondAttribute="leading" id="8Bs-Ma-Cft"/>
-                            <constraint firstItem="FnS-3e-kZ1" firstAttribute="top" secondItem="JTQ-1e-1N2" secondAttribute="bottom" constant="15" id="Ifd-fb-SGJ"/>
+                            <constraint firstItem="FnS-3e-kZ1" firstAttribute="top" secondItem="JTQ-1e-1N2" secondAttribute="bottom" id="Ifd-fb-SGJ"/>
                             <constraint firstAttribute="trailing" secondItem="8S8-JE-0G2" secondAttribute="trailing" id="WEt-ph-arV"/>
                             <constraint firstItem="JTQ-1e-1N2" firstAttribute="leading" secondItem="4UA-lE-ud2" secondAttribute="leading" constant="15" id="e1C-1H-ZdJ"/>
                             <constraint firstAttribute="trailing" secondItem="JTQ-1e-1N2" secondAttribute="trailing" constant="15" id="hui-fq-Usd"/>

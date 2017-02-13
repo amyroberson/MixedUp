@@ -86,7 +86,9 @@ class DrinkDetailViewController: UIViewController {
     func setUpStackViews(){
         if let tools = drink?.tools{
             for tool in tools {
-                let theToolLabel: UILabel = UILabel()
+                let theToolLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+                theToolLabel.center = CGPoint(x: 160, y: 285)
+                theToolLabel.textAlignment = .center
                 theToolLabel.text = (tool as! Tool).displayName ?? ""
                 theToolLabel.textColor = Theme.labelColor
                 theToolLabel.font = Theme.labelFont

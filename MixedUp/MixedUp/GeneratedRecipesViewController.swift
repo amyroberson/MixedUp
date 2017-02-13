@@ -19,12 +19,13 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
     var user: User? = nil
     var drinks: [Drink] = []
     
+    @IBOutlet weak var needMoreIngredientsLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
-        
         refresh()
+        needMoreIngredientsLabel.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +87,11 @@ extension GeneratedRecipesViewController: UICollectionViewDataSource{
     func refresh(){
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+            if self.drinks.count == 0 {
+               self.needMoreIngredientsLabel.isHidden = false
+            } else {
+                self.needMoreIngredientsLabel.isHidden = true
+            }
         }
     }
     
