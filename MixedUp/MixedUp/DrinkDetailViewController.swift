@@ -46,26 +46,7 @@ class DrinkDetailViewController: UIViewController {
         self.view.backgroundColor = Theme.viewBackgroundColor
         addedSuccesLabel.isHidden = true
         
-        if let glassType = drink?.glass?.name {
-            switch glassType {
-            case "highball":
-                drinkImage.image = UIImage(named: "BaseHighBallWithStraw")
-            case "huricane":
-                drinkImage.image = UIImage(named: "BaseHuricane")
-            case "lowball":
-                drinkImage.image = UIImage(named: "BaselowballGarnish")
-            case "martini":
-                drinkImage.image = UIImage(named: "BaseMartini")
-            case "shot":
-                drinkImage.image = UIImage(named: "BaseshotGlass")
-            case "wineglass":
-                drinkImage.image = UIImage(named: "WineGlass")
-            case "champagneglass":
-                drinkImage.image = UIImage(named: "ChampagneGlass")
-            default:
-                drinkImage.image = UIImage(named: "BaseMartiniSweet")
-            }
-        }
+        drinkImage.image = Theme.setImageForDrink(drink: drink!)
     }
     
     
@@ -92,7 +73,7 @@ class DrinkDetailViewController: UIViewController {
                 theToolLabel.text = (tool as! Tool).displayName ?? ""
                 theToolLabel.textColor = Theme.labelColor
                 theToolLabel.font = Theme.labelFont
-                toolsStack.addSubview(theToolLabel)
+                toolsStack.addArrangedSubview(theToolLabel)
             }
         } else {
             let theToolLabel: UILabel = UILabel()
@@ -103,11 +84,13 @@ class DrinkDetailViewController: UIViewController {
         }
         if let ingredients = drink?.ingredients{
             for ingredient in ingredients {
-                let theingredientLabel: UILabel = UILabel()
+                let theingredientLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+                theingredientLabel.center = CGPoint(x: 160, y: 285)
+                theingredientLabel.textAlignment = .center
                 theingredientLabel.text = (ingredient as! Ingredient).displayName ?? ""
                 theingredientLabel.textColor = Theme.labelColor
                 theingredientLabel.font = Theme.labelFont
-                ingredientStackView.addSubview(theingredientLabel)
+                ingredientStackView.addArrangedSubview(theingredientLabel)
             }
         } else {
             let theingredientLabel: UILabel = UILabel()
@@ -121,22 +104,26 @@ class DrinkDetailViewController: UIViewController {
     func setUpLabels(){
         displayNameLabel.text = drink?.displayName
         displayNameLabel.textColor = Theme.labelColor
-        displayNameLabel.font = Theme.labelFont
+        displayNameLabel.font = Theme.boldLabelFont
         ingredientsLabel.text = "Ingredients:"
         ingredientsLabel.textColor = Theme.labelColor
         ingredientsLabel.font = Theme.labelFont
         let glass = drink?.glass?.displayName
         glassLabel.text = "Served in a \(glass ?? "HighBall") Glass"
         glassLabel.textColor = Theme.labelColor
-        glassLabel.font = Theme.labelFont
+        glassLabel.font = Theme.boldLabelFont
         drinkDescriptionLabel.text = drink?.stringDescription
         drinkDescriptionLabel.textColor = Theme.labelColor
         drinkDescriptionLabel.font = Theme.labelFont
         toolsLabel.text = "Tools:"
         toolsLabel.textColor = Theme.labelColor
-        toolsLabel.font = Theme.labelFont
+        toolsLabel.font = Theme.boldLabelFont
         addedSuccesLabel.textColor = Theme.labelColor
         addedSuccesLabel.font = Theme.labelFont
+        ingredientsLabel.font = Theme.boldLabelFont
+        ingredientsLabel.textColor = Theme.labelColor
+        
+        
     }
     
     

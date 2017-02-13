@@ -24,6 +24,7 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
         super.viewDidLoad()
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
+        self.title = "You Can Make These!"
         refresh()
         needMoreIngredientsLabel.isHidden = true
     }
@@ -75,6 +76,7 @@ extension GeneratedRecipesViewController: UICollectionViewDataSource{
         
         let drink = drinks[indexPath.row]
         
+        cell.drinkImage.image = Theme.setImageForDrink(drink: drink)
         cell.drinkNameLabel.textColor = Theme.labelColor
         cell.drinkNameLabel.font = Theme.cellLabelFont
         cell.drinkNameLabel.text = drink.displayName

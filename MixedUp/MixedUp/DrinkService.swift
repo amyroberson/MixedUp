@@ -46,7 +46,12 @@ final class DrinkService{
         
         do{
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
-            return MixedUpAPI.getDrinksFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
+            let back = MixedUpAPI.getDrinksFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
+            
+            // TODO: Delete stuff. TJ Added this
+            print(#function)
+            debugPrintDrinks(drinks: back.successValue!)
+            return back
         } catch {
             print(error)
             return .fail(error as NSError)

@@ -22,9 +22,10 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "IBA")
+        self.title = "Favorite Drinks"
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
+        
         if let user = user {
             favoriteDrinks = Array(user.favoriteDrinks ?? []) as! [Drink]
         }
@@ -67,6 +68,7 @@ extension FavoritesViewController: UICollectionViewDataSource{
         
         let drink = favoriteDrinks[indexPath.row]
         
+        cell.drinkImage.image = Theme.setImageForDrink(drink: drink)
         cell.drinkNameLabel.textColor = Theme.labelColor
         cell.drinkNameLabel.font = Theme.cellLabelFont
         cell.drinkNameLabel.text = drink.displayName

@@ -16,6 +16,14 @@ enum ResourceResult<A> {
     case failure(Errors)
     case fail(NSError)
     
+    var successValue: A? {
+        switch self {
+        case .success(let value):
+            return value
+        case .sucess, .fail, .failure:
+            return nil
+        }
+    }
 }
 
 enum Errors: Swift.Error{

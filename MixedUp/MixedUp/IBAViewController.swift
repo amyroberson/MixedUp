@@ -38,7 +38,7 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
                 print("could not get drinks")
             }
         })
-    
+        
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
         self.title = "IBA Drink Recipes"
@@ -120,6 +120,7 @@ extension IBAViewController: UICollectionViewDataSource{
         
         let drink = drinks[indexPath.row]
         
+        cell.drinkImage.image = Theme.setImageForDrink(drink: drink)
         cell.drinkNameLabel.textColor = Theme.labelColor
         cell.drinkNameLabel.font = Theme.cellLabelFont
         cell.drinkNameLabel.text = drink.displayName

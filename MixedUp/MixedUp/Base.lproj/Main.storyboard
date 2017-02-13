@@ -532,26 +532,26 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" placeholderIntrinsicWidth="243" placeholderIntrinsicHeight="50" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PUG-EF-MDQ" userLabel="IngredientsStack">
-                                        <rect key="frame" x="50" y="247" width="243" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" placeholderIntrinsicWidth="243" placeholderIntrinsicHeight="20" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PUG-EF-MDQ" userLabel="IngredientsStack">
+                                        <rect key="frame" x="50" y="247" width="243" height="20"/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqC-uR-dQb">
-                                        <rect key="frame" x="151" y="312" width="41" height="20.5"/>
+                                        <rect key="frame" x="151" y="282" width="41" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cE5-5f-ck9" userLabel="ToolStack">
-                                        <rect key="frame" x="50" y="347.5" width="243" height="50"/>
+                                        <rect key="frame" x="50" y="317.5" width="243" height="50"/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink Added To Favorites!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gcf-AA-pk2">
-                                        <rect key="frame" x="73.5" y="412.5" width="196.5" height="20.5"/>
+                                        <rect key="frame" x="73.5" y="382.5" width="196.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIa-bO-Oe8">
-                                        <rect key="frame" x="114" y="448" width="115" height="149"/>
+                                        <rect key="frame" x="114" y="418" width="115" height="179"/>
                                         <state key="normal" title="Add To Favorites"/>
                                         <connections>
                                             <action selector="addToFavoritesTapped:" destination="v04-mj-bH8" eventType="touchUpInside" id="MZ2-qt-kT4"/>
