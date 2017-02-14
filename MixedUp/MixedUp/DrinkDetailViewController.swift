@@ -19,10 +19,10 @@ class DrinkDetailViewController: UIViewController {
     var defaults: UserDefaults? = nil
     var drink: Drink? = nil
     
-    var scrollView: UIScrollView {
-        return view as! UIScrollView
-    }
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var stackViewContainer: UIView!
    
     @IBOutlet weak var displayNameLabel: UILabel!
     
@@ -45,7 +45,7 @@ class DrinkDetailViewController: UIViewController {
         setUpStackViews()
         mainStackView.insertArrangedSubview(ingredientStackView, at: 5)
         mainStackView.insertArrangedSubview(toolsStack, at: 7)
-        scrollView.contentSize = mainStackView.bounds.size
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width , height: mainStackView.frame.size.width)
         if let drink = drink {
             if (user?.favoriteDrinks?.contains(drink))!{
                 addToFavoritesButton.isEnabled = false
