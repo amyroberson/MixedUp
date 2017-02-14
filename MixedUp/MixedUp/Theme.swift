@@ -20,8 +20,8 @@ struct Theme {
     
     
     static func styleDark(){
-        labelColor = UIColor.white
-        viewBackgroundColor = UIColor(colorLiteralRed: (44/255), green: (47/255), blue: (50/255), alpha: 1.0)
+        labelColor = UIColor.black //(colorLiteralRed: (206/255), green: (213/255), blue: (224/255), alpha: 1.0)
+        viewBackgroundColor = UIColor(colorLiteralRed: (145/255), green: (153/255), blue: (166/255), alpha: 1.0)
     }
     
     static func styleLight(){

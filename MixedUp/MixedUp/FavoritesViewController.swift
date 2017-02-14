@@ -25,7 +25,7 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
         self.title = "Favorite Drinks"
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
-        
+        view.backgroundColor = Theme.viewBackgroundColor
         if let user = user {
             favoriteDrinks = Array(user.favoriteDrinks ?? []) as! [Drink]
         }
@@ -34,6 +34,12 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
+        if defaults?.string(forKey: "theme") == "Light"{
+            Theme.styleLight()
+        } else {
+            Theme.styleDark()
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

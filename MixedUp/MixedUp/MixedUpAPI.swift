@@ -183,8 +183,6 @@ class MixedUpAPI {
         var actualDrinks: [Drink] = []
         for dictionary in dictionaries {
             if let drink = getDrinkFromDictionary(dictionary, inContext: context){
-                print("loop within \(#function)")
-                debugPrintSingleDrink(drink: drink)
                 actualDrinks.append(drink)
             }
         }
@@ -193,9 +191,6 @@ class MixedUpAPI {
             return .failure(Errors.invalidJSONData)
         }
         
-        // TODO: Delete stuff. TJ Added this
-        print(#function)
-        debugPrintDrinks(drinks: actualDrinks)
         return .success(actualDrinks)
     }
     

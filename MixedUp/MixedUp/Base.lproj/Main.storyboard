@@ -283,8 +283,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="hJ3-KC-vCA">
-                                <rect key="frame" x="28" y="130" width="320" height="407"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hJ3-KC-vCA">
+                                <rect key="frame" x="28" y="185" width="320" height="297"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aiz-GS-cRl">
                                         <rect key="frame" x="98" y="0.0" width="124" height="20.5"/>
@@ -293,25 +293,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFE-IQ-Mjl">
-                                        <rect key="frame" x="141.5" y="60.5" width="37.5" height="20.5"/>
+                                        <rect key="frame" x="141.5" y="40.5" width="37.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dij-oi-MbH">
-                                        <rect key="frame" x="0.0" y="121" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="81" width="320" height="216"/>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBr-g6-nYA">
-                                        <rect key="frame" x="109.5" y="377" width="101" height="30"/>
-                                        <state key="normal" title="Add Ingredient"/>
-                                        <connections>
-                                            <action selector="addIngredientPressed:" destination="0lA-cM-xrg" eventType="touchUpInside" id="veo-eA-0mI"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.78490549269999998" green="0.83020515480000001" blue="0.88821171470000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.78431372549019607" green="0.82745098039215681" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hJ3-KC-vCA" firstAttribute="centerX" secondItem="k2f-3v-cKe" secondAttribute="centerX" id="WiO-cO-ZkT"/>
                             <constraint firstItem="hJ3-KC-vCA" firstAttribute="centerY" secondItem="k2f-3v-cKe" secondAttribute="centerY" id="blp-Gw-GFl"/>
@@ -319,6 +312,7 @@
                     </view>
                     <connections>
                         <outlet property="ingredientPicker" destination="dij-oi-MbH" id="nIO-VW-yOc"/>
+                        <outlet property="ingredientTypeLabel" destination="Aiz-GS-cRl" id="crz-V8-8fY"/>
                         <outlet property="typeDisplayLabel" destination="GFE-IQ-Mjl" id="KC0-KB-Gg3"/>
                     </connections>
                 </viewController>
@@ -665,11 +659,11 @@
             </objects>
             <point key="canvasLocation" x="1958" y="-824"/>
         </scene>
-        <!--Drinks you can Make-->
+        <!--You Can Make These!-->
         <scene sceneID="WQd-PM-2ht">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o5b-dP-sbi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Drinks you can Make" image="make" id="lxg-MM-VvQ"/>
+                    <tabBarItem key="tabBarItem" title="You Can Make These!" image="make" id="lxg-MM-VvQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KeQ-3C-jwZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

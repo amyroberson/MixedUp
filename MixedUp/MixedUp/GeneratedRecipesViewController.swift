@@ -26,7 +26,9 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
         self.collectionView?.delegate = self
         self.title = "You Can Make These!"
         refresh()
+        setUpLabel()
         needMoreIngredientsLabel.isHidden = true
+        view.backgroundColor = Theme.viewBackgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +43,11 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
                 print("could not get drinks")
             }
         })
+        if defaults?.string(forKey: "theme") == "Light"{
+            Theme.styleLight()
+        } else {
+            Theme.styleDark()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -96,6 +103,9 @@ extension GeneratedRecipesViewController: UICollectionViewDataSource{
             }
         }
     }
-    
+    func setUpLabel(){
+        needMoreIngredientsLabel.textColor = Theme.labelColor
+        needMoreIngredientsLabel.font = Theme.labelFont
+    }
     
 }

@@ -41,5 +41,23 @@ struct Util {
         case invalidJSONData
         
     }
+    
+    static func searchDrinks(allDrinks:[Drink], searchText: String) -> [Drink]{
+        var returning: Set<Drink> = []
+        for drink in allDrinks{
+            for ingredient in drink.ingredients!{
+                if ((ingredient as! Ingredient).displayName?.lowercased().contains(searchText))! {
+                    returning.insert(drink)
+                    break
+                } else if returning.contains(drink){
+                    returning.remove(drink)
+                }
+            }
+            if (drink.displayName?.lowercased().contains(searchText))!{
+                returning.insert(drink)
+            }
+        }
+        return Array(returning)
+    }
 }
 

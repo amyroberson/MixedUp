@@ -22,7 +22,6 @@ class TabsViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tabBar.barTintColor = .black
         tabBar.tintColor = .black
         for item in self.viewControllers!{
             if let controller = item as? UINavigationController{
@@ -38,6 +37,7 @@ class TabsViewController: UITabBarController {
                     inventoryVC.user = user
                     inventoryVC.userStore = userStore
                     inventoryVC.typeStore = typeStore
+                    inventoryVC.defaults = defaults
                 } else if let favoriteVC = controller.topViewController as? FavoritesViewController {
                     favoriteVC.defaults = defaults
                     favoriteVC.coreDataStack = coreDataStack

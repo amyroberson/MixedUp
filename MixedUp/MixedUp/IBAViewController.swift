@@ -41,9 +41,10 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
         
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
-        self.title = "Recipes"
+        self.title = "IBA Drink Recipes"
         drinkSearchBar.delegate = self
         drinkSearchBar.returnKeyType = UIReturnKeyType.done
+        drinkSearchBar.placeholder = "Search by Name and Ingredients"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,25 +82,19 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
         } else {
             inSearchMode = true
             let text = drinkSearchBar.text?.lowercased()
-            for drink in drinks{
-                for ingredient in drink.ingredients!{
-                    if (ingredient as! Ingredient).displayName?.lowercased().range(of: text!) != nil {
-                        filteredDrinks.insert(drink)
-                    } else {
-                        filteredDrinks.remove(drink)
-                    }
-                }
-            }
-            drinks = Array(filteredDrinks)
+            drinks = Util.searchDrinks(allDrinks: allDrinks, searchText: text!)
             collectionView.reloadData()
+            
         }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
+        drinks = allDrinks
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
+        drinks = allDrinks
     }
     
 }

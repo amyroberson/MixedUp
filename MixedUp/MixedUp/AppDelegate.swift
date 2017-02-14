@@ -107,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        if screen.brightness > 0.4 {
+        if screen.brightness > 0.2 {
             print("Light")
             defaults.set("Light", forKey: "theme")
 

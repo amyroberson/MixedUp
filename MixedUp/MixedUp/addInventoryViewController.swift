@@ -10,33 +10,34 @@ import UIKit
 import CoreData
 
 class addInventoryViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
     var coreDataStack: CoreDataStack? = nil
     var ingredientStore: IngredientService? = nil
     var userStore: UserService? = nil
     var user: User? = nil
     var ingredientType: IngredientType? = nil
+    var defaults: UserDefaults? = nil
     var ingredients: [Ingredient] = []{
         didSet {
-        self.ingredient = ingredients[0]
+            self.ingredient = ingredients[0]
         }
     }
     var ingredient: Ingredient? = nil
-
+    
     @IBOutlet weak var typeDisplayLabel: UILabel!
-    @IBOutlet weak var displayNameTextField: UITextField!
+    
+    @IBOutlet weak var ingredientTypeLabel: UILabel!
     @IBOutlet weak var ingredientPicker: UIPickerView!
-  
+    
     @IBAction func addIngredientPressed(_ sender: UIButton) {
-       if let user = user, let inventory = user.inventory, let ingredient = self.ingredient{
-            ingredient.type = ingredientType
+        if let user = user, let inventory = user.inventory, let ingredient = self.ingredient{
             user.inventory = (inventory.adding(ingredient) as NSSet)
-        do{
-            try coreDataStack?.saveChanges()
+            do{
+                try coreDataStack?.saveChanges()
             }catch{
                 print("could not save")
             }
-       } else {
+        } else {
             print("ingredient did not get saved to user")
         }
         let arrayCount: Int = Int((navigationController?.viewControllers.count)!)
@@ -46,7 +47,6 @@ class addInventoryViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let ingredientType = ingredientType{
@@ -54,23 +54,40 @@ class addInventoryViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
         ingredientPicker.delegate = self
         ingredientPicker.dataSource = self
-        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(addIngredientPressed(_:)))
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ingredientStore?.getIngredientsOfType(type: ingredientType!, completion: {result in
-            switch result{
-            case .success(let theIngredients):
-                self.ingredients = theIngredients
-                self.refresh()
-                
-            default:
-                print("could not get drinks")
-            }
-        })
-        
+        if (ingredientType?.displayName)! == "All Ingredients"{
+            self.ingredientStore?.getAllIngredients(completion:  {result in
+                switch result{
+                case .success(let theIngredients):
+                    self.ingredients = theIngredients
+                    self.refresh()
+                    
+                default:
+                    print("could not get ingredients")
+                }
+            })
+        }else {
+            ingredientStore?.getIngredientsOfType(type: ingredientType!, completion: {result in
+                switch result{
+                case .success(let theIngredients):
+                    self.ingredients = theIngredients
+                    self.refresh()
+                    
+                default:
+                    print("could not get ingredients")
+                }
+            })
+        }
+        if defaults?.string(forKey: "theme") == "Light"{
+            Theme.styleLight()
+        } else {
+            Theme.styleDark()
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -87,7 +104,6 @@ class addInventoryViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         ingredient = ingredients[row]
-        
     }
     
     func refresh(){
@@ -95,5 +111,13 @@ class addInventoryViewController: UIViewController, UIPickerViewDelegate, UIPick
             self.ingredientPicker.reloadAllComponents()
         }
     }
-
+    
+    func setUpTheme() {
+        typeDisplayLabel.font = Theme.labelFont
+        typeDisplayLabel.textColor = Theme.labelColor
+        ingredientTypeLabel.font = Theme.mainLabelFont
+        ingredientTypeLabel.textColor = Theme.labelColor
+        view.backgroundColor = Theme.viewBackgroundColor
+        
+    }
 }

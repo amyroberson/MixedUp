@@ -53,10 +53,20 @@ class DrinkDetailViewController: UIViewController {
         }
         self.view.backgroundColor = Theme.viewBackgroundColor
         addedSuccesLabel.isHidden = true
-        
+        addedSuccesLabel.font = Theme.labelFont
+        addedSuccesLabel.textColor = Theme.labelColor
         drinkImage.image = Theme.setImageForDrink(drink: drink!)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if defaults?.string(forKey: "theme") == "Light"{
+            Theme.styleLight()
+        } else {
+            Theme.styleDark()
+        }
+    }
+
     
     @IBAction func addToFavoritesTapped(_ sender: UIButton) {
         if let drink = drink , let user = user, let favorites = user.favoriteDrinks{

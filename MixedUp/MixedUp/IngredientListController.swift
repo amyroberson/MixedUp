@@ -22,11 +22,9 @@ class IngredientListController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped(_:)))
         self.title = ingredientType?.displayName
+        view.backgroundColor = Theme.viewBackgroundColor
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -47,7 +45,7 @@ class IngredientListController: UITableViewController {
         addInventoryVC.user = user
         addInventoryVC.ingredientType = ingredientType
         addInventoryVC.ingredientStore = ingredientStore
-        
+        addInventoryVC.defaults = defaults
         self.show(addInventoryVC, sender: nil)
         
     }
@@ -66,6 +64,9 @@ class IngredientListController: UITableViewController {
         let ingredient = ingredients[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredient", for: indexPath) as! IngredientCell
         cell.ingredientNameLabel.text = ingredient.displayName
+        cell.ingredientNameLabel.textColor = Theme.labelColor
+        cell.ingredientNameLabel.font = Theme.labelFont
+        cell.backgroundColor = Theme.viewBackgroundColor
         
         return cell
     }
@@ -82,6 +83,8 @@ class IngredientListController: UITableViewController {
                     if !ingredients.contains((ingredient as! Ingredient)){
                         ingredients.append((ingredient as! Ingredient))
                     }
+                } else if ingredientType?.displayName == "All Ingredients"{
+                 ingredients = user?.inventory?.allObjects as! [Ingredient]
                 }
             }
         }

@@ -17,15 +17,17 @@ class InventoryTableViewController: UITableViewController {
     var userStore: UserService? = nil
     var user: User? = nil
     var typeStore: TypeService? = nil
-
+    var defaults: UserDefaults? = nil
+    var all: IngredientType? = nil
+   
     
     func setTypes(){
         typeStore?.getAllTypes(completion: {result in
             switch result{
             case .success(let theTypes):
                 self.types = theTypes
+                self.types.append(self.all!)
                 self.refresh()
-                
             default:
                 print("could not get types")
             }
@@ -34,12 +36,24 @@ class InventoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        all = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
+                                                   into: self.coreDataStack!.mainQueueContext) as? IngredientType
+        all?.displayName = "All Ingredients"
         setTypes()
         self.title = "Inventory"
+        view.backgroundColor = Theme.viewBackgroundColor
         tableView.dataSource = self
         tableView.delegate = self
-        
         tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if defaults?.string(forKey: "theme") == "Light"{
+            Theme.styleLight()
+        } else {
+            Theme.styleDark()
+        }
     }
 
 
@@ -58,6 +72,9 @@ class InventoryTableViewController: UITableViewController {
         let type = types[indexPath.row]
         
         cell.typeNameLabel.text = type.displayName
+        cell.typeNameLabel.textColor = Theme.labelColor
+        cell.typeNameLabel.font = Theme.labelFont
+        cell.backgroundColor = Theme.viewBackgroundColor
 
         return cell
     }
@@ -72,6 +89,7 @@ class InventoryTableViewController: UITableViewController {
         ingredientTableVC.ingredientStore = ingredientStore
         ingredientTableVC.coreDataStack = coreDataStack
         ingredientTableVC.ingredientType = type
+        ingredientTableVC.defaults = defaults
         
         self.show(ingredientTableVC, sender: nil)
     }
