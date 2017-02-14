@@ -22,7 +22,8 @@ class TabsViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //tabBar.barTintColor = .black
+        tabBar.tintColor = .black
         for item in self.viewControllers!{
             if let controller = item as? UINavigationController{
                 if let iBAVC = controller.topViewController as? IBAViewController{

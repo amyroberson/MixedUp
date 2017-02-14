@@ -19,25 +19,33 @@ class DrinkDetailViewController: UIViewController {
     var defaults: UserDefaults? = nil
     var drink: Drink? = nil
     
+    var scrollView: UIScrollView {
+        return view as! UIScrollView
+    }
+    
+   
     @IBOutlet weak var displayNameLabel: UILabel!
     
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var glassLabel: UILabel!
     @IBOutlet weak var drinkDescriptionLabel: UILabel!
     
+    @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var toolsLabel: UILabel!
-    @IBOutlet weak var ingredientStackView: UIStackView!
-    
     @IBOutlet weak var drinkImage: UIImageView!
-    @IBOutlet weak var toolsStack: UIStackView!
     @IBOutlet weak var addToFavoritesButton: UIButton!
-    
     @IBOutlet weak var addedSuccesLabel: UILabel!
+    
+    var toolsStack = UIStackView()
+    var ingredientStackView = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpLabels()
         setUpStackViews()
+        mainStackView.insertArrangedSubview(ingredientStackView, at: 5)
+        mainStackView.insertArrangedSubview(toolsStack, at: 7)
+        scrollView.contentSize = mainStackView.bounds.size
         if let drink = drink {
             if (user?.favoriteDrinks?.contains(drink))!{
                 addToFavoritesButton.isEnabled = false
@@ -65,6 +73,12 @@ class DrinkDetailViewController: UIViewController {
     }
     
     func setUpStackViews(){
+        toolsStack.alignment = .center
+        toolsStack.axis = .vertical
+        toolsStack.distribution = .equalCentering
+        ingredientStackView.alignment = .center
+        ingredientStackView.axis = .vertical
+        ingredientStackView.distribution = .equalCentering
         if let tools = drink?.tools{
             for tool in tools {
                 let theToolLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
