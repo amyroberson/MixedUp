@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  MixedUp
 //
-//  Created by Amy Roberson on 2/6/17.
+//  Created by Amy Roberson on 2/15/17.
 //  Copyright © 2017 Amy Roberson. All rights reserved.
 //
 
@@ -18,26 +18,26 @@ extension User {
 
     @NSManaged public var email: String?
     @NSManaged public var id: String?
-    @NSManaged public var inventory: NSSet?
-    @NSManaged public var favoriteDrinks: NSSet?
     @NSManaged public var barsManaged: NSSet?
+    @NSManaged public var favoriteDrinks: NSSet?
+    @NSManaged public var inventory: NSSet?
 
 }
 
-// MARK: Generated accessors for inventory
+// MARK: Generated accessors for barsManaged
 extension User {
 
-    @objc(addInventoryObject:)
-    @NSManaged public func addToInventory(_ value: Ingredient)
+    @objc(addBarsManagedObject:)
+    @NSManaged public func addToBarsManaged(_ value: Bar)
 
-    @objc(removeInventoryObject:)
-    @NSManaged public func removeFromInventory(_ value: Ingredient)
+    @objc(removeBarsManagedObject:)
+    @NSManaged public func removeFromBarsManaged(_ value: Bar)
 
-    @objc(addInventory:)
-    @NSManaged public func addToInventory(_ values: NSSet)
+    @objc(addBarsManaged:)
+    @NSManaged public func addToBarsManaged(_ values: NSSet)
 
-    @objc(removeInventory:)
-    @NSManaged public func removeFromInventory(_ values: NSSet)
+    @objc(removeBarsManaged:)
+    @NSManaged public func removeFromBarsManaged(_ values: NSSet)
 
 }
 
@@ -58,19 +58,19 @@ extension User {
 
 }
 
-// MARK: Generated accessors for barsManaged
+// MARK: Generated accessors for inventory
 extension User {
 
-    @objc(addBarsManagedObject:)
-    @NSManaged public func addToBarsManaged(_ value: Bar)
+    @objc(addInventoryObject:)
+    @NSManaged public func addToInventory(_ value: Ingredient)
 
-    @objc(removeBarsManagedObject:)
-    @NSManaged public func removeFromBarsManaged(_ value: Bar)
+    @objc(removeInventoryObject:)
+    @NSManaged public func removeFromInventory(_ value: Ingredient)
 
-    @objc(addBarsManaged:)
-    @NSManaged public func addToBarsManaged(_ values: NSSet)
+    @objc(addInventory:)
+    @NSManaged public func addToInventory(_ values: NSSet)
 
-    @objc(removeBarsManaged:)
-    @NSManaged public func removeFromBarsManaged(_ values: NSSet)
+    @objc(removeInventory:)
+    @NSManaged public func removeFromInventory(_ values: NSSet)
 
 }

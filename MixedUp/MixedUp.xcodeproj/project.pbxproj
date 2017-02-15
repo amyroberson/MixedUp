@@ -52,8 +52,10 @@
 		E18853FF1E4AD77C005C8C37 /* IngredientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FE1E4AD77C005C8C37 /* IngredientService.swift */; };
 		E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18854001E4B5896005C8C37 /* TabsViewController.swift */; };
 		E1C3C3591E510DF50012E60E /* TypeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3581E510DF50012E60E /* TypeService.swift */; };
-		E1C3C3BF1E5490040012E60E /* StyleKitGlasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3BE1E5490040012E60E /* StyleKitGlasses.swift */; };
 		E1C3C3EF1E54AA760012E60E /* DrawGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */; };
+		E1C3C3F11E54DB5A0012E60E /* StyleKitGlasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3F01E54DB5A0012E60E /* StyleKitGlasses.swift */; };
+		E1C3C3F31E54DE050012E60E /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3F21E54DE050012E60E /* CoreDataHelper.swift */; };
+		E1C3C3F51E54DE920012E60E /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3F41E54DE920012E60E /* CoreDataTests.swift */; };
 		E1D00C3A1E4B743600C478CA /* IBACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C391E4B743600C478CA /* IBACell.swift */; };
 		E1D00C3C1E4B7A2200C478CA /* IBAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */; };
 		E1D00C3F1E4BA05B00C478CA /* InventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */; };
@@ -133,8 +135,10 @@
 		E18853FE1E4AD77C005C8C37 /* IngredientService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientService.swift; sourceTree = "<group>"; };
 		E18854001E4B5896005C8C37 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
 		E1C3C3581E510DF50012E60E /* TypeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeService.swift; sourceTree = "<group>"; };
-		E1C3C3BE1E5490040012E60E /* StyleKitGlasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKitGlasses.swift; sourceTree = "<group>"; };
 		E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawGlass.swift; sourceTree = "<group>"; };
+		E1C3C3F01E54DB5A0012E60E /* StyleKitGlasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKitGlasses.swift; sourceTree = "<group>"; };
+		E1C3C3F21E54DE050012E60E /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		E1C3C3F41E54DE920012E60E /* CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		E1D00C391E4B743600C478CA /* IBACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBACell.swift; sourceTree = "<group>"; };
 		E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBAViewController.swift; sourceTree = "<group>"; };
 		E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableViewController.swift; sourceTree = "<group>"; };
@@ -226,9 +230,11 @@
 				E18853371E4914CD005C8C37 /* MixedUpTests.swift */,
 				E18853F31E4A4464005C8C37 /* DrinkTests.swift */,
 				E18853ED1E4A2A95005C8C37 /* IngredientTypeTests.swift */,
+				E1C3C3F21E54DE050012E60E /* CoreDataHelper.swift */,
 				E18853F11E4A3E1C005C8C37 /* IngredientTests.swift */,
 				E18853EF1E4A332A005C8C37 /* ColorTests.swift */,
 				E18853F71E4A68EB005C8C37 /* MixedUpAPITests.swift */,
+				E1C3C3F41E54DE920012E60E /* CoreDataTests.swift */,
 				E18853F51E4A62C1005C8C37 /* UserTests.swift */,
 				E18853641E4921F9005C8C37 /* GlassTests.swift */,
 				E188535F1E492120005C8C37 /* ToolTests.swift */,
@@ -287,7 +293,7 @@
 		E1C3C3AD1E53A8FB0012E60E /* DrawingViews */ = {
 			isa = PBXGroup;
 			children = (
-				E1C3C3BE1E5490040012E60E /* StyleKitGlasses.swift */,
+				E1C3C3F01E54DB5A0012E60E /* StyleKitGlasses.swift */,
 				E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */,
 			);
 			name = DrawingViews;
@@ -431,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E18853E41E497E9B005C8C37 /* Drink+CoreDataClass.swift in Sources */,
+				E1C3C3F11E54DB5A0012E60E /* StyleKitGlasses.swift in Sources */,
 				E18853FB1E4A9CC6005C8C37 /* UserService.swift in Sources */,
 				E18853E01E497E8D005C8C37 /* Location+CoreDataClass.swift in Sources */,
 				E18853521E4914F4005C8C37 /* MixedUpDataModel.xcdatamodeld in Sources */,
@@ -438,7 +445,6 @@
 				E18853FF1E4AD77C005C8C37 /* IngredientService.swift in Sources */,
 				E18853E81E497EAA005C8C37 /* Color+CoreDataProperties.swift in Sources */,
 				E18853E71E497EA5005C8C37 /* Tool+CoreDataProperties.swift in Sources */,
-				E1C3C3BF1E5490040012E60E /* StyleKitGlasses.swift in Sources */,
 				E18853FD1E4AB6B2005C8C37 /* DrinkService.swift in Sources */,
 				E1D00C491E4C12DB00C478CA /* Theme.swift in Sources */,
 				E17F24471E4D09A300AD17A6 /* FavoritesViewController.swift in Sources */,
@@ -479,12 +485,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1C3C3F31E54DE050012E60E /* CoreDataHelper.swift in Sources */,
 				E18853EE1E4A2A95005C8C37 /* IngredientTypeTests.swift in Sources */,
 				E18853F81E4A68EB005C8C37 /* MixedUpAPITests.swift in Sources */,
 				E18853F21E4A3E1C005C8C37 /* IngredientTests.swift in Sources */,
 				E18853F01E4A332A005C8C37 /* ColorTests.swift in Sources */,
 				E18853651E4921F9005C8C37 /* GlassTests.swift in Sources */,
 				E18853601E492120005C8C37 /* ToolTests.swift in Sources */,
+				E1C3C3F51E54DE920012E60E /* CoreDataTests.swift in Sources */,
 				E18853F61E4A62C1005C8C37 /* UserTests.swift in Sources */,
 				E18853F41E4A4464005C8C37 /* DrinkTests.swift in Sources */,
 				E18853381E4914CD005C8C37 /* MixedUpTests.swift in Sources */,

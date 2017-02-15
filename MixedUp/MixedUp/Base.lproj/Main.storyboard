@@ -615,7 +615,7 @@
         <scene sceneID="XYu-I1-OXW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wga-vP-thv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recipes" image="recipes" id="kDV-On-mXr"/>
+                    <tabBarItem key="tabBarItem" title="Recipes" image="Recipes" id="kDV-On-mXr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cq5-yr-wEq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -634,7 +634,7 @@
         <scene sceneID="sYm-7Y-DwO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gwn-ez-7nD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Inventory" image="inventory" id="Tjt-TZ-qHQ"/>
+                    <tabBarItem key="tabBarItem" title="Inventory" image="Inventory" id="Tjt-TZ-qHQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="umz-Nq-KwV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -653,7 +653,9 @@
         <scene sceneID="ULH-0Z-dzz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AUn-3c-d1N" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="Mix" id="Nho-BV-Mnj"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="Favorites" id="Nho-BV-Mnj">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IFA-wg-uFX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -672,7 +674,7 @@
         <scene sceneID="WQd-PM-2ht">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o5b-dP-sbi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="You Can Make These!" image="make" id="lxg-MM-VvQ"/>
+                    <tabBarItem key="tabBarItem" title="You Can Make These!" image="Make" id="lxg-MM-VvQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KeQ-3C-jwZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -689,9 +691,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Mix" width="30" height="30"/>
-        <image name="inventory" width="30" height="30"/>
-        <image name="make" width="30" height="30"/>
-        <image name="recipes" width="30" height="30"/>
+        <image name="Favorites" width="30" height="30"/>
+        <image name="Inventory" width="30" height="30"/>
+        <image name="Make" width="30" height="30"/>
+        <image name="Recipes" width="30" height="30"/>
     </resources>
 </document>

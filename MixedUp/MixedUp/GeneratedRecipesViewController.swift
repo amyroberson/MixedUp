@@ -43,7 +43,7 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
                 print("could not get drinks")
             }
         })
-        if defaults?.string(forKey: "theme") == "Light"{
+        if defaults?.string(forKey: Theme.themeKey) == Theme.lightKey{
             Theme.styleLight()
         } else {
             Theme.styleDark()

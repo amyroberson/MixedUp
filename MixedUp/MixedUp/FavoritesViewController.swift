@@ -34,7 +34,7 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
-        if defaults?.string(forKey: "theme") == "Light"{
+        if defaults?.string(forKey: Theme.themeKey) == Theme.lightKey{
             Theme.styleLight()
         } else {
             Theme.styleDark()

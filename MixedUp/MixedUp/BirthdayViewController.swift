@@ -17,6 +17,7 @@ class BirthdayViewController: UIViewController {
     var ingredientStore: IngredientService? = nil
     var drinkStore: DrinkService? = nil
     var user: User? = nil
+    let userIDKey = "userID"
     var typeStore: TypeService? = nil
     
     @IBOutlet weak var mustBeLabel: UILabel!
@@ -43,7 +44,7 @@ class BirthdayViewController: UIViewController {
                 case .success(let user):
                     self.user = user
                     //send user to server
-                    self.defaults?.set(user.id, forKey: "userID")
+                    self.defaults?.set(user.id, forKey: userIDKey)
                 default:
                     print("error creating user")
                     self.user = user1
@@ -52,7 +53,6 @@ class BirthdayViewController: UIViewController {
             if self.user == nil{
                 self.user = user1
             }
-            defaults?.set(true, forKey: "Over21")
             let storyBoard = UIStoryboard(name: "Main", bundle: .main)
             let tabsVC = storyBoard.instantiateViewController(withIdentifier: "Tabs") as! TabsViewController
             tabsVC.defaults = defaults
@@ -78,7 +78,7 @@ class BirthdayViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if defaults?.string(forKey: "theme") == "Light"{
+        if defaults?.string(forKey: Theme.themeKey) == Theme.lightKey{
             Theme.styleLight()
         } else {
             Theme.styleDark()

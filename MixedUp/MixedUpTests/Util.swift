@@ -42,6 +42,8 @@ struct Util {
         
     }
     
+    
+    
     static func searchDrinks(allDrinks:[Drink], searchText: String) -> [Drink]{
         var returning: Set<Drink> = []
         for drink in allDrinks{

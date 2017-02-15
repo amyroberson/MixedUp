@@ -2,7 +2,7 @@
 //  Bar+CoreDataProperties.swift
 //  MixedUp
 //
-//  Created by Amy Roberson on 2/6/17.
+//  Created by Amy Roberson on 2/15/17.
 //  Copyright © 2017 Amy Roberson. All rights reserved.
 //
 
@@ -17,12 +17,29 @@ extension Bar {
     }
 
     @NSManaged public var id: String?
-    @NSManaged public var inventory: NSSet?
     @NSManaged public var drinks: NSSet?
+    @NSManaged public var inventory: NSSet?
+    @NSManaged public var location: Location?
+    @NSManaged public var managers: NSSet?
     @NSManaged public var menu: NSSet?
     @NSManaged public var specialties: NSSet?
-    @NSManaged public var managers: NSSet?
-    @NSManaged public var location: Location?
+
+}
+
+// MARK: Generated accessors for drinks
+extension Bar {
+
+    @objc(addDrinksObject:)
+    @NSManaged public func addToDrinks(_ value: Drink)
+
+    @objc(removeDrinksObject:)
+    @NSManaged public func removeFromDrinks(_ value: Drink)
+
+    @objc(addDrinks:)
+    @NSManaged public func addToDrinks(_ values: NSSet)
+
+    @objc(removeDrinks:)
+    @NSManaged public func removeFromDrinks(_ values: NSSet)
 
 }
 
@@ -43,20 +60,20 @@ extension Bar {
 
 }
 
-// MARK: Generated accessors for drinks
+// MARK: Generated accessors for managers
 extension Bar {
 
-    @objc(addDrinksObject:)
-    @NSManaged public func addToDrinks(_ value: Drink)
+    @objc(addManagersObject:)
+    @NSManaged public func addToManagers(_ value: User)
 
-    @objc(removeDrinksObject:)
-    @NSManaged public func removeFromDrinks(_ value: Drink)
+    @objc(removeManagersObject:)
+    @NSManaged public func removeFromManagers(_ value: User)
 
-    @objc(addDrinks:)
-    @NSManaged public func addToDrinks(_ values: NSSet)
+    @objc(addManagers:)
+    @NSManaged public func addToManagers(_ values: NSSet)
 
-    @objc(removeDrinks:)
-    @NSManaged public func removeFromDrinks(_ values: NSSet)
+    @objc(removeManagers:)
+    @NSManaged public func removeFromManagers(_ values: NSSet)
 
 }
 
@@ -91,22 +108,5 @@ extension Bar {
 
     @objc(removeSpecialties:)
     @NSManaged public func removeFromSpecialties(_ values: NSSet)
-
-}
-
-// MARK: Generated accessors for managers
-extension Bar {
-
-    @objc(addManagersObject:)
-    @NSManaged public func addToManagers(_ value: User)
-
-    @objc(removeManagersObject:)
-    @NSManaged public func removeFromManagers(_ value: User)
-
-    @objc(addManagers:)
-    @NSManaged public func addToManagers(_ values: NSSet)
-
-    @objc(removeManagers:)
-    @NSManaged public func removeFromManagers(_ values: NSSet)
 
 }

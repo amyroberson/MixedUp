@@ -22,19 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var ingredientStore: IngredientService? = nil
     var drinkStore: DrinkService? = nil
     var user: User? = nil
-    let userID = "userID"
+    let userIDKey = "userID"
+    
     var typeStore: TypeService? = nil
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        defaults.register(defaults: ["Over21": false])
-        defaults.register(defaults: [userID : ""])
-        defaults.register(defaults: ["theme": "Light"])
+        defaults.register(defaults: [userIDKey : ""])
+        defaults.register(defaults: [Theme.themeKey: Theme.lightKey])
         userStore = UserService(coreDataStack)
         ingredientStore = IngredientService(coreDataStack)
         drinkStore = DrinkService(coreDataStack)
         typeStore = TypeService(coreDataStack)
         
-        if let userIDString = defaults.string(forKey: userID), userIDString.isEmpty == false{
+        if let userIDString = defaults.string(forKey: userIDKey), userIDString.isEmpty == false{
             
             let tempUser = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
                                                                into: coreDataStack.privateQueueContext) as! User
@@ -108,12 +108,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         if screen.brightness > 0.2 {
-            print("Light")
-            defaults.set("Light", forKey: "theme")
+            defaults.set(Theme.lightKey, forKey: Theme.themeKey)
 
         } else {
-            print("Dark")
-            defaults.set("Dark", forKey: "theme")
+            defaults.set(Theme.darkKey, forKey: Theme.themeKey)
         }
 
     }
