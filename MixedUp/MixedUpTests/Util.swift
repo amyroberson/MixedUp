@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-import UIKit
+
 
 enum ResourceResult<A> {
     case success(A)
@@ -59,51 +59,5 @@ struct Util {
         }
         return Array(returning)
     }
-    
-    static func getDrinkView(drink: Drink) -> UIView {
-        switch drink.glass?.displayName ?? ""{
-        case "Martini":
-            if (drink.stringDescription?.contains("cherry"))!{
-                return MartiniWithCherry()
-            } else if (drink.stringDescription?.contains("olive"))!{
-                return MartiniWithOlive()
-            } else  if (drink.stringDescription?.contains("umbrella"))!{
-                return MartiniWithUmbrella()
-            } else {
-                return Martini()
-            }
-        case "HighBall", "Highball":
-            if (drink.stringDescription?.contains("straw"))!{
-                return HighBallWithStraw()
-            } else if (drink.stringDescription?.contains("garnish"))!{
-                return HighBallWithLemon()
-            } else {
-                return PlainHighBall()
-            }
-        case "Shot":
-            return ShotGlass()
-        case "Wine":
-            return WineGlass()
-        case "LowBall", "Lowball":
-            if (drink.stringDescription?.contains("garnish"))!{
-                return LowBallWithLemon()
-            } else {
-                return LowBall()
-            }
-        case "Hurricane", "Huricane":
-            if (drink.stringDescription?.contains("garnish"))!{
-                return HurricaneWithUmbrella()
-            } else  {
-                return Hurricane()
-            }
-        case "Champagne":
-            return Champagne()
-        case "Coconut":
-            return Coconut()
-        default:
-            return HighBallWithStraw()
-        }
-    }
-    
 }
 

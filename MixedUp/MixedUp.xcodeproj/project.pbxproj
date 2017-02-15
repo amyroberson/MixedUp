@@ -53,27 +53,7 @@
 		E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18854001E4B5896005C8C37 /* TabsViewController.swift */; };
 		E1C3C3591E510DF50012E60E /* TypeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3581E510DF50012E60E /* TypeService.swift */; };
 		E1C3C3BF1E5490040012E60E /* StyleKitGlasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3BE1E5490040012E60E /* StyleKitGlasses.swift */; };
-		E1C3C3C11E5491F10012E60E /* ShotGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3C01E5491F10012E60E /* ShotGlass.swift */; };
-		E1C3C3C31E5492590012E60E /* MartiniWithOlive.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3C21E5492590012E60E /* MartiniWithOlive.swift */; };
-		E1C3C3C51E54935A0012E60E /* LowBallWithLemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3C41E54935A0012E60E /* LowBallWithLemon.swift */; };
-		E1C3C3C71E5493950012E60E /* BeerGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3C61E5493950012E60E /* BeerGlass.swift */; };
-		E1C3C3C91E54940A0012E60E /* BeerStein.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3C81E54940A0012E60E /* BeerStein.swift */; };
-		E1C3C3CB1E54948F0012E60E /* Martini.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3CA1E54948F0012E60E /* Martini.swift */; };
-		E1C3C3CD1E5494C20012E60E /* HurricaneWithUmbrella.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3CC1E5494C20012E60E /* HurricaneWithUmbrella.swift */; };
-		E1C3C3CF1E5494FB0012E60E /* MartiniWithCherry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3CE1E5494FB0012E60E /* MartiniWithCherry.swift */; };
-		E1C3C3D11E5495210012E60E /* Coconut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3D01E5495210012E60E /* Coconut.swift */; };
-		E1C3C3D31E5495560012E60E /* Hurricane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3D21E5495560012E60E /* Hurricane.swift */; };
-		E1C3C3D51E5495840012E60E /* PlainHighBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3D41E5495840012E60E /* PlainHighBall.swift */; };
-		E1C3C3D71E5495AD0012E60E /* BottleWithGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3D61E5495AD0012E60E /* BottleWithGlass.swift */; };
-		E1C3C3D91E5495DE0012E60E /* MartiniWithUmbrella.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3D81E5495DE0012E60E /* MartiniWithUmbrella.swift */; };
-		E1C3C3DB1E54960B0012E60E /* Weizen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3DA1E54960B0012E60E /* Weizen.swift */; };
-		E1C3C3DD1E5499E70012E60E /* Bottles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3DC1E5499E70012E60E /* Bottles.swift */; };
-		E1C3C3DF1E549A0D0012E60E /* Bottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3DE1E549A0D0012E60E /* Bottle.swift */; };
-		E1C3C3E11E549A2E0012E60E /* WineGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3E01E549A2E0012E60E /* WineGlass.swift */; };
-		E1C3C3E31E549A540012E60E /* Champagne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3E21E549A540012E60E /* Champagne.swift */; };
-		E1C3C3E51E549A820012E60E /* HighBallWithLemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3E41E549A820012E60E /* HighBallWithLemon.swift */; };
-		E1C3C3E71E549AAA0012E60E /* HighBallWithStraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3E61E549AAA0012E60E /* HighBallWithStraw.swift */; };
-		E1C3C3E91E549AD40012E60E /* LowBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3E81E549AD40012E60E /* LowBall.swift */; };
+		E1C3C3EF1E54AA760012E60E /* DrawGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */; };
 		E1D00C3A1E4B743600C478CA /* IBACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C391E4B743600C478CA /* IBACell.swift */; };
 		E1D00C3C1E4B7A2200C478CA /* IBAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */; };
 		E1D00C3F1E4BA05B00C478CA /* InventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */; };
@@ -154,27 +134,7 @@
 		E18854001E4B5896005C8C37 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
 		E1C3C3581E510DF50012E60E /* TypeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeService.swift; sourceTree = "<group>"; };
 		E1C3C3BE1E5490040012E60E /* StyleKitGlasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKitGlasses.swift; sourceTree = "<group>"; };
-		E1C3C3C01E5491F10012E60E /* ShotGlass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotGlass.swift; sourceTree = "<group>"; };
-		E1C3C3C21E5492590012E60E /* MartiniWithOlive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MartiniWithOlive.swift; sourceTree = "<group>"; };
-		E1C3C3C41E54935A0012E60E /* LowBallWithLemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LowBallWithLemon.swift; path = ../LowBallWithLemon.swift; sourceTree = "<group>"; };
-		E1C3C3C61E5493950012E60E /* BeerGlass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerGlass.swift; sourceTree = "<group>"; };
-		E1C3C3C81E54940A0012E60E /* BeerStein.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerStein.swift; sourceTree = "<group>"; };
-		E1C3C3CA1E54948F0012E60E /* Martini.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Martini.swift; sourceTree = "<group>"; };
-		E1C3C3CC1E5494C20012E60E /* HurricaneWithUmbrella.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HurricaneWithUmbrella.swift; sourceTree = "<group>"; };
-		E1C3C3CE1E5494FB0012E60E /* MartiniWithCherry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MartiniWithCherry.swift; sourceTree = "<group>"; };
-		E1C3C3D01E5495210012E60E /* Coconut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coconut.swift; sourceTree = "<group>"; };
-		E1C3C3D21E5495560012E60E /* Hurricane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hurricane.swift; sourceTree = "<group>"; };
-		E1C3C3D41E5495840012E60E /* PlainHighBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlainHighBall.swift; sourceTree = "<group>"; };
-		E1C3C3D61E5495AD0012E60E /* BottleWithGlass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottleWithGlass.swift; sourceTree = "<group>"; };
-		E1C3C3D81E5495DE0012E60E /* MartiniWithUmbrella.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MartiniWithUmbrella.swift; sourceTree = "<group>"; };
-		E1C3C3DA1E54960B0012E60E /* Weizen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weizen.swift; sourceTree = "<group>"; };
-		E1C3C3DC1E5499E70012E60E /* Bottles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bottles.swift; sourceTree = "<group>"; };
-		E1C3C3DE1E549A0D0012E60E /* Bottle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bottle.swift; sourceTree = "<group>"; };
-		E1C3C3E01E549A2E0012E60E /* WineGlass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineGlass.swift; sourceTree = "<group>"; };
-		E1C3C3E21E549A540012E60E /* Champagne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Champagne.swift; sourceTree = "<group>"; };
-		E1C3C3E41E549A820012E60E /* HighBallWithLemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighBallWithLemon.swift; sourceTree = "<group>"; };
-		E1C3C3E61E549AAA0012E60E /* HighBallWithStraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighBallWithStraw.swift; sourceTree = "<group>"; };
-		E1C3C3E81E549AD40012E60E /* LowBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowBall.swift; sourceTree = "<group>"; };
+		E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawGlass.swift; sourceTree = "<group>"; };
 		E1D00C391E4B743600C478CA /* IBACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBACell.swift; sourceTree = "<group>"; };
 		E1D00C3B1E4B7A2200C478CA /* IBAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBAViewController.swift; sourceTree = "<group>"; };
 		E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableViewController.swift; sourceTree = "<group>"; };
@@ -328,27 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				E1C3C3BE1E5490040012E60E /* StyleKitGlasses.swift */,
-				E1C3C3C41E54935A0012E60E /* LowBallWithLemon.swift */,
-				E1C3C3C21E5492590012E60E /* MartiniWithOlive.swift */,
-				E1C3C3E01E549A2E0012E60E /* WineGlass.swift */,
-				E1C3C3E61E549AAA0012E60E /* HighBallWithStraw.swift */,
-				E1C3C3E21E549A540012E60E /* Champagne.swift */,
-				E1C3C3E41E549A820012E60E /* HighBallWithLemon.swift */,
-				E1C3C3C61E5493950012E60E /* BeerGlass.swift */,
-				E1C3C3E81E549AD40012E60E /* LowBall.swift */,
-				E1C3C3DE1E549A0D0012E60E /* Bottle.swift */,
-				E1C3C3D21E5495560012E60E /* Hurricane.swift */,
-				E1C3C3DC1E5499E70012E60E /* Bottles.swift */,
-				E1C3C3D01E5495210012E60E /* Coconut.swift */,
-				E1C3C3D81E5495DE0012E60E /* MartiniWithUmbrella.swift */,
-				E1C3C3D61E5495AD0012E60E /* BottleWithGlass.swift */,
-				E1C3C3D41E5495840012E60E /* PlainHighBall.swift */,
-				E1C3C3CE1E5494FB0012E60E /* MartiniWithCherry.swift */,
-				E1C3C3DA1E54960B0012E60E /* Weizen.swift */,
-				E1C3C3C01E5491F10012E60E /* ShotGlass.swift */,
-				E1C3C3CC1E5494C20012E60E /* HurricaneWithUmbrella.swift */,
-				E1C3C3CA1E54948F0012E60E /* Martini.swift */,
-				E1C3C3C81E54940A0012E60E /* BeerStein.swift */,
+				E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */,
 			);
 			name = DrawingViews;
 			sourceTree = "<group>";
@@ -490,11 +430,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1C3C3C31E5492590012E60E /* MartiniWithOlive.swift in Sources */,
 				E18853E41E497E9B005C8C37 /* Drink+CoreDataClass.swift in Sources */,
 				E18853FB1E4A9CC6005C8C37 /* UserService.swift in Sources */,
 				E18853E01E497E8D005C8C37 /* Location+CoreDataClass.swift in Sources */,
-				E1C3C3E51E549A820012E60E /* HighBallWithLemon.swift in Sources */,
 				E18853521E4914F4005C8C37 /* MixedUpDataModel.xcdatamodeld in Sources */,
 				E1D00C3F1E4BA05B00C478CA /* InventoryTableViewController.swift in Sources */,
 				E18853FF1E4AD77C005C8C37 /* IngredientService.swift in Sources */,
@@ -502,10 +440,7 @@
 				E18853E71E497EA5005C8C37 /* Tool+CoreDataProperties.swift in Sources */,
 				E1C3C3BF1E5490040012E60E /* StyleKitGlasses.swift in Sources */,
 				E18853FD1E4AB6B2005C8C37 /* DrinkService.swift in Sources */,
-				E1C3C3E11E549A2E0012E60E /* WineGlass.swift in Sources */,
 				E1D00C491E4C12DB00C478CA /* Theme.swift in Sources */,
-				E1C3C3CB1E54948F0012E60E /* Martini.swift in Sources */,
-				E1C3C3DD1E5499E70012E60E /* Bottles.swift in Sources */,
 				E17F24471E4D09A300AD17A6 /* FavoritesViewController.swift in Sources */,
 				E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */,
 				E18853DB1E497E72005C8C37 /* Color+CoreDataClass.swift in Sources */,
@@ -513,24 +448,15 @@
 				E1D00C451E4BC20100C478CA /* IngredientListController.swift in Sources */,
 				E18853EC1E497EBA005C8C37 /* Bar+CoreDataProperties.swift in Sources */,
 				E18853E11E497E90005C8C37 /* Location+CoreDataProperties.swift in Sources */,
-				E1C3C3DF1E549A0D0012E60E /* Bottle.swift in Sources */,
-				E1C3C3E71E549AAA0012E60E /* HighBallWithStraw.swift in Sources */,
-				E1C3C3D71E5495AD0012E60E /* BottleWithGlass.swift in Sources */,
+				E1C3C3EF1E54AA760012E60E /* DrawGlass.swift in Sources */,
 				E18853DD1E497E83005C8C37 /* Ingredient+CoreDataProperties.swift in Sources */,
 				E18853DE1E497E86005C8C37 /* IngredientType+CoreDataClass.swift in Sources */,
 				E1D00C3A1E4B743600C478CA /* IBACell.swift in Sources */,
 				E1D00C431E4BC1E200C478CA /* IngredientCell.swift in Sources */,
-				E1C3C3C11E5491F10012E60E /* ShotGlass.swift in Sources */,
-				E1C3C3D91E5495DE0012E60E /* MartiniWithUmbrella.swift in Sources */,
-				E1C3C3DB1E54960B0012E60E /* Weizen.swift in Sources */,
 				E18853E51E497E9E005C8C37 /* Drink+CoreDataProperties.swift in Sources */,
 				E18853E61E497EA1005C8C37 /* Tool+CoreDataClass.swift in Sources */,
 				E18853AF1E4945E1005C8C37 /* CoreDataStack.swift in Sources */,
 				E18853E21E497E94005C8C37 /* Glass+CoreDataClass.swift in Sources */,
-				E1C3C3D51E5495840012E60E /* PlainHighBall.swift in Sources */,
-				E1C3C3C71E5493950012E60E /* BeerGlass.swift in Sources */,
-				E1C3C3D31E5495560012E60E /* Hurricane.swift in Sources */,
-				E1C3C3CF1E5494FB0012E60E /* MartiniWithCherry.swift in Sources */,
 				E17F24491E4D122600AD17A6 /* GeneratedRecipesViewController.swift in Sources */,
 				E18853B41E4956EB005C8C37 /* Util.swift in Sources */,
 				E18853EB1E497EB6005C8C37 /* Bar+CoreDataClass.swift in Sources */,
@@ -539,19 +465,13 @@
 				E18853231E4914CD005C8C37 /* AppDelegate.swift in Sources */,
 				E17F24451E4CDC5E00AD17A6 /* DrinkDetailViewController.swift in Sources */,
 				E18853EA1E497EB2005C8C37 /* User+CoreDataProperties.swift in Sources */,
-				E1C3C3C91E54940A0012E60E /* BeerStein.swift in Sources */,
-				E1C3C3CD1E5494C20012E60E /* HurricaneWithUmbrella.swift in Sources */,
 				E18853DC1E497E78005C8C37 /* Ingredient+CoreDataClass.swift in Sources */,
 				E1D00C3C1E4B7A2200C478CA /* IBAViewController.swift in Sources */,
-				E1C3C3D11E5495210012E60E /* Coconut.swift in Sources */,
 				E1D00C471E4BCC2A00C478CA /* addInventoryViewController.swift in Sources */,
 				E18853B11E4946FF005C8C37 /* MixedUpAPI.swift in Sources */,
-				E1C3C3E31E549A540012E60E /* Champagne.swift in Sources */,
 				E1D00C411E4BBB8700C478CA /* IngredientTypeCell.swift in Sources */,
-				E1C3C3C51E54935A0012E60E /* LowBallWithLemon.swift in Sources */,
 				E18853E91E497EAE005C8C37 /* User+CoreDataClass.swift in Sources */,
 				E1C3C3591E510DF50012E60E /* TypeService.swift in Sources */,
-				E1C3C3E91E549AD40012E60E /* LowBall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

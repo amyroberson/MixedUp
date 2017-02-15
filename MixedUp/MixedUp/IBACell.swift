@@ -10,7 +10,8 @@ import UIKit
 
 class IBACell: UICollectionViewCell {
     
-    @IBOutlet weak var drinkImage: UIImageView!
+    
+    @IBOutlet weak var drawGlass: DrawGlass!
     
     @IBOutlet weak var drinkNameLabel: UILabel!
 }

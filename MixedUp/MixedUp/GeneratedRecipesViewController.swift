@@ -82,8 +82,16 @@ extension GeneratedRecipesViewController: UICollectionViewDataSource{
         
         
         let drink = drinks[indexPath.row]
+        if let color = drink.color{
+            let red = Float(color.red)/255
+            let green =  Float(color.green)/255
+            let blue =  Float(color.blue)/255
+            let alpha =  Float(color.red)/255
+            cell.drawGlass.color = UIColor(colorLiteralRed: red, green: green, blue: blue, alpha: alpha)
+        }
         
-        cell.drinkImage.image = Theme.setImageForDrink(drink: drink)
+        cell.drawGlass.glass = drink.glass?.displayName ?? ""
+        cell.drawGlass.descriptionString = drink.description
         cell.drinkNameLabel.textColor = Theme.labelColor
         cell.drinkNameLabel.font = Theme.cellLabelFont
         cell.drinkNameLabel.text = drink.displayName

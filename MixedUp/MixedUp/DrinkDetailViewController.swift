@@ -26,13 +26,14 @@ class DrinkDetailViewController: UIViewController {
    
     @IBOutlet weak var displayNameLabel: UILabel!
     
+    @IBOutlet weak var drawDrink: DrawGlass!
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var glassLabel: UILabel!
     @IBOutlet weak var drinkDescriptionLabel: UILabel!
     
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var toolsLabel: UILabel!
-    @IBOutlet weak var drinkImage: UIImageView!
+    
     @IBOutlet weak var addToFavoritesButton: UIButton!
     @IBOutlet weak var addedSuccesLabel: UILabel!
     
@@ -56,7 +57,16 @@ class DrinkDetailViewController: UIViewController {
         addedSuccesLabel.isHidden = true
         addedSuccesLabel.font = Theme.labelFont
         addedSuccesLabel.textColor = Theme.labelColor
-        drinkImage.image = Theme.setImageForDrink(drink: drink!)
+        if let color = drink?.color{
+            let red = Float(color.red)/255
+            let green =  Float(color.green)/255
+            let blue =  Float(color.blue)/255
+            let alpha =  Float(color.red)/255
+            drawDrink.color = UIColor(colorLiteralRed: red, green: green, blue: blue, alpha: alpha)
+        }
+        
+        drawDrink.glass = drink?.glass?.displayName ?? ""
+        drawDrink.descriptionString = drink?.description ?? ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
