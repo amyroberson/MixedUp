@@ -199,10 +199,11 @@
 				E1D00C401E4BBB8700C478CA /* IngredientTypeCell.swift */,
 				E1D00C461E4BCC2A00C478CA /* addInventoryViewController.swift */,
 				E17F24441E4CDC5E00AD17A6 /* DrinkDetailViewController.swift */,
+				E18853261E4914CD005C8C37 /* Main.storyboard */,
 				E1D00C441E4BC20100C478CA /* IngredientListController.swift */,
 				E1D00C391E4B743600C478CA /* IBACell.swift */,
 				E1D00C421E4BC1E200C478CA /* IngredientCell.swift */,
-				E18853261E4914CD005C8C37 /* Main.storyboard */,
+				E1C3C3AD1E53A8FB0012E60E /* New Group */,
 				E1D00C481E4C12DB00C478CA /* Theme.swift */,
 				E18853F91E4A8E11005C8C37 /* Services/Storage */,
 				E18853611E4921A1005C8C37 /* Model */,
@@ -277,6 +278,13 @@
 				E18853B01E4946FF005C8C37 /* MixedUpAPI.swift */,
 			);
 			name = Services/Storage;
+			sourceTree = "<group>";
+		};
+		E1C3C3AD1E53A8FB0012E60E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

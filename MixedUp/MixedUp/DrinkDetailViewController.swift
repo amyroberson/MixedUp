@@ -45,7 +45,8 @@ class DrinkDetailViewController: UIViewController {
         setUpStackViews()
         mainStackView.insertArrangedSubview(ingredientStackView, at: 5)
         mainStackView.insertArrangedSubview(toolsStack, at: 7)
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width , height: mainStackView.frame.size.width)
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width , height: mainStackView.frame.size.height)
+
         if let drink = drink {
             if (user?.favoriteDrinks?.contains(drink))!{
                 addToFavoritesButton.isEnabled = false
