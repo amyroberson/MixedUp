@@ -45,7 +45,7 @@ class DrinkDetailViewController: UIViewController {
         setUpStackViews()
         mainStackView.insertArrangedSubview(ingredientStackView, at: 5)
         mainStackView.insertArrangedSubview(toolsStack, at: 7)
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width , height: mainStackView.frame.size.height)
+        
 
         if let drink = drink {
             if (user?.favoriteDrinks?.contains(drink))!{
@@ -66,6 +66,10 @@ class DrinkDetailViewController: UIViewController {
         } else {
             Theme.styleDark()
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width , height: mainStackView.frame.size.height)
     }
 
     
