@@ -16,6 +16,9 @@ class BirthdayViewController: UIViewController {
     var userStore: UserService? = nil
     var ingredientStore: IngredientService? = nil
     var drinkStore: DrinkService? = nil
+    var glassStore: GlassService? = nil
+    var colorStore: ColorService? = nil
+    var toolStore: ToolService? = nil
     var user: User? = nil
     let userIDKey = "userID"
     var typeStore: TypeService? = nil
@@ -62,6 +65,9 @@ class BirthdayViewController: UIViewController {
             tabsVC.drinkStore = drinkStore
             tabsVC.user = user
             tabsVC.typeStore = typeStore
+            tabsVC.glassStore = glassStore
+            tabsVC.colorStore = colorStore
+            tabsVC.toolStore = toolStore
             self.show(tabsVC, sender: nil)
         }
         

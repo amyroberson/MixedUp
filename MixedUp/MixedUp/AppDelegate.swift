@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var userStore: UserService? = nil
     var ingredientStore: IngredientService? = nil
     var drinkStore: DrinkService? = nil
+    var toolStore: ToolService? = nil
+    var glassStore: GlassService? = nil
+    var colorStore: ColorService? = nil
     var user: User? = nil
     let userIDKey = "userID"
     
@@ -33,6 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ingredientStore = IngredientService(coreDataStack)
         drinkStore = DrinkService(coreDataStack)
         typeStore = TypeService(coreDataStack)
+        toolStore = ToolService(coreDataStack)
+        glassStore = GlassService(coreDataStack)
+        colorStore = ColorService(coreDataStack)
+        toolStore = ToolService(coreDataStack)
         
         if let userIDString = defaults.string(forKey: userIDKey), userIDString.isEmpty == false{
             
@@ -51,8 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if user != nil {
-            // pass user on to the rest of the app
-            //but for now the user is waiting
             self.window = UIWindow(frame: UIScreen.main.bounds)
             
             
@@ -66,6 +71,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController.drinkStore = drinkStore
             initialViewController.user = user
             initialViewController.typeStore = typeStore
+            initialViewController.glassStore = glassStore
+            initialViewController.colorStore = colorStore
+            initialViewController.toolStore = toolStore
             
             window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
@@ -83,6 +91,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController.ingredientStore = ingredientStore
             initialViewController.drinkStore = drinkStore
             initialViewController.typeStore = typeStore
+            initialViewController.glassStore = glassStore
+            initialViewController.colorStore = colorStore
+            initialViewController.toolStore = toolStore
             
             window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()

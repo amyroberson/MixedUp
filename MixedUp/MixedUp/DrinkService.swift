@@ -80,6 +80,58 @@ final class DrinkService{
         return drink
     }
     
+    func createCoreDataDrink(newDrink: Drink, inContext context: NSManagedObjectContext) -> ResourceResult<Drink> {
+        
+        let dictionary = newDrink.toDictionary()
+        
+        var drink: Drink!
+        context.performAndWait({ () -> Void in
+            drink = NSEntityDescription.insertNewObject(forEntityName: Drink.entityName,
+                                                        into: context) as! Drink
+            let ingredients = dictionary["ingredients"] as? [[String: Any]]
+            var actualIngredients: [Ingredient] = []
+            if let ingredients = ingredients{
+                for theIngredient in ingredients {
+                    if let ingredient = MixedUpAPI.getIngredientFromDictionary(theIngredient, inContext: context){
+                        actualIngredients.append(ingredient)
+                    }
+                }
+                if actualIngredients.count == ingredients.count {
+                    let set: Set<Ingredient> = Set(actualIngredients)
+                    drink.ingredients = set as NSSet?
+                } else{
+                    drink.ingredients = []
+                }
+            } else {
+                drink.ingredients = []
+            }
+            drink.id = dictionary["id"] as? String ?? UUID().uuidString
+            do{
+                try self.coreDataStack.saveChanges()
+            }catch {
+                print("did not save User in coreData")
+            }
+        })
+        return .success(drink)
+        
+    }
+    
+    
+    func getAllDrinksFromCoreData() -> [Drink]{
+        let mainQueueContext = self.coreDataStack.mainQueueContext
+        
+        let drinksFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Drink")
+        var fetchedDrinks: [Drink] = []
+        
+        do {
+            fetchedDrinks = try mainQueueContext.fetch(drinksFetch) as! [Drink]
+            return fetchedDrinks
+        } catch {
+            print("Failed to fetch employees: \(error)")
+            return []
+        }
+    }
+    
     func getIBADrinks(completion: @escaping (ResourceResult<[Drink]>) -> ()){
         let url = URL(string: "https://n9hfoxnwqg.execute-api.us-east-2.amazonaws.com/alpha/drinks")!
         let request = requestBuilder(url: url, method: "GET")
@@ -139,7 +191,7 @@ final class DrinkService{
             completion(result)
         })
         task.resume()
-
+        
     }
     
 }

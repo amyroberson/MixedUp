@@ -15,6 +15,9 @@ class TabsViewController: UITabBarController {
     var userStore: UserService? = nil
     var ingredientStore: IngredientService? = nil
     var drinkStore: DrinkService? = nil
+    var toolStore: ToolService? = nil
+    var glassStore: GlassService? = nil
+    var colorStore: ColorService? = nil
     var user: User? = nil
     var typeStore: TypeService? = nil
     
@@ -50,6 +53,17 @@ class TabsViewController: UITabBarController {
                     generatedVC.userStore = userStore
                     generatedVC.drinkStore = drinkStore
                     generatedVC.user = user
+                } else if let pickerVC = controller.topViewController as? GlassPickerViewController {
+                    pickerVC.defaults = defaults
+                    pickerVC.coreDataStack = coreDataStack
+                    pickerVC.userStore = userStore
+                    pickerVC.ingredientStore = ingredientStore
+                    pickerVC.toolStore = toolStore
+                    pickerVC.glassStore = glassStore
+                    pickerVC.colorStore = colorStore
+                    pickerVC.user = user
+                    pickerVC.typeStore = typeStore
+                    pickerVC.drinkStore = drinkStore
                 }
             }
         }

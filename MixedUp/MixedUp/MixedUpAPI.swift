@@ -9,19 +9,6 @@
 import Foundation
 import CoreData
 
-internal func debugPrintSingleDrink(drink: Drink) {
-    print(drink.displayName!)
-    for ingredient in (drink.ingredients?.allObjects)!{
-        print("  \((ingredient as! Ingredient).displayName!)")
-    }
-}
-
-func debugPrintDrinks(drinks: [Drink]) {
-    for d in drinks {
-        debugPrintSingleDrink(drink: d)
-    }
-}
-
 class MixedUpAPI {
     enum Error: Swift.Error {
         case invalidJSONData

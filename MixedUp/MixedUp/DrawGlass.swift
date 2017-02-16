@@ -15,7 +15,7 @@ enum Glasses: String {
     case wine = "Wine"
     case lowBall = "LowBall"
     case lowball = "Lowball"
-    case hurricane = "Huricane"
+    case hurricane = "Hurricane"
     case champagne = "Champagne"
     case coconut = "Coconut"
     case base = ""

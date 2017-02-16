@@ -36,6 +36,9 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
                 
             default:
                 print("could not get drinks")
+                self.drinks = (self.drinkStore?.getAllDrinksFromCoreData())!
+                self.allDrinks = self.drinks
+                self.refresh()
             }
         })
         

@@ -54,7 +54,7 @@ final class ToolService{
     func fetchMainQueueTools(predicate: NSPredicate? = nil,
                              sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Tool] {
         
-        let fetchRequest = NSFetchRequest<Tool>(entityName: "IngredientType")
+        let fetchRequest = NSFetchRequest<Tool>(entityName: "Tool")
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
         

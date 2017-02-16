@@ -46,8 +46,8 @@ class DrinkDetailViewController: UIViewController {
         setUpStackViews()
         mainStackView.insertArrangedSubview(ingredientStackView, at: 5)
         mainStackView.insertArrangedSubview(toolsStack, at: 7)
+        //mainStackView.setContentHuggingPriority(1, for: .vertical)
         
-
         if let drink = drink {
             if (user?.favoriteDrinks?.contains(drink))!{
                 addToFavoritesButton.isEnabled = false
@@ -67,6 +67,11 @@ class DrinkDetailViewController: UIViewController {
         
         drawDrink.glass = drink?.glass?.displayName ?? ""
         drawDrink.descriptionString = drink?.description ?? ""
+        // Gesture play
+        let tapRec = UITapGestureRecognizer(target: self, action: #selector(DrinkDetailViewController.handleTap(recognizer:)))
+        tapRec.numberOfTapsRequired = 1
+        tapRec.numberOfTouchesRequired = 1
+        //view.addGestureRecognizer(tapRec)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +85,7 @@ class DrinkDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         scrollView.contentSize = CGSize(width: self.view.frame.size.width , height: mainStackView.frame.size.height)
+        
     }
 
     
@@ -100,22 +106,29 @@ class DrinkDetailViewController: UIViewController {
     func setUpStackViews(){
         toolsStack.alignment = .center
         toolsStack.axis = .vertical
-        toolsStack.distribution = .equalCentering
+        toolsStack.setContentHuggingPriority(0.7, for: .vertical)
+        toolsStack.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
+        toolsStack.distribution = .fill
+        
         ingredientStackView.alignment = .center
         ingredientStackView.axis = .vertical
-        ingredientStackView.distribution = .equalCentering
+        ingredientsLabel.setContentHuggingPriority(0.7, for: .vertical)
+        ingredientStackView.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
+        ingredientStackView.distribution = .fill
         if let tools = drink?.tools{
             for tool in tools {
                 let theToolLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
                 theToolLabel.center = CGPoint(x: 160, y: 285)
                 theToolLabel.textAlignment = .center
+                theToolLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
                 theToolLabel.text = (tool as! Tool).displayName ?? ""
                 theToolLabel.textColor = Theme.labelColor
                 theToolLabel.font = Theme.labelFont
                 toolsStack.addArrangedSubview(theToolLabel)
             }
         } else {
-            let theToolLabel: UILabel = UILabel()
+            let theToolLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+            theToolLabel.center = CGPoint(x: 160, y: 285)
             theToolLabel.text = "No Tools Required!"
             theToolLabel.textColor = Theme.labelColor
             theToolLabel.font = Theme.labelFont
@@ -126,13 +139,15 @@ class DrinkDetailViewController: UIViewController {
                 let theingredientLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
                 theingredientLabel.center = CGPoint(x: 160, y: 285)
                 theingredientLabel.textAlignment = .center
+                theingredientLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
                 theingredientLabel.text = (ingredient as! Ingredient).displayName ?? ""
                 theingredientLabel.textColor = Theme.labelColor
                 theingredientLabel.font = Theme.labelFont
                 ingredientStackView.addArrangedSubview(theingredientLabel)
             }
         } else {
-            let theingredientLabel: UILabel = UILabel()
+            let theingredientLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+            theingredientLabel.center = CGPoint(x: 160, y: 285)
             theingredientLabel.text = "No ingredients found."
             theingredientLabel.textColor = Theme.labelColor
             theingredientLabel.font = Theme.labelFont
@@ -161,10 +176,13 @@ class DrinkDetailViewController: UIViewController {
         addedSuccesLabel.font = Theme.labelFont
         ingredientsLabel.font = Theme.boldLabelFont
         ingredientsLabel.textColor = Theme.labelColor
-        
-        
     }
     
+    func handleTap(recognizer: UITapGestureRecognizer) {
+        let locationOfTap = recognizer.location(in: scrollView)
+        print(locationOfTap)
+        print(scrollView.hitTest(locationOfTap, with: nil)!)
+    }
     
 }
 
