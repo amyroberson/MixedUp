@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E12D22AB1E55055400C843A7 /* GlassPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D22AA1E55055400C843A7 /* GlassPickerViewController.swift */; };
+		E12D22AD1E55065500C843A7 /* GlassService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D22AC1E55065500C843A7 /* GlassService.swift */; };
 		E17F24451E4CDC5E00AD17A6 /* DrinkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F24441E4CDC5E00AD17A6 /* DrinkDetailViewController.swift */; };
 		E17F24471E4D09A300AD17A6 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F24461E4D09A300AD17A6 /* FavoritesViewController.swift */; };
 		E17F24491E4D122600AD17A6 /* GeneratedRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F24481E4D122600AD17A6 /* GeneratedRecipesViewController.swift */; };
@@ -64,6 +66,8 @@
 		E1D00C451E4BC20100C478CA /* IngredientListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C441E4BC20100C478CA /* IngredientListController.swift */; };
 		E1D00C471E4BCC2A00C478CA /* addInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C461E4BCC2A00C478CA /* addInventoryViewController.swift */; };
 		E1D00C491E4C12DB00C478CA /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00C481E4C12DB00C478CA /* Theme.swift */; };
+		E1D640241E552E3A0040D649 /* ColorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D640231E552E3A0040D649 /* ColorService.swift */; };
+		E1D640261E552F580040D649 /* ToolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D640251E552F580040D649 /* ToolService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E12D22AA1E55055400C843A7 /* GlassPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlassPickerViewController.swift; sourceTree = "<group>"; };
+		E12D22AC1E55065500C843A7 /* GlassService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlassService.swift; sourceTree = "<group>"; };
 		E17F24441E4CDC5E00AD17A6 /* DrinkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkDetailViewController.swift; sourceTree = "<group>"; };
 		E17F24461E4D09A300AD17A6 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		E17F24481E4D122600AD17A6 /* GeneratedRecipesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedRecipesViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +153,8 @@
 		E1D00C441E4BC20100C478CA /* IngredientListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientListController.swift; sourceTree = "<group>"; };
 		E1D00C461E4BCC2A00C478CA /* addInventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addInventoryViewController.swift; sourceTree = "<group>"; };
 		E1D00C481E4C12DB00C478CA /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		E1D640231E552E3A0040D649 /* ColorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorService.swift; sourceTree = "<group>"; };
+		E1D640251E552F580040D649 /* ToolService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +214,7 @@
 				E1D00C3E1E4BA05B00C478CA /* InventoryTableViewController.swift */,
 				E1D00C401E4BBB8700C478CA /* IngredientTypeCell.swift */,
 				E1D00C461E4BCC2A00C478CA /* addInventoryViewController.swift */,
+				E12D22AA1E55055400C843A7 /* GlassPickerViewController.swift */,
 				E17F24441E4CDC5E00AD17A6 /* DrinkDetailViewController.swift */,
 				E18853261E4914CD005C8C37 /* Main.storyboard */,
 				E1D00C441E4BC20100C478CA /* IngredientListController.swift */,
@@ -285,6 +294,9 @@
 				E18853FA1E4A9CC6005C8C37 /* UserService.swift */,
 				E1C3C3581E510DF50012E60E /* TypeService.swift */,
 				E18853FE1E4AD77C005C8C37 /* IngredientService.swift */,
+				E12D22AC1E55065500C843A7 /* GlassService.swift */,
+				E1D640251E552F580040D649 /* ToolService.swift */,
+				E1D640231E552E3A0040D649 /* ColorService.swift */,
 				E18853B01E4946FF005C8C37 /* MixedUpAPI.swift */,
 			);
 			name = Services/Storage;
@@ -445,6 +457,7 @@
 				E18853FF1E4AD77C005C8C37 /* IngredientService.swift in Sources */,
 				E18853E81E497EAA005C8C37 /* Color+CoreDataProperties.swift in Sources */,
 				E18853E71E497EA5005C8C37 /* Tool+CoreDataProperties.swift in Sources */,
+				E12D22AB1E55055400C843A7 /* GlassPickerViewController.swift in Sources */,
 				E18853FD1E4AB6B2005C8C37 /* DrinkService.swift in Sources */,
 				E1D00C491E4C12DB00C478CA /* Theme.swift in Sources */,
 				E17F24471E4D09A300AD17A6 /* FavoritesViewController.swift in Sources */,
@@ -458,6 +471,7 @@
 				E18853DD1E497E83005C8C37 /* Ingredient+CoreDataProperties.swift in Sources */,
 				E18853DE1E497E86005C8C37 /* IngredientType+CoreDataClass.swift in Sources */,
 				E1D00C3A1E4B743600C478CA /* IBACell.swift in Sources */,
+				E1D640261E552F580040D649 /* ToolService.swift in Sources */,
 				E1D00C431E4BC1E200C478CA /* IngredientCell.swift in Sources */,
 				E18853E51E497E9E005C8C37 /* Drink+CoreDataProperties.swift in Sources */,
 				E18853E61E497EA1005C8C37 /* Tool+CoreDataClass.swift in Sources */,
@@ -471,8 +485,10 @@
 				E18853231E4914CD005C8C37 /* AppDelegate.swift in Sources */,
 				E17F24451E4CDC5E00AD17A6 /* DrinkDetailViewController.swift in Sources */,
 				E18853EA1E497EB2005C8C37 /* User+CoreDataProperties.swift in Sources */,
+				E12D22AD1E55065500C843A7 /* GlassService.swift in Sources */,
 				E18853DC1E497E78005C8C37 /* Ingredient+CoreDataClass.swift in Sources */,
 				E1D00C3C1E4B7A2200C478CA /* IBAViewController.swift in Sources */,
+				E1D640241E552E3A0040D649 /* ColorService.swift in Sources */,
 				E1D00C471E4BCC2A00C478CA /* addInventoryViewController.swift in Sources */,
 				E18853B11E4946FF005C8C37 /* MixedUpAPI.swift in Sources */,
 				E1D00C411E4BBB8700C478CA /* IngredientTypeCell.swift in Sources */,

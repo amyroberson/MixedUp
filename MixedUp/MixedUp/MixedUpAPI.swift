@@ -61,6 +61,8 @@ class MixedUpAPI {
     static let ingredientEntityTypeKey = "Ingredient"
     static let ingredienttypeKey = "ingredientType"
     static let typeKey = "type"
+    static let colorsKey = "colors"
+    static let glassesKey = "glasses"
     
     static func jsonToDictionary(_ data: Data)throws -> [String:Any] {
         guard let jsonObject: [String: Any] = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
@@ -288,13 +290,11 @@ class MixedUpAPI {
         
         guard let display = dictionary[MixedUpAPI.displayNameKey] as? String else { return nil}
         let id = dictionary[MixedUpAPI.idKey] as? String ?? UUID().uuidString
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: MixedUpAPI.ingredientTypeKey)
-        let predicate = NSPredicate(format: "id == \"\(id)\"")
-        fetchRequest.predicate = predicate
         
-        if let cdIngredientType: IngredientType = MixedUpAPI.getFromCoreData(typeName: MixedUpAPI.ingredientTypeKey, id: id, context: context){
-            return cdIngredientType
+        if let cdType: IngredientType = MixedUpAPI.getFromCoreData(typeName: MixedUpAPI.ingredientTypeKey, id: id, context: context){
+            return cdType
         }
+        
         var type: IngredientType!
         context.performAndWait({ () -> Void in
             type = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
@@ -304,6 +304,28 @@ class MixedUpAPI {
             type.displayName = display
         })
         return type
+    }
+    
+    static func getGlassesFromDictionary(_ dictionary: [String: Any], inContext context: NSManagedObjectContext) -> ResourceResult<[Glass]>{
+       
+        let dictionaries: [[String: Any]]
+        if dictionary[MixedUpAPI.glassesKey] as? [[String: Any]] != nil {
+            dictionaries = (dictionary[MixedUpAPI.glassesKey] as? [[String: Any]])!
+        } else {
+            return .failure(Errors.invalidJSONData)
+        }
+        
+        var actualGlasses: [Glass] = []
+        for dictionary in dictionaries {
+            if let glass = getGlassFromDictionary(dictionary, inContext: context){
+                actualGlasses.append(glass)
+            }
+        }
+        
+        if actualGlasses.count == 0 && dictionaries.count > 0 {
+            return .failure(Errors.invalidJSONData)
+        }
+        return .success(actualGlasses)
     }
     
     static func getGlassFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Glass? {
@@ -358,6 +380,26 @@ class MixedUpAPI {
         return tool
     }
     
+    static func getColorsFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> ResourceResult<[Color]> {
+        let dictionaries: [[String: Any]]
+        if dictionary[MixedUpAPI.colorsKey] as? [[String: Any]] != nil {
+            dictionaries = (dictionary[MixedUpAPI.colorsKey] as? [[String: Any]])!
+        } else {
+            return .failure(Errors.invalidJSONData)
+        }
+
+        var actualColors: [Color] = []
+        for dictionary in dictionaries {
+            if let color = getColorFromDictionary(dictionary, inContext: context){
+                actualColors.append(color)
+            }
+        }
+        
+        if actualColors.count != dictionaries.count {
+            return .failure(Errors.invalidJSONData)
+        }
+        return .success(actualColors)
+    }
     
     static func getColorFromDictionary(_ dictionary:[String: Any], inContext context: NSManagedObjectContext) -> Color?{
         
