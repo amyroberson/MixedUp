@@ -887,15 +887,112 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25m-Ni-EQ3">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="659"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlp-Cg-veV">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1433"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FF6-1X-brD">
+                                                <rect key="frame" x="50" y="24" width="275" height="795"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgG-Kh-dkc">
+                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="20.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="275" id="GYY-Nk-S59"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y0m-KL-znD" userLabel="nameTextField">
+                                                        <rect key="frame" x="0.0" y="20.5" width="275" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Instructions:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfo-4r-AgT">
+                                                        <rect key="frame" x="0.0" y="50.5" width="275" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DEv-HK-zcP" userLabel="instructionsTextField">
+                                                        <rect key="frame" x="0.0" y="71" width="275" height="150"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="SKj-wr-lBA"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5T-ZA-BgV">
+                                                        <rect key="frame" x="0.0" y="221" width="275" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQi-FH-nea">
+                                                        <rect key="frame" x="0.0" y="241.5" width="275" height="216"/>
+                                                    </pickerView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXc-iH-hmk">
+                                                        <rect key="frame" x="0.0" y="457.5" width="275" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Tools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nO2-vH-bEO">
+                                                        <rect key="frame" x="0.0" y="478" width="275" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhW-2y-eOP">
+                                                        <rect key="frame" x="0.0" y="498.5" width="275" height="216"/>
+                                                    </pickerView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7y-w8-Pc4">
+                                                        <rect key="frame" x="0.0" y="714.5" width="275" height="30"/>
+                                                        <state key="normal" title="Select Tool"/>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kf9-Vk-fLL">
+                                                        <rect key="frame" x="0.0" y="744.5" width="275" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abh-br-ceU">
+                                                        <rect key="frame" x="0.0" y="765" width="275" height="30"/>
+                                                        <state key="normal" title="Save Drink To Favorites"/>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="WgG-Kh-dkc" firstAttribute="centerX" secondItem="FF6-1X-brD" secondAttribute="centerX" id="cIs-of-YVW"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="FF6-1X-brD" firstAttribute="centerX" secondItem="Tlp-Cg-veV" secondAttribute="centerX" id="4uh-bw-s7e"/>
+                                            <constraint firstAttribute="trailing" secondItem="FF6-1X-brD" secondAttribute="trailing" constant="50" id="8gm-RU-27z"/>
+                                            <constraint firstAttribute="bottom" secondItem="FF6-1X-brD" secondAttribute="bottom" constant="614" id="Dr3-bB-5mf"/>
+                                            <constraint firstItem="FF6-1X-brD" firstAttribute="top" secondItem="Tlp-Cg-veV" secondAttribute="top" constant="24" id="oQ5-N6-oMv"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Tlp-Cg-veV" secondAttribute="bottom" id="S8D-nr-EVb"/>
+                                    <constraint firstItem="Tlp-Cg-veV" firstAttribute="top" secondItem="25m-Ni-EQ3" secondAttribute="top" id="Sgt-H1-Ad4"/>
+                                    <constraint firstItem="Tlp-Cg-veV" firstAttribute="leading" secondItem="25m-Ni-EQ3" secondAttribute="leading" id="mHJ-OL-ayA"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tlp-Cg-veV" secondAttribute="trailing" id="uee-UC-7y0"/>
+                                    <constraint firstItem="Tlp-Cg-veV" firstAttribute="centerX" secondItem="25m-Ni-EQ3" secondAttribute="centerX" id="v5M-Wt-xrF"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.82828279999999999" green="0.82390035129999994" blue="0.83266524870000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="25m-Ni-EQ3" secondAttribute="trailing" id="1Ti-MV-kgh"/>
-                            <constraint firstItem="AuI-S3-f3Z" firstAttribute="top" secondItem="25m-Ni-EQ3" secondAttribute="bottom" id="43I-XL-F9s"/>
-                            <constraint firstItem="25m-Ni-EQ3" firstAttribute="leading" secondItem="K0J-9d-kg0" secondAttribute="leading" id="Mfw-e1-Bea"/>
-                            <constraint firstItem="25m-Ni-EQ3" firstAttribute="top" secondItem="VJ8-C0-ZLw" secondAttribute="bottom" id="gyr-7g-WMe"/>
+                            <constraint firstAttribute="trailing" secondItem="25m-Ni-EQ3" secondAttribute="trailing" id="J6Z-pz-SpO"/>
+                            <constraint firstItem="25m-Ni-EQ3" firstAttribute="leading" secondItem="K0J-9d-kg0" secondAttribute="leading" id="RxZ-Ha-Qnr"/>
+                            <constraint firstItem="AuI-S3-f3Z" firstAttribute="top" secondItem="25m-Ni-EQ3" secondAttribute="bottom" constant="8" symbolic="YES" id="mTN-UK-5Ha"/>
+                            <constraint firstItem="25m-Ni-EQ3" firstAttribute="top" secondItem="K0J-9d-kg0" secondAttribute="top" id="rbj-x6-886"/>
                         </constraints>
                     </view>
                 </viewController>
