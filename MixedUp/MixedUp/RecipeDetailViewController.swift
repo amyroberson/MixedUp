@@ -28,7 +28,6 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     var drinkTools: Set<Tool> = []
     var type: IngredientType? = nil
     var ingredients: [Ingredient] = []
-    var all: IngredientType? = nil
     var drink: Drink? = nil
     
     @IBOutlet weak var mainStackView: UIStackView!
@@ -55,6 +54,8 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         toolsPicker.delegate = self
         toolsPicker.dataSource = self
         toolsPicker.isHidden = true
+        recipeInstructionTextField.delegate = self
+        drinkNameTextField.delegate = self
         mainStackView.insertArrangedSubview(toolsStack, at: 12)
         mainStackView.insertArrangedSubview(ingredientStackView, at: 8)
         do{
@@ -64,10 +65,6 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         } catch{
             print("could not get objectd from CoreData")
         }
-        all = NSEntityDescription.insertNewObject(forEntityName: IngredientType.entityName,
-                                                  into: self.coreDataStack!.mainQueueContext) as? IngredientType
-        all?.displayName = "All Ingredients"
-        ingredientTypes.append(all!)
         self.drink = NSEntityDescription.insertNewObject(forEntityName: Drink.entityName, into: (self.coreDataStack?.mainQueueContext)!) as? Drink
         drink?.isAlcoholic = true
         drink?.isIBAOfficial = false
@@ -124,7 +121,14 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBAction func createDrinkTapped(_ sender: UIButton) {
         guard (drink?.ingredients?.count)! > 0 else {return}
         
-        if let user = user, let color = color, let glass = glass, let _ = drinkStore, let name = drinkNameTextField.text, let instructions = recipeInstructionTextField.text, let drink = drink{
+        if let user = user,
+            let color = color,
+            let glass = glass,
+            let _ = drinkStore,
+            let name = drinkNameTextField.text,
+            let instructions = recipeInstructionTextField.text,
+            let drink = drink
+        {
             drink.glass = glass
             drink.color = color
             drink.stringDescription = instructions
@@ -169,6 +173,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             let title = sender.title(for: .normal)
             if (title?.contains(ingredient.displayName!))!{
                 drinkIngredients.remove(ingredient)
+                ingredient.removeFromDrink(drink!)
                 sender.removeFromSuperview()
             }
         }
@@ -179,6 +184,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             let title = sender.title(for: .normal)
             if (title?.contains(tool.displayName!))! {
                 drinkTools.remove(tool)
+                tool.removeFromDrinks(drink!)
                 sender.removeFromSuperview()
             }
         }
@@ -218,7 +224,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == ingredientTypePicker{
-            return ingredientTypes.count
+            return ingredientTypes.count + 1
         } else {
             return tools.count
         }
@@ -226,7 +232,11 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == ingredientTypePicker{
-            return ingredientTypes[row].displayName
+            if row == 0 {
+                return "All Ingredients"
+            } else {
+                return ingredientTypes[row - 1].displayName
+            }
         } else {
             return tools[row].displayName
         }
@@ -234,13 +244,15 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == ingredientTypePicker{
-            let type = ingredientTypes[row]
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let addVC = storyBoard.instantiateViewController(withIdentifier: "AddtoRecipe") as! AddToRecipeViewController
             addVC.defaults = defaults
             addVC.ingredientStore = ingredientStore
             addVC.drink = drink
-            addVC.type = type
+            if row != 0 {
+                let type = ingredientTypes[row - 1]
+                addVC.type = type
+            }
             ingredientTypePicker.isHidden = true
             self.show(addVC, sender: nil)
             
@@ -261,7 +273,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
                 toolsStack.addArrangedSubview(theToolButton)
             }
             toolsPicker.isHidden = true
-
+            
         }
     }
     

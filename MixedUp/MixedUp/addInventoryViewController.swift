@@ -60,7 +60,7 @@ class addInventoryViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (ingredientType?.displayName)! == "All Ingredients"{
+        if ingredientType == nil{
             self.ingredientStore?.getAllIngredients(completion:  {result in
                 switch result{
                 case .success(let theIngredients):

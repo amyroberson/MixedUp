@@ -83,7 +83,7 @@ class IngredientListController: UITableViewController {
                     if !ingredients.contains((ingredient as! Ingredient)){
                         ingredients.append((ingredient as! Ingredient))
                     }
-                } else if ingredientType?.displayName == "All Ingredients"{
+                } else if ingredientType == nil{
                  ingredients = user?.inventory?.allObjects as! [Ingredient]
                 }
             }

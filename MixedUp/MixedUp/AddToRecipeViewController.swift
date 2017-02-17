@@ -30,7 +30,7 @@ class AddToRecipeViewController: UIViewController, UIPickerViewDelegate, UIPicke
         ingredientPicker.dataSource = self
         ingredientPicker.delegate = self
          self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(addIngredient(_:)))
-        if (type?.displayName)! == "All Ingredients"{
+        if type == nil{
             self.ingredientStore?.getAllIngredients(completion:  {result in
                 switch result{
                 case .success(let theIngredients):
