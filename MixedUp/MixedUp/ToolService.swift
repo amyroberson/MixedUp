@@ -77,7 +77,7 @@ final class ToolService{
         return type
     }
     
-    func getAllTypes(completion: @escaping (ResourceResult<[Tool]>) -> ()){
+    func getAllTools(completion: @escaping (ResourceResult<[Tool]>) -> ()){
         let url = URL(string: "https://n9hfoxnwqg.execute-api.us-east-2.amazonaws.com/alpha/tools")!
         let request = requestBuilder(url: url, method: "GET")
         let task = session.dataTask(with: request,  completionHandler: {

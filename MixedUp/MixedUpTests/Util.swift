@@ -61,5 +61,15 @@ struct Util {
         }
         return Array(returning)
     }
+    
+    static func getIsAlcoholic(ingredients: [Ingredient]) -> Bool{
+        for ingredient in ingredients{
+            if ingredient.isAlcoholic{
+                return true
+            }
+        }
+        return false
+    }
+    
 }
 

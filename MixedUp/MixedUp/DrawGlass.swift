@@ -16,6 +16,7 @@ enum Glasses: String {
     case lowBall = "LowBall"
     case lowball = "Lowball"
     case hurricane = "Hurricane"
+    case huricane = "Huricane"
     case champagne = "Champagne"
     case coconut = "Coconut"
     case base = ""
@@ -80,7 +81,7 @@ class DrawGlass: UIView {
             } else {
                 StyleKitGlasses.drawLowBall(frame: rect, liquid: color)
             }
-        case .hurricane:
+        case .hurricane, .huricane:
             if descriptionString.contains(garnishKey){
                 StyleKitGlasses.drawHurricaneWithUmbrella(frame: rect, liquid: color)
             } else  {

@@ -890,13 +890,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="659"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlp-Cg-veV">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1436"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1463"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FF6-1X-brD">
-                                                <rect key="frame" x="50" y="24" width="275" height="798"/>
+                                                <rect key="frame" x="50" y="24" width="275" height="825"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgG-Kh-dkc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="20.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="275" id="GYY-Nk-S59"/>
                                                         </constraints>
@@ -905,19 +905,19 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y0m-KL-znD" userLabel="nameTextField">
-                                                        <rect key="frame" x="0.0" y="21" width="275" height="30"/>
+                                                        <rect key="frame" x="0.0" y="20.5" width="275" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Instructions:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfo-4r-AgT">
-                                                        <rect key="frame" x="0.0" y="51" width="275" height="21"/>
+                                                        <rect key="frame" x="0.0" y="50.5" width="275" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DEv-HK-zcP" userLabel="instructionsTextField">
-                                                        <rect key="frame" x="0.0" y="72" width="275" height="150"/>
+                                                        <rect key="frame" x="0.0" y="71" width="275" height="150"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="SKj-wr-lBA"/>
                                                         </constraints>
@@ -926,42 +926,55 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5T-ZA-BgV">
-                                                        <rect key="frame" x="0.0" y="222" width="275" height="21"/>
+                                                        <rect key="frame" x="0.0" y="221" width="275" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Tm-VC-YBR">
+                                                        <rect key="frame" x="0.0" y="241.5" width="275" height="30"/>
+                                                        <state key="normal" title="Add Ingredient"/>
+                                                        <connections>
+                                                            <action selector="addIngredientTapped:" destination="GT9-HP-0mL" eventType="touchUpInside" id="Cbj-nR-q7h"/>
+                                                        </connections>
+                                                    </button>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQi-FH-nea">
-                                                        <rect key="frame" x="0.0" y="243" width="275" height="216"/>
+                                                        <rect key="frame" x="0.0" y="271.5" width="275" height="216"/>
                                                     </pickerView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXc-iH-hmk">
-                                                        <rect key="frame" x="0.0" y="459" width="275" height="21"/>
+                                                        <rect key="frame" x="0.0" y="487.5" width="275" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Tools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nO2-vH-bEO">
-                                                        <rect key="frame" x="0.0" y="480" width="275" height="21"/>
+                                                        <rect key="frame" x="0.0" y="508" width="275" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhW-2y-eOP">
-                                                        <rect key="frame" x="0.0" y="501" width="275" height="216"/>
-                                                    </pickerView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7y-w8-Pc4">
-                                                        <rect key="frame" x="0.0" y="717" width="275" height="30"/>
-                                                        <state key="normal" title="Select Tool"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2oM-2F-cyM">
+                                                        <rect key="frame" x="0.0" y="528.5" width="275" height="30"/>
+                                                        <state key="normal" title="Add Tool"/>
+                                                        <connections>
+                                                            <action selector="addToolTapped:" destination="GT9-HP-0mL" eventType="touchUpInside" id="jih-IA-s1i"/>
+                                                        </connections>
                                                     </button>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhW-2y-eOP">
+                                                        <rect key="frame" x="0.0" y="558.5" width="275" height="216"/>
+                                                    </pickerView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tools" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kf9-Vk-fLL">
-                                                        <rect key="frame" x="0.0" y="747" width="275" height="21"/>
+                                                        <rect key="frame" x="0.0" y="774.5" width="275" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abh-br-ceU">
-                                                        <rect key="frame" x="0.0" y="768" width="275" height="30"/>
+                                                        <rect key="frame" x="0.0" y="795" width="275" height="30"/>
                                                         <state key="normal" title="Save Drink To Favorites"/>
+                                                        <connections>
+                                                            <action selector="createDrinkTapped:" destination="GT9-HP-0mL" eventType="touchUpInside" id="Fx7-FZ-B4q"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -995,6 +1008,20 @@
                             <constraint firstItem="25m-Ni-EQ3" firstAttribute="top" secondItem="K0J-9d-kg0" secondAttribute="top" id="rbj-x6-886"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="drinkNameLabel" destination="WgG-Kh-dkc" id="mSl-pB-JI7"/>
+                        <outlet property="drinkNameTextField" destination="y0m-KL-znD" id="Buu-EL-46T"/>
+                        <outlet property="ingredientTypePicker" destination="rQi-FH-nea" id="dv9-tY-8HX"/>
+                        <outlet property="ingredientsLabel" destination="NXc-iH-hmk" id="Dz6-xM-wKi"/>
+                        <outlet property="mainStackView" destination="FF6-1X-brD" id="ySF-ck-ILw"/>
+                        <outlet property="recipeInstructionLabel" destination="pfo-4r-AgT" id="sMa-BE-NNc"/>
+                        <outlet property="recipeInstructionTextField" destination="DEv-HK-zcP" id="oyt-do-ZMa"/>
+                        <outlet property="saveToFavoritesButton" destination="Abh-br-ceU" id="oHr-dL-eK5"/>
+                        <outlet property="selectIngredientsLabel" destination="p5T-ZA-BgV" id="vuz-AF-lVf"/>
+                        <outlet property="selectToolsLabel" destination="nO2-vH-bEO" id="1nR-Sy-xtS"/>
+                        <outlet property="toolsLabel" destination="Kf9-Vk-fLL" id="bkz-Cn-BEq"/>
+                        <outlet property="toolsPicker" destination="BhW-2y-eOP" id="PEc-Ca-cYc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o0s-do-mlR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

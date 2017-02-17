@@ -58,7 +58,21 @@ class ColorPickerViewController: UIViewController, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let color = colors[indexPath.row]
-        //send to drink recipe detail VC
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let recipeVC = storyBoard.instantiateViewController(withIdentifier: "Recipe") as! RecipeDetailViewController
+        recipeVC.coreDataStack = coreDataStack
+        recipeVC.user = user
+        recipeVC.defaults = defaults
+        recipeVC.userStore = userStore
+        recipeVC.ingredientStore = ingredientStore
+        recipeVC.toolStore = toolStore
+        recipeVC.glassStore = glassStore
+        recipeVC.colorStore = colorStore
+        recipeVC.typeStore = typeStore
+        recipeVC.glass = glass
+        recipeVC.color = color
+        self.show(recipeVC, sender: nil)
+
     }
 }
 

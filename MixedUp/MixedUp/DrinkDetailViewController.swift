@@ -46,7 +46,6 @@ class DrinkDetailViewController: UIViewController {
         setUpStackViews()
         mainStackView.insertArrangedSubview(ingredientStackView, at: 5)
         mainStackView.insertArrangedSubview(toolsStack, at: 7)
-        //mainStackView.setContentHuggingPriority(1, for: .vertical)
         
         if let drink = drink {
             if (user?.favoriteDrinks?.contains(drink))!{
@@ -67,11 +66,6 @@ class DrinkDetailViewController: UIViewController {
         
         drawDrink.glass = drink?.glass?.displayName ?? ""
         drawDrink.descriptionString = drink?.description ?? ""
-        // Gesture play
-        let tapRec = UITapGestureRecognizer(target: self, action: #selector(DrinkDetailViewController.handleTap(recognizer:)))
-        tapRec.numberOfTapsRequired = 1
-        tapRec.numberOfTouchesRequired = 1
-        //view.addGestureRecognizer(tapRec)
     }
     
     override func viewWillAppear(_ animated: Bool) {
