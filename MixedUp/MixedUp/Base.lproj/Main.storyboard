@@ -1027,6 +1027,41 @@
             </objects>
             <point key="canvasLocation" x="4589.6000000000004" y="2053.223388305847"/>
         </scene>
+        <!--Add To Recipe View Controller-->
+        <scene sceneID="iId-iL-4hn">
+            <objects>
+                <viewController storyboardIdentifier="AddtoRecipe" id="DZp-IC-w7L" customClass="AddToRecipeViewController" customModule="MixedUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="arl-aC-AUJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="j4o-0g-Vco"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="503-aJ-nz0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YIW-qH-W9h">
+                                <rect key="frame" x="0.0" y="254" width="375" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select an ingredient to add to the recipe!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vY1-OR-rKf">
+                                <rect key="frame" x="76" y="136" width="222" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.82828279999999999" green="0.82390035129999994" blue="0.83266524870000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="ingredientPicker" destination="YIW-qH-W9h" id="Qk9-2m-z1Y"/>
+                        <outlet property="selectLabel" destination="vY1-OR-rKf" id="OEr-Nv-qVC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3R6-Pq-etK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5476" y="2047.826086956522"/>
+        </scene>
         <!--Create Recipe-->
         <scene sceneID="XV1-an-dnk">
             <objects>

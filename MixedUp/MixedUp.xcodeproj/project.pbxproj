@@ -53,6 +53,7 @@
 		E18853FD1E4AB6B2005C8C37 /* DrinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FC1E4AB6B2005C8C37 /* DrinkService.swift */; };
 		E18853FF1E4AD77C005C8C37 /* IngredientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FE1E4AD77C005C8C37 /* IngredientService.swift */; };
 		E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18854001E4B5896005C8C37 /* TabsViewController.swift */; };
+		E1B2E91F1E5733B100EBD45A /* AddToRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B2E91E1E5733B100EBD45A /* AddToRecipeViewController.swift */; };
 		E1C3C3591E510DF50012E60E /* TypeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3581E510DF50012E60E /* TypeService.swift */; };
 		E1C3C3EF1E54AA760012E60E /* DrawGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */; };
 		E1C3C3F31E54DE050012E60E /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3F21E54DE050012E60E /* CoreDataHelper.swift */; };
@@ -142,6 +143,7 @@
 		E18853FC1E4AB6B2005C8C37 /* DrinkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkService.swift; sourceTree = "<group>"; };
 		E18853FE1E4AD77C005C8C37 /* IngredientService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientService.swift; sourceTree = "<group>"; };
 		E18854001E4B5896005C8C37 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
+		E1B2E91E1E5733B100EBD45A /* AddToRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToRecipeViewController.swift; sourceTree = "<group>"; };
 		E1C3C3581E510DF50012E60E /* TypeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeService.swift; sourceTree = "<group>"; };
 		E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawGlass.swift; sourceTree = "<group>"; };
 		E1C3C3F21E54DE050012E60E /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				E1D6402B1E55FE980040D649 /* RecipeDetailViewController.swift */,
 				E12D22AA1E55055400C843A7 /* GlassPickerViewController.swift */,
 				E1D640291E55EF2B0040D649 /* ColorPickerViewController.swift */,
+				E1B2E91E1E5733B100EBD45A /* AddToRecipeViewController.swift */,
 				E17F24441E4CDC5E00AD17A6 /* DrinkDetailViewController.swift */,
 				E18853261E4914CD005C8C37 /* Main.storyboard */,
 				E1D00C441E4BC20100C478CA /* IngredientListController.swift */,
@@ -476,6 +479,7 @@
 				E18853E11E497E90005C8C37 /* Location+CoreDataProperties.swift in Sources */,
 				E1C3C3EF1E54AA760012E60E /* DrawGlass.swift in Sources */,
 				E18853DD1E497E83005C8C37 /* Ingredient+CoreDataProperties.swift in Sources */,
+				E1B2E91F1E5733B100EBD45A /* AddToRecipeViewController.swift in Sources */,
 				E18853DE1E497E86005C8C37 /* IngredientType+CoreDataClass.swift in Sources */,
 				E1D640281E55EDC70040D649 /* StyleKitGlasses.swift in Sources */,
 				E1D00C3A1E4B743600C478CA /* IBACell.swift in Sources */,

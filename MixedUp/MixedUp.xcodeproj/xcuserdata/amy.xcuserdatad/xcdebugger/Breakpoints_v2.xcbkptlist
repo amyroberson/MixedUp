@@ -714,12 +714,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MixedUp/RecipeDetailViewController.swift"
-            timestampString = "508989419.926942"
+            timestampString = "509044664.297935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "refreshStackView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -730,12 +730,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MixedUp/RecipeDetailViewController.swift"
-            timestampString = "508989419.926942"
+            timestampString = "509044664.297935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "refreshStackView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -746,12 +746,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MixedUp/RecipeDetailViewController.swift"
-            timestampString = "508989419.926942"
+            timestampString = "509044664.297935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "pickerView(_:numberOfRowsInComponent:)"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "refreshStackView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -762,12 +762,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MixedUp/RecipeDetailViewController.swift"
-            timestampString = "508989419.926942"
+            timestampString = "509043416.325434"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "pickerView(_:numberOfRowsInComponent:)"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "addIngredientTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -778,13 +778,125 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MixedUp/RecipeDetailViewController.swift"
-            timestampString = "508989419.926942"
+            timestampString = "509043416.325434"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "pickerView(_:numberOfRowsInComponent:)"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "addToolTapped(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MixedUp/RecipeDetailViewController.swift"
+            timestampString = "509044664.297935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "removeIngredient(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MixedUp/RecipeDetailViewController.swift"
+            timestampString = "509044664.297935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "removeTool(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MixedUp/RecipeDetailViewController.swift"
+            timestampString = "509044664.297935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "removeTool(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MixedUp/RecipeDetailViewController.swift"
+            timestampString = "509044664.297935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "createDrinkTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MixedUp/RecipeDetailViewController.swift"
+            timestampString = "509044655.552428"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "createDrinkTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MixedUp.RecipeDetailViewController.createDrinkTapped (__ObjC.UIButton) -&gt; ()"
+                  moduleName = "MixedUp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/amy/Projects/ironyard/sandbox/FinalProject/MixedUp/MixedUp/RecipeDetailViewController.swift"
+                  timestampString = "509044770.638426"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "399">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MixedUp.RecipeDetailViewController.createDrinkTapped (__ObjC.UIButton) -&gt; ()"
+                  moduleName = "MixedUp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/amy/Projects/ironyard/sandbox/FinalProject/MixedUp/MixedUp/RecipeDetailViewController.swift"
+                  timestampString = "509044770.641241"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "450">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
