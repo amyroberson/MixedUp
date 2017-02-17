@@ -69,6 +69,7 @@ class ColorPickerViewController: UIViewController, UICollectionViewDelegate {
         recipeVC.glassStore = glassStore
         recipeVC.colorStore = colorStore
         recipeVC.typeStore = typeStore
+        recipeVC.drinkStore = drinkStore
         recipeVC.glass = glass
         recipeVC.color = color
         self.show(recipeVC, sender: nil)

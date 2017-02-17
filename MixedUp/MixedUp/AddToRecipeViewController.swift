@@ -87,6 +87,7 @@ class AddToRecipeViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        ingredient = ingredients[row]
     }
     
     func refresh(){

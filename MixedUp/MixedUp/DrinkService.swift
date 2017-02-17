@@ -105,11 +105,39 @@ final class DrinkService{
             } else {
                 drink.ingredients = []
             }
+            let tools = dictionary["tools"] as? [[String:Any]]
+            var actualTools: [Tool] = []
+            if let tools = tools{
+                for theTool in tools {
+                    if let tool = MixedUpAPI.getToolFromDictionary(theTool, inContext: context){
+                        actualTools.append(tool)
+                    }
+                }
+                if actualTools.count == tools.count {
+                    drink.tools = Set(actualTools) as NSSet?
+                } else{
+                    drink.tools = []
+                }
+            }  else {
+                drink.tools = []
+            }
+            if let color = dictionary[MixedUpAPI.colorKey] as? [String: Any] {
+                drink.color = MixedUpAPI.getColorFromDictionary(color, inContext: context)
+            }
+            if let glass = dictionary[MixedUpAPI.glassKey] as? [String: Any] {
+                drink.glass = MixedUpAPI.getGlassFromDictionary(glass, inContext: context)
+            }
+            drink.displayName = dictionary["displayName"] as? String ?? ""
+            drink.name = drink.displayName?.lowercased()
+            drink.stringDescription = dictionary["description"] as? String ?? ""
             drink.id = dictionary["id"] as? String ?? UUID().uuidString
+            drink.isAlcoholic = dictionary["isAlcoholic"] as? Bool ?? true
+            drink.isIBAOfficial = dictionary["isIBAOfficial"] as? Bool ?? false
             do{
                 try self.coreDataStack.saveChanges()
             }catch {
-                print("did not save User in coreData")
+                print(error)
+                print("did not save Drink in coreData")
             }
         })
         return .success(drink)

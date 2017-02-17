@@ -98,19 +98,31 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func setUpIngredientStack(){
+        
         let drinkIngredients: Set<Ingredient> = Set(drink?.ingredients?.allObjects as! [Ingredient])
+        var isShown = false
         for ingredient in drinkIngredients {
-            let ingredientButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-            ingredientButton.setTitle("\(ingredient.displayName ?? "")  X", for: .normal)
-            ingredientButton.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
-            ingredientButton.addTarget(self, action: #selector(removeIngredient(_:)), for: .touchUpInside)
-            ingredientStackView.addArrangedSubview(ingredientButton)}
-
+            for button in ingredientStackView.arrangedSubviews{
+                let button = button as! UIButton
+                if (button.title(for: .normal)!).contains((ingredient.displayName)!){
+                    isShown = true
+                }
+            }
+            
+            if !isShown{
+                let ingredientButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+                ingredientButton.setTitle("\(ingredient.displayName ?? "")  X", for: .normal)
+                ingredientButton.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
+                ingredientButton.addTarget(self, action: #selector(removeIngredient(_:)), for: .touchUpInside)
+                ingredientStackView.addArrangedSubview(ingredientButton)
+            }
+            isShown = false
+        }
     }
     
     
     @IBAction func createDrinkTapped(_ sender: UIButton) {
-        guard drink?.ingredients?.count ?? 0 > 0 else {return}
+        guard (drink?.ingredients?.count)! > 0 else {return}
         
         if let user = user, let color = color, let glass = glass, let _ = drinkStore, let name = drinkNameTextField.text, let instructions = recipeInstructionTextField.text, let drink = drink{
             drink.glass = glass
@@ -126,8 +138,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             default:
                 print("error creating drink")
             }
-            user.favoriteDrinks?.adding(drink)
-            
+            user.addToFavoriteDrinks(drink)
             do {
                 try coreDataStack?.saveChanges()
             }catch{
@@ -235,13 +246,22 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             
         } else {
             drinkTools.insert(tools[row])
-            let theToolButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-            theToolButton.setTitle("\(tools[row].displayName ?? "")  X", for: .normal)
-            theToolButton.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
-            theToolButton.addTarget(self, action: #selector(removeTool(_:)), for: .touchUpInside)
-            toolsStack.addArrangedSubview(theToolButton)
+            var isShown = false
+            for button in toolsStack.arrangedSubviews{
+                let button = button as! UIButton
+                if (button.title(for: .normal)!).contains((tools[row].displayName)!){
+                    isShown = true
+                }
+            }
+            if !isShown {
+                let theToolButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+                theToolButton.setTitle("\(tools[row].displayName ?? "")  X", for: .normal)
+                theToolButton.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
+                theToolButton.addTarget(self, action: #selector(removeTool(_:)), for: .touchUpInside)
+                toolsStack.addArrangedSubview(theToolButton)
+            }
             toolsPicker.isHidden = true
-            
+
         }
     }
     

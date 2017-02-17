@@ -68,6 +68,7 @@ class GlassPickerViewController: UIViewController, UICollectionViewDelegate {
         colorVC.toolStore = toolStore
         colorVC.glassStore = glassStore
         colorVC.colorStore = colorStore
+        colorVC.drinkStore = drinkStore
         colorVC.typeStore = typeStore
         colorVC.glass = glass
         self.show(colorVC, sender: nil)
