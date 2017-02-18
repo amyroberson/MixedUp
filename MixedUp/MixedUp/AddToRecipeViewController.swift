@@ -52,7 +52,8 @@ class AddToRecipeViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 }
             })
         }
-        
+        selectLabel.font = Theme.labelFont
+        selectLabel.textColor = Theme.labelColor
     }
     
     override func viewWillAppear(_ animated: Bool) {

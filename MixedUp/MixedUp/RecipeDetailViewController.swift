@@ -29,7 +29,6 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     var type: IngredientType? = nil
     var ingredients: [Ingredient] = []
     var drink: Drink? = nil
-    
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var drinkNameLabel: UILabel!
     @IBOutlet weak var drinkNameTextField: UITextField!
@@ -41,8 +40,8 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var selectToolsLabel: UILabel!
     @IBOutlet weak var toolsPicker: UIPickerView!
     @IBOutlet weak var toolsLabel: UILabel!
+    @IBOutlet weak var successLabel: UILabel!
     @IBOutlet weak var saveToFavoritesButton: UIButton!
-    
     var toolsStack = UIStackView()
     var ingredientStackView = UIStackView()
     
@@ -51,6 +50,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         ingredientTypePicker.delegate = self
         ingredientTypePicker.dataSource = self
         ingredientTypePicker.isHidden = true
+        successLabel.isHidden = true
         toolsPicker.delegate = self
         toolsPicker.dataSource = self
         toolsPicker.isHidden = true
@@ -97,12 +97,10 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
         refresh()
         self.view.backgroundColor = Theme.viewBackgroundColor
-        
         setUpIngredientStack()
     }
     
     func setUpIngredientStack(){
-        
         let drinkIngredients: Set<Ingredient> = Set(drink?.ingredients?.allObjects as! [Ingredient])
         var isShown = false
         for ingredient in drinkIngredients {
@@ -112,7 +110,6 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
                     isShown = true
                 }
             }
-            
             if !isShown{
                 let ingredientButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
                 ingredientButton.setTitle("\(ingredient.displayName ?? "")  X", for: .normal)
@@ -124,10 +121,12 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    
     @IBAction func createDrinkTapped(_ sender: UIButton) {
-        guard (drink?.ingredients?.count)! > 0 else {return}
-        
+        guard (drink?.ingredients?.count)! > 0 else {
+            successLabel.isHidden = false
+            successLabel.text = "Could not save drink, try adding more information"
+            return
+        }
         if let user = user,
             let color = color,
             let glass = glass,
@@ -152,14 +151,13 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             user.addToFavoriteDrinks(drink)
             do {
                 try coreDataStack?.saveChanges()
+                self.successLabel.isHidden = false
+                self.successLabel.text = "Saved drink!"
             }catch{
                 print("couldn't save")
             }
-        } else {
-            //display a label to get more info
         }
     }
-    
     
     func setUpStackView(){
         toolsStack.alignment = .center
@@ -207,7 +205,6 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             theToolLabel.textColor = Theme.labelColor
             theToolLabel.font = Theme.labelFont
             toolsStack.addArrangedSubview(theToolLabel)
-            
         } else{
             toolsStack.removeArrangedSubview(theToolLabel)
         }
@@ -262,7 +259,6 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             }
             ingredientTypePicker.isHidden = true
             self.show(addVC, sender: nil)
-            
         } else {
             drinkTools.insert(tools[row])
             var isShown = false
@@ -280,7 +276,6 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
                 toolsStack.addArrangedSubview(theToolButton)
             }
             toolsPicker.isHidden = true
-            
         }
     }
     
@@ -313,6 +308,10 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         ingredientsLabel.textColor = Theme.labelColor
         toolsLabel.font = Theme.labelFont
         toolsLabel.textColor = Theme.labelColor
+        selectToolsLabel.textColor = Theme.labelColor
+        selectToolsLabel.font = Theme.labelFont
+        successLabel.textColor = Theme.labelColor
+        successLabel.font = Theme.labelFont
     }
     
     func refresh(){

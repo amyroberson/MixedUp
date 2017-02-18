@@ -890,10 +890,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="659"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlp-Cg-veV">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1388"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1408.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FF6-1X-brD">
-                                                <rect key="frame" x="50" y="24" width="275" height="750"/>
+                                                <rect key="frame" x="50" y="24" width="275" height="770.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgG-Kh-dkc">
                                                         <rect key="frame" x="0.0" y="0.0" width="275" height="20.5"/>
@@ -969,8 +969,14 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Drink Saved!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4K3-N6-Vzq">
+                                                        <rect key="frame" x="0.0" y="720" width="275" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abh-br-ceU">
-                                                        <rect key="frame" x="0.0" y="720" width="275" height="30"/>
+                                                        <rect key="frame" x="0.0" y="740.5" width="275" height="30"/>
                                                         <state key="normal" title="Save Drink To Favorites"/>
                                                         <connections>
                                                             <action selector="createDrinkTapped:" destination="GT9-HP-0mL" eventType="touchUpInside" id="Fx7-FZ-B4q"/>
@@ -1019,6 +1025,7 @@
                         <outlet property="saveToFavoritesButton" destination="Abh-br-ceU" id="oHr-dL-eK5"/>
                         <outlet property="selectIngredientsLabel" destination="p5T-ZA-BgV" id="vuz-AF-lVf"/>
                         <outlet property="selectToolsLabel" destination="nO2-vH-bEO" id="1nR-Sy-xtS"/>
+                        <outlet property="successLabel" destination="4K3-N6-Vzq" id="jyj-Fb-M1s"/>
                         <outlet property="toolsLabel" destination="Kf9-Vk-fLL" id="bkz-Cn-BEq"/>
                         <outlet property="toolsPicker" destination="BhW-2y-eOP" id="PEc-Ca-cYc"/>
                     </connections>
