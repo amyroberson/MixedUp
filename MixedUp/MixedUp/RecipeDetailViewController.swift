@@ -73,6 +73,8 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         setUpLabels()
         setUpStackView()
         refreshStackView()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(RecipeDetailViewController.tap(_:)))
+        view.addGestureRecognizer(tapGesture)
     }
     
     @IBAction func addIngredientTapped(_ sender: Any) {
@@ -80,6 +82,11 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     @IBAction func addToolTapped(_ sender: Any) {
         toolsPicker.isHidden = false
+    }
+    
+    func tap(_ gesture: UITapGestureRecognizer) {
+        drinkNameTextField.resignFirstResponder()
+        recipeInstructionTextField.resignFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
