@@ -172,11 +172,7 @@ class DrinkDetailViewController: UIViewController {
         ingredientsLabel.textColor = Theme.labelColor
     }
     
-    func handleTap(recognizer: UITapGestureRecognizer) {
-        let locationOfTap = recognizer.location(in: scrollView)
-        print(locationOfTap)
-        print(scrollView.hitTest(locationOfTap, with: nil)!)
-    }
+    
     
 }
 

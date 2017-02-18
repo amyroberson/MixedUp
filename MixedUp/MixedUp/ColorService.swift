@@ -45,7 +45,6 @@ final class ColorService{
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getColorsFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
-            print(error)
             return .fail((error as NSError))
         }
         

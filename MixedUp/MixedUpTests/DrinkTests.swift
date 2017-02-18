@@ -146,7 +146,6 @@ class DrinkTests: XCTestCase {
         case .success(let mixers):
             XCTAssertEqual(mixers.count, 2)
         default:
-            print(drinks)
             XCTAssert(false)
         }
         
@@ -156,7 +155,6 @@ class DrinkTests: XCTestCase {
         case .success(let mixers):
             XCTAssertEqual(mixers.count, 2)
         default:
-            print(drinks2)
             XCTAssert(false)
         }
 
@@ -166,7 +164,6 @@ class DrinkTests: XCTestCase {
         case .success(let mixers):
             XCTAssertEqual(mixers.count, 2)
         default:
-            print(drinks3)
             XCTAssert(false)
         }
         
@@ -176,7 +173,6 @@ class DrinkTests: XCTestCase {
         case .success(let mixers):
             XCTAssertEqual(mixers.count, 2)
         default:
-            print(drinks4)
             XCTAssert(false)
         }
     }

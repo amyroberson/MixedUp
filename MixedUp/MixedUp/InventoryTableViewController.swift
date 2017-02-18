@@ -75,9 +75,9 @@ class InventoryTableViewController: UITableViewController {
             return cell
         }
         
-        let type = types[indexPath.row]
+        let thisType = types[indexPath.row - 1]
         
-        cell.typeNameLabel.text = type.displayName
+        cell.typeNameLabel.text = thisType.displayName
         cell.typeNameLabel.textColor = Theme.labelColor
         cell.typeNameLabel.font = Theme.labelFont
         cell.backgroundColor = Theme.viewBackgroundColor
@@ -88,6 +88,9 @@ class InventoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        if indexPath.row != 0{
+            type = types[indexPath.row - 1]
+        }
         let ingredientTableVC = storyboard.instantiateViewController(withIdentifier: "ingredientStock") as! IngredientListController
         ingredientTableVC.user = user
         ingredientTableVC.userStore = userStore
