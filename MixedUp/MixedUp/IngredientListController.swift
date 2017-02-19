@@ -9,7 +9,7 @@
 import UIKit
 
 class IngredientListController: UITableViewController {
-
+    
     var coreDataStack: CoreDataStack? = nil
     var ingredientStore: IngredientService? = nil
     var userStore: UserService? = nil
@@ -27,6 +27,7 @@ class IngredientListController: UITableViewController {
         view.backgroundColor = Theme.viewBackgroundColor
         tableView.delegate = self
         tableView.dataSource = self
+        self.tableView.allowsMultipleSelectionDuringEditing = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,7 +38,7 @@ class IngredientListController: UITableViewController {
         }
         refreshView()
     }
-
+    
     func addTapped(_ sender: UIBarButtonItem){
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let addInventoryVC = storyBoard.instantiateViewController(withIdentifier: "AddInventory") as! addInventoryViewController
@@ -50,15 +51,37 @@ class IngredientListController: UITableViewController {
         
     }
     
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredients.count
     }
+    
+    
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Remove"
+    }
 
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            let ingredeintToRemove = self.ingredients[indexPath.row]
+            ingredeintToRemove.removeFromUser(self.user!)
+            do {
+                try self.coreDataStack?.saveChanges()
+            } catch{
+                print("could not save")
+            }
+            
+            self.refreshView()
+        })
+        deleteAction.backgroundColor = UIColor.red
+        
+        return [deleteAction]
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let ingredient = ingredients[indexPath.row]
@@ -70,28 +93,25 @@ class IngredientListController: UITableViewController {
         
         return cell
     }
-
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
+    
     
     func refreshView(){
-        let inventory = user?.inventory
-        if let inventory = inventory {
+        let inventory = user?.inventory?.allObjects as! [Ingredient]
+        ingredients = []
             for ingredient in inventory{
-                if (ingredient as! Ingredient).type?.displayName == ingredientType?.displayName{
-                    if !ingredients.contains((ingredient as! Ingredient)){
-                        ingredients.append((ingredient as! Ingredient))
+                if (ingredient).type?.displayName == ingredientType?.displayName{
+                    if !ingredients.contains(ingredient){
+                        ingredients.append(ingredient)
                     }
                 } else if ingredientType == nil{
-                 ingredients = user?.inventory?.allObjects as! [Ingredient]
+                    ingredients = user?.inventory?.allObjects as! [Ingredient]
                 }
-            }
+            
         }
-
+        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-
+    
 }
