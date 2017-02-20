@@ -18,6 +18,7 @@ class DrinkDetailViewController: UIViewController {
     var user: User? = nil
     var defaults: UserDefaults? = nil
     var drink: Drink? = nil
+    var missingIngredients: [Ingredient] = []
     
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -26,6 +27,7 @@ class DrinkDetailViewController: UIViewController {
    
     @IBOutlet weak var displayNameLabel: UILabel!
     
+    @IBOutlet weak var missingLabel: UILabel!
     @IBOutlet weak var drawDrink: DrawGlass!
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var glassLabel: UILabel!
@@ -39,6 +41,7 @@ class DrinkDetailViewController: UIViewController {
     
     var toolsStack = UIStackView()
     var ingredientStackView = UIStackView()
+    var missingIngredientsStack = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +49,11 @@ class DrinkDetailViewController: UIViewController {
         setUpStackViews()
         mainStackView.insertArrangedSubview(ingredientStackView, at: 5)
         mainStackView.insertArrangedSubview(toolsStack, at: 7)
+        mainStackView.insertArrangedSubview(missingIngredientsStack, at: 9)
         
         if let drink = drink {
             if (user?.favoriteDrinks?.contains(drink))!{
-                addToFavoritesButton.isEnabled = false
+                addToFavoritesButton.setTitle("Remove From Favorites", for: .normal)
             }
         }
         self.view.backgroundColor = Theme.viewBackgroundColor
@@ -85,10 +89,15 @@ class DrinkDetailViewController: UIViewController {
     
     @IBAction func addToFavoritesTapped(_ sender: UIButton) {
         if let drink = drink , let user = user, let favorites = user.favoriteDrinks{
-            
-            user.favoriteDrinks = (favorites.adding(drink) as NSSet)
-            addedSuccesLabel.isHidden = false
-            addToFavoritesButton.isEnabled = false
+            if (user.favoriteDrinks?.contains(drink))! {
+                user.removeFromFavoriteDrinks(drink)
+                sender.setTitle("Add To Favorites", for: .normal)
+                addedSuccesLabel.isHidden = true
+            } else {
+                user.favoriteDrinks = (favorites.adding(drink) as NSSet)
+                addedSuccesLabel.isHidden = false
+                sender.setTitle("Remove From Favorites", for: .normal)
+            }
             do{
                 try coreDataStack?.saveChanges()
             } catch {
@@ -98,6 +107,16 @@ class DrinkDetailViewController: UIViewController {
     }
     
     func setUpStackViews(){
+        let inventory = user?.inventory?.allObjects as! [Ingredient]
+        let ingredients = drink?.ingredients?.allObjects as! [Ingredient]
+        missingIngredients = Util.getMissingIngredients(inventory, ingredients)
+        
+        missingIngredientsStack.alignment = .center
+        missingIngredientsStack.axis = .vertical
+        missingIngredientsStack.setContentHuggingPriority(0.7, for: .vertical)
+        missingIngredientsStack.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
+        missingIngredientsStack.distribution = .fill
+        
         toolsStack.alignment = .center
         toolsStack.axis = .vertical
         toolsStack.setContentHuggingPriority(0.7, for: .vertical)
@@ -109,6 +128,8 @@ class DrinkDetailViewController: UIViewController {
         ingredientsLabel.setContentHuggingPriority(0.7, for: .vertical)
         ingredientStackView.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
         ingredientStackView.distribution = .fill
+        
+        
         if let tools = drink?.tools{
             for tool in tools {
                 let theToolLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
@@ -123,6 +144,8 @@ class DrinkDetailViewController: UIViewController {
         } else {
             let theToolLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
             theToolLabel.center = CGPoint(x: 160, y: 285)
+            theToolLabel.textAlignment = .center
+            theToolLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
             theToolLabel.text = "No Tools Required!"
             theToolLabel.textColor = Theme.labelColor
             theToolLabel.font = Theme.labelFont
@@ -142,11 +165,35 @@ class DrinkDetailViewController: UIViewController {
         } else {
             let theingredientLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
             theingredientLabel.center = CGPoint(x: 160, y: 285)
+            theingredientLabel.textAlignment = .center
+            theingredientLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
             theingredientLabel.text = "No ingredients found."
             theingredientLabel.textColor = Theme.labelColor
             theingredientLabel.font = Theme.labelFont
             ingredientStackView.addSubview(theingredientLabel)
         }
+        if missingIngredients.count > 0{
+            for ingredient in missingIngredients {
+                let theingredientLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+                theingredientLabel.center = CGPoint(x: 160, y: 285)
+                theingredientLabel.textAlignment = .center
+                theingredientLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
+                theingredientLabel.text = ingredient.displayName ?? ""
+                theingredientLabel.textColor = Theme.labelColor
+                theingredientLabel.font = Theme.labelFont
+                missingIngredientsStack.addArrangedSubview(theingredientLabel)
+            }
+        } else {
+            let theingredientLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+            theingredientLabel.center = CGPoint(x: 160, y: 285)
+            theingredientLabel.textAlignment = .center
+            theingredientLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
+            theingredientLabel.text = "You have all the ingredients for this drink!"
+            theingredientLabel.textColor = Theme.labelColor
+            theingredientLabel.font = Theme.labelFont
+            missingIngredientsStack.addSubview(theingredientLabel)
+        }
+        
     }
     
     func setUpLabels(){
@@ -170,6 +217,8 @@ class DrinkDetailViewController: UIViewController {
         addedSuccesLabel.font = Theme.labelFont
         ingredientsLabel.font = Theme.boldLabelFont
         ingredientsLabel.textColor = Theme.labelColor
+        missingLabel.font = Theme.boldLabelFont
+        missingLabel.textColor = Theme.labelColor
     }
     
     

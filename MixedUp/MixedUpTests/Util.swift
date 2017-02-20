@@ -71,5 +71,15 @@ struct Util {
         return false
     }
     
+    static func getMissingIngredients(_ userInventory: [Ingredient], _ drinkIngredients: [Ingredient]) -> [Ingredient]{
+        var missingIngredients: [Ingredient] = []
+        for ingredient in drinkIngredients{
+            if !userInventory.contains(ingredient){
+                missingIngredients.append(ingredient)
+            }
+        }
+        return missingIngredients
+        
+    }
 }
 

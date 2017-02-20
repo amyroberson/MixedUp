@@ -560,8 +560,17 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients You Need:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBN-SN-dk0">
+                                                        <rect key="frame" x="103" y="314" width="169" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="VYV-r7-j65"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink Added To Favorites!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gcf-AA-pk2">
-                                                        <rect key="frame" x="89.5" y="314" width="196.5" height="126"/>
+                                                        <rect key="frame" x="89.5" y="350" width="196.5" height="90"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -616,6 +625,7 @@
                         <outlet property="glassLabel" destination="bjf-XY-Ayv" id="lDN-QN-4Uo"/>
                         <outlet property="ingredientsLabel" destination="OL6-Va-vaM" id="pIZ-Ze-vEs"/>
                         <outlet property="mainStackView" destination="2VV-5F-atu" id="hLh-Se-exY"/>
+                        <outlet property="missingLabel" destination="uBN-SN-dk0" id="Wks-ZV-MxX"/>
                         <outlet property="scrollView" destination="zaP-tO-9bs" id="iUK-e5-iJK"/>
                         <outlet property="stackViewContainer" destination="ZuJ-Hl-Xo6" id="Za8-Io-pNy"/>
                         <outlet property="toolsLabel" destination="BqC-uR-dQb" id="x1a-GI-GpL"/>
