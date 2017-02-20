@@ -38,7 +38,7 @@ class GlassPickerViewController: UIViewController, UICollectionViewDelegate {
             }
         })
         
-        self.title = "Create Drink"
+        self.navigationItem.title = "Create Drink"
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
         view.backgroundColor = Theme.viewBackgroundColor

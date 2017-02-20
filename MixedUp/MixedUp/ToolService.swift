@@ -45,10 +45,8 @@ final class ToolService{
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getToolsFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
-            print(error)
             return .fail((error as NSError))
         }
-        
     }
     
     func fetchMainQueueTools(predicate: NSPredicate? = nil,

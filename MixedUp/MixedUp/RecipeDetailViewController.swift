@@ -33,7 +33,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var drinkNameLabel: UILabel!
     @IBOutlet weak var drinkNameTextField: UITextField!
     @IBOutlet weak var recipeInstructionLabel: UILabel!
-    @IBOutlet weak var recipeInstructionTextField: UITextField!
+    @IBOutlet weak var recipeInstructions: UITextView!
     @IBOutlet weak var selectIngredientsLabel: UILabel!
     @IBOutlet weak var ingredientTypePicker: UIPickerView!
     @IBOutlet weak var ingredientsLabel: UILabel!
@@ -54,8 +54,8 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         toolsPicker.delegate = self
         toolsPicker.dataSource = self
         toolsPicker.isHidden = true
-        recipeInstructionTextField.delegate = self
         drinkNameTextField.delegate = self
+        recipeInstructions.layer.cornerRadius = 5
         mainStackView.insertArrangedSubview(toolsStack, at: 12)
         mainStackView.insertArrangedSubview(ingredientStackView, at: 8)
         do{
@@ -86,7 +86,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     func tap(_ gesture: UITapGestureRecognizer) {
         drinkNameTextField.resignFirstResponder()
-        recipeInstructionTextField.resignFirstResponder()
+        recipeInstructions.resignFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,7 +132,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             let glass = glass,
             let _ = drinkStore,
             let name = drinkNameTextField.text,
-            let instructions = recipeInstructionTextField.text,
+            let instructions = recipeInstructions.text,
             let drink = drink
         {
             drink.glass = glass

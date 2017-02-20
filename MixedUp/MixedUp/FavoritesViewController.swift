@@ -22,14 +22,22 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Favorite Drinks"
+        self.navigationItem.title = "Favorite Drinks"
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
         view.backgroundColor = Theme.viewBackgroundColor
         if let user = user {
             favoriteDrinks = Array(user.favoriteDrinks ?? []) as! [Drink]
         }
+        let button: UIButton = UIButton(type: .custom)
+        button.setTitle("Random", for: .normal)
+        button.setTitleColor(UIColor(red: 0, green: 0.4784, blue: 1, alpha: 1.0), for:.normal)
+        button.addTarget(self, action: #selector(FavoritesViewController.randomDrinkPressed), for: UIControlEvents.touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 90, height: 51)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,6 +48,21 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
             Theme.styleDark()
         }
         
+    }
+    
+    func randomDrinkPressed(){
+        let random = Int(arc4random_uniform(UInt32(favoriteDrinks.count)))
+        let drink = favoriteDrinks[random]
+
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let detailVC = storyBoard.instantiateViewController(withIdentifier: "DrinkDetail") as! DrinkDetailViewController
+        detailVC.coreDataStack = coreDataStack
+        detailVC.user = user
+        detailVC.drink = drink
+        detailVC.userStore = userStore
+        detailVC.drinkStore = drinkStore
+        detailVC.defaults = defaults
+        self.show(detailVC, sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

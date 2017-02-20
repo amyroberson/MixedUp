@@ -44,10 +44,17 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
         
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
-        self.title = "IBA Drink Recipes"
+        self.navigationItem.title = "IBA Drink Recipes"
         drinkSearchBar.delegate = self
         drinkSearchBar.returnKeyType = UIReturnKeyType.done
         drinkSearchBar.placeholder = "Search by Name and Ingredients"
+        let button: UIButton = UIButton(type: .custom)
+        button.setTitle("Random", for: .normal)
+        button.setTitleColor(UIColor(red: 0, green: 0.4784, blue: 1, alpha: 1.0), for:.normal)
+        button.addTarget(self, action: #selector(FavoritesViewController.randomDrinkPressed), for: UIControlEvents.touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 90, height: 51)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +66,20 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
         self.view.backgroundColor = Theme.viewBackgroundColor
     }
     
+    func randomDrinkPressed(){
+        let random = Int(arc4random_uniform(UInt32(drinks.count)))
+        let drink = drinks[random]
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let detailVC = storyBoard.instantiateViewController(withIdentifier: "DrinkDetail") as! DrinkDetailViewController
+        detailVC.coreDataStack = coreDataStack
+        detailVC.user = user
+        detailVC.drink = drink
+        detailVC.userStore = userStore
+        detailVC.drinkStore = drinkStore
+        detailVC.defaults = defaults
+        self.show(detailVC, sender: nil)
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         let drink = drinks[indexPath.row]
@@ -72,7 +93,6 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
         detailVC.drinkStore = drinkStore
         detailVC.defaults = defaults
         self.show(detailVC, sender: nil)
-        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

@@ -1,0 +1,618 @@
+drinks:
+  - name: bellini
+    isAlcoholic: true
+    glass:
+      name: champagne
+    color:
+      name: peach
+      displayName: Peach
+      red: 240
+      green: 193
+      blue: 146
+      alpha: 1
+    displayName: Bellini
+    tools:
+      - name: bar_spoon
+    description: Pour 10 cl Prosecco and 5 cl of peach puree, into a Champagne flute and gently stir.
+    ingredients:
+      - name: prosecco
+        displayName: Prosecco
+        type:
+          name: wine
+        isAlcoholic: true
+      - name: peach_puree
+        displayName: Peach Puree
+        isAlcoholic: false
+        type:
+          name: mixer
+    isIBAOffical: true
+  - name: black_russian
+    isAlcoholic: true
+    glass:
+      name: lowball
+    color:
+      name: dark_brown
+      displayName: Dark Brown
+      red: 59
+      green: 20
+      blue: 4
+      alpha: 1
+    displayName: Black Russian
+    tools:
+      - name: bar_spoon
+    description: Pour 5 cl Vodka and 2 cl of Coffee liqueur in
+      to a lowball glass with ice and stir.
+    ingredients:
+      - name: vodka
+      - name: coffee_liqueur
+        displayName: Coffee Liqueur
+        type:
+          name: liqueur
+        isAlcoholic: true
+    isIBAOffical: true
+  - name: bloody_mary
+    isAlcoholic: true
+    glass:
+      name: highball
+    color:
+      name: red
+      displayName: Red
+      red: 217
+      green: 48
+      blue: 26
+      alpha: 1
+    displayName: Bloody Mary
+    tools:
+      - name: bar_spoon
+    description: Pour 4.5 cl of Vodka, 9 cl of Tomato Juice, 1.5 Lemon Juice, and 2 dashes of Worcestershire Sauce, into highball glass with ice and stir add Tabasco to flavor, and season with Celery salt and pepper.
+    ingredients:
+      - name: vodka
+      - name: lemon_juice
+      - name: worcestershire_sauce
+        displayName: Worcestershire Sauce
+        type:
+          name: other
+        isAlcoholic: false
+      - name: tomato_juice
+        displayName: Tomato Juice
+        isAlcoholic: false
+        type:
+          name: mixer
+      - name: tabasco
+        displayName: Tabasco
+        isAlcoholic: false
+        type:
+          name: other
+      - name: pepper
+        displayName: Pepper
+        isAlcoholic: false
+        type:
+          name: other
+      - name: celery_salt
+        displayName: Celery Salt
+        isAlcoholic: false
+        type:
+          name: other
+    isIBAOffical: true
+  - name: capirinha
+    isAlcoholic: true
+    glass:
+      name: lowball
+    color:
+      name: mint
+    displayName: Caiprinha
+    tools:
+      - name: muddler
+    description: Place 1/2 lime and 2 teaspoons of sugar in an old fashioned glass and muddle. Fill glass with ice and 5 cl of Cachaca.
+    ingredients:
+      - name: cachaca
+        displayName: Cachaca
+        type:
+          name: liquor
+        isAlcoholic: true
+      - name: lime
+        displayName: Lime
+        isAlcoholic: false
+        type:
+          name: garnish
+      - name: sugar
+        displayName: Sugar
+        isAlcoholic: false
+        type:
+          name: other
+    isIBAOffical: true
+  - name: champagne_cocktail
+    isAlcoholic: true
+    glass:
+      name: champagne
+    color:
+      name: cream
+    displayName: Champagne Cocktail
+    tools:
+    description: Add dash of Angostura bitter onto sugar cube and drop it into champagne flute. Add 1 cl of cognac followed by pouring 9 cl of chilled champagne, garnish with a cherry.
+    ingredients:
+      - name: cognac
+      - name: sugar_cube
+      - ame: cherry
+      - name: champagne
+        displayName: Champagne
+        type:
+          name: wine
+        isAlcoholic: true
+      - name: angostura_bitters
+        isAlcoholic: true
+        type:
+          name: bitters
+    isIBAOffical: true
+  - name: cosmopolitan
+    isAlcoholic: true
+    glass:
+      name: martini
+    color:
+      name: red
+    displayName: Cosmopolitan
+    tools:
+      - name: cocktail_strainer
+      - name: shaker
+    description: Pour 4 cl of Vodka, 1.5 cl of Triple sec, 3 cl of Cranberry Juice, and 1.5 lime juice onto a shaker with ice and strain into glass.
+    ingredients:
+      - name: vodka
+      - name: lime_juice
+      - name: triple_sec
+      - name: cranberry_juice
+        displayName: Cranberry Juice
+        type:
+          name: mixer
+        isAlcoholic: false
+    isIBAOffical: true
+  - name: cuba_libre
+    isAlcoholic: true
+    glass:
+      name: highball
+    color:
+      name: dark_brown
+    displayName: Cuba Libre
+    tools:
+    description: Pour 5 cl of White Rum, 12 cl of Cola, and 1 cl of Lime Juice in
+      to a highball glass with ice and stir.
+    ingredients:
+      - name: white_rum
+      - name: cola
+        displayName: Cola
+        type:
+          name: mixer
+        isAlcoholic: false
+      - name: lime_juice
+    isIBAOffical: true
+  - name: french_75
+    isAlcoholic: true
+    glass:
+      name: champagne
+    color:
+      name: clear
+    displayName: French 75
+    tools:
+      - name: cocktail_strainer
+      - name: shaker
+    description: Pour 3 cl Gin, 2 dashes of sugar syrup, and 1.5 cl of lemon juice in
+      to a shaker, and shake. Strain into a champagne flute and top with 6 cl of Champagne.
+    ingredients:
+      - name: gin
+      - name: lemon_juice
+      - name: sugar_syrup
+      - name: champagne
+    isIBAOffical: true
+  - name: french_connection
+    isAlcoholic: true
+    glass:
+      name: lowball
+    color:
+      name: red_brown
+    displayName: French Connection
+    tools:
+      - name: bar_spoon
+    description: Pour 3.5 cl Cognac and 3.5 cl of Amaretto in
+      to a lowball glass with ice and stir.
+    ingredients:
+      - name: cognac
+      - name: amaretto
+        displayName: Amaretto
+        type:
+          name: liqueur
+        isAlcoholic: true
+    isIBAOffical: true
+  - name: god_father
+    isAlcoholic: true
+    glass:
+      name: lowball
+    color:
+      name: red_brown
+    displayName: God Father
+    tools:
+      - name: bar_spoon
+    description: Pour 3.5 cl Scotch and 3.5 cl of Amaretto in
+      to a lowball glass with ice and stir.
+    ingredients:
+      - name: scotch
+      - name: amaretto
+    isIBAOffical: true
+  - name: god_mother
+    isAlcoholic: true
+    glass:
+      name: lowball
+    color:
+      name: red_brown
+    displayName: God Mother
+    tools:
+      - name: bar_spoon
+    description: Pour 3.5 cl Vodka and 3.5 cl of Amaretto in
+      to a lowball glass with ice and stir.
+    ingredients:
+      - name: vodka
+      - name: amaretto
+    isIBAOffical: true
+  - name: golden_dream
+    isAlcoholic: true
+    glass:
+      name: martini
+    color:
+      name: orange
+    displayName: Golden Dream
+    tools:
+      - name: shaker
+      - name: cocktail_strainer
+    description: Pour 2 cl Galliano, 2 cl of Triple Sec, 2 cl of Orange Juice and 1 cl of Cream in
+      to a shaker, shake briskly, pour into a martini glass.
+    ingredients:
+      - name: triple_sec
+      - name: orange_juice
+      - name: cream
+      - name: galliano
+        displayName: Galliano
+        type:
+          name: liqueur
+        isAlcoholic: true
+    isIBAOffical: true
+  - name: harvey_wallbanger
+    isAlcoholic: true
+    glass:
+      name: highball
+    color:
+      name: yellow
+    displayName: Golden Dream
+    tools:
+      - name: bar_spoon
+    description: Pour 4.5 cl of Vodka and 9 cl of Orange Juice into a highball glass and stir, top with 1.5 cl of Galliano, garnish with cherry and or orange slices.
+    ingredients:
+      - name: vodka
+      - name: orange_juice
+      - name: cherry
+      - name: galliano
+    isIBAOffical: true
+  - name: hemingway_speciak
+    isAlcoholic: true
+    glass:
+      name: martini
+    color:
+      name: cream
+    displayName: Hemingway Special
+    tools:
+      - name: shaker
+      - name: cocktail_strainer
+    description: Pour 6 cl of White Rum, 1.5 cl of Marachino, 4 cl of Grapefruit Juice and 1.5 cl of lime juice in
+      to a shaker, shake briskly, pour into a martini glass.
+    ingredients:
+      - name: white_rum
+      - name: marachino
+      - name: lime_juice
+      - name: grapefruit_juice
+        displayName: Grapefruit Juice
+        type:
+          name: mixer
+        isAlcoholic: false
+    isIBAOffical: true
+  - name: horses_neck
+    isAlcoholic: true
+    glass:
+      name: highball
+    color:
+      name: yellow
+    displayName: Horse's Neck
+    tools:
+      - name: bar_spoon
+    description: Pour 4 cl of Brandy, 12 cl of Ginger Ale, and a dash of Angostura bitters into highball glass and stir gently, garnish with lemon peel.
+    ingredients:
+      - name: lemon
+      - name: brandy
+      - name: angostura_bitters
+      - name: ginger_ale
+        displayName: Ginger Ale
+        type:
+          name: mixer
+        isAlcoholic: false
+    isIBAOffical: true
+  - name: tequila_sunrise
+    isAlcoholic: true
+    glass:
+      name: highball
+    color:
+      name: orange
+    displayName: Tequila Sunrise
+    tools:
+    description: Pour 4.5 cl of Tequila and 9 cl of Orange Juice into a highball glass with ice, top with 1.5 cl of Grenadine Syrup and garnish with a cherry
+    ingredients: 
+      - name: cherry
+      - name: orange_juice
+      - name: tequila
+        displayName: Tequila
+        type:
+          name: liquor
+        isAlcoholic: true
+    isIBAOffical: true
+  - name: singapore_sling
+    isAlcoholic: true
+    glass:
+      name: hurricane
+    color:
+      name: pink
+    displayName: Singapore Sling
+    tools:
+      - name: cocktail_strainer
+      - name: shaker
+    description: Pour 3 cl of Gin, 1.5 cl of Cherry Liqueur, 0.75 cl of Triple Sec, 0.75 DOM Benedictine, 1 cl of Grenedine Syrup, 12 cl of Pineapple Juice, 1.5 cl of Lime Juice, and 1 dash of Angostura bitters into a shaker, shake, and  strain and pour into a glass, garnish with a cherry or a pineapple slice.
+    ingredients:
+      - name: gin
+      - name: grenadine_syrup
+      - name: triple_sec
+      - name: lime_juice
+      - name: angostura_bitters
+      - name: dombenedictine
+        displayName: DOM Benedictine
+        type:
+          name: liqueur
+        isAlcoholic: true
+    isIBAOffical: true
+  - name: sex_on_the_beach
+    isAlcoholic: true
+    glass:
+      name: highball
+    color:
+      name: red_orange
+    displayName: Sex On The Beach
+    tools:
+    description: Pour 4 cl of Vodka, 2 cl of Peach Schnapps, 4 cl of Cranberry Juice, and 4 cl of Orange Juice into a highball glass, garnish with Orange
+    ingredients:
+      - name: vodka
+      - name: orange_juice
+      - name: peach_schnapps
+        displayName: Peach Schnapps
+        type:
+          name: liqueur
+        isAlcoholic: true
+      - name: cranberry_juice
+      - name: orange
+    isIBAOffical: true
+  - name: sea_breeze
+    isAlcoholic: true
+    glass:
+      name: lowball
+    color:
+      name: pink
+    displayName: Sea Breeze
+    tools:
+    description: Pour 4 cl of Vodka, 12 cl of Cranberry Juice, and 3 cl of Grapefruit Juice into a lowball glass with ice and garnish with lime wedge.
+    ingredients:
+      - name: vodka
+      - name: cranberry_juice
+      - name: grapefruit_juice
+      - name: lime
+        displayName: Lime
+        type:
+          name: garnish
+        isAlcoholic: false
+    isIBAOffical: true
+  - name: rose
+    isAlcoholic: true
+    glass:
+      name: martini
+    color:
+      name: pink
+    displayName: Rose
+    tools:
+      - name: shaker
+      - name: cocktail_strainer
+    description: Pour 2 cl of Kirsch, 4 cl of Dry Vermouth, and 3 dashes of Strawberry Syrup into a shaker with ice, shake, strain into glass.
+    ingredients:
+      - name: dry_vermouth
+      - name: strawberry_syrup
+        displayName: StrawBerry Syrup
+        type:
+          name: mixer
+        isAlcoholic: false
+      - name: kirsch
+        displayName: Kirsch
+        isAlcoholic: true
+        type:
+          name: liquor
+    isIBAOffical: true
+  - name: pina_colada
+    isAlcoholic: true
+    glass:
+      name: hurricane
+    color:
+      name: cream
+    displayName: Pina Colada
+    tools:
+      - name: blender
+        displayName: Blender
+    description: Pour 3 cl of White Rum, 9 cl of Pineapple Juice, and 3 cl of Coconut Cream into a blender with ice, blend, and pour into a glass.
+    ingredients:
+      - name: white_rum
+      - name: pineapple_juice
+      - name: coconut_cream
+        displayName: Coconut Cream
+        type:
+          name: mixer
+        isAlcoholic: false
+    isIBAOffical: true
+  - name: moscow_mule
+    isAlcoholic: true
+    glass:
+      name: highball
+    color:
+      name: clear
+    displayName: Moscow Mule
+    tools:
+    description: Pour 4.5 cl Vodka and 12 cl of Ginger Beer into glass, top with 0.5 cl of lime juice, and garnish with Lime.
+    ingredients:
+      - name: vodka
+      - name: lime_juice
+      - name: ginger_beer
+        displayName: Ginger Beer
+        isAlcoholic: false
+        type:
+          name: mixer
+    isIBAOffical: true
+  - name: mojito
+    isAlcoholic: true
+    glass:
+      name: highball
+    color:
+      name: cream
+    displayName: Mojito
+    tools:
+      - name: muddler
+    description: Muddle Mint Leaves with 2 teaspoons Sugar and 3 cl of Lime Juice in a highball glass, add a splash of Soda water, 4 cl of White Rum, serve with a straw.
+      - name: mint_leaves
+      - name: sugar
+      - name: lime_juice
+      - name: soda_water
+    isIBAOffical: true
+  - name: mint_julep
+    isAlcoholic: true
+    glass:
+      name: highball
+    color:
+      name: cream
+    displayName: Mint Julep
+    tools:
+      - name: muddler
+      - name: bar_spoon
+    description: Muddle 4 mint leaves, 1 teaspoon of Powdered Sugar, and 2 teaspoons of water into a highball glass, add ice, 6 cl of Bourbon and stir.
+    ingredients:
+      - name: bourbon
+      - name: mint_leaves
+      - name: water
+      - name: powdered_sugar
+        displayName: Powdered Sugar
+        type:
+          name: other
+        isAlcoholic: false
+    isIBAOffical: true
+  - name: mimosa
+    isAlcoholic: true
+    glass:
+      name: champagne
+    color:
+      name: yellow
+    displayName: Mimosa
+    tools:
+      - name: bar_spoon
+    description: Pour 7.5 cl of Champagne and 7.5 cl of Orange Juice into a champagne flute, and stir gently.
+    ingredients:
+      - name: champagne
+      - name: orange_juice
+    isIBAOffical: true
+  - name: margarita
+    isAlcoholic: true
+    glass:
+      name: lowball
+    color:
+      name: cream
+    displayName: Margarita
+    tools:
+      - name: shaker
+      - name: cocktail_strainer
+    description: Rim glass, with Salt, Pour 3.5 cl of Tequila, 2 cl of Triple Sec, and 1.5 cl of Lime Juice into the shaker, shake and pour into glass.
+    ingredients:
+      - name: tequila
+      - name: triple_sec
+      - name: lime_juice
+      - name: salt
+        displayName: Salt
+        type:
+          name: other
+        isAlcoholic: false
+    isIBAOffical: true
+  - name: kir
+    isAlcoholic: true
+    glass:
+      name: champagne
+    color:
+      name: blush
+      displayName: Blush
+      red: 242
+      blue: 82
+      green: 122
+      alpha: 0.7
+    displayName: Kir
+    tools:
+    description: Pour 1 cl of Creme de Cassis into a champagne flute, top with 9 cl of dry White Wine.
+    ingredients:
+      - name: creme_de_cassis
+      - name: dry_white_wine
+        displayName: Dry White Wine
+        type:
+          name: wine
+        isAlcoholic: true
+    isIBAOffical: true
+  - name: long_island_ice_tea
+    isAlcoholic: true
+    glass:
+      name: highball
+    color:
+      name: dark_brown
+    displayName: Long Island Ice Tea
+    tools:
+      - name: bar_spoon
+    description: Pour 1.5 cl of Gin, 1.5 cl of Tequila, 1.5 cl of Vodka, 1.5 cl of White Rum, 1.5 cl of Triple Sec, 3.0 cl of Gomme Syrup, 2.5 cl of Lemon juice, and 1 dash of cola into a highball glass and stir gently, serve with a straw.
+    ingredients:
+      - name: gin
+      - name: tequila
+      - name: vodka
+      - name: white_rum
+      - name: triple_sec
+      - name: lemon_juice
+      - name: cola
+      -name: gomme_syrup
+        displayName: Gomme Syrup
+        type:
+          name: mixer
+        isAlcoholic: false
+    isIBAOffical: true
+  - name: mai_tai
+    isAlcoholic: true
+    glass:
+      name: highball
+    color:
+      name: yellow
+    displayName: Mai-Tai
+    tools:
+      - name: cocktail_strainer
+      - name: shaker
+    description: Pour 4 cl of White Rum, 2 cl of Dark Rum, 1.5 cl of Orange Curacao, 1.5 cl of Orgeat Syrup, and 1 cl of lime juice into a shaker, shake and strain into a glass, serve with a straw.
+    ingredients:
+      - name: white_rum
+      - name: dark_rum
+      - name: lime_juice
+      - name: orange_curacao
+        displayName: Orange Curacaoo
+        type:
+          name: liqueur
+        isAlcoholic: true
+      - name: orgeat_syrup
+        displayName: Orgeat Syrup
+        isAlcoholic: false
+        type:
+          name: mixer
+    isIBAOffical: true

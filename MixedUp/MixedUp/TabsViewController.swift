@@ -26,6 +26,11 @@ class TabsViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.tintColor = .black
+        tabBar.items?[0].title = "Recipes"
+        tabBar.items?[1].title = "Inventory"
+        tabBar.items?[2].title = "Favorites"
+        tabBar.items?[3].title = "Make These"
+        tabBar.items?[4].title = "Create Drink"
         for item in self.viewControllers!{
             if let controller = item as? UINavigationController{
                 if let iBAVC = controller.topViewController as? IBAViewController{

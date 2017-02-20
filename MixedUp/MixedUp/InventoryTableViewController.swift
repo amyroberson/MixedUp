@@ -37,7 +37,7 @@ class InventoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTypes()
-        self.title = "Inventory"
+        self.navigationItem.title = "Inventory"
         view.backgroundColor = Theme.viewBackgroundColor
         tableView.dataSource = self
         tableView.delegate = self

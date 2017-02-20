@@ -222,7 +222,6 @@ class MixedUpAPI {
             }else {
                 drink.ingredients = []
             }
-            print(dictionary[MixedUpAPI.ingredientsKey] as! [[String:Any]])
             
             let tools = dictionary[MixedUpAPI.toolsKey] as? [[String: Any]]
             var actualTools: [Tool] = []

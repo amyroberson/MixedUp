@@ -47,7 +47,6 @@ final class UserService{
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getUsersFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
-            print(error)
             return .fail((error as NSError))
         }
     }
@@ -67,7 +66,6 @@ final class UserService{
             }
             
         } catch {
-            print(error)
             return .fail((error as NSError))
         }
     }
@@ -267,7 +265,6 @@ final class UserService{
         task.resume()
     }
     
-    //user updates inventory, favorite drinks, and during registration
     func updateUser(user: User, caseString: String, completion: @escaping (ResourceResult<[User]>) -> ()) {
         
         let url = URL(string: "www.example.com/0/users/\(user.id)")!

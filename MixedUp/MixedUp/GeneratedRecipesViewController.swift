@@ -24,11 +24,18 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
         super.viewDidLoad()
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
-        self.title = "You Can Make These!"
+        self.navigationItem.title = "You Can Make These!"
         refresh()
         setUpLabel()
         needMoreIngredientsLabel.isHidden = true
         view.backgroundColor = Theme.viewBackgroundColor
+        let button: UIButton = UIButton(type: .custom)
+        button.setTitle("Random", for: .normal)
+        button.setTitleColor(UIColor(red: 0, green: 0.4784, blue: 1, alpha: 1.0), for:.normal)
+        button.addTarget(self, action: #selector(FavoritesViewController.randomDrinkPressed), for: UIControlEvents.touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 90, height: 51)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +55,21 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
         } else {
             Theme.styleDark()
         }
+    }
+    
+    func randomDrinkPressed(){
+        let random = Int(arc4random_uniform(UInt32(drinks.count)))
+        let drink = drinks[random]
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let detailVC = storyBoard.instantiateViewController(withIdentifier: "DrinkDetail") as! DrinkDetailViewController
+        detailVC.coreDataStack = coreDataStack
+        detailVC.user = user
+        detailVC.drink = drink
+        detailVC.userStore = userStore
+        detailVC.drinkStore = drinkStore
+        detailVC.defaults = defaults
+        self.show(detailVC, sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

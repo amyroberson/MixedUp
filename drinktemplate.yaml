@@ -1,0 +1,29 @@
+drinks:
+  - name: new_name
+    isAlcoholic: true
+    glass:
+      name: existing_glass
+    color:
+      name: existing_color
+    displayName: New Name
+    tools:
+      - name: existing_tool
+      - name: new_tool
+        displayName: New tool
+    description: Pour 3 cl Campari, 3 cl of Red Vermouth, and a splash of soda water in
+      to a lowball glass with ice and stir.
+    ingredients:
+      - name: existing_ingredient
+      - name: new_ingredient
+        displayName: New Ingredient
+        type:
+          name: existing_ingredient_type
+        isAlcoholic: true
+      - name: new_ingredient2
+        displayName: New Ingredient 2
+        isAlcoholic: false
+        type:
+          name: new_ingredient_type
+          displayName: New Ingredient Type
+    isIBAOffical: true
+    
