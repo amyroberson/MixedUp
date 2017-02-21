@@ -21,7 +21,6 @@ final class IngredientService{
         return URLSession(configuration: config)
     }()
     
-    
     fileprivate func requestBuilder(url: URL, method: String) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method
@@ -42,7 +41,6 @@ final class IngredientService{
         guard let jsonData = data else {
             return .failure(.system(error!))
         }
-        
         do{
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getIngredientsFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
@@ -53,11 +51,9 @@ final class IngredientService{
     
     internal func fetchMainQueueIngredients(predicate: NSPredicate? = nil,
                                             sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Ingredient] {
-        
         let fetchRequest = NSFetchRequest<Ingredient>(entityName: Ingredient.entityName)
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
-        
         let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueIngredients: [Ingredient]?
         var fetchRequestError: Error?
@@ -69,23 +65,18 @@ final class IngredientService{
                 fetchRequestError = error
             }
         })
-        
         guard let ingredients = mainQueueIngredients else {
             throw fetchRequestError!
         }
-        
         return ingredients
     }
     
     func fetchIngredient(ingredient: User, inContext context: NSManagedObjectContext) -> ResourceResult<Ingredient> {
         let dictionary = ingredient.toDictionary()
-        
         guard let id = dictionary["id"] as? String else { return .failure(.inValidParameter)}
-        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredient")
         let predicate = NSPredicate(format: "id == \"\(id)\"")
         fetchRequest.predicate = predicate
-        
         let fetchedIngredient: [Ingredient] = {
             var ingredients: [Ingredient]!
             context.performAndWait() {
@@ -98,7 +89,6 @@ final class IngredientService{
         } else {
             return .failure(.inValidParameter)
         }
-        
     }
     
     func getIngredientsOfType(type: IngredientType, completion: @escaping (ResourceResult<[Ingredient]>) -> ()){
@@ -109,14 +99,11 @@ final class IngredientService{
         let task = session.dataTask(with: request,  completionHandler: {
             (data, response, error) -> Void in
             var result = self.processIngredientRequest(data: data, error: error as NSError?)
-            
             if case .success(let ingredients) = result {
                 let ids = ingredients.map{$0.id}
                 let predicate = NSPredicate(format: "id IN %@ ",ids)
-                
                 do {
                     try self.coreDataStack.saveChanges()
-                    
                     let mainQueueIngredients = try self.fetchMainQueueIngredients(predicate: predicate, sortDescriptors: [])
                     result = .success(mainQueueIngredients)
                 }
@@ -127,9 +114,8 @@ final class IngredientService{
             completion(result)
         })
         task.resume()
-        
     }
-
+    
     func getAllIngredients(completion: @escaping (ResourceResult<[Ingredient]>) -> ()){
         let string = "https://n9hfoxnwqg.execute-api.us-east-2.amazonaws.com/alpha/ingredients"
         let url = URL(string: string)!
@@ -137,14 +123,11 @@ final class IngredientService{
         let task = session.dataTask(with: request,  completionHandler: {
             (data, response, error) -> Void in
             var result = self.processIngredientRequest(data: data, error: error as NSError?)
-            
             if case .success(let ingredients) = result {
                 let ids = ingredients.map{$0.id}
                 let predicate = NSPredicate(format: "id IN %@ ",ids)
-                
                 do {
                     try self.coreDataStack.saveChanges()
-                    
                     let mainQueueIngredients = try self.fetchMainQueueIngredients(predicate: predicate, sortDescriptors: [])
                     result = .success(mainQueueIngredients)
                 }
@@ -156,5 +139,4 @@ final class IngredientService{
         })
         task.resume()
     }
-
 }

@@ -55,7 +55,6 @@ final class DrinkService{
     
     internal func fetchMainQueueDrinks(predicate: NSPredicate? = nil,
                                        sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Drink] {
-        
         let fetchRequest = NSFetchRequest<Drink>(entityName: "Drink")
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
@@ -71,18 +70,14 @@ final class DrinkService{
                 fetchRequestError = error
             }
         })
-        
         guard let drink = mainQueueDrink else {
             throw fetchRequestError!
         }
-        
         return drink
     }
     
     func createCoreDataDrink(newDrink: Drink, inContext context: NSManagedObjectContext) -> ResourceResult<Drink> {
-        
         let dictionary = newDrink.toDictionary()
-        
         var drink: Drink!
         context.performAndWait({ () -> Void in
             drink = NSEntityDescription.insertNewObject(forEntityName: Drink.entityName,
@@ -140,16 +135,13 @@ final class DrinkService{
             }
         })
         return .success(drink)
-        
     }
     
     
     func getAllDrinksFromCoreData() -> [Drink]{
         let mainQueueContext = self.coreDataStack.mainQueueContext
-        
         let drinksFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Drink")
         var fetchedDrinks: [Drink] = []
-        
         do {
             fetchedDrinks = try mainQueueContext.fetch(drinksFetch) as! [Drink]
             return fetchedDrinks
@@ -164,9 +156,7 @@ final class DrinkService{
         let request = requestBuilder(url: url, method: "GET")
         let task = session.dataTask(with: request,  completionHandler: {
             (data, response, error) -> Void in
-            
             var result = self.processDrinkRequest(data: data, error: error as NSError?)
-            
             if case .success(let drinks) = result {
                 let privateQueueContext = self.coreDataStack.privateQueueContext
                 privateQueueContext.performAndWait({
@@ -174,10 +164,8 @@ final class DrinkService{
                 })
                 let objectIDs = drinks.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
-                
                 do {
                     try self.coreDataStack.saveChanges()
-                    
                     let mainQueueDrinks = try self.fetchMainQueueDrinks(predicate: predicate, sortDescriptors: [])
                     result = .success(mainQueueDrinks)
                 }
@@ -218,7 +206,5 @@ final class DrinkService{
             completion(result)
         })
         task.resume()
-        
     }
-    
 }

@@ -21,7 +21,6 @@ final class GlassService{
         return URLSession(configuration: config)
     }()
     
-    
     fileprivate func requestBuilder(url: URL, method: String) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method
@@ -38,7 +37,6 @@ final class GlassService{
         return request
     }
     
-    
     func processTypeRequest(data: Data?, error: NSError?) -> ResourceResult<[Glass]> {
         guard let jsonData = data else { return .failure(.system(error!))}
         
@@ -49,17 +47,13 @@ final class GlassService{
             print(error)
             return .failure(.system(error))
         }
-        
     }
-    
     
     func fetchMainQueueTypes(predicate: NSPredicate? = nil,
                              sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Glass] {
-        
         let fetchRequest = NSFetchRequest<Glass>(entityName: "Glass")
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
-        
         let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueType: [Glass]?
         var fetchRequestError: Error?
@@ -71,11 +65,9 @@ final class GlassService{
                 fetchRequestError = error
             }
         })
-        
         guard let glass = mainQueueType else {
             throw fetchRequestError!
         }
-        
         return glass
     }
     
@@ -84,9 +76,7 @@ final class GlassService{
         let request = requestBuilder(url: url, method: "GET")
         let task = session.dataTask(with: request,  completionHandler: {
             (data, response, error) -> Void in
-            
             var result = self.processTypeRequest(data: data, error: error as NSError?)
-            
             if case .success(let glasses) = result {
                 let privateQueueContext = self.coreDataStack.privateQueueContext
                 privateQueueContext.performAndWait({
@@ -94,10 +84,8 @@ final class GlassService{
                 })
                 let objectIDs = glasses.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
-                
                 do {
                     try self.coreDataStack.saveChanges()
-                    
                     let mainQueueGlasses = try self.fetchMainQueueTypes(predicate: predicate, sortDescriptors: [])
                     result = .success(mainQueueGlasses)
                 }

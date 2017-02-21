@@ -42,7 +42,6 @@ final class UserService{
         guard let jsonData = data else {
             return .failure(.system(error!))
         }
-        
         do{
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getUsersFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
@@ -55,7 +54,6 @@ final class UserService{
         guard let jsonData = data else {
             return .failure(.system(error!))
         }
-        
         do{
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             let result = MixedUpAPI.getUserFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
@@ -64,7 +62,6 @@ final class UserService{
             } else {
                 return .failure(Errors.invalidJSONData)
             }
-            
         } catch {
             return .failure(.system(error))
         }
@@ -72,11 +69,9 @@ final class UserService{
     
     internal func fetchMainQueueUsers(predicate: NSPredicate? = nil,
                                       sortDescriptors: [NSSortDescriptor]? = nil) throws -> [User] {
-        
         let fetchRequest = NSFetchRequest<User>(entityName: "User")
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
-        
         let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueUser: [User]?
         var fetchRequestError: Error?
@@ -88,18 +83,14 @@ final class UserService{
                 fetchRequestError = error
             }
         })
-        
-        guard let post = mainQueueUser else {
+        guard let user = mainQueueUser else {
             throw fetchRequestError!
         }
-        
-        return post
+        return user
     }
     
     func createCoreDataUser(newUser: User, inContext context: NSManagedObjectContext) -> ResourceResult<User> {
-        
         let dictionary = newUser.toDictionary()
-        
         var user: User!
         context.performAndWait({ () -> Void in
             user = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
@@ -164,14 +155,11 @@ final class UserService{
             }
         })
         return .success(user)
-        
     }
     
     func fetchUser(user: User, inContext context: NSManagedObjectContext) -> ResourceResult<User> {
         let dictionary = user.toDictionary()
         guard let id = dictionary["id"] as? String else { return .failure(.inValidParameter)}
-        
-        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         let predicate = NSPredicate(format: "id == \"\(id)\"")
         fetchRequest.predicate = predicate
@@ -190,7 +178,6 @@ final class UserService{
         }
     }
     
-    
     func createUser(user: User, completion: @escaping (ResourceResult<User>) -> ()) {
         let dict = user.toDictionary()
         do{
@@ -201,9 +188,7 @@ final class UserService{
             request.httpBody = data
             let task = session.dataTask(with: request,  completionHandler: {
                 (data, response, error) -> Void in
-                
                 var result = self.processCreateUserRequest(data: data, error: error as NSError?)
-                
                 if case .success(let user) = result {
                     let privateQueueContext = self.coreDataStack.privateQueueContext
                     privateQueueContext.performAndWait({
@@ -211,7 +196,6 @@ final class UserService{
                     })
                     let objectIDs = [user.objectID]
                     let predicate = NSPredicate(format: "self IN %@", objectIDs)
-                    
                     do {
                         try self.coreDataStack.saveChanges()
                         
@@ -238,9 +222,7 @@ final class UserService{
         let request = requestBuilder(url: url, method: "Get")
         let task = session.dataTask(with: request,  completionHandler: {
             (data, response, error) -> Void in
-            
             var result = self.processUserRequest(data: data, error: error as NSError?)
-            
             if case .success(let users) = result {
                 let privateQueueContext = self.coreDataStack.privateQueueContext
                 privateQueueContext.performAndWait({
@@ -248,10 +230,8 @@ final class UserService{
                 })
                 let objectIDs = users.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
-                
                 do {
                     try self.coreDataStack.saveChanges()
-                    
                     let mainQueuePosts = try self.fetchMainQueueUsers(predicate: predicate,
                                                                       sortDescriptors: [])
                     result = .success(mainQueuePosts)
@@ -266,7 +246,6 @@ final class UserService{
     }
     
     func updateUser(user: User, caseString: String, completion: @escaping (ResourceResult<[User]>) -> ()) {
-        
         let url = URL(string: "www.example.com/0/users/\(user.id)")!
         var request = requestBuilder(url: url, method: "PUT")
         switch caseString{
@@ -292,9 +271,7 @@ final class UserService{
         }
         let task = session.dataTask(with: request,  completionHandler: {
             (data, response, error) -> Void in
-            
             var result = self.processUserRequest(data: data, error: error as NSError?)
-            
             if case .success(let users) = result {
                 let privateQueueContext = self.coreDataStack.privateQueueContext
                 privateQueueContext.performAndWait({
@@ -302,10 +279,8 @@ final class UserService{
                 })
                 let objectIDs = users.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
-                
                 do {
                     try self.coreDataStack.saveChanges()
-                    
                     let mainQueuePosts = try self.fetchMainQueueUsers(predicate: predicate,
                                                                       sortDescriptors: [])
                     result = .success(mainQueuePosts)
@@ -318,7 +293,4 @@ final class UserService{
         })
         task.resume()
     }
-
-    
-    
 }

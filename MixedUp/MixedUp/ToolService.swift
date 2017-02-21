@@ -21,7 +21,6 @@ final class ToolService{
         return URLSession(configuration: config)
     }()
     
-    
     fileprivate func requestBuilder(url: URL, method: String) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method
@@ -40,7 +39,6 @@ final class ToolService{
     
     func processToolRequest(data: Data?, error: NSError?) -> ResourceResult<[Tool]> {
         guard let jsonData = data else { return .failure(.system(error!))}
-        
         do {
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getToolsFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
@@ -51,11 +49,9 @@ final class ToolService{
     
     func fetchMainQueueTools(predicate: NSPredicate? = nil,
                              sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Tool] {
-        
         let fetchRequest = NSFetchRequest<Tool>(entityName: "Tool")
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
-        
         let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueTool: [Tool]?
         var fetchRequestError: Error?
@@ -67,11 +63,9 @@ final class ToolService{
                 fetchRequestError = error
             }
         })
-        
         guard let type = mainQueueTool else {
             throw fetchRequestError!
         }
-        
         return type
     }
     
@@ -80,9 +74,7 @@ final class ToolService{
         let request = requestBuilder(url: url, method: "GET")
         let task = session.dataTask(with: request,  completionHandler: {
             (data, response, error) -> Void in
-            
             var result = self.processToolRequest(data: data, error: error as NSError?)
-            
             if case .success(let tools) = result {
                 let privateQueueContext = self.coreDataStack.privateQueueContext
                 privateQueueContext.performAndWait({
@@ -90,10 +82,8 @@ final class ToolService{
                 })
                 let objectIDs = tools.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
-                
                 do {
                     try self.coreDataStack.saveChanges()
-                    
                     let mainQueueTools = try self.fetchMainQueueTools(predicate: predicate, sortDescriptors: [])
                     result = .success(mainQueueTools)
                 }
@@ -104,5 +94,4 @@ final class ToolService{
         })
         task.resume()
     }
-    
 }

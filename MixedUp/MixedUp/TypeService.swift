@@ -40,7 +40,6 @@ final class TypeService{
     
     func processTypeRequest(data: Data?, error: NSError?) -> ResourceResult<[IngredientType]> {
         guard let jsonData = data else { return .failure(.system(error!))}
-        
         do {
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getIngredientTypesFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
@@ -48,16 +47,13 @@ final class TypeService{
             print(error)
             return .failure(.system(error))
         }
-
     }
     
     func fetchMainQueueTypes(predicate: NSPredicate? = nil,
-                                       sortDescriptors: [NSSortDescriptor]? = nil) throws -> [IngredientType] {
-        
+                             sortDescriptors: [NSSortDescriptor]? = nil) throws -> [IngredientType] {
         let fetchRequest = NSFetchRequest<IngredientType>(entityName: "IngredientType")
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
-        
         let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueType: [IngredientType]?
         var fetchRequestError: Error?
@@ -69,11 +65,9 @@ final class TypeService{
                 fetchRequestError = error
             }
         })
-        
         guard let type = mainQueueType else {
             throw fetchRequestError!
         }
-        
         return type
     }
     
@@ -82,9 +76,7 @@ final class TypeService{
         let request = requestBuilder(url: url, method: "GET")
         let task = session.dataTask(with: request,  completionHandler: {
             (data, response, error) -> Void in
-            
             var result = self.processTypeRequest(data: data, error: error as NSError?)
-            
             if case .success(let types) = result {
                 let privateQueueContext = self.coreDataStack.privateQueueContext
                 privateQueueContext.performAndWait({
@@ -92,10 +84,8 @@ final class TypeService{
                 })
                 let objectIDs = types.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
-                
                 do {
                     try self.coreDataStack.saveChanges()
-                    
                     let mainQueueTypes = try self.fetchMainQueueTypes(predicate: predicate, sortDescriptors: [])
                     result = .success(mainQueueTypes)
                 }
@@ -107,5 +97,4 @@ final class TypeService{
         })
         task.resume()
     }
-    
 }

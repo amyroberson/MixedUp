@@ -35,9 +35,10 @@ enum Errors: Swift.Error{
 struct Util {
     static func searchDrinks(allDrinks:[Drink], searchText: String) -> [Drink]{
         var returning: Set<Drink> = []
+        let searchText = searchText.lowercased()
         for drink in allDrinks{
             for ingredient in drink.ingredients!{
-                if ((ingredient as! Ingredient).displayName?.lowercased().contains(searchText))! {
+                if ((ingredient as! Ingredient).displayName?.lowercased().contains(searchText))!{
                     returning.insert(drink)
                     break
                 } else if returning.contains(drink){

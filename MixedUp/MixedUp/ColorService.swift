@@ -21,7 +21,6 @@ final class ColorService{
         return URLSession(configuration: config)
     }()
     
-    
     fileprivate func requestBuilder(url: URL, method: String) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method
@@ -40,7 +39,6 @@ final class ColorService{
     
     func processColorRequest(data: Data?, error: NSError?) -> ResourceResult<[Color]> {
         guard let jsonData = data else { return .failure(.system(error!))}
-        
         do {
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getColorsFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
@@ -51,11 +49,9 @@ final class ColorService{
     
     func fetchMainQueueTypes(predicate: NSPredicate? = nil,
                              sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Color] {
-        
         let fetchRequest = NSFetchRequest<Color>(entityName: "Color")
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
-        
         let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueColor: [Color]?
         var fetchRequestError: Error?
@@ -67,11 +63,9 @@ final class ColorService{
                 fetchRequestError = error
             }
         })
-        
         guard let type = mainQueueColor else {
             throw fetchRequestError!
         }
-        
         return type
     }
     
@@ -80,9 +74,7 @@ final class ColorService{
         let request = requestBuilder(url: url, method: "GET")
         let task = session.dataTask(with: request,  completionHandler: {
             (data, response, error) -> Void in
-            
             var result = self.processColorRequest(data: data, error: error as NSError?)
-            
             if case .success(let colors) = result {
                 let privateQueueContext = self.coreDataStack.privateQueueContext
                 privateQueueContext.performAndWait({
@@ -90,10 +82,8 @@ final class ColorService{
                 })
                 let objectIDs = colors.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
-                
                 do {
                     try self.coreDataStack.saveChanges()
-                    
                     let mainQueueTypes = try self.fetchMainQueueTypes(predicate: predicate, sortDescriptors: [])
                     result = .success(mainQueueTypes)
                 }
@@ -105,5 +95,4 @@ final class ColorService{
         })
         task.resume()
     }
-    
 }
