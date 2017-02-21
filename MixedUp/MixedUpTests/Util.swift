@@ -12,15 +12,13 @@ import CoreData
 
 enum ResourceResult<A> {
     case success(A)
-    case sucess(Bool)
     case failure(Errors)
-    case fail(NSError)
     
     var successValue: A? {
         switch self {
         case .success(let value):
             return value
-        case .sucess, .fail, .failure:
+        case .failure:
             return nil
         }
     }
@@ -29,21 +27,12 @@ enum ResourceResult<A> {
 enum Errors: Swift.Error{
     case http(HTTPURLResponse)
     case system(Swift.Error)
-    case resource(Util.Error)
     case invalidJSONData
     case inValidParameter
     case failedToSave
-    
 }
 
 struct Util {
-    internal enum Error: Swift.Error {
-        case invalidJSONData
-        
-    }
-    
-    
-    
     static func searchDrinks(allDrinks:[Drink], searchText: String) -> [Drink]{
         var returning: Set<Drink> = []
         for drink in allDrinks{
@@ -79,7 +68,6 @@ struct Util {
             }
         }
         return missingIngredients
-        
     }
 }
 

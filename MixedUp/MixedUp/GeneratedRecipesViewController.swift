@@ -9,17 +9,16 @@
 import UIKit
 
 class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate{
-
-    @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var collectionView: UICollectionView!
     var defaults: UserDefaults? = nil
     var coreDataStack: CoreDataStack? = nil
     var userStore: UserService? = nil
     var drinkStore: DrinkService? = nil
     var user: User? = nil
     var drinks: [Drink] = []
-    
     @IBOutlet weak var needMoreIngredientsLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView?.dataSource = self
@@ -45,7 +44,6 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
             case .success(let genDrinks):
                 self.drinks = genDrinks
                 self.refresh()
-                
             default:
                 print("could not get drinks")
             }
@@ -60,7 +58,6 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
     func randomDrinkPressed(){
         let random = Int(arc4random_uniform(UInt32(drinks.count)))
         let drink = drinks[random]
-        
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyBoard.instantiateViewController(withIdentifier: "DrinkDetail") as! DrinkDetailViewController
         detailVC.coreDataStack = coreDataStack
@@ -74,7 +71,6 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let drink = drinks[indexPath.row]
-        
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyBoard.instantiateViewController(withIdentifier: "DrinkDetail") as! DrinkDetailViewController
         detailVC.coreDataStack = coreDataStack
@@ -85,8 +81,6 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
         detailVC.defaults = defaults
         self.show(detailVC, sender: nil)
     }
-
-
 }
 
 extension GeneratedRecipesViewController: UICollectionViewDataSource{
@@ -101,8 +95,6 @@ extension GeneratedRecipesViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IBACell", for: indexPath) as! IBACell
-        
-        
         let drink = drinks[indexPath.row]
         if let color = drink.color{
             let red = Float(color.red)/255
@@ -117,17 +109,14 @@ extension GeneratedRecipesViewController: UICollectionViewDataSource{
         cell.drinkNameLabel.textColor = Theme.labelColor
         cell.drinkNameLabel.font = Theme.cellLabelFont
         cell.drinkNameLabel.text = drink.displayName
-        
         return cell
     }
-    
-    
     
     func refresh(){
         DispatchQueue.main.async {
             self.collectionView.reloadData()
             if self.drinks.count == 0 {
-               self.needMoreIngredientsLabel.isHidden = false
+                self.needMoreIngredientsLabel.isHidden = false
             } else {
                 self.needMoreIngredientsLabel.isHidden = true
             }
@@ -137,5 +126,4 @@ extension GeneratedRecipesViewController: UICollectionViewDataSource{
         needMoreIngredientsLabel.textColor = Theme.labelColor
         needMoreIngredientsLabel.font = Theme.labelFont
     }
-    
 }

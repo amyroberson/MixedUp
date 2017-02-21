@@ -23,9 +23,7 @@ class addInventoryViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     var ingredient: Ingredient? = nil
-    
     @IBOutlet weak var typeDisplayLabel: UILabel!
-    
     @IBOutlet weak var ingredientTypeLabel: UILabel!
     @IBOutlet weak var ingredientPicker: UIPickerView!
     
@@ -55,7 +53,6 @@ class addInventoryViewController: UIViewController, UIPickerViewDelegate, UIPick
         ingredientPicker.delegate = self
         ingredientPicker.dataSource = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(addIngredientPressed(_:)))
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +63,6 @@ class addInventoryViewController: UIViewController, UIPickerViewDelegate, UIPick
                 case .success(let theIngredients):
                     self.ingredients = theIngredients
                     self.refresh()
-                    
                 default:
                     print("could not get ingredients")
                 }
@@ -77,7 +73,6 @@ class addInventoryViewController: UIViewController, UIPickerViewDelegate, UIPick
                 case .success(let theIngredients):
                     self.ingredients = theIngredients
                     self.refresh()
-                    
                 default:
                     print("could not get ingredients")
                 }
@@ -118,6 +113,5 @@ class addInventoryViewController: UIViewController, UIPickerViewDelegate, UIPick
         ingredientTypeLabel.font = Theme.mainLabelFont
         ingredientTypeLabel.textColor = Theme.labelColor
         view.backgroundColor = Theme.viewBackgroundColor
-        
     }
 }

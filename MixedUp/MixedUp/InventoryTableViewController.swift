@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class InventoryTableViewController: UITableViewController {
-
+    
     var types: [IngredientType] = []
     var coreDataStack: CoreDataStack? = nil
     var ingredientStore: IngredientService? = nil
@@ -20,7 +20,6 @@ class InventoryTableViewController: UITableViewController {
     var defaults: UserDefaults? = nil
     var all: IngredientType? = nil
     var type: IngredientType? = nil
-   
     
     func setTypes(){
         typeStore?.getAllTypes(completion: {result in
@@ -53,20 +52,18 @@ class InventoryTableViewController: UITableViewController {
         }
         type = nil
     }
-
-
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return types.count + 1
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Type", for: indexPath) as! IngredientTypeCell
-
         if indexPath.row == 0{
             cell.typeNameLabel.text = "All Ingredients"
             cell.typeNameLabel.textColor = Theme.labelColor
@@ -74,17 +71,13 @@ class InventoryTableViewController: UITableViewController {
             cell.backgroundColor = Theme.viewBackgroundColor
             return cell
         }
-        
         let thisType = types[indexPath.row - 1]
-        
         cell.typeNameLabel.text = thisType.displayName
         cell.typeNameLabel.textColor = Theme.labelColor
         cell.typeNameLabel.font = Theme.labelFont
         cell.backgroundColor = Theme.viewBackgroundColor
-
         return cell
     }
-
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
@@ -98,7 +91,6 @@ class InventoryTableViewController: UITableViewController {
         ingredientTableVC.coreDataStack = coreDataStack
         ingredientTableVC.ingredientType = type
         ingredientTableVC.defaults = defaults
-        
         self.show(ingredientTableVC, sender: nil)
     }
     
@@ -107,5 +99,4 @@ class InventoryTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-
 }

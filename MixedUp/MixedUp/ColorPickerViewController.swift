@@ -9,7 +9,7 @@
 import UIKit
 
 class ColorPickerViewController: UIViewController, UICollectionViewDelegate {
-
+    
     var defaults: UserDefaults? = nil
     var coreDataStack: CoreDataStack? = nil
     var userStore: UserService? = nil
@@ -32,10 +32,8 @@ class ColorPickerViewController: UIViewController, UICollectionViewDelegate {
             case .success(let theColors):
                 self.colors = theColors
                 self.refresh()
-                
             default:
                 print("could not get colors")
-
             }
         })
         selectLabel.font = Theme.boldLabelFont
@@ -45,7 +43,7 @@ class ColorPickerViewController: UIViewController, UICollectionViewDelegate {
         self.collectionView?.delegate = self
         view.backgroundColor = Theme.viewBackgroundColor
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
@@ -55,7 +53,7 @@ class ColorPickerViewController: UIViewController, UICollectionViewDelegate {
             Theme.styleDark()
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let color = colors[indexPath.row]
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -73,7 +71,6 @@ class ColorPickerViewController: UIViewController, UICollectionViewDelegate {
         recipeVC.glass = glass
         recipeVC.color = color
         self.show(recipeVC, sender: nil)
-
     }
 }
 
@@ -89,11 +86,9 @@ extension ColorPickerViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IBACell", for: indexPath) as! IBACell
-        
         let color = colors[indexPath.row]
         let colorName = colors[indexPath.row].displayName
         let glassName = glass?.displayName
-       
         let red = Float(color.red)/255
         let green =  Float(color.green)/255
         let blue =  Float(color.blue)/255
@@ -103,17 +98,12 @@ extension ColorPickerViewController: UICollectionViewDataSource{
         cell.drinkNameLabel.textColor = Theme.labelColor
         cell.drinkNameLabel.font = Theme.cellLabelFont
         cell.drinkNameLabel.text = colorName ?? ""
-        
         return cell
     }
-    
-    
     
     func refresh(){
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
     }
-    
-    
 }

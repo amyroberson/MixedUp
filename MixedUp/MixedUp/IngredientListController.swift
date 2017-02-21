@@ -18,8 +18,6 @@ class IngredientListController: UITableViewController {
     var ingredients: [Ingredient] = []
     var defaults: UserDefaults? = nil
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped(_:)))
@@ -48,9 +46,7 @@ class IngredientListController: UITableViewController {
         addInventoryVC.ingredientStore = ingredientStore
         addInventoryVC.defaults = defaults
         self.show(addInventoryVC, sender: nil)
-        
     }
-    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -60,13 +56,7 @@ class IngredientListController: UITableViewController {
         return ingredients.count
     }
     
-    
-    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "Remove"
-    }
-
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             let ingredeintToRemove = self.ingredients[indexPath.row]
             ingredeintToRemove.removeFromUser(self.user!)
@@ -75,11 +65,9 @@ class IngredientListController: UITableViewController {
             } catch{
                 print("could not save")
             }
-            
             self.refreshView()
         })
         deleteAction.backgroundColor = UIColor.red
-        
         return [deleteAction]
     }
     
@@ -90,28 +78,24 @@ class IngredientListController: UITableViewController {
         cell.ingredientNameLabel.textColor = Theme.labelColor
         cell.ingredientNameLabel.font = Theme.labelFont
         cell.backgroundColor = Theme.viewBackgroundColor
-        
         return cell
     }
-    
     
     func refreshView(){
         let inventory = user?.inventory?.allObjects as! [Ingredient]
         ingredients = []
-            for ingredient in inventory{
-                if (ingredient).type?.displayName == ingredientType?.displayName{
-                    if !ingredients.contains(ingredient){
-                        ingredients.append(ingredient)
-                    }
-                } else if ingredientType == nil{
-                    ingredients = user?.inventory?.allObjects as! [Ingredient]
+        for ingredient in inventory{
+            if (ingredient).type?.displayName == ingredientType?.displayName{
+                if !ingredients.contains(ingredient){
+                    ingredients.append(ingredient)
                 }
-            
+            } else if ingredientType == nil{
+                ingredients = user?.inventory?.allObjects as! [Ingredient]
+            }
         }
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-    
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class GlassPickerViewController: UIViewController, UICollectionViewDelegate {
-
+    
     var defaults: UserDefaults? = nil
     var coreDataStack: CoreDataStack? = nil
     var userStore: UserService? = nil
@@ -22,7 +22,6 @@ class GlassPickerViewController: UIViewController, UICollectionViewDelegate {
     var drinkStore: DrinkService? = nil
     var glasses: [Glass] = []
     @IBOutlet weak var selectLabel: UILabel!
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -32,7 +31,6 @@ class GlassPickerViewController: UIViewController, UICollectionViewDelegate {
             case .success(let theGlasses):
                 self.glasses = theGlasses
                 self.refresh()
-                
             default:
                 print("could not get glasses")
             }
@@ -45,7 +43,7 @@ class GlassPickerViewController: UIViewController, UICollectionViewDelegate {
         selectLabel.font = Theme.boldLabelFont
         selectLabel.textColor = Theme.labelColor
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
@@ -73,7 +71,6 @@ class GlassPickerViewController: UIViewController, UICollectionViewDelegate {
         colorVC.glass = glass
         self.show(colorVC, sender: nil)
     }
-    
 }
 
 extension GlassPickerViewController: UICollectionViewDataSource{
@@ -88,25 +85,18 @@ extension GlassPickerViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IBACell", for: indexPath) as! IBACell
-      
         let glass = glasses[indexPath.row].displayName
-        
         cell.drawGlass.color = UIColor(colorLiteralRed: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
         cell.drawGlass.glass = glass ?? ""
         cell.drinkNameLabel.textColor = Theme.labelColor
         cell.drinkNameLabel.font = Theme.cellLabelFont
         cell.drinkNameLabel.text = glass
-        
         return cell
     }
-    
-    
     
     func refresh(){
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
     }
-    
-    
 }

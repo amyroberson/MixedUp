@@ -13,8 +13,6 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let screen = UIScreen.main
-
-    
     var window: UIWindow?
     let defaults = UserDefaults.standard
     var coreDataStack = CoreDataStack(modelName: "MixedUpDataModel")
@@ -29,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var typeStore: TypeService? = nil
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
         defaults.register(defaults: [userIDKey : ""])
         defaults.register(defaults: [Theme.themeKey: Theme.lightKey])
         userStore = UserService(coreDataStack)
@@ -40,29 +37,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         glassStore = GlassService(coreDataStack)
         colorStore = ColorService(coreDataStack)
         toolStore = ToolService(coreDataStack)
-        
         if let userIDString = defaults.string(forKey: userIDKey), userIDString.isEmpty == false{
-            
             let tempUser = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
                                                                into: coreDataStack.privateQueueContext) as! User
             tempUser.id = userIDString
-            
             let result = (userStore?.fetchUser(user: tempUser, inContext: coreDataStack.mainQueueContext))!
             switch result{
             case .success(let user):
                 self.user = user
             default:
                 print("error user was not created")
-                //needs to be handled differently or throw
             }
         }
         
         if user != nil {
             self.window = UIWindow(frame: UIScreen.main.bounds)
-            
-            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "Tabs") as! TabsViewController
             initialViewController.defaults = defaults
             initialViewController.coreDataStack = coreDataStack
@@ -74,16 +64,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController.glassStore = glassStore
             initialViewController.colorStore = colorStore
             initialViewController.toolStore = toolStore
-            
             window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
             
+            //show age picker, to be able to create new use
         } else if user == nil {
-            //show age picker
-            //to be able to create new user
             self.window = UIWindow(frame: UIScreen.main.bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "Birthday") as! BirthdayViewController
             initialViewController.defaults = defaults
             initialViewController.coreDataStack = coreDataStack
@@ -94,12 +81,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController.glassStore = glassStore
             initialViewController.colorStore = colorStore
             initialViewController.toolStore = toolStore
-            
             window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
         }
-        
-        
         return true
     }
     
@@ -120,17 +104,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         if screen.brightness > 0.2 {
             defaults.set(Theme.lightKey, forKey: Theme.themeKey)
-
         } else {
             defaults.set(Theme.darkKey, forKey: Theme.themeKey)
         }
-
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
     
 }
 

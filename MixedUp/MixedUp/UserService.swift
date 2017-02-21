@@ -40,20 +40,20 @@ final class UserService{
     
     func processUserRequest(data: Data?, error: NSError?) -> ResourceResult<[User]>{
         guard let jsonData = data else {
-            return .fail(error!)
+            return .failure(.system(error!))
         }
         
         do{
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getUsersFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
-            return .fail((error as NSError))
+            return .failure(.system(error))
         }
     }
     
     func processCreateUserRequest(data: Data?, error: NSError?) -> ResourceResult<User>{
         guard let jsonData = data else {
-            return .fail(error!)
+            return .failure(.system(error!))
         }
         
         do{
@@ -66,7 +66,7 @@ final class UserService{
             }
             
         } catch {
-            return .fail((error as NSError))
+            return .failure(.system(error))
         }
     }
     

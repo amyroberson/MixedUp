@@ -19,9 +19,11 @@ enum Glasses: String {
     case huricane = "Huricane"
     case champagne = "Champagne"
     case coconut = "Coconut"
+    case beerGlass = "Beer"
+    case beerStein = "Beer Stein"
+    case weizen = "Weizen"
     case base = ""
 }
-
 
 class DrawGlass: UIView {
     
@@ -30,7 +32,6 @@ class DrawGlass: UIView {
             setNeedsDisplay()
         }
     }
-    
     
     var glass:String = ""{
         didSet {
@@ -91,9 +92,14 @@ class DrawGlass: UIView {
             StyleKitGlasses.drawChampagne(frame: rect, liquid: color)
         case .coconut:
             StyleKitGlasses.drawCoconut(frame: rect, liquid: color)
+        case .beerGlass:
+            StyleKitGlasses.drawBeerGlass(frame:  rect, liquid: color)
+        case .beerStein:
+            StyleKitGlasses.drawBeerStein(frame: rect, liquid: color)
+        case .weizen:
+            StyleKitGlasses.drawWeizen(frame: rect, liquid: color)
         default:
             StyleKitGlasses.drawLowBall(frame: rect, liquid: color)
         }
     }
-    
 }

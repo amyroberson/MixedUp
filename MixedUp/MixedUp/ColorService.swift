@@ -39,15 +39,14 @@ final class ColorService{
     }
     
     func processColorRequest(data: Data?, error: NSError?) -> ResourceResult<[Color]> {
-        guard let jsonData = data else { return .fail((error!))}
+        guard let jsonData = data else { return .failure(.system(error!))}
         
         do {
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getColorsFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
-            return .fail((error as NSError))
+            return .failure(.system(error))
         }
-        
     }
     
     func fetchMainQueueTypes(predicate: NSPredicate? = nil,
@@ -99,7 +98,7 @@ final class ColorService{
                     result = .success(mainQueueTypes)
                 }
                 catch let error {
-                    result = .fail(error as NSError)
+                    result = .failure(.system(error))
                 }
             }
             completion(result)

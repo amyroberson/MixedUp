@@ -39,14 +39,14 @@ final class TypeService{
     }
     
     func processTypeRequest(data: Data?, error: NSError?) -> ResourceResult<[IngredientType]> {
-        guard let jsonData = data else { return .fail((error!))}
+        guard let jsonData = data else { return .failure(.system(error!))}
         
         do {
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getIngredientTypesFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
             print(error)
-            return .fail((error as NSError))
+            return .failure(.system(error))
         }
 
     }
@@ -100,7 +100,7 @@ final class TypeService{
                     result = .success(mainQueueTypes)
                 }
                 catch let error {
-                    result = .fail(error as NSError)
+                    result = .failure(.system(error))
                 }
             }
             completion(result)

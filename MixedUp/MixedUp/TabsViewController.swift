@@ -21,15 +21,13 @@ class TabsViewController: UITabBarController {
     var user: User? = nil
     var typeStore: TypeService? = nil
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.tintColor = .black
         tabBar.items?[0].title = "Recipes"
         tabBar.items?[1].title = "Inventory"
         tabBar.items?[2].title = "Favorites"
-        tabBar.items?[3].title = "Make These"
+        tabBar.items?[3].title = "Mixable"
         tabBar.items?[4].title = "Create Drink"
         for item in self.viewControllers!{
             if let controller = item as? UINavigationController{
@@ -52,7 +50,7 @@ class TabsViewController: UITabBarController {
                     favoriteVC.userStore = userStore
                     favoriteVC.drinkStore = drinkStore
                     favoriteVC.user = user
-                 } else if let generatedVC = controller.topViewController as? GeneratedRecipesViewController {
+                } else if let generatedVC = controller.topViewController as? GeneratedRecipesViewController {
                     generatedVC.defaults = defaults
                     generatedVC.coreDataStack = coreDataStack
                     generatedVC.userStore = userStore
@@ -72,8 +70,5 @@ class TabsViewController: UITabBarController {
                 }
             }
         }
-        
     }
-    
-    
 }

@@ -9,7 +9,5 @@
 import UIKit
 
 class IngredientCell: UITableViewCell {
-
     @IBOutlet weak var ingredientNameLabel: UILabel!
-
 }

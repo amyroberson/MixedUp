@@ -18,30 +18,22 @@ class DrinkDetailViewController: UIViewController {
     var user: User? = nil
     var defaults: UserDefaults? = nil
     var drink: Drink? = nil
+    var toolsStack = UIStackView()
+    var ingredientStackView = UIStackView()
+    var missingIngredientsStack = UIStackView()
     var missingIngredients: [Ingredient] = []
-    
-    
     @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var stackViewContainer: UIView!
-   
     @IBOutlet weak var displayNameLabel: UILabel!
-    
     @IBOutlet weak var missingLabel: UILabel!
     @IBOutlet weak var drawDrink: DrawGlass!
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var glassLabel: UILabel!
     @IBOutlet weak var drinkDescriptionLabel: UILabel!
-    
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var toolsLabel: UILabel!
-    
     @IBOutlet weak var addToFavoritesButton: UIButton!
     @IBOutlet weak var addedSuccesLabel: UILabel!
-    
-    var toolsStack = UIStackView()
-    var ingredientStackView = UIStackView()
-    var missingIngredientsStack = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +42,6 @@ class DrinkDetailViewController: UIViewController {
         mainStackView.insertArrangedSubview(ingredientStackView, at: 5)
         mainStackView.insertArrangedSubview(toolsStack, at: 7)
         mainStackView.insertArrangedSubview(missingIngredientsStack, at: 9)
-        
         if let drink = drink {
             if (user?.favoriteDrinks?.contains(drink))!{
                 addToFavoritesButton.setTitle("Remove From Favorites", for: .normal)
@@ -67,7 +58,6 @@ class DrinkDetailViewController: UIViewController {
             let alpha =  Float(color.red)/255
             drawDrink.color = UIColor(colorLiteralRed: red, green: green, blue: blue, alpha: alpha)
         }
-        
         drawDrink.glass = drink?.glass?.displayName ?? ""
         drawDrink.descriptionString = drink?.description ?? ""
     }
@@ -83,9 +73,7 @@ class DrinkDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         scrollView.contentSize = CGSize(width: self.view.frame.size.width , height: mainStackView.frame.size.height)
-        
     }
-
     
     @IBAction func addToFavoritesTapped(_ sender: UIButton) {
         if let drink = drink , let user = user, let favorites = user.favoriteDrinks{
@@ -128,8 +116,6 @@ class DrinkDetailViewController: UIViewController {
         ingredientsLabel.setContentHuggingPriority(0.7, for: .vertical)
         ingredientStackView.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
         ingredientStackView.distribution = .fill
-        
-        
         if let tools = drink?.tools{
             for tool in tools {
                 let theToolLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
@@ -193,7 +179,6 @@ class DrinkDetailViewController: UIViewController {
             theingredientLabel.font = Theme.labelFont
             missingIngredientsStack.addSubview(theingredientLabel)
         }
-        
     }
     
     func setUpLabels(){
@@ -220,8 +205,5 @@ class DrinkDetailViewController: UIViewController {
         missingLabel.font = Theme.boldLabelFont
         missingLabel.textColor = Theme.labelColor
     }
-    
-    
-    
 }
 

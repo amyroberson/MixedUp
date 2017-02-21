@@ -54,6 +54,7 @@
 		E18853FF1E4AD77C005C8C37 /* IngredientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18853FE1E4AD77C005C8C37 /* IngredientService.swift */; };
 		E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18854001E4B5896005C8C37 /* TabsViewController.swift */; };
 		E1B2E91F1E5733B100EBD45A /* AddToRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B2E91E1E5733B100EBD45A /* AddToRecipeViewController.swift */; };
+		E1B2E9211E5B708F00EBD45A /* UtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B2E9201E5B708F00EBD45A /* UtilTests.swift */; };
 		E1C3C3591E510DF50012E60E /* TypeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3581E510DF50012E60E /* TypeService.swift */; };
 		E1C3C3EF1E54AA760012E60E /* DrawGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */; };
 		E1C3C3F31E54DE050012E60E /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3F21E54DE050012E60E /* CoreDataHelper.swift */; };
@@ -144,6 +145,7 @@
 		E18853FE1E4AD77C005C8C37 /* IngredientService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientService.swift; sourceTree = "<group>"; };
 		E18854001E4B5896005C8C37 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
 		E1B2E91E1E5733B100EBD45A /* AddToRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToRecipeViewController.swift; sourceTree = "<group>"; };
+		E1B2E9201E5B708F00EBD45A /* UtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilTests.swift; sourceTree = "<group>"; };
 		E1C3C3581E510DF50012E60E /* TypeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeService.swift; sourceTree = "<group>"; };
 		E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawGlass.swift; sourceTree = "<group>"; };
 		E1C3C3F21E54DE050012E60E /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				E18853F11E4A3E1C005C8C37 /* IngredientTests.swift */,
 				E18853EF1E4A332A005C8C37 /* ColorTests.swift */,
 				E18853F71E4A68EB005C8C37 /* MixedUpAPITests.swift */,
+				E1B2E9201E5B708F00EBD45A /* UtilTests.swift */,
 				E1C3C3F41E54DE920012E60E /* CoreDataTests.swift */,
 				E18853F51E4A62C1005C8C37 /* UserTests.swift */,
 				E18853641E4921F9005C8C37 /* GlassTests.swift */,
@@ -520,6 +523,7 @@
 				E18853F01E4A332A005C8C37 /* ColorTests.swift in Sources */,
 				E18853651E4921F9005C8C37 /* GlassTests.swift in Sources */,
 				E18853601E492120005C8C37 /* ToolTests.swift in Sources */,
+				E1B2E9211E5B708F00EBD45A /* UtilTests.swift in Sources */,
 				E1C3C3F51E54DE920012E60E /* CoreDataTests.swift in Sources */,
 				E18853F61E4A62C1005C8C37 /* UserTests.swift in Sources */,
 				E18853F41E4A4464005C8C37 /* DrinkTests.swift in Sources */,

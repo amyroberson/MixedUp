@@ -17,9 +17,8 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
     var drinkStore: DrinkService? = nil
     var user: User? = nil
     var favoriteDrinks:  [Drink] = []
-    
     @IBOutlet weak var collectionView: UICollectionView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Favorite Drinks"
@@ -38,7 +37,6 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
         self.navigationItem.rightBarButtonItem = barButton
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
@@ -47,13 +45,11 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
         } else {
             Theme.styleDark()
         }
-        
     }
     
     func randomDrinkPressed(){
         let random = Int(arc4random_uniform(UInt32(favoriteDrinks.count)))
         let drink = favoriteDrinks[random]
-
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyBoard.instantiateViewController(withIdentifier: "DrinkDetail") as! DrinkDetailViewController
         detailVC.coreDataStack = coreDataStack
@@ -67,7 +63,6 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let drink = favoriteDrinks[indexPath.row]
-        
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyBoard.instantiateViewController(withIdentifier: "DrinkDetail") as! DrinkDetailViewController
         detailVC.coreDataStack = coreDataStack
@@ -78,7 +73,6 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
         detailVC.defaults = defaults
         self.show(detailVC, sender: nil)
     }
-
 }
 
 extension FavoritesViewController: UICollectionViewDataSource{
@@ -93,8 +87,6 @@ extension FavoritesViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IBACell", for: indexPath) as! IBACell
-        
-        
         let drink = favoriteDrinks[indexPath.row]
         if let color = drink.color{
             let red = Float(color.red)/255
@@ -105,15 +97,12 @@ extension FavoritesViewController: UICollectionViewDataSource{
         }
         
         cell.drawGlass.glass = drink.glass?.displayName ?? ""
-        cell.drawGlass.descriptionString = drink.description 
+        cell.drawGlass.descriptionString = drink.description
         cell.drinkNameLabel.textColor = Theme.labelColor
         cell.drinkNameLabel.font = Theme.cellLabelFont
         cell.drinkNameLabel.text = drink.displayName
-        
         return cell
     }
-    
-    
     
     func refresh(){
         DispatchQueue.main.async {
@@ -123,6 +112,4 @@ extension FavoritesViewController: UICollectionViewDataSource{
             self.collectionView.reloadData()
         }
     }
-    
-    
 }

@@ -40,15 +40,14 @@ final class IngredientService{
     
     func processIngredientRequest(data: Data?, error: NSError?) -> ResourceResult<[Ingredient]>{
         guard let jsonData = data else {
-            return .fail((error!))
+            return .failure(.system(error!))
         }
         
         do{
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getIngredientsFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
-            print(error)
-            return .fail((error as NSError))
+            return .failure(.system(error))
         }
     }
     
@@ -122,7 +121,7 @@ final class IngredientService{
                     result = .success(mainQueueIngredients)
                 }
                 catch let error {
-                    result = .fail(error as NSError)
+                    result = .failure(.system(error))
                 }
             }
             completion(result)
@@ -150,7 +149,7 @@ final class IngredientService{
                     result = .success(mainQueueIngredients)
                 }
                 catch let error {
-                    result = .fail(error as NSError)
+                    result = .failure(.system(error))
                 }
             }
             completion(result)

@@ -40,8 +40,7 @@ final class DrinkService{
     
     func processDrinkRequest(data: Data?, error: NSError?) -> ResourceResult<[Drink]>{
         guard let jsonData = data else {
-            print(error!)
-            return .fail(error!)
+            return .failure(.system(error!))
         }
         
         do{
@@ -50,7 +49,7 @@ final class DrinkService{
             return back
         } catch {
             print(error)
-            return .fail(error as NSError)
+            return .failure(.system(error))
         }
     }
     
@@ -183,7 +182,7 @@ final class DrinkService{
                     result = .success(mainQueueDrinks)
                 }
                 catch let error {
-                    result = .fail(error as NSError)
+                    result = .failure(.system(error))
                 }
             }
             completion(result)
@@ -213,7 +212,7 @@ final class DrinkService{
                     result = .success(mainQueueDrinks)
                 }
                 catch let error {
-                    result = .fail(error as NSError)
+                    result = .failure(.system(error))
                 }
             }
             completion(result)

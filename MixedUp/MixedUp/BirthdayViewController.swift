@@ -24,35 +24,30 @@ class BirthdayViewController: UIViewController {
     var typeStore: TypeService? = nil
     
     @IBOutlet weak var mustBeLabel: UILabel!
-    
     @IBOutlet weak var pleaseEnterLabel: UILabel!
     @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var birthdayPicker: UIDatePicker!
     
     @IBAction func enterPressed(_ sender: UIButton) {
         let today = Date()
         let twentyOneYearsAgo = Calendar.current.date(byAdding: .year, value: -21, to: today)
-        
         if birthdayPicker.date > twentyOneYearsAgo!{
             mustBeLabel.isHidden = false
         } else {
-            //create user request
             let user1 = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
-                                                           into: (coreDataStack?.privateQueueContext)!) as! User
+                                                            into: (coreDataStack?.privateQueueContext)!) as! User
             user1.id = UUID().uuidString
             self.user = user1
-        
-            
-           let result = (userStore?.createCoreDataUser(newUser: user1, inContext: (coreDataStack?.mainQueueContext)!))!
+            let result = (userStore?.createCoreDataUser(newUser: user1, inContext: (coreDataStack?.mainQueueContext)!))!
             switch result{
-                case .success(let user):
-                    self.user = user
-                    //send user to server
-                    self.defaults?.set(user.id, forKey: userIDKey)
-                default:
-                    print("error creating user")
-                    self.user = user1
+            case .success(let user):
+                self.user = user
+                self.defaults?.set(user.id, forKey: userIDKey)
+            default:
+                print("error creating user")
+                self.user = user1
             }
-        
+            
             if self.user == nil{
                 self.user = user1
             }
@@ -70,17 +65,11 @@ class BirthdayViewController: UIViewController {
             tabsVC.toolStore = toolStore
             self.show(tabsVC, sender: nil)
         }
-        
-        
     }
-    
-    @IBOutlet weak var birthdayPicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mustBeLabel.isHidden = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

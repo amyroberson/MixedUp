@@ -39,13 +39,13 @@ final class ToolService{
     }
     
     func processToolRequest(data: Data?, error: NSError?) -> ResourceResult<[Tool]> {
-        guard let jsonData = data else { return .fail((error!))}
+        guard let jsonData = data else { return .failure(.system(error!))}
         
         do {
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getToolsFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
-            return .fail((error as NSError))
+            return .failure(.system(error))
         }
     }
     
@@ -98,8 +98,7 @@ final class ToolService{
                     result = .success(mainQueueTools)
                 }
                 catch let error {
-                    result = .fail(error as NSError)
-                }
+                    result = .failure(.system(error))                }
             }
             completion(result)
         })

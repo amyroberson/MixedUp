@@ -40,14 +40,14 @@ final class GlassService{
     
     
     func processTypeRequest(data: Data?, error: NSError?) -> ResourceResult<[Glass]> {
-        guard let jsonData = data else { return .fail((error!))}
+        guard let jsonData = data else { return .failure(.system(error!))}
         
         do {
             let jsonDict = try MixedUpAPI.jsonToDictionary(jsonData)
             return MixedUpAPI.getGlassesFromDictionary(jsonDict, inContext: (self.coreDataStack.privateQueueContext))
         } catch {
             print(error)
-            return .fail((error as NSError))
+            return .failure(.system(error))
         }
         
     }
@@ -102,7 +102,7 @@ final class GlassService{
                     result = .success(mainQueueGlasses)
                 }
                 catch let error {
-                    result = .fail(error as NSError)
+                    result = .failure(.system(error))
                 }
             }
             completion(result)

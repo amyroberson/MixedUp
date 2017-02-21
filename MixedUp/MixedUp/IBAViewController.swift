@@ -12,7 +12,6 @@ import CoreData
 class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
     var coreDataStack: CoreDataStack? = nil
     var drinkStore: DrinkService? = nil
     var userStore: UserService? = nil
@@ -22,7 +21,6 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
     var allDrinks: [Drink] = []
     var filteredDrinks: Set<Drink> = []
     var inSearchMode = false
-    
     @IBOutlet weak var drinkSearchBar: UISearchBar!
     
     override func viewDidLoad() {
@@ -33,15 +31,13 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
                 self.drinks = ibas
                 self.allDrinks = ibas
                 self.refresh()
-                
             default:
-                print("could not get drinks")
+                print("could not get drinks from server")
                 self.drinks = (self.drinkStore?.getAllDrinksFromCoreData())!
                 self.allDrinks = self.drinks
                 self.refresh()
             }
         })
-        
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
         self.navigationItem.title = "IBA Drink Recipes"
@@ -69,7 +65,6 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
     func randomDrinkPressed(){
         let random = Int(arc4random_uniform(UInt32(drinks.count)))
         let drink = drinks[random]
-        
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyBoard.instantiateViewController(withIdentifier: "DrinkDetail") as! DrinkDetailViewController
         detailVC.coreDataStack = coreDataStack
@@ -83,7 +78,6 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         let drink = drinks[indexPath.row]
-        
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyBoard.instantiateViewController(withIdentifier: "DrinkDetail") as! DrinkDetailViewController
         detailVC.coreDataStack = coreDataStack
@@ -101,13 +95,11 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
             drinks = allDrinks
             collectionView.reloadData()
             view.endEditing(true)
-            
         } else {
             inSearchMode = true
             let text = drinkSearchBar.text?.lowercased()
             drinks = Util.searchDrinks(allDrinks: allDrinks, searchText: text!)
             collectionView.reloadData()
-            
         }
     }
     
@@ -115,11 +107,11 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
         view.endEditing(true)
         drinks = allDrinks
     }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
         drinks = allDrinks
     }
-    
 }
 
 extension IBAViewController: UICollectionViewDataSource{
@@ -134,10 +126,7 @@ extension IBAViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IBACell", for: indexPath) as! IBACell
-        
-        
         let drink = drinks[indexPath.row]
-        
         if let color = drink.color{
             let red = Float(color.red)/255
             let green =  Float(color.green)/255
@@ -147,21 +136,16 @@ extension IBAViewController: UICollectionViewDataSource{
         }
         
         cell.drawGlass.glass = drink.glass?.displayName ?? ""
-        cell.drawGlass.descriptionString = drink.description 
+        cell.drawGlass.descriptionString = drink.description
         cell.drinkNameLabel.textColor = Theme.labelColor
         cell.drinkNameLabel.font = Theme.cellLabelFont
         cell.drinkNameLabel.text = drink.displayName
-        
         return cell
     }
-    
-    
     
     func refresh(){
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
     }
-    
-    
 }

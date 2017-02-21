@@ -20,23 +20,20 @@ class AddToRecipeViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     var ingredient: Ingredient? = nil
     var drink: Drink? = nil
-    
     @IBOutlet weak var selectLabel: UILabel!
-    
     @IBOutlet weak var ingredientPicker: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ingredientPicker.dataSource = self
         ingredientPicker.delegate = self
-         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(addIngredient(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(addIngredient(_:)))
         if type == nil{
             self.ingredientStore?.getAllIngredients(completion:  {result in
                 switch result{
                 case .success(let theIngredients):
                     self.ingredients = theIngredients
                     self.refresh()
-                    
                 default:
                     print("could not get ingredients")
                 }
@@ -96,5 +93,4 @@ class AddToRecipeViewController: UIViewController, UIPickerViewDelegate, UIPicke
             self.ingredientPicker.reloadAllComponents()
         }
     }
-    
 }
