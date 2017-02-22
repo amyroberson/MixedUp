@@ -142,6 +142,7 @@ final class DrinkService{
         let mainQueueContext = self.coreDataStack.mainQueueContext
         let drinksFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Drink")
         var fetchedDrinks: [Drink] = []
+        
         do {
             fetchedDrinks = try mainQueueContext.fetch(drinksFetch) as! [Drink]
             return fetchedDrinks
@@ -164,9 +165,10 @@ final class DrinkService{
                 })
                 let objectIDs = drinks.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
+                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
                 do {
                     try self.coreDataStack.saveChanges()
-                    let mainQueueDrinks = try self.fetchMainQueueDrinks(predicate: predicate, sortDescriptors: [])
+                    let mainQueueDrinks = try self.fetchMainQueueDrinks(predicate: predicate, sortDescriptors: [sortByName])
                     result = .success(mainQueueDrinks)
                 }
                 catch let error {
@@ -192,11 +194,13 @@ final class DrinkService{
             if case .success(let drinks) = result {
                 let ids = drinks.map{$0.id}
                 let predicate = NSPredicate(format: "id IN %@ ",ids)
+                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
+
                 
                 do {
                     try self.coreDataStack.saveChanges()
                     
-                    let mainQueueDrinks = try self.fetchMainQueueDrinks(predicate: predicate, sortDescriptors: [])
+                    let mainQueueDrinks = try self.fetchMainQueueDrinks(predicate: predicate, sortDescriptors: [sortByName])
                     result = .success(mainQueueDrinks)
                 }
                 catch let error {

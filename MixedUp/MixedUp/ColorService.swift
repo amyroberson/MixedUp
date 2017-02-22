@@ -82,9 +82,10 @@ final class ColorService{
                 })
                 let objectIDs = colors.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
+                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
                 do {
                     try self.coreDataStack.saveChanges()
-                    let mainQueueTypes = try self.fetchMainQueueTypes(predicate: predicate, sortDescriptors: [])
+                    let mainQueueTypes = try self.fetchMainQueueTypes(predicate: predicate, sortDescriptors: [sortByName])
                     result = .success(mainQueueTypes)
                 }
                 catch let error {

@@ -50,7 +50,7 @@ final class ToolService{
     func fetchMainQueueTools(predicate: NSPredicate? = nil,
                              sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Tool] {
         let fetchRequest = NSFetchRequest<Tool>(entityName: "Tool")
-        fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "displayName", ascending: true)]
         fetchRequest.predicate = predicate
         let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueTool: [Tool]?
@@ -82,9 +82,10 @@ final class ToolService{
                 })
                 let objectIDs = tools.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
+                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
                 do {
                     try self.coreDataStack.saveChanges()
-                    let mainQueueTools = try self.fetchMainQueueTools(predicate: predicate, sortDescriptors: [])
+                    let mainQueueTools = try self.fetchMainQueueTools(predicate: predicate, sortDescriptors: [sortByName])
                     result = .success(mainQueueTools)
                 }
                 catch let error {

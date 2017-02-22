@@ -52,7 +52,7 @@ final class TypeService{
     func fetchMainQueueTypes(predicate: NSPredicate? = nil,
                              sortDescriptors: [NSSortDescriptor]? = nil) throws -> [IngredientType] {
         let fetchRequest = NSFetchRequest<IngredientType>(entityName: "IngredientType")
-        fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "displayName", ascending: true)]
         fetchRequest.predicate = predicate
         let mainQueueContext = self.coreDataStack.mainQueueContext
         var mainQueueType: [IngredientType]?
@@ -84,9 +84,10 @@ final class TypeService{
                 })
                 let objectIDs = types.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
+                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
                 do {
                     try self.coreDataStack.saveChanges()
-                    let mainQueueTypes = try self.fetchMainQueueTypes(predicate: predicate, sortDescriptors: [])
+                    let mainQueueTypes = try self.fetchMainQueueTypes(predicate: predicate, sortDescriptors: [sortByName])
                     result = .success(mainQueueTypes)
                 }
                 catch let error {

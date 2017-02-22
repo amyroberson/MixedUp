@@ -76,7 +76,9 @@ final class IngredientService{
         guard let id = dictionary["id"] as? String else { return .failure(.inValidParameter)}
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredient")
         let predicate = NSPredicate(format: "id == \"\(id)\"")
+        let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
         fetchRequest.predicate = predicate
+        fetchRequest.sortDescriptors = [sortByName]
         let fetchedIngredient: [Ingredient] = {
             var ingredients: [Ingredient]!
             context.performAndWait() {
@@ -102,9 +104,10 @@ final class IngredientService{
             if case .success(let ingredients) = result {
                 let ids = ingredients.map{$0.id}
                 let predicate = NSPredicate(format: "id IN %@ ",ids)
+                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
                 do {
                     try self.coreDataStack.saveChanges()
-                    let mainQueueIngredients = try self.fetchMainQueueIngredients(predicate: predicate, sortDescriptors: [])
+                    let mainQueueIngredients = try self.fetchMainQueueIngredients(predicate: predicate, sortDescriptors: [sortByName])
                     result = .success(mainQueueIngredients)
                 }
                 catch let error {
@@ -126,9 +129,10 @@ final class IngredientService{
             if case .success(let ingredients) = result {
                 let ids = ingredients.map{$0.id}
                 let predicate = NSPredicate(format: "id IN %@ ",ids)
+                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
                 do {
                     try self.coreDataStack.saveChanges()
-                    let mainQueueIngredients = try self.fetchMainQueueIngredients(predicate: predicate, sortDescriptors: [])
+                    let mainQueueIngredients = try self.fetchMainQueueIngredients(predicate: predicate, sortDescriptors: [sortByName])
                     result = .success(mainQueueIngredients)
                 }
                 catch let error {

@@ -84,9 +84,10 @@ final class GlassService{
                 })
                 let objectIDs = glasses.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self IN %@", objectIDs)
+                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
                 do {
                     try self.coreDataStack.saveChanges()
-                    let mainQueueGlasses = try self.fetchMainQueueTypes(predicate: predicate, sortDescriptors: [])
+                    let mainQueueGlasses = try self.fetchMainQueueTypes(predicate: predicate, sortDescriptors: [sortByName])
                     result = .success(mainQueueGlasses)
                 }
                 catch let error {
