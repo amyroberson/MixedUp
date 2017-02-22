@@ -2,7 +2,7 @@
 //  Color+CoreDataProperties.swift
 //  MixedUp
 //
-//  Created by Amy Roberson on 2/15/17.
+//  Created by Amy Roberson on 2/22/17.
 //  Copyright © 2017 Amy Roberson. All rights reserved.
 //
 
@@ -16,7 +16,7 @@ extension Color {
         return NSFetchRequest<Color>(entityName: "Color");
     }
 
-    @NSManaged public var alpha: Int16
+    @NSManaged public var alpha: Float
     @NSManaged public var blue: Int16
     @NSManaged public var displayName: String?
     @NSManaged public var green: Int16

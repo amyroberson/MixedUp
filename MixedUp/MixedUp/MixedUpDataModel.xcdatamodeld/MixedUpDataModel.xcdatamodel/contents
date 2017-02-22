@@ -10,7 +10,7 @@
         <relationship name="specialties" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Drink" inverseName="barspecialties" inverseEntity="Drink" syncable="YES"/>
     </entity>
     <entity name="Color" representedClassName="Color" syncable="YES">
-        <attribute name="alpha" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="alpha" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="blue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="displayName" attributeType="String" syncable="YES"/>
         <attribute name="green" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>

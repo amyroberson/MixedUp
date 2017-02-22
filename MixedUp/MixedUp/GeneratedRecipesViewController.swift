@@ -100,7 +100,7 @@ extension GeneratedRecipesViewController: UICollectionViewDataSource{
             let red = Float(color.red)/255
             let green =  Float(color.green)/255
             let blue =  Float(color.blue)/255
-            let alpha =  Float(color.red)/255
+            let alpha =  Float(color.alpha)
             cell.drawGlass.color = UIColor(colorLiteralRed: red, green: green, blue: blue, alpha: alpha)
         }
         

@@ -369,7 +369,7 @@ class MixedUpAPI {
             let red = dictionary[MixedUpAPI.redKey] as? Int16,
             let green = dictionary[MixedUpAPI.greenKey] as? Int16,
             let blue = dictionary[MixedUpAPI.blueKey] as? Int16,
-            let alpha = dictionary[MixedUpAPI.alphaKey] as? Int16 else { return nil}
+            let alpha = dictionary[MixedUpAPI.alphaKey] as? Float else { return nil}
         let id = dictionary[MixedUpAPI.idKey] as? String ?? UUID().uuidString
         if let cdColor: Color = MixedUpAPI.getFromCoreData(typeName: MixedUpAPI.colorTypeKey, id: id, context: context){
             return cdColor

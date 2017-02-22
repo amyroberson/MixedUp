@@ -34,7 +34,7 @@ class ColorTests: XCTestCase {
         let blue = (dictionary["blue"]) as? Int16
         let red = (dictionary["red"]) as? Int16
         let green = (dictionary["green"]) as? Int16
-        let alpha = (dictionary["alpha"]) as? Int16
+        let alpha = (dictionary["alpha"]) as? Float
         
         XCTAssertEqual("Blue", dName)
         XCTAssertEqual("twv4", id)
@@ -63,7 +63,7 @@ class ColorTests: XCTestCase {
         let blue = (dictionary["blue"]) as? Int16
         let red = (dictionary["red"]) as? Int16
         let green = (dictionary["green"]) as? Int16
-        let alpha = (dictionary["alpha"]) as? Int16
+        let alpha = (dictionary["alpha"]) as? Float
         
         XCTAssertEqual("Blue", dName)
         XCTAssertEqual(nil, id)
