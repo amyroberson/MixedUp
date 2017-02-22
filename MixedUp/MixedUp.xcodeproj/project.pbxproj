@@ -54,7 +54,6 @@
 		E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18854001E4B5896005C8C37 /* TabsViewController.swift */; };
 		E1B2E91F1E5733B100EBD45A /* AddToRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B2E91E1E5733B100EBD45A /* AddToRecipeViewController.swift */; };
 		E1B2E9211E5B708F00EBD45A /* UtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B2E9201E5B708F00EBD45A /* UtilTests.swift */; };
-		E1B2E9231E5DF54600EBD45A /* StyleKitGlasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B2E9221E5DF54600EBD45A /* StyleKitGlasses.swift */; };
 		E1B2E9251E5DF66400EBD45A /* Color+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B2E9241E5DF66400EBD45A /* Color+CoreDataProperties.swift */; };
 		E1C3C3591E510DF50012E60E /* TypeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3581E510DF50012E60E /* TypeService.swift */; };
 		E1C3C3EF1E54AA760012E60E /* DrawGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */; };
@@ -72,6 +71,7 @@
 		E1D640261E552F580040D649 /* ToolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D640251E552F580040D649 /* ToolService.swift */; };
 		E1D6402A1E55EF2B0040D649 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D640291E55EF2B0040D649 /* ColorPickerViewController.swift */; };
 		E1D6402C1E55FE980040D649 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6402B1E55FE980040D649 /* RecipeDetailViewController.swift */; };
+		E1F45D4F1E5E182100D4ACC8 /* StyleKitGlasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F45D4E1E5E182100D4ACC8 /* StyleKitGlasses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,7 +145,6 @@
 		E18854001E4B5896005C8C37 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
 		E1B2E91E1E5733B100EBD45A /* AddToRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToRecipeViewController.swift; sourceTree = "<group>"; };
 		E1B2E9201E5B708F00EBD45A /* UtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilTests.swift; sourceTree = "<group>"; };
-		E1B2E9221E5DF54600EBD45A /* StyleKitGlasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKitGlasses.swift; sourceTree = "<group>"; };
 		E1B2E9241E5DF66400EBD45A /* Color+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Color+CoreDataProperties.swift"; path = "../Color+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E1C3C3581E510DF50012E60E /* TypeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeService.swift; sourceTree = "<group>"; };
 		E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawGlass.swift; sourceTree = "<group>"; };
@@ -163,6 +162,7 @@
 		E1D640251E552F580040D649 /* ToolService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolService.swift; sourceTree = "<group>"; };
 		E1D640291E55EF2B0040D649 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		E1D6402B1E55FE980040D649 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
+		E1F45D4E1E5E182100D4ACC8 /* StyleKitGlasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKitGlasses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,7 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */,
-				E1B2E9221E5DF54600EBD45A /* StyleKitGlasses.swift */,
+				E1F45D4E1E5E182100D4ACC8 /* StyleKitGlasses.swift */,
 			);
 			name = DrawingViews;
 			sourceTree = "<group>";
@@ -475,7 +475,7 @@
 				E1B2E9251E5DF66400EBD45A /* Color+CoreDataProperties.swift in Sources */,
 				E17F24471E4D09A300AD17A6 /* FavoritesViewController.swift in Sources */,
 				E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */,
-				E1B2E9231E5DF54600EBD45A /* StyleKitGlasses.swift in Sources */,
+				E1F45D4F1E5E182100D4ACC8 /* StyleKitGlasses.swift in Sources */,
 				E18853DB1E497E72005C8C37 /* Color+CoreDataClass.swift in Sources */,
 				E18853251E4914CD005C8C37 /* BirthdayViewController.swift in Sources */,
 				E1D00C451E4BC20100C478CA /* IngredientListController.swift in Sources */,

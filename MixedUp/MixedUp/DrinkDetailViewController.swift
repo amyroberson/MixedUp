@@ -116,16 +116,18 @@ class DrinkDetailViewController: UIViewController {
         ingredientsLabel.setContentHuggingPriority(0.7, for: .vertical)
         ingredientStackView.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
         ingredientStackView.distribution = .fill
-        if let tools = drink?.tools{
-            for tool in tools {
-                let theToolLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-                theToolLabel.center = CGPoint(x: 160, y: 285)
-                theToolLabel.textAlignment = .center
-                theToolLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
-                theToolLabel.text = (tool as! Tool).displayName ?? ""
-                theToolLabel.textColor = Theme.labelColor
-                theToolLabel.font = Theme.labelFont
-                toolsStack.addArrangedSubview(theToolLabel)
+        if (drink?.tools?.count)! > 0 {
+            if let tools = drink?.tools{
+                for tool in tools {
+                    let theToolLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+                    theToolLabel.center = CGPoint(x: 160, y: 285)
+                    theToolLabel.textAlignment = .center
+                    theToolLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
+                    theToolLabel.text = (tool as! Tool).displayName ?? ""
+                    theToolLabel.textColor = Theme.labelColor
+                    theToolLabel.font = Theme.labelFont
+                    toolsStack.addArrangedSubview(theToolLabel)
+                }
             }
         } else {
             let theToolLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
@@ -135,18 +137,20 @@ class DrinkDetailViewController: UIViewController {
             theToolLabel.text = "No Tools Required!"
             theToolLabel.textColor = Theme.labelColor
             theToolLabel.font = Theme.labelFont
-            toolsStack.addSubview(theToolLabel)
+            toolsStack.addArrangedSubview(theToolLabel)
         }
-        if let ingredients = drink?.ingredients{
-            for ingredient in ingredients {
-                let theingredientLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-                theingredientLabel.center = CGPoint(x: 160, y: 285)
-                theingredientLabel.textAlignment = .center
-                theingredientLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
-                theingredientLabel.text = (ingredient as! Ingredient).displayName ?? ""
-                theingredientLabel.textColor = Theme.labelColor
-                theingredientLabel.font = Theme.labelFont
-                ingredientStackView.addArrangedSubview(theingredientLabel)
+        if (drink?.ingredients?.count)! > 0 {
+            if let ingredients = drink?.ingredients{
+                for ingredient in ingredients {
+                    let theingredientLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+                    theingredientLabel.center = CGPoint(x: 160, y: 285)
+                    theingredientLabel.textAlignment = .center
+                    theingredientLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
+                    theingredientLabel.text = (ingredient as! Ingredient).displayName ?? ""
+                    theingredientLabel.textColor = Theme.labelColor
+                    theingredientLabel.font = Theme.labelFont
+                    ingredientStackView.addArrangedSubview(theingredientLabel)
+                }
             }
         } else {
             let theingredientLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
@@ -156,7 +160,7 @@ class DrinkDetailViewController: UIViewController {
             theingredientLabel.text = "No ingredients found."
             theingredientLabel.textColor = Theme.labelColor
             theingredientLabel.font = Theme.labelFont
-            ingredientStackView.addSubview(theingredientLabel)
+            ingredientStackView.addArrangedSubview(theingredientLabel)
         }
         if missingIngredients.count > 0{
             for ingredient in missingIngredients {
