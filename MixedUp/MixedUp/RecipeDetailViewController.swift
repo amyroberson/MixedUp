@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate  {
+class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UITextViewDelegate  {
     
     var defaults: UserDefaults? = nil
     var coreDataStack: CoreDataStack? = nil
@@ -55,6 +55,8 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         toolsPicker.dataSource = self
         toolsPicker.isHidden = true
         drinkNameTextField.delegate = self
+        recipeInstructions.delegate = self
+        recipeInstructions.textColor = .lightGray
         recipeInstructions.layer.cornerRadius = 5
         mainStackView.insertArrangedSubview(toolsStack, at: 12)
         mainStackView.insertArrangedSubview(ingredientStackView, at: 8)
@@ -288,12 +290,28 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text?.isEmpty == true {
             return false
         } else {
             textField.resignFirstResponder()
             return true
+        }
+    }
+    
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Enter drink instructions"
+            textView.textColor = UIColor.lightGray
         }
     }
     
