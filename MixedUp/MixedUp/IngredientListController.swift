@@ -21,9 +21,10 @@ class IngredientListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped(_:)))
-        self.title = ingredientType?.displayName
+        self.navigationItem.title = ingredientType?.displayName ?? "All Ingredients"
         view.backgroundColor = Theme.viewBackgroundColor
         tableView.delegate = self
+        tableView.separatorColor = UIColor.darkGray
         tableView.dataSource = self
         self.tableView.allowsMultipleSelectionDuringEditing = false
     }

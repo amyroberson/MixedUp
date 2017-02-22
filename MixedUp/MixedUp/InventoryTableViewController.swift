@@ -40,6 +40,7 @@ class InventoryTableViewController: UITableViewController {
         view.backgroundColor = Theme.viewBackgroundColor
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorColor = UIColor.darkGray
         tableView.reloadData()
     }
     
@@ -67,7 +68,7 @@ class InventoryTableViewController: UITableViewController {
         if indexPath.row == 0{
             cell.typeNameLabel.text = "All Ingredients"
             cell.typeNameLabel.textColor = Theme.labelColor
-            cell.typeNameLabel.font = Theme.labelFont
+            cell.typeNameLabel.font = Theme.boldLabelFont
             cell.backgroundColor = Theme.viewBackgroundColor
             return cell
         }
