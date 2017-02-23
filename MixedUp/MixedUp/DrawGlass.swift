@@ -33,6 +33,9 @@ class DrawGlass: UIView {
         }
     }
     
+    let lime: UIColor = UIColor(colorLiteralRed: 0.753, green: 0.931, blue: 0.344, alpha: 1)
+    let lemon: UIColor = UIColor(colorLiteralRed: 0.958, green: 0.903, blue: 0.327, alpha: 1)
+    
     var glass:String = ""{
         didSet {
             setNeedsDisplay()
@@ -49,26 +52,30 @@ class DrawGlass: UIView {
     let oliveKey = "olive"
     let umbrellaKey = "umbrella"
     let strawKey = "straw"
+    let lemonKey = "lemon"
+    let limeKey = "lime"
     let garnishKey = "garnish"
     
     override func draw(_ rect: CGRect) {
         let glassEnum = Glasses(rawValue: glass)!
         switch glassEnum {
         case .martini:
-            if descriptionString.contains(cherryKey){
+            if descriptionString.lowercased().contains(cherryKey){
                 StyleKitGlasses.drawMartiniCherry(frame: rect, liquid: color)
-            } else if descriptionString.contains(oliveKey){
+            } else if descriptionString.lowercased().contains(oliveKey){
                 StyleKitGlasses.drawMartiniWithOlive(martiniWithOlive: rect, liquid: color)
-            } else  if descriptionString.contains(umbrellaKey){
+            } else  if descriptionString.lowercased().contains(umbrellaKey){
                 StyleKitGlasses.drawMartiniWithUmbrella(frame: rect, liquid: color)
             } else {
                 StyleKitGlasses.drawMartini(frame: rect, liquid: color)
             }
         case .highball:
-            if descriptionString.contains(strawKey){
+            if descriptionString.lowercased().contains(strawKey){
                 StyleKitGlasses.drawHighBallWithStraw(frame: rect, liquid: color)
-            } else if descriptionString.contains(garnishKey){
-                StyleKitGlasses.drawHighBallWithLemon(frame: rect, liquid: color)
+            } else if descriptionString.lowercased().contains(lemonKey) && descriptionString.lowercased().contains(garnishKey){
+                StyleKitGlasses.drawHighBallWithLemon(frame: rect, liquid: color, ganishLabel: lemon)
+            }else if descriptionString.lowercased().contains(limeKey){
+                StyleKitGlasses.drawHighBallWithLemon(frame: rect, liquid: color, ganishLabel: lime)
             } else {
                 StyleKitGlasses.drawHighBall(frame: rect, liquid: color)
             }
@@ -77,13 +84,15 @@ class DrawGlass: UIView {
         case .wine:
             StyleKitGlasses.drawWineGlass(frame: rect, liquid: color)
         case .lowBall, .lowball:
-            if descriptionString.contains(garnishKey){
-                StyleKitGlasses.drawLowBallWithLemon(frame: rect, liquid: color)
+            if descriptionString.lowercased().contains(lemonKey){
+                StyleKitGlasses.drawLowBallWithLemon(frame: rect, liquid: color, ganishLabel: lemon)
+            } else  if descriptionString.lowercased().contains(limeKey){
+                StyleKitGlasses.drawLowBallWithLemon(frame: rect, liquid: color, ganishLabel: lime)
             } else {
                 StyleKitGlasses.drawLowBall(frame: rect, liquid: color)
             }
         case .hurricane, .huricane:
-            if descriptionString.contains(garnishKey){
+            if descriptionString.lowercased().contains(umbrellaKey){
                 StyleKitGlasses.drawHurricaneWithUmbrella(frame: rect, liquid: color)
             } else  {
                 StyleKitGlasses.drawHurricane(frame: rect, liquid: color)

@@ -71,7 +71,7 @@
 		E1D640261E552F580040D649 /* ToolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D640251E552F580040D649 /* ToolService.swift */; };
 		E1D6402A1E55EF2B0040D649 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D640291E55EF2B0040D649 /* ColorPickerViewController.swift */; };
 		E1D6402C1E55FE980040D649 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6402B1E55FE980040D649 /* RecipeDetailViewController.swift */; };
-		E1F45D4F1E5E182100D4ACC8 /* StyleKitGlasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F45D4E1E5E182100D4ACC8 /* StyleKitGlasses.swift */; };
+		E1F45D631E5E75E600D4ACC8 /* StyleKitGlasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F45D621E5E75E600D4ACC8 /* StyleKitGlasses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,7 +162,7 @@
 		E1D640251E552F580040D649 /* ToolService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolService.swift; sourceTree = "<group>"; };
 		E1D640291E55EF2B0040D649 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		E1D6402B1E55FE980040D649 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
-		E1F45D4E1E5E182100D4ACC8 /* StyleKitGlasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKitGlasses.swift; sourceTree = "<group>"; };
+		E1F45D621E5E75E600D4ACC8 /* StyleKitGlasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKitGlasses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,8 +317,8 @@
 		E1C3C3AD1E53A8FB0012E60E /* DrawingViews */ = {
 			isa = PBXGroup;
 			children = (
+				E1F45D621E5E75E600D4ACC8 /* StyleKitGlasses.swift */,
 				E1C3C3EE1E54AA760012E60E /* DrawGlass.swift */,
-				E1F45D4E1E5E182100D4ACC8 /* StyleKitGlasses.swift */,
 			);
 			name = DrawingViews;
 			sourceTree = "<group>";
@@ -475,7 +475,7 @@
 				E1B2E9251E5DF66400EBD45A /* Color+CoreDataProperties.swift in Sources */,
 				E17F24471E4D09A300AD17A6 /* FavoritesViewController.swift in Sources */,
 				E18854011E4B5896005C8C37 /* TabsViewController.swift in Sources */,
-				E1F45D4F1E5E182100D4ACC8 /* StyleKitGlasses.swift in Sources */,
+				E1F45D631E5E75E600D4ACC8 /* StyleKitGlasses.swift in Sources */,
 				E18853DB1E497E72005C8C37 /* Color+CoreDataClass.swift in Sources */,
 				E18853251E4914CD005C8C37 /* BirthdayViewController.swift in Sources */,
 				E1D00C451E4BC20100C478CA /* IngredientListController.swift in Sources */,

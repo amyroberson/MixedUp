@@ -646,7 +646,7 @@ public class StyleKitGlasses : NSObject {
         bezier10Path.fill()
     }
 
-    public dynamic class func drawHurricane(frame: CGRect = CGRect(x: 4, y: 3, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) {
+    public dynamic class func drawHurricane(frame: CGRect = CGRect(x: 4, y: 3, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         // This non-generic function dramatically improves compilation times of complex expressions.
@@ -655,7 +655,6 @@ public class StyleKitGlasses : NSObject {
         //// Color Declarations
         let outline = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
         let fillColor3 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
-        let fillColor4 = UIColor(red: 0.958, green: 0.933, blue: 0.327, alpha: 1.000)
 
 
         //// Subframes
@@ -667,7 +666,7 @@ public class StyleKitGlasses : NSObject {
         //// Group 3
         //// Oval Drawing
         let ovalPath = UIBezierPath(ovalIn: CGRect(x: _1487120590_Drinks07svgGroup.minX + fastFloor(_1487120590_Drinks07svgGroup.width * 0.44175 + 0.1) + 0.4, y: _1487120590_Drinks07svgGroup.minY + fastFloor(_1487120590_Drinks07svgGroup.height * 0.06422 + 0.5), width: fastFloor(_1487120590_Drinks07svgGroup.width * 0.97573 + 0.1) - fastFloor(_1487120590_Drinks07svgGroup.width * 0.44175 + 0.1), height: fastFloor(_1487120590_Drinks07svgGroup.height * 0.44954 + 0.5) - fastFloor(_1487120590_Drinks07svgGroup.height * 0.06422 + 0.5)))
-        fillColor4.setFill()
+        ganishLabel.setFill()
         ovalPath.fill()
 
 
@@ -1220,6 +1219,23 @@ public class StyleKitGlasses : NSObject {
         bezier5Path.fill()
 
 
+        //// Bezier 10 Drawing
+        context.saveGState()
+        context.setAlpha(0.2)
+
+        let bezier10Path = UIBezierPath()
+        bezier10Path.move(to: CGPoint(x: _1487120553_Drinks03svgGroup.minX + 0.83097 * _1487120553_Drinks03svgGroup.width, y: _1487120553_Drinks03svgGroup.minY + 0.21174 * _1487120553_Drinks03svgGroup.height))
+        bezier10Path.addLine(to: CGPoint(x: _1487120553_Drinks03svgGroup.minX + 0.45781 * _1487120553_Drinks03svgGroup.width, y: _1487120553_Drinks03svgGroup.minY + 0.61362 * _1487120553_Drinks03svgGroup.height))
+        bezier10Path.addLine(to: CGPoint(x: _1487120553_Drinks03svgGroup.minX + 0.49489 * _1487120553_Drinks03svgGroup.width, y: _1487120553_Drinks03svgGroup.minY + 0.61362 * _1487120553_Drinks03svgGroup.height))
+        bezier10Path.addLine(to: CGPoint(x: _1487120553_Drinks03svgGroup.minX + 0.97635 * _1487120553_Drinks03svgGroup.width, y: _1487120553_Drinks03svgGroup.minY + 0.22448 * _1487120553_Drinks03svgGroup.height))
+        bezier10Path.addLine(to: CGPoint(x: _1487120553_Drinks03svgGroup.minX + 0.83097 * _1487120553_Drinks03svgGroup.width, y: _1487120553_Drinks03svgGroup.minY + 0.21174 * _1487120553_Drinks03svgGroup.height))
+        bezier10Path.close()
+        outline.setFill()
+        bezier10Path.fill()
+
+        context.restoreGState()
+
+
 
 
         //// Group 8
@@ -1326,7 +1342,7 @@ public class StyleKitGlasses : NSObject {
         bezier9Path.fill()
     }
 
-    public dynamic class func drawBottleWithGlass(frame: CGRect = CGRect(x: 4, y: 3, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) {
+    public dynamic class func drawBottleWithGlass(frame: CGRect = CGRect(x: 4, y: 3, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         // This non-generic function dramatically improves compilation times of complex expressions.
@@ -1336,7 +1352,6 @@ public class StyleKitGlasses : NSObject {
         let outline = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
         let fillColor3 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
         let fillColor8 = UIColor(red: 0.932, green: 0.970, blue: 0.995, alpha: 1.000)
-        let fillColor4 = UIColor(red: 0.958, green: 0.933, blue: 0.327, alpha: 1.000)
         let fillColor7 = UIColor(red: 0.456, green: 0.739, blue: 0.280, alpha: 1.000)
         let olive = UIColor(red: 0.756, green: 0.767, blue: 0.317, alpha: 1.000)
 
@@ -1386,7 +1401,7 @@ public class StyleKitGlasses : NSObject {
         //// Group 7
         //// Rectangle Drawing
         let rectanglePath = UIBezierPath(rect: CGRect(x: group2.minX + fastFloor(group2.width * 0.21827 - 0.4) + 0.9, y: group2.minY + fastFloor(group2.height * 0.01818 + 0.5), width: fastFloor(group2.width * 0.44559) - fastFloor(group2.width * 0.21827 - 0.4) - 0.4, height: fastFloor(group2.height * 0.10364 + 0.1) - fastFloor(group2.height * 0.01818 + 0.5) + 0.4))
-        fillColor4.setFill()
+        ganishLabel.setFill()
         rectanglePath.fill()
 
 
@@ -1458,7 +1473,7 @@ public class StyleKitGlasses : NSObject {
         bezier4Path.addCurve(to: CGPoint(x: group2.minX + 0.12380 * group2.width, y: group2.minY + 0.45223 * group2.height), controlPoint1: CGPoint(x: group2.minX + 0.15496 * group2.width, y: group2.minY + 0.40145 * group2.height), controlPoint2: CGPoint(x: group2.minX + 0.12380 * group2.width, y: group2.minY + 0.42402 * group2.height))
         bezier4Path.addLine(to: CGPoint(x: group2.minX + 0.12380 * group2.width, y: group2.minY + 0.85037 * group2.height))
         bezier4Path.close()
-        fillColor4.setFill()
+        ganishLabel.setFill()
         bezier4Path.fill()
 
 
@@ -1945,7 +1960,7 @@ public class StyleKitGlasses : NSObject {
         bezier10Path.fill()
     }
 
-    public dynamic class func drawBottle(frame: CGRect = CGRect(x: 5, y: 4, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) {
+    public dynamic class func drawBottle(frame: CGRect = CGRect(x: 5, y: 4, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         // This non-generic function dramatically improves compilation times of complex expressions.
@@ -1954,7 +1969,6 @@ public class StyleKitGlasses : NSObject {
         //// Color Declarations
         let outline = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
         let fillColor3 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
-        let fillColor4 = UIColor(red: 0.958, green: 0.933, blue: 0.327, alpha: 1.000)
         let fillColor7 = UIColor(red: 0.456, green: 0.739, blue: 0.280, alpha: 1.000)
         let olive = UIColor(red: 0.756, green: 0.767, blue: 0.317, alpha: 1.000)
 
@@ -1998,7 +2012,7 @@ public class StyleKitGlasses : NSObject {
         //// Group 6
         //// Rectangle Drawing
         let rectanglePath = UIBezierPath(rect: CGRect(x: group2.minX + fastFloor(group2.width * 0.32819 - 0.4) + 0.9, y: group2.minY + fastFloor(group2.height * 0.01852 + 0.5), width: fastFloor(group2.width * 0.67181) - fastFloor(group2.width * 0.32819 - 0.4) - 0.4, height: fastFloor(group2.height * 0.10556 + 0.1) - fastFloor(group2.height * 0.01852 + 0.5) + 0.4))
-        fillColor4.setFill()
+        ganishLabel.setFill()
         rectanglePath.fill()
 
 
@@ -2070,7 +2084,7 @@ public class StyleKitGlasses : NSObject {
         bezier4Path.addCurve(to: CGPoint(x: group2.minX + 0.18301 * group2.width, y: group2.minY + 0.45921 * group2.height), controlPoint1: CGPoint(x: group2.minX + 0.23048 * group2.width, y: group2.minY + 0.40844 * group2.height), controlPoint2: CGPoint(x: group2.minX + 0.18301 * group2.width, y: group2.minY + 0.43100 * group2.height))
         bezier4Path.addLine(to: CGPoint(x: group2.minX + 0.18301 * group2.width, y: group2.minY + 0.85731 * group2.height))
         bezier4Path.close()
-        fillColor4.setFill()
+        ganishLabel.setFill()
         bezier4Path.fill()
 
 
@@ -2552,7 +2566,7 @@ public class StyleKitGlasses : NSObject {
 
         //// Group 6
         //// Rectangle Drawing
-        let rectanglePath = UIBezierPath(roundedRect: CGRect(x: _1487120483_Drinks01svgGroup.minX + fastFloor(_1487120483_Drinks01svgGroup.width * 0.46959 + 0.45) + 0.05, y: _1487120483_Drinks01svgGroup.minY + fastFloor(_1487120483_Drinks01svgGroup.height * 0.68421 + 0.5), width: fastFloor(_1487120483_Drinks01svgGroup.width * 0.53130 + 0.45) - fastFloor(_1487120483_Drinks01svgGroup.width * 0.46959 + 0.45), height: fastFloor(_1487120483_Drinks01svgGroup.height * 0.99123 + 0.5) - fastFloor(_1487120483_Drinks01svgGroup.height * 0.68421 + 0.5)), cornerRadius: 2)
+        let rectanglePath = UIBezierPath(roundedRect: CGRect(x: _1487120483_Drinks01svgGroup.minX + fastFloor(_1487120483_Drinks01svgGroup.width * 0.46959 + 0.45) + 0.05, y: _1487120483_Drinks01svgGroup.minY + fastFloor(_1487120483_Drinks01svgGroup.height * 0.66667 + 0.5), width: fastFloor(_1487120483_Drinks01svgGroup.width * 0.53130 + 0.45) - fastFloor(_1487120483_Drinks01svgGroup.width * 0.46959 + 0.45), height: fastFloor(_1487120483_Drinks01svgGroup.height * 0.99123 + 0.5) - fastFloor(_1487120483_Drinks01svgGroup.height * 0.66667 + 0.5)), cornerRadius: 2)
         outline.setFill()
         rectanglePath.fill()
 
@@ -2607,6 +2621,23 @@ public class StyleKitGlasses : NSObject {
         let rectangle2Path = UIBezierPath(roundedRect: CGRect(x: _1487120483_Drinks01svgGroup.minX + fastFloor(_1487120483_Drinks01svgGroup.width * 0.23508 + 0.45) + 0.05, y: _1487120483_Drinks01svgGroup.minY + fastFloor(_1487120483_Drinks01svgGroup.height * 0.96491 + 0.5), width: fastFloor(_1487120483_Drinks01svgGroup.width * 0.76581 + 0.45) - fastFloor(_1487120483_Drinks01svgGroup.width * 0.23508 + 0.45), height: fastFloor(_1487120483_Drinks01svgGroup.height * 1.00000 + 0.5) - fastFloor(_1487120483_Drinks01svgGroup.height * 0.96491 + 0.5)), cornerRadius: 2)
         outline.setFill()
         rectangle2Path.fill()
+
+
+        //// Bezier 10 Drawing
+        context.saveGState()
+        context.setAlpha(0.2)
+
+        let bezier10Path = UIBezierPath()
+        bezier10Path.move(to: CGPoint(x: _1487120483_Drinks01svgGroup.minX + 0.82995 * _1487120483_Drinks01svgGroup.width, y: _1487120483_Drinks01svgGroup.minY + 0.23961 * _1487120483_Drinks01svgGroup.height))
+        bezier10Path.addLine(to: CGPoint(x: _1487120483_Drinks01svgGroup.minX + 0.45725 * _1487120483_Drinks01svgGroup.width, y: _1487120483_Drinks01svgGroup.minY + 0.65789 * _1487120483_Drinks01svgGroup.height))
+        bezier10Path.addLine(to: CGPoint(x: _1487120483_Drinks01svgGroup.minX + 0.51896 * _1487120483_Drinks01svgGroup.width, y: _1487120483_Drinks01svgGroup.minY + 0.69298 * _1487120483_Drinks01svgGroup.height))
+        bezier10Path.addLine(to: CGPoint(x: _1487120483_Drinks01svgGroup.minX + 0.97514 * _1487120483_Drinks01svgGroup.width, y: _1487120483_Drinks01svgGroup.minY + 0.25176 * _1487120483_Drinks01svgGroup.height))
+        bezier10Path.addLine(to: CGPoint(x: _1487120483_Drinks01svgGroup.minX + 0.82995 * _1487120483_Drinks01svgGroup.width, y: _1487120483_Drinks01svgGroup.minY + 0.23961 * _1487120483_Drinks01svgGroup.height))
+        bezier10Path.close()
+        outline.setFill()
+        bezier10Path.fill()
+
+        context.restoreGState()
 
 
 
@@ -2698,7 +2729,7 @@ public class StyleKitGlasses : NSObject {
 
         //// Group 6
         //// Rectangle Drawing
-        let rectanglePath = UIBezierPath(roundedRect: CGRect(x: _1487120483_Drinks01svgGroup.minX + fastFloor(_1487120483_Drinks01svgGroup.width * 0.46959 + 0.45) + 0.05, y: _1487120483_Drinks01svgGroup.minY + fastFloor(_1487120483_Drinks01svgGroup.height * 0.60000 + 0.5), width: fastFloor(_1487120483_Drinks01svgGroup.width * 0.53130 + 0.45) - fastFloor(_1487120483_Drinks01svgGroup.width * 0.46959 + 0.45), height: fastFloor(_1487120483_Drinks01svgGroup.height * 0.98889 + 0.5) - fastFloor(_1487120483_Drinks01svgGroup.height * 0.60000 + 0.5)), cornerRadius: 2)
+        let rectanglePath = UIBezierPath(roundedRect: CGRect(x: _1487120483_Drinks01svgGroup.minX + fastFloor(_1487120483_Drinks01svgGroup.width * 0.46959 + 0.45) + 0.05, y: _1487120483_Drinks01svgGroup.minY + fastFloor(_1487120483_Drinks01svgGroup.height * 0.58889 + 0.5), width: fastFloor(_1487120483_Drinks01svgGroup.width * 0.53130 + 0.45) - fastFloor(_1487120483_Drinks01svgGroup.width * 0.46959 + 0.45), height: fastFloor(_1487120483_Drinks01svgGroup.height * 0.97778 + 0.5) - fastFloor(_1487120483_Drinks01svgGroup.height * 0.58889 + 0.5)), cornerRadius: 2)
         outline.setFill()
         rectanglePath.fill()
 
@@ -2748,6 +2779,23 @@ public class StyleKitGlasses : NSObject {
         bezier5Path.close()
         outline.setFill()
         bezier5Path.fill()
+
+
+        //// Bezier 10 Drawing
+        context.saveGState()
+        context.setAlpha(0.2)
+
+        let bezier10Path = UIBezierPath()
+        bezier10Path.move(to: CGPoint(x: _1487120483_Drinks01svgGroup.minX + 0.81760 * _1487120483_Drinks01svgGroup.width, y: _1487120483_Drinks01svgGroup.minY + 0.04795 * _1487120483_Drinks01svgGroup.height))
+        bezier10Path.addLine(to: CGPoint(x: _1487120483_Drinks01svgGroup.minX + 0.45725 * _1487120483_Drinks01svgGroup.width, y: _1487120483_Drinks01svgGroup.minY + 0.55556 * _1487120483_Drinks01svgGroup.height))
+        bezier10Path.addLine(to: CGPoint(x: _1487120483_Drinks01svgGroup.minX + 0.50662 * _1487120483_Drinks01svgGroup.width, y: _1487120483_Drinks01svgGroup.minY + 0.61111 * _1487120483_Drinks01svgGroup.height))
+        bezier10Path.addLine(to: CGPoint(x: _1487120483_Drinks01svgGroup.minX + 0.97563 * _1487120483_Drinks01svgGroup.width, y: _1487120483_Drinks01svgGroup.minY + 0.02222 * _1487120483_Drinks01svgGroup.height))
+        bezier10Path.addLine(to: CGPoint(x: _1487120483_Drinks01svgGroup.minX + 0.81760 * _1487120483_Drinks01svgGroup.width, y: _1487120483_Drinks01svgGroup.minY + 0.04795 * _1487120483_Drinks01svgGroup.height))
+        bezier10Path.close()
+        outline.setFill()
+        bezier10Path.fill()
+
+        context.restoreGState()
     }
 
     public dynamic class func drawHighBall(frame: CGRect = CGRect(x: 4, y: 3, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) {
@@ -2965,9 +3013,171 @@ public class StyleKitGlasses : NSObject {
         bezier10Path.close()
         outline.setFill()
         bezier10Path.fill()
+
+
+
+
+
+
+        //// Group 18
+        context.saveGState()
+        context.setAlpha(0.5)
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
+
+
+        //// Bezier 11 Drawing
+        let bezier11Path = UIBezierPath()
+        bezier11Path.move(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.14855 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.21478 * _1487120527_Drinks39svgGroup.height))
+        bezier11Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.21235 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.11792 * _1487120527_Drinks39svgGroup.height))
+        bezier11Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.32876 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.08805 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.22989 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.09167 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.28252 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.07809 * _1487120527_Drinks39svgGroup.height))
+        bezier11Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.49781 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.12426 * _1487120527_Drinks39svgGroup.height))
+        bezier11Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.55044 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.19034 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.54406 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.13422 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.56798 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.16409 * _1487120527_Drinks39svgGroup.height))
+        bezier11Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.48665 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.28720 * _1487120527_Drinks39svgGroup.height))
+        bezier11Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.37023 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.31707 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.46910 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.31345 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.41648 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.32703 * _1487120527_Drinks39svgGroup.height))
+        bezier11Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.20118 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.28086 * _1487120527_Drinks39svgGroup.height))
+        bezier11Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.14855 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.21478 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.15493 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.27090 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.13101 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.24103 * _1487120527_Drinks39svgGroup.height))
+        bezier11Path.close()
+        fillColor3.setFill()
+        bezier11Path.fill()
+
+
+        context.endTransparencyLayer()
+        context.restoreGState()
+
+
+        //// Group 19
+        context.saveGState()
+        context.setAlpha(0.5)
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
+
+
+        //// Bezier 12 Drawing
+        let bezier12Path = UIBezierPath()
+        bezier12Path.move(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.80521 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.33096 * _1487120527_Drinks39svgGroup.height))
+        bezier12Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.65652 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.36473 * _1487120527_Drinks39svgGroup.height))
+        bezier12Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.55173 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.34094 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.61546 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.37394 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.56873 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.36319 * _1487120527_Drinks39svgGroup.height))
+        bezier12Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.48801 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.26036 * _1487120527_Drinks39svgGroup.height))
+        bezier12Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.53191 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.20356 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.47102 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.23810 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.49084 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.21277 * _1487120527_Drinks39svgGroup.height))
+        bezier12Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.68059 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.16980 * _1487120527_Drinks39svgGroup.height))
+        bezier12Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.78538 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.19359 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.72166 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.16059 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.76839 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.17133 * _1487120527_Drinks39svgGroup.height))
+        bezier12Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.84769 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.27417 * _1487120527_Drinks39svgGroup.height))
+        bezier12Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.80521 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.33096 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.86468 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.29643 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.84627 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.32175 * _1487120527_Drinks39svgGroup.height))
+        bezier12Path.close()
+        fillColor3.setFill()
+        bezier12Path.fill()
+
+
+        context.endTransparencyLayer()
+        context.restoreGState()
+
+
+        //// Group 20
+        context.saveGState()
+        context.setAlpha(0.5)
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
+
+
+        //// Bezier 13 Drawing
+        let bezier13Path = UIBezierPath()
+        bezier13Path.move(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.41579 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.49973 * _1487120527_Drinks39svgGroup.height))
+        bezier13Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.47407 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.41127 * _1487120527_Drinks39svgGroup.height))
+        bezier13Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.58044 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.38399 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.49010 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.38729 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.53819 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.37489 * _1487120527_Drinks39svgGroup.height))
+        bezier13Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.73489 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.41706 * _1487120527_Drinks39svgGroup.height))
+        bezier13Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.78297 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.47741 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.77714 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.42615 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.79900 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.45343 * _1487120527_Drinks39svgGroup.height))
+        bezier13Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.72469 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.56586 * _1487120527_Drinks39svgGroup.height))
+        bezier13Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.61832 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.59314 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.70866 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.58984 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.66058 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.60224 * _1487120527_Drinks39svgGroup.height))
+        bezier13Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.46388 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.56008 * _1487120527_Drinks39svgGroup.height))
+        bezier13Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.41579 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.49973 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.42162 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.55098 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.39976 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.52370 * _1487120527_Drinks39svgGroup.height))
+        bezier13Path.close()
+        fillColor3.setFill()
+        bezier13Path.fill()
+
+
+        context.endTransparencyLayer()
+        context.restoreGState()
+
+
+        //// Group 21
+        context.saveGState()
+        context.setAlpha(0.5)
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
+
+
+        //// Bezier 14 Drawing
+        let bezier14Path = UIBezierPath()
+        bezier14Path.move(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.23730 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.63252 * _1487120527_Drinks39svgGroup.height))
+        bezier14Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.29558 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.54406 * _1487120527_Drinks39svgGroup.height))
+        bezier14Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.40195 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.51678 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.31161 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.52008 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.35970 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.50768 * _1487120527_Drinks39svgGroup.height))
+        bezier14Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.55640 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.54984 * _1487120527_Drinks39svgGroup.height))
+        bezier14Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.60448 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.61019 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.59865 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.55894 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.62051 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.58622 * _1487120527_Drinks39svgGroup.height))
+        bezier14Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.54620 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.69865 * _1487120527_Drinks39svgGroup.height))
+        bezier14Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.43983 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.72593 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.53017 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.72263 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.48209 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.73503 * _1487120527_Drinks39svgGroup.height))
+        bezier14Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.28538 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.69287 * _1487120527_Drinks39svgGroup.height))
+        bezier14Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.23730 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.63252 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.24313 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.68377 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.22127 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.65649 * _1487120527_Drinks39svgGroup.height))
+        bezier14Path.close()
+        fillColor3.setFill()
+        bezier14Path.fill()
+
+
+        context.endTransparencyLayer()
+        context.restoreGState()
+
+
+        //// Group 22
+        context.saveGState()
+        context.setAlpha(0.5)
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
+
+
+        //// Bezier 15 Drawing
+        let bezier15Path = UIBezierPath()
+        bezier15Path.move(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.49225 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.82529 * _1487120527_Drinks39svgGroup.height))
+        bezier15Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.39191 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.75414 * _1487120527_Drinks39svgGroup.height))
+        bezier15Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.40625 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.69090 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.36468 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.73438 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.37041 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.70592 * _1487120527_Drinks39svgGroup.height))
+        bezier15Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.53526 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.63557 * _1487120527_Drinks39svgGroup.height))
+        bezier15Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.64993 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.64347 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.57109 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.62055 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.62270 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.62371 * _1487120527_Drinks39svgGroup.height))
+        bezier15Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.75028 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.71462 * _1487120527_Drinks39svgGroup.height))
+        bezier15Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.73594 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.77786 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.77751 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.73438 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.77178 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.76284 * _1487120527_Drinks39svgGroup.height))
+        bezier15Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.60693 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.83319 * _1487120527_Drinks39svgGroup.height))
+        bezier15Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.49225 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.82529 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.57109 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.84821 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.51949 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.84505 * _1487120527_Drinks39svgGroup.height))
+        bezier15Path.close()
+        fillColor3.setFill()
+        bezier15Path.fill()
+
+
+        context.endTransparencyLayer()
+        context.restoreGState()
+
+
+
+
+        //// Group
+        context.saveGState()
+        context.setAlpha(0.5)
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
+
+
+        //// Bezier 5 Drawing
+        let bezier5Path = UIBezierPath()
+        bezier5Path.move(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.29591 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.46778 * _1487120527_Drinks39svgGroup.height))
+        bezier5Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.19557 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.39663 * _1487120527_Drinks39svgGroup.height))
+        bezier5Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.20991 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.33340 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.16834 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.37687 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.17407 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.34842 * _1487120527_Drinks39svgGroup.height))
+        bezier5Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.33892 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.27806 * _1487120527_Drinks39svgGroup.height))
+        bezier5Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.45360 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.28597 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.37475 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.26304 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.42636 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.26620 * _1487120527_Drinks39svgGroup.height))
+        bezier5Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.55394 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.35711 * _1487120527_Drinks39svgGroup.height))
+        bezier5Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.53960 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.42035 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.58117 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.37687 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.57544 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.40533 * _1487120527_Drinks39svgGroup.height))
+        bezier5Path.addLine(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.41059 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.47568 * _1487120527_Drinks39svgGroup.height))
+        bezier5Path.addCurve(to: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.29591 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.46778 * _1487120527_Drinks39svgGroup.height), controlPoint1: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.37475 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.49070 * _1487120527_Drinks39svgGroup.height), controlPoint2: CGPoint(x: _1487120527_Drinks39svgGroup.minX + 0.32315 * _1487120527_Drinks39svgGroup.width, y: _1487120527_Drinks39svgGroup.minY + 0.48754 * _1487120527_Drinks39svgGroup.height))
+        bezier5Path.close()
+        fillColor3.setFill()
+        bezier5Path.fill()
+
+
+        context.endTransparencyLayer()
+        context.restoreGState()
     }
 
-    public dynamic class func drawMartiniWithUmbrella(frame: CGRect = CGRect(x: 4, y: 3, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) {
+    public dynamic class func drawMartiniWithUmbrella(frame: CGRect = CGRect(x: 4, y: 3, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         // This non-generic function dramatically improves compilation times of complex expressions.
@@ -2976,7 +3186,6 @@ public class StyleKitGlasses : NSObject {
         //// Color Declarations
         let outline = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
         let fillColor8 = UIColor(red: 0.932, green: 0.970, blue: 0.995, alpha: 1.000)
-        let fillColor4 = UIColor(red: 0.958, green: 0.933, blue: 0.327, alpha: 1.000)
 
 
         //// Subframes
@@ -3066,7 +3275,7 @@ public class StyleKitGlasses : NSObject {
         bezier19Path.addCurve(to: CGPoint(x: group2.minX + 0.65649 * group2.width, y: group2.minY + 0.21091 * group2.height), controlPoint1: CGPoint(x: group2.minX + 0.41223 * group2.width, y: group2.minY + 0.06818 * group2.height), controlPoint2: CGPoint(x: group2.minX + 0.50926 * group2.width, y: group2.minY + 0.15455 * group2.height))
         bezier19Path.addCurve(to: CGPoint(x: group2.minX + 0.97658 * group2.width, y: group2.minY + 0.22182 * group2.height), controlPoint1: CGPoint(x: group2.minX + 0.80371 * group2.width, y: group2.minY + 0.26727 * group2.height), controlPoint2: CGPoint(x: group2.minX + 0.94759 * group2.width, y: group2.minY + 0.27182 * group2.height))
         bezier19Path.close()
-        fillColor4.setFill()
+        ganishLabel.setFill()
         bezier19Path.fill()
 
 
@@ -3151,6 +3360,23 @@ public class StyleKitGlasses : NSObject {
 
 
         //// Group 42
+        //// Bezier 10 Drawing
+        context.saveGState()
+        context.setAlpha(0.2)
+
+        let bezier10Path = UIBezierPath()
+        bezier10Path.move(to: CGPoint(x: group2.minX + 0.78925 * group2.width, y: group2.minY + 0.28469 * group2.height))
+        bezier10Path.addLine(to: CGPoint(x: group2.minX + 0.43796 * group2.width, y: group2.minY + 0.68182 * group2.height))
+        bezier10Path.addLine(to: CGPoint(x: group2.minX + 0.48449 * group2.width, y: group2.minY + 0.71818 * group2.height))
+        bezier10Path.addLine(to: CGPoint(x: group2.minX + 0.92610 * group2.width, y: group2.minY + 0.29728 * group2.height))
+        bezier10Path.addLine(to: CGPoint(x: group2.minX + 0.78925 * group2.width, y: group2.minY + 0.28469 * group2.height))
+        bezier10Path.close()
+        outline.setFill()
+        bezier10Path.fill()
+
+        context.restoreGState()
+
+
         //// Bezier 23 Drawing
         let bezier23Path = UIBezierPath()
         bezier23Path.move(to: CGPoint(x: group2.minX + 0.64626 * group2.width, y: group2.minY + 0.29636 * group2.height))
@@ -3166,7 +3392,7 @@ public class StyleKitGlasses : NSObject {
         bezier23Path.fill()
     }
 
-    public dynamic class func drawBottles(frame: CGRect = CGRect(x: 4, y: 5, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) {
+    public dynamic class func drawBottles(frame: CGRect = CGRect(x: 4, y: 5, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         // This non-generic function dramatically improves compilation times of complex expressions.
@@ -3176,7 +3402,6 @@ public class StyleKitGlasses : NSObject {
         let outline = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
         let fillColor3 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
         let fillColor8 = UIColor(red: 0.932, green: 0.970, blue: 0.995, alpha: 1.000)
-        let fillColor4 = UIColor(red: 0.958, green: 0.933, blue: 0.327, alpha: 1.000)
         let fillColor7 = UIColor(red: 0.456, green: 0.739, blue: 0.280, alpha: 1.000)
         let fillColor9 = UIColor(red: 0.925, green: 0.333, blue: 0.362, alpha: 1.000)
         let olive = UIColor(red: 0.756, green: 0.767, blue: 0.317, alpha: 1.000)
@@ -3422,7 +3647,7 @@ public class StyleKitGlasses : NSObject {
         //// Group 18
         //// Rectangle 5 Drawing
         let rectangle5Path = UIBezierPath(rect: CGRect(x: group2.minX + 15.6, y: group2.minY + 15.7, width: 14.9, height: 8))
-        fillColor4.setFill()
+        ganishLabel.setFill()
         rectangle5Path.fill()
 
 
@@ -3495,7 +3720,7 @@ public class StyleKitGlasses : NSObject {
         bezier9Path.addCurve(to: CGPoint(x: group2.minX + 8.78, y: group2.minY + 58.23), controlPoint1: CGPoint(x: group2.minX + 10.93, y: group2.minY + 53.42), controlPoint2: CGPoint(x: group2.minX + 8.78, y: group2.minY + 55.6))
         bezier9Path.addLine(to: CGPoint(x: group2.minX + 8.78, y: group2.minY + 96.78))
         bezier9Path.close()
-        fillColor4.setFill()
+        ganishLabel.setFill()
         bezier9Path.fill()
 
 
@@ -3925,7 +4150,7 @@ public class StyleKitGlasses : NSObject {
         context.restoreGState()
     }
 
-    public dynamic class func drawHighBallWithLemon(frame: CGRect = CGRect(x: 4, y: 3, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) {
+    public dynamic class func drawHighBallWithLemon(frame: CGRect = CGRect(x: 4, y: 3, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         // This non-generic function dramatically improves compilation times of complex expressions.
@@ -3934,7 +4159,6 @@ public class StyleKitGlasses : NSObject {
         //// Color Declarations
         let outline = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
         let fillColor3 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
-        let fillColor4 = UIColor(red: 0.958, green: 0.933, blue: 0.327, alpha: 1.000)
         let fillColor = UIColor(red: 0.898, green: 0.940, blue: 0.980, alpha: 1.000)
 
 
@@ -3954,7 +4178,7 @@ public class StyleKitGlasses : NSObject {
         bezierPath.addCurve(to: CGPoint(x: _1487120439_Drinks19svgGroup.minX + 0.65261 * _1487120439_Drinks19svgGroup.width, y: _1487120439_Drinks19svgGroup.minY + 0.01802 * _1487120439_Drinks19svgGroup.height), controlPoint1: CGPoint(x: _1487120439_Drinks19svgGroup.minX + 0.34030 * _1487120439_Drinks19svgGroup.width, y: _1487120439_Drinks19svgGroup.minY + 0.08987 * _1487120439_Drinks19svgGroup.height), controlPoint2: CGPoint(x: _1487120439_Drinks19svgGroup.minX + 0.48024 * _1487120439_Drinks19svgGroup.width, y: _1487120439_Drinks19svgGroup.minY + 0.01802 * _1487120439_Drinks19svgGroup.height))
         bezierPath.addCurve(to: CGPoint(x: _1487120439_Drinks19svgGroup.minX + 0.96491 * _1487120439_Drinks19svgGroup.width, y: _1487120439_Drinks19svgGroup.minY + 0.17838 * _1487120439_Drinks19svgGroup.height), controlPoint1: CGPoint(x: _1487120439_Drinks19svgGroup.minX + 0.82497 * _1487120439_Drinks19svgGroup.width, y: _1487120439_Drinks19svgGroup.minY + 0.01802 * _1487120439_Drinks19svgGroup.height), controlPoint2: CGPoint(x: _1487120439_Drinks19svgGroup.minX + 0.96491 * _1487120439_Drinks19svgGroup.width, y: _1487120439_Drinks19svgGroup.minY + 0.08987 * _1487120439_Drinks19svgGroup.height))
         bezierPath.close()
-        fillColor4.setFill()
+        ganishLabel.setFill()
         bezierPath.fill()
 
 
@@ -4654,7 +4878,7 @@ public class StyleKitGlasses : NSObject {
         context.restoreGState()
     }
 
-    public dynamic class func drawLowBallWithLemon(frame: CGRect = CGRect(x: 4, y: 3, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) {
+    public dynamic class func drawLowBallWithLemon(frame: CGRect = CGRect(x: 4, y: 3, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         // This non-generic function dramatically improves compilation times of complex expressions.
@@ -4663,7 +4887,6 @@ public class StyleKitGlasses : NSObject {
         //// Color Declarations
         let outline = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
         let fillColor3 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
-        let fillColor4 = UIColor(red: 0.958, green: 0.933, blue: 0.327, alpha: 1.000)
         let fillColor = UIColor(red: 0.898, green: 0.940, blue: 0.980, alpha: 1.000)
 
 
@@ -4683,7 +4906,7 @@ public class StyleKitGlasses : NSObject {
         bezierPath.addCurve(to: CGPoint(x: baselowballGarnishsvgGroup.minX + 0.73750 * baselowballGarnishsvgGroup.width, y: baselowballGarnishsvgGroup.minY + 0.02151 * baselowballGarnishsvgGroup.height), controlPoint1: CGPoint(x: baselowballGarnishsvgGroup.minX + 0.50000 * baselowballGarnishsvgGroup.width, y: baselowballGarnishsvgGroup.minY + 0.11828 * baselowballGarnishsvgGroup.height), controlPoint2: CGPoint(x: baselowballGarnishsvgGroup.minX + 0.60687 * baselowballGarnishsvgGroup.width, y: baselowballGarnishsvgGroup.minY + 0.02151 * baselowballGarnishsvgGroup.height))
         bezierPath.addCurve(to: CGPoint(x: baselowballGarnishsvgGroup.minX + 0.97500 * baselowballGarnishsvgGroup.width, y: baselowballGarnishsvgGroup.minY + 0.23656 * baselowballGarnishsvgGroup.height), controlPoint1: CGPoint(x: baselowballGarnishsvgGroup.minX + 0.86813 * baselowballGarnishsvgGroup.width, y: baselowballGarnishsvgGroup.minY + 0.02151 * baselowballGarnishsvgGroup.height), controlPoint2: CGPoint(x: baselowballGarnishsvgGroup.minX + 0.97500 * baselowballGarnishsvgGroup.width, y: baselowballGarnishsvgGroup.minY + 0.11720 * baselowballGarnishsvgGroup.height))
         bezierPath.close()
-        fillColor4.setFill()
+        ganishLabel.setFill()
         bezierPath.fill()
 
 
@@ -5305,7 +5528,7 @@ public class StyleKitGlasses : NSObject {
         rectangle3Path.fill()
     }
 
-    public dynamic class func drawCoconut(frame: CGRect = CGRect(x: 4, y: 4, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) {
+    public dynamic class func drawCoconut(frame: CGRect = CGRect(x: 4, y: 4, width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         // This non-generic function dramatically improves compilation times of complex expressions.
@@ -5314,7 +5537,6 @@ public class StyleKitGlasses : NSObject {
         //// Color Declarations
         let outline = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
         let fillColor3 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
-        let fillColor4 = UIColor(red: 0.958, green: 0.933, blue: 0.327, alpha: 1.000)
         let fillColor10 = UIColor(red: 0.308, green: 0.143, blue: 0.285, alpha: 1.000)
         let fillColor14 = UIColor(red: 0.554, green: 0.287, blue: 0.258, alpha: 1.000)
 
@@ -5489,7 +5711,7 @@ public class StyleKitGlasses : NSObject {
         bezier8Path.addCurve(to: CGPoint(x: _1487139320_Drinks13svgGroup.minX + 0.64729 * _1487139320_Drinks13svgGroup.width, y: _1487139320_Drinks13svgGroup.minY + 0.28657 * _1487139320_Drinks13svgGroup.height), controlPoint1: CGPoint(x: _1487139320_Drinks13svgGroup.minX + 0.39791 * _1487139320_Drinks13svgGroup.width, y: _1487139320_Drinks13svgGroup.minY + 0.14748 * _1487139320_Drinks13svgGroup.height), controlPoint2: CGPoint(x: _1487139320_Drinks13svgGroup.minX + 0.49646 * _1487139320_Drinks13svgGroup.width, y: _1487139320_Drinks13svgGroup.minY + 0.23156 * _1487139320_Drinks13svgGroup.height))
         bezier8Path.addCurve(to: CGPoint(x: _1487139320_Drinks13svgGroup.minX + 0.97410 * _1487139320_Drinks13svgGroup.width, y: _1487139320_Drinks13svgGroup.minY + 0.29678 * _1487139320_Drinks13svgGroup.height), controlPoint1: CGPoint(x: _1487139320_Drinks13svgGroup.minX + 0.79813 * _1487139320_Drinks13svgGroup.width, y: _1487139320_Drinks13svgGroup.minY + 0.34157 * _1487139320_Drinks13svgGroup.height), controlPoint2: CGPoint(x: _1487139320_Drinks13svgGroup.minX + 0.94494 * _1487139320_Drinks13svgGroup.width, y: _1487139320_Drinks13svgGroup.minY + 0.34629 * _1487139320_Drinks13svgGroup.height))
         bezier8Path.close()
-        fillColor4.setFill()
+        ganishLabel.setFill()
         bezier8Path.fill()
 
 
@@ -5618,9 +5840,9 @@ public class StyleKitGlasses : NSObject {
         return imageOfBeerStein
     }
 
-    public dynamic class func imageOfHurricane(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) -> UIImage {
+    public dynamic class func imageOfHurricane(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
-            StyleKitGlasses.drawHurricane(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid)
+            StyleKitGlasses.drawHurricane(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid, ganishLabel: ganishLabel)
 
         let imageOfHurricane = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -5638,9 +5860,9 @@ public class StyleKitGlasses : NSObject {
         return imageOfMartiniCherry
     }
 
-    public dynamic class func imageOfBottleWithGlass(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) -> UIImage {
+    public dynamic class func imageOfBottleWithGlass(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
-            StyleKitGlasses.drawBottleWithGlass(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid)
+            StyleKitGlasses.drawBottleWithGlass(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid, ganishLabel: ganishLabel)
 
         let imageOfBottleWithGlass = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -5658,9 +5880,9 @@ public class StyleKitGlasses : NSObject {
         return imageOfWeizen
     }
 
-    public dynamic class func imageOfBottle(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) -> UIImage {
+    public dynamic class func imageOfBottle(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
-            StyleKitGlasses.drawBottle(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid)
+            StyleKitGlasses.drawBottle(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid, ganishLabel: ganishLabel)
 
         let imageOfBottle = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -5718,9 +5940,9 @@ public class StyleKitGlasses : NSObject {
         return imageOfHighBall
     }
 
-    public dynamic class func imageOfMartiniWithUmbrella(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) -> UIImage {
+    public dynamic class func imageOfMartiniWithUmbrella(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
-            StyleKitGlasses.drawMartiniWithUmbrella(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid)
+            StyleKitGlasses.drawMartiniWithUmbrella(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid, ganishLabel: ganishLabel)
 
         let imageOfMartiniWithUmbrella = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -5728,9 +5950,9 @@ public class StyleKitGlasses : NSObject {
         return imageOfMartiniWithUmbrella
     }
 
-    public dynamic class func imageOfBottles(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) -> UIImage {
+    public dynamic class func imageOfBottles(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
-            StyleKitGlasses.drawBottles(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid)
+            StyleKitGlasses.drawBottles(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid, ganishLabel: ganishLabel)
 
         let imageOfBottles = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -5738,9 +5960,9 @@ public class StyleKitGlasses : NSObject {
         return imageOfBottles
     }
 
-    public dynamic class func imageOfHighBallWithLemon(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) -> UIImage {
+    public dynamic class func imageOfHighBallWithLemon(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
-            StyleKitGlasses.drawHighBallWithLemon(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid)
+            StyleKitGlasses.drawHighBallWithLemon(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid, ganishLabel: ganishLabel)
 
         let imageOfHighBallWithLemon = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -5768,9 +5990,9 @@ public class StyleKitGlasses : NSObject {
         return imageOfLowBall
     }
 
-    public dynamic class func imageOfLowBallWithLemon(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) -> UIImage {
+    public dynamic class func imageOfLowBallWithLemon(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
-            StyleKitGlasses.drawLowBallWithLemon(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid)
+            StyleKitGlasses.drawLowBallWithLemon(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid, ganishLabel: ganishLabel)
 
         let imageOfLowBallWithLemon = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -5788,9 +6010,9 @@ public class StyleKitGlasses : NSObject {
         return imageOfHurricaneWithUmbrella
     }
 
-    public dynamic class func imageOfCoconut(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000)) -> UIImage {
+    public dynamic class func imageOfCoconut(imageSize: CGSize = CGSize(width: 122, height: 114), liquid: UIColor = UIColor(red: 0.811, green: 0.808, blue: 0.779, alpha: 1.000), ganishLabel: UIColor = UIColor(red: 0.958, green: 0.903, blue: 0.327, alpha: 1.000)) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
-            StyleKitGlasses.drawCoconut(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid)
+            StyleKitGlasses.drawCoconut(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height), liquid: liquid, ganishLabel: ganishLabel)
 
         let imageOfCoconut = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
