@@ -181,7 +181,7 @@ class DrinkDetailViewController: UIViewController {
             theingredientLabel.text = "You have all the ingredients for this drink!"
             theingredientLabel.textColor = Theme.labelColor
             theingredientLabel.font = Theme.labelFont
-            missingIngredientsStack.addSubview(theingredientLabel)
+            missingIngredientsStack.addArrangedSubview(theingredientLabel)
         }
     }
     
