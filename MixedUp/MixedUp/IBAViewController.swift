@@ -63,6 +63,7 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
     }
     
     func randomDrinkPressed(){
+        if drinks.count > 0 {
         let random = Int(arc4random_uniform(UInt32(drinks.count)))
         let drink = drinks[random]
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -74,6 +75,7 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
         detailVC.drinkStore = drinkStore
         detailVC.defaults = defaults
         self.show(detailVC, sender: nil)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){

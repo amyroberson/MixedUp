@@ -48,17 +48,19 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
     }
     
     func randomDrinkPressed(){
-        let random = Int(arc4random_uniform(UInt32(favoriteDrinks.count)))
-        let drink = favoriteDrinks[random]
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let detailVC = storyBoard.instantiateViewController(withIdentifier: "DrinkDetail") as! DrinkDetailViewController
-        detailVC.coreDataStack = coreDataStack
-        detailVC.user = user
-        detailVC.drink = drink
-        detailVC.userStore = userStore
-        detailVC.drinkStore = drinkStore
-        detailVC.defaults = defaults
-        self.show(detailVC, sender: nil)
+        if favoriteDrinks.count > 0 {
+            let random = Int(arc4random_uniform(UInt32(favoriteDrinks.count)))
+            let drink = favoriteDrinks[random]
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let detailVC = storyBoard.instantiateViewController(withIdentifier: "DrinkDetail") as! DrinkDetailViewController
+            detailVC.coreDataStack = coreDataStack
+            detailVC.user = user
+            detailVC.drink = drink
+            detailVC.userStore = userStore
+            detailVC.drinkStore = drinkStore
+            detailVC.defaults = defaults
+            self.show(detailVC, sender: nil)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
