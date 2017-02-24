@@ -24,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var colorStore: ColorService? = nil
     var user: User? = nil
     let userIDKey = "userID"
-    
     var typeStore: TypeService? = nil
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         defaults.register(defaults: [userIDKey : ""])
         defaults.register(defaults: [Theme.themeKey: Theme.lightKey])
