@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate {
+class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var coreDataStack: CoreDataStack? = nil
@@ -52,6 +52,13 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem = barButton
         collectionView.showsVerticalScrollIndicator = false
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(IBAViewController.tap(_:)))
+        view.addGestureRecognizer(tapGesture)
+        tapGesture.delegate = self
+    }
+    
+    func tap(_ gesture: UITapGestureRecognizer) {
+        drinkSearchBar.resignFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -149,6 +156,14 @@ extension IBAViewController: UICollectionViewDataSource{
     func refresh(){
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+        }
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool{
+        if drinkSearchBar.isFirstResponder{
+            return true
+        } else {
+            return false
         }
     }
 }
