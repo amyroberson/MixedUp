@@ -42,6 +42,7 @@ class GlassPickerViewController: UIViewController, UICollectionViewDelegate {
         view.backgroundColor = Theme.viewBackgroundColor
         selectLabel.font = Theme.boldLabelFont
         selectLabel.textColor = Theme.labelColor
+        collectionView.showsVerticalScrollIndicator = false
     }
     
     override func viewWillAppear(_ animated: Bool) {

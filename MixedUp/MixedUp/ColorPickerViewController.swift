@@ -42,6 +42,7 @@ class ColorPickerViewController: UIViewController, UICollectionViewDelegate {
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
         view.backgroundColor = Theme.viewBackgroundColor
+        collectionView.showsVerticalScrollIndicator = false
     }
     
     override func viewWillAppear(_ animated: Bool) {

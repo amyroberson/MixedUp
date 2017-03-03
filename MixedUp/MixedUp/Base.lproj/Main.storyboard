@@ -112,7 +112,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h45-E5-Py4" id="3Bo-dn-e4i">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sls-fT-jK8">
@@ -243,7 +243,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E3G-S4-IiZ" id="8d7-fi-zgA">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBx-hu-Qgn">
@@ -1035,6 +1035,7 @@
                         <outlet property="recipeInstructionLabel" destination="pfo-4r-AgT" id="sMa-BE-NNc"/>
                         <outlet property="recipeInstructions" destination="zRk-7g-MZr" id="yvd-NT-apm"/>
                         <outlet property="saveToFavoritesButton" destination="Abh-br-ceU" id="oHr-dL-eK5"/>
+                        <outlet property="scrollView" destination="25m-Ni-EQ3" id="Df4-eX-X7b"/>
                         <outlet property="selectIngredientsLabel" destination="p5T-ZA-BgV" id="vuz-AF-lVf"/>
                         <outlet property="selectToolsLabel" destination="nO2-vH-bEO" id="1nR-Sy-xtS"/>
                         <outlet property="successLabel" destination="4K3-N6-Vzq" id="jyj-Fb-M1s"/>

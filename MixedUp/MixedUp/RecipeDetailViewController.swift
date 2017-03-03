@@ -42,6 +42,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var toolsLabel: UILabel!
     @IBOutlet weak var successLabel: UILabel!
     @IBOutlet weak var saveToFavoritesButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     var toolsStack = UIStackView()
     var ingredientStackView = UIStackView()
     
@@ -60,6 +61,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         recipeInstructions.layer.cornerRadius = 5
         mainStackView.insertArrangedSubview(toolsStack, at: 12)
         mainStackView.insertArrangedSubview(ingredientStackView, at: 8)
+        scrollView.showsVerticalScrollIndicator = false
         do{
             ingredientTypes = try typeStore?.fetchMainQueueTypes(predicate: nil, sortDescriptors: nil) ?? []
             tools = try toolStore?.fetchMainQueueTools(predicate: nil, sortDescriptors: nil) ?? []

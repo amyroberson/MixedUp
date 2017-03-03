@@ -35,6 +35,7 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
         button.frame = CGRect(x: 0, y: 0, width: 90, height: 51)
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem = barButton
+        collectionView.showsVerticalScrollIndicator = false
     }
     
     override func viewWillAppear(_ animated: Bool) {

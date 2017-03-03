@@ -60,6 +60,7 @@ class DrinkDetailViewController: UIViewController {
         }
         drawDrink.glass = drink?.glass?.displayName ?? ""
         drawDrink.descriptionString = drink?.description ?? ""
+        scrollView.showsVerticalScrollIndicator = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
