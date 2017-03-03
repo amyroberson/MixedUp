@@ -89,7 +89,8 @@ final class ToolService{
                     result = .success(mainQueueTools)
                 }
                 catch let error {
-                    result = .failure(.system(error))                }
+                    result = .failure(.system(error))
+                }
             }
             completion(result)
         })

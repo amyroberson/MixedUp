@@ -92,6 +92,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if defaults?.string(forKey: Theme.themeKey) == Theme.lightKey{
             Theme.styleLight()
         } else {
@@ -124,7 +125,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func createDrinkTapped(_ sender: UIButton) {
-        guard (drink?.ingredients?.count)! > 0 else {
+        guard (drink?.ingredients?.count)! > 0 , drinkNameTextField.text != nil, drinkNameTextField.text != "" else {
             successLabel.isHidden = false
             successLabel.text = "Could not save drink, try adding more information"
             return
@@ -282,22 +283,17 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField.text?.isEmpty == true {
-            return false
-        } else {
-            textField.resignFirstResponder()
-            return true
-        }
+        
+        textField.resignFirstResponder()
+        return true
+        
     }
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.text?.isEmpty == true {
-            return false
-        } else {
-            textField.resignFirstResponder()
-            return true
-        }
+        textField.resignFirstResponder()
+        return true
+        
     }
     
     

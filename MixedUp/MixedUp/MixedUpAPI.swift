@@ -99,7 +99,7 @@ class MixedUpAPI {
         context.performAndWait({ () -> Void in
             user = NSEntityDescription.insertNewObject(forEntityName: User.entityName,
                                                        into: context) as! User
-            user.email = dictionary[MixedUpAPI.emailKey] as? String ?? nil
+            user.email = dictionary[MixedUpAPI.emailKey] as? String
             let inventory = dictionary[MixedUpAPI.inventoryKey] as? [[String: Any]]
             var actualIngredients: [Ingredient] = []
             if let ingredients = inventory{
