@@ -94,53 +94,61 @@ final class IngredientService{
     }
     
     func getIngredientsOfType(type: IngredientType, completion: @escaping (ResourceResult<[Ingredient]>) -> ()){
-        let typeID = type.id!
-        let string = "https://n9hfoxnwqg.execute-api.us-east-2.amazonaws.com/alpha/ingredients?withTypeIds=\(typeID)"
-        let url = URL(string: string)!
-        let request = requestBuilder(url: url, method: "GET")
-        let task = session.dataTask(with: request,  completionHandler: {
-            (data, response, error) -> Void in
-            var result = self.processIngredientRequest(data: data, error: error as NSError?)
-            if case .success(let ingredients) = result {
-                let ids = ingredients.map{$0.id}
-                let predicate = NSPredicate(format: "id IN %@ ",ids)
-                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
-                do {
+        DispatchQueue.global(qos: .default).async {
+            let fileURL = Bundle.main.url(forResource: "ingredients",
+                                          withExtension: ".json")!
+            do {
+                
+                let data = try Data(contentsOf: fileURL)
+                var result = self.processIngredientRequest(data: data, error: nil)
+                switch result{
+                case .success(let ingredients):
+                    let privateQueueContext = self.coreDataStack.privateQueueContext
+                    privateQueueContext.performAndWait({
+                        try! privateQueueContext.obtainPermanentIDs(for: ingredients)
+                    })
+                    let predicate = NSPredicate(format: "type == %@", type)
+                    let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
                     try self.coreDataStack.saveChanges()
                     let mainQueueIngredients = try self.fetchMainQueueIngredients(predicate: predicate, sortDescriptors: [sortByName])
                     result = .success(mainQueueIngredients)
+                default:
+                    print("couldn't process file")
                 }
-                catch let error {
-                    result = .failure(.system(error))
-                }
+                completion(result)
+            } catch {
+                print("Could not read file")
             }
-            completion(result)
-        })
-        task.resume()
-    }
+        }    }
     
+    //currently reading from file until the server is ready for production use
     func getAllIngredients(completion: @escaping (ResourceResult<[Ingredient]>) -> ()){
-        let string = "https://n9hfoxnwqg.execute-api.us-east-2.amazonaws.com/alpha/ingredients"
-        let url = URL(string: string)!
-        let request = requestBuilder(url: url, method: "GET")
-        let task = session.dataTask(with: request,  completionHandler: {
-            (data, response, error) -> Void in
-            var result = self.processIngredientRequest(data: data, error: error as NSError?)
-            if case .success(let ingredients) = result {
-                let ids = ingredients.map{$0.id}
-                let predicate = NSPredicate(format: "id IN %@ ",ids)
-                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
-                do {
+        DispatchQueue.global(qos: .default).async {
+            let fileURL = Bundle.main.url(forResource: "ingredients",
+                                          withExtension: ".json")!
+            do {
+                
+                let data = try Data(contentsOf: fileURL)
+                var result = self.processIngredientRequest(data: data, error: nil)
+                switch result{
+                case .success(let ingredients):
+                    let privateQueueContext = self.coreDataStack.privateQueueContext
+                    privateQueueContext.performAndWait({
+                        try! privateQueueContext.obtainPermanentIDs(for: ingredients)
+                    })
+                    let objectIDs = ingredients.map{ $0.objectID }
+                    let predicate = NSPredicate(format: "self IN %@", objectIDs)
+                    let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
                     try self.coreDataStack.saveChanges()
                     let mainQueueIngredients = try self.fetchMainQueueIngredients(predicate: predicate, sortDescriptors: [sortByName])
                     result = .success(mainQueueIngredients)
+                default:
+                    print("couldn't process file")
                 }
-                catch let error {
-                    result = .failure(.system(error))
-                }
+                completion(result)
+            } catch {
+                print("Could not read file")
             }
-            completion(result)
-        })
-        task.resume()
+        }
     }
 }

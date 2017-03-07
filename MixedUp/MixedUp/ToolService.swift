@@ -69,31 +69,34 @@ final class ToolService{
         return type
     }
     
+    //currently reading from file until the server is ready for production use
     func getAllTools(completion: @escaping (ResourceResult<[Tool]>) -> ()){
-        let url = URL(string: "https://n9hfoxnwqg.execute-api.us-east-2.amazonaws.com/alpha/tools")!
-        let request = requestBuilder(url: url, method: "GET")
-        let task = session.dataTask(with: request,  completionHandler: {
-            (data, response, error) -> Void in
-            var result = self.processToolRequest(data: data, error: error as NSError?)
-            if case .success(let tools) = result {
-                let privateQueueContext = self.coreDataStack.privateQueueContext
-                privateQueueContext.performAndWait({
-                    try! privateQueueContext.obtainPermanentIDs(for: tools)
-                })
-                let objectIDs = tools.map{ $0.objectID }
-                let predicate = NSPredicate(format: "self IN %@", objectIDs)
-                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
-                do {
+        DispatchQueue.global(qos: .default).async {
+            let fileURL = Bundle.main.url(forResource: "tools",
+                                          withExtension: ".json")!
+            do {
+                
+                let data = try Data(contentsOf: fileURL)
+                var result = self.processToolRequest(data: data, error: nil)
+                switch result{
+                case .success(let tools):
+                    let privateQueueContext = self.coreDataStack.privateQueueContext
+                    privateQueueContext.performAndWait({
+                        try! privateQueueContext.obtainPermanentIDs(for: tools)
+                    })
+                    let objectIDs = tools.map{ $0.objectID }
+                    let predicate = NSPredicate(format: "self IN %@", objectIDs)
+                    let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
                     try self.coreDataStack.saveChanges()
                     let mainQueueTools = try self.fetchMainQueueTools(predicate: predicate, sortDescriptors: [sortByName])
                     result = .success(mainQueueTools)
+                default:
+                    print("couldn't process file")
                 }
-                catch let error {
-                    result = .failure(.system(error))
-                }
+                completion(result)
+            } catch {
+                print("Could not read file")
             }
-            completion(result)
-        })
-        task.resume()
+        }
     }
 }

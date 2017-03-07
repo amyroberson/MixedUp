@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E108F2A31E6F2A670028A242 /* drinks.json in Resources */ = {isa = PBXBuildFile; fileRef = E108F2A21E6F2A670028A242 /* drinks.json */; };
+		E108F2A51E6F36A00028A242 /* ingredienttypes.json in Resources */ = {isa = PBXBuildFile; fileRef = E108F2A41E6F36A00028A242 /* ingredienttypes.json */; };
+		E108F2A71E6F36BE0028A242 /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = E108F2A61E6F36BE0028A242 /* colors.json */; };
+		E108F2A91E6F36DC0028A242 /* glasses.json in Resources */ = {isa = PBXBuildFile; fileRef = E108F2A81E6F36DC0028A242 /* glasses.json */; };
+		E108F2AB1E6F37010028A242 /* ingredients.json in Resources */ = {isa = PBXBuildFile; fileRef = E108F2AA1E6F37010028A242 /* ingredients.json */; };
+		E108F2AD1E6F3DAF0028A242 /* tools.json in Resources */ = {isa = PBXBuildFile; fileRef = E108F2AC1E6F3DAF0028A242 /* tools.json */; };
 		E12D22AB1E55055400C843A7 /* GlassPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D22AA1E55055400C843A7 /* GlassPickerViewController.swift */; };
 		E12D22AD1E55065500C843A7 /* GlassService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D22AC1E55065500C843A7 /* GlassService.swift */; };
 		E17F24451E4CDC5E00AD17A6 /* DrinkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F24441E4CDC5E00AD17A6 /* DrinkDetailViewController.swift */; };
@@ -92,6 +98,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E108F2A21E6F2A670028A242 /* drinks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = drinks.json; sourceTree = "<group>"; };
+		E108F2A41E6F36A00028A242 /* ingredienttypes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ingredienttypes.json; sourceTree = "<group>"; };
+		E108F2A61E6F36BE0028A242 /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
+		E108F2A81E6F36DC0028A242 /* glasses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = glasses.json; sourceTree = "<group>"; };
+		E108F2AA1E6F37010028A242 /* ingredients.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ingredients.json; sourceTree = "<group>"; };
+		E108F2AC1E6F3DAF0028A242 /* tools.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tools.json; sourceTree = "<group>"; };
 		E12D22AA1E55055400C843A7 /* GlassPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlassPickerViewController.swift; sourceTree = "<group>"; };
 		E12D22AC1E55065500C843A7 /* GlassService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlassService.swift; sourceTree = "<group>"; };
 		E17F24441E4CDC5E00AD17A6 /* DrinkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkDetailViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +202,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E108F2A11E6F2A4A0028A242 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				E108F2AC1E6F3DAF0028A242 /* tools.json */,
+				E108F2AA1E6F37010028A242 /* ingredients.json */,
+				E108F2A81E6F36DC0028A242 /* glasses.json */,
+				E108F2A61E6F36BE0028A242 /* colors.json */,
+				E108F2A21E6F2A670028A242 /* drinks.json */,
+				E108F2A41E6F36A00028A242 /* ingredienttypes.json */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
 		E18853161E4914CD005C8C37 = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +238,7 @@
 		E18853211E4914CD005C8C37 /* MixedUp */ = {
 			isa = PBXGroup;
 			children = (
+				E108F2A11E6F2A4A0028A242 /* resources */,
 				E18853221E4914CD005C8C37 /* AppDelegate.swift */,
 				E18853241E4914CD005C8C37 /* BirthdayViewController.swift */,
 				E18854001E4B5896005C8C37 /* TabsViewController.swift */,
@@ -435,6 +461,12 @@
 			files = (
 				E188532D1E4914CD005C8C37 /* LaunchScreen.storyboard in Resources */,
 				E188532A1E4914CD005C8C37 /* Assets.xcassets in Resources */,
+				E108F2A91E6F36DC0028A242 /* glasses.json in Resources */,
+				E108F2A51E6F36A00028A242 /* ingredienttypes.json in Resources */,
+				E108F2AD1E6F3DAF0028A242 /* tools.json in Resources */,
+				E108F2AB1E6F37010028A242 /* ingredients.json in Resources */,
+				E108F2A71E6F36BE0028A242 /* colors.json in Resources */,
+				E108F2A31E6F2A670028A242 /* drinks.json in Resources */,
 				E18853281E4914CD005C8C37 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,6 +707,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.roberson.amy.MixedUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -688,6 +721,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.roberson.amy.MixedUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

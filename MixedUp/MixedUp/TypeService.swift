@@ -71,31 +71,34 @@ final class TypeService{
         return type
     }
     
+    //currently reading from file until the server is ready for production use
     func getAllTypes(completion: @escaping (ResourceResult<[IngredientType]>) -> ()){
-        let url = URL(string: "https://n9hfoxnwqg.execute-api.us-east-2.amazonaws.com/alpha/ingredienttypes")!
-        let request = requestBuilder(url: url, method: "GET")
-        let task = session.dataTask(with: request,  completionHandler: {
-            (data, response, error) -> Void in
-            var result = self.processTypeRequest(data: data, error: error as NSError?)
-            if case .success(let types) = result {
-                let privateQueueContext = self.coreDataStack.privateQueueContext
-                privateQueueContext.performAndWait({
-                    try! privateQueueContext.obtainPermanentIDs(for: types)
-                })
-                let objectIDs = types.map{ $0.objectID }
-                let predicate = NSPredicate(format: "self IN %@", objectIDs)
-                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
-                do {
+        DispatchQueue.global(qos: .default).async {
+            let fileURL = Bundle.main.url(forResource: "ingredienttypes",
+                                          withExtension: ".json")!
+            do {
+                
+                let data = try Data(contentsOf: fileURL)
+                var result = self.processTypeRequest(data: data, error: nil)
+                switch result{
+                case .success(let types):
+                    let privateQueueContext = self.coreDataStack.privateQueueContext
+                    privateQueueContext.performAndWait({
+                        try! privateQueueContext.obtainPermanentIDs(for: types)
+                    })
+                    let objectIDs = types.map{ $0.objectID }
+                    let predicate = NSPredicate(format: "self IN %@", objectIDs)
+                    let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
                     try self.coreDataStack.saveChanges()
                     let mainQueueTypes = try self.fetchMainQueueTypes(predicate: predicate, sortDescriptors: [sortByName])
                     result = .success(mainQueueTypes)
+                default:
+                    print("couldn't process file")
                 }
-                catch let error {
-                    result = .failure(.system(error))
-                }
+                completion(result)
+            } catch {
+                print("Could not read file")
             }
-            completion(result)
-        })
-        task.resume()
+        }
     }
 }

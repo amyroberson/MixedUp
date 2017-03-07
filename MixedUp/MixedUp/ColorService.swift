@@ -47,8 +47,8 @@ final class ColorService{
         }
     }
     
-    func fetchMainQueueTypes(predicate: NSPredicate? = nil,
-                             sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Color] {
+    func fetchMainQueueColors(predicate: NSPredicate? = nil,
+                              sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Color] {
         let fetchRequest = NSFetchRequest<Color>(entityName: "Color")
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
@@ -69,31 +69,34 @@ final class ColorService{
         return type
     }
     
+    //currently reading from file until the server is ready for production use
     func getAllColors(completion: @escaping (ResourceResult<[Color]>) -> ()){
-        let url = URL(string: "https://n9hfoxnwqg.execute-api.us-east-2.amazonaws.com/alpha/colors")!
-        let request = requestBuilder(url: url, method: "GET")
-        let task = session.dataTask(with: request,  completionHandler: {
-            (data, response, error) -> Void in
-            var result = self.processColorRequest(data: data, error: error as NSError?)
-            if case .success(let colors) = result {
-                let privateQueueContext = self.coreDataStack.privateQueueContext
-                privateQueueContext.performAndWait({
-                    try! privateQueueContext.obtainPermanentIDs(for: colors)
-                })
-                let objectIDs = colors.map{ $0.objectID }
-                let predicate = NSPredicate(format: "self IN %@", objectIDs)
-                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
-                do {
+        DispatchQueue.global(qos: .default).async {
+            let fileURL = Bundle.main.url(forResource: "colors",
+                                          withExtension: ".json")!
+            do {
+                
+                let data = try Data(contentsOf: fileURL)
+                var result = self.processColorRequest(data: data, error: nil)
+                switch result{
+                case .success(let colors):
+                    let privateQueueContext = self.coreDataStack.privateQueueContext
+                    privateQueueContext.performAndWait({
+                        try! privateQueueContext.obtainPermanentIDs(for: colors)
+                    })
+                    let objectIDs = colors.map{ $0.objectID }
+                    let predicate = NSPredicate(format: "self IN %@", objectIDs)
+                    let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
                     try self.coreDataStack.saveChanges()
-                    let mainQueueTypes = try self.fetchMainQueueTypes(predicate: predicate, sortDescriptors: [sortByName])
-                    result = .success(mainQueueTypes)
+                    let mainQueueColors = try self.fetchMainQueueColors(predicate: predicate, sortDescriptors: [sortByName])
+                    result = .success(mainQueueColors)
+                default:
+                    print("couldn't process file")
                 }
-                catch let error {
-                    result = .failure(.system(error))
-                }
+                completion(result)
+            } catch {
+                print("Could not read file")
             }
-            completion(result)
-        })
-        task.resume()
+        }
     }
 }
