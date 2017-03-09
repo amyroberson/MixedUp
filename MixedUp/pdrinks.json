@@ -364,7 +364,7 @@
                "name" : "sugar_cube",
                "id" : "bf9b3538-ccaa-40f1-9fef-fe085673e2e2",
                "isAlcoholic" : false,
-               "displayName" : "Sugar Cube",
+               "displayName" : "sugar Cube",
                "type" : {
                   "name" : "other",
                   "displayName" : "Other",
@@ -1178,7 +1178,7 @@
             },
             {
                "name" : "sugar_cube",
-               "displayName" : "Sugar Cube",
+               "displayName" : "sugar Cube",
                "isAlcoholic" : false,
                "id" : "bf9b3538-ccaa-40f1-9fef-fe085673e2e2",
                "type" : {
@@ -1923,64 +1923,7 @@
             "id" : "88bf0ca0-1b6b-4f6c-b8e3-bcc0a50ffff9",
             "alpha" : 1
          },
-         "name" : "champagne_cocktail",
-         "ingredients" : [
-            {
-                "isAlcoholic" : true,
-                "id" : "847d322d-3354-4b2a-acdc-2f9e4d3b11d8",
-                "type" : {
-                    "id" : "30e75c1e-c24d-4223-9f19-19d68356335c",
-                    "name" : "bitters",
-                    "displayName" : "Bitters"
-                },
-                "displayName" : "Angostura Bitters",
-                "name" : "angostura_bitters"
-            },
-            {
-                "displayName" : "Sugar Cube",
-                "type" : {
-                    "displayName" : "Other",
-                    "name" : "other",
-                    "id" : "9b9aad59-8830-4db0-972b-76d9a05b4c37"
-                },
-                "name" : "sugar_cube",
-                "id" : "bf9b3538-ccaa-40f1-9fef-fe085673e2e2",
-                "isAlcoholic" : false
-            },
-            {
-                "isAlcoholic" : true,
-                "id" : "fd4ed138-8f1b-4fac-84bd-ff437e9c5698",
-                "name" : "cognac",
-                "type" : {
-                    "name" : "liquor",
-                    "displayName" : "Liquor",
-                    "id" : "ede26bf6-a32b-4a14-9447-7339ade75902"
-                },
-                "displayName" : "Cognac"
-            },
-            {
-                "id" : "95447D32-2670-4B25-AA74-A194B9A16CB7",
-                "isAlcoholic" : true,
-                "name" : "champagne",
-                "displayName" : "Champagne",
-                "type" : {
-                    "id" : "004cc01f-5fb4-48bd-8f5e-88a329ba5641",
-                    "name" : "wine",
-                    "displayName" : "Wine"
-                }
-            },
-            {
-                "id" : "5a5e7275-3f76-4d5e-869a-615c012676ec",
-                "isAlcoholic" : false,
-                "displayName" : "Cherry",
-                "type" : {
-                    "name" : "garnish",
-                    "displayName" : "Garnish",
-                    "id" : "7cdf7c27-f221-4b08-bcee-261d81b02701"
-                },
-                "name" : "cherry"
-            }
-               ]
+         "name" : "champagne_cocktail"
       },
       {
          "isIBAOffical" : true,

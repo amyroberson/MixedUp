@@ -989,17 +989,6 @@
             "name" : "liquor"
          },
          "name" : "white_rum"
-      },
-      {
-         "id" : "95447D32-2670-4B25-AA74-A194B9A16CB7",
-         "isAlcoholic" : true,
-         "name" : "champagne",
-         "displayName" : "Champagne",
-         "type" : {
-             "id" : "004cc01f-5fb4-48bd-8f5e-88a329ba5641",
-             "name" : "wine",
-             "displayName" : "Wine"
-         }
       }
    ]
 }
