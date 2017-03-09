@@ -1,10 +1,6 @@
 {
    "tools" : [
       {
-         "id" : "c975c48b-08b5-4df6-ab39-72e341ec6286",
-         "name" : "cocktail_strainer"
-      },
-      {
          "displayName" : "Shaker",
          "name" : "shaker",
          "description" : "a device used to mix beverages by shaking",

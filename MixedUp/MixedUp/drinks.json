@@ -840,8 +840,10 @@
          "isAlcoholic" : true,
          "tools" : [
             {
-               "name" : "cocktail_strainer",
-               "id" : "c975c48b-08b5-4df6-ab39-72e341ec6286"
+                "description" : "used to remove ice from a mixed drink as it is being poured",
+                "name" : "strainer",
+                "id" : "5c047dce-3e1d-444e-95d1-f958bcc99b65",
+                "displayName" : "Cocktail Strainer"
             },
             {
                "name" : "shaker",
@@ -857,14 +859,60 @@
          },
          "color" : {
             "blue" : 255,
-            "alpha" : 0,
+            "alpha" : 0.1,
             "id" : "7c290c3b-b387-4e10-9d5d-74dbeff62fbb",
             "green" : 255,
             "displayName" : "Clear",
             "red" : 255,
             "name" : "clear"
          },
-         "description" : "Pour 3 cl Gin, 2 dashes of sugar syrup, and 1.5 cl of lemon juice in to a shaker, and shake. Strain into a champagne flute and top with 6 cl of Champagne."
+         "description" : "Pour 3 cl Gin, 2 dashes of sugar syrup, and 1.5 cl of lemon juice in to a shaker, and shake. Strain into a champagne flute and top with 6 cl of Champagne.",
+        "ingredients" : [
+                {
+                    "name" : "gin",
+                    "displayName" : "Gin",
+                    "type" : {
+                        "name" : "liquor",
+                        "displayName" : "Liquor",
+                        "id" : "ede26bf6-a32b-4a14-9447-7339ade75902"
+                    },
+                    "isAlcoholic" : true,
+                    "id" : "05bc4686-9d7b-437d-9bb5-55e6f7127ecf"
+                },
+                {
+                    "isAlcoholic" : false,
+                    "id" : "90023ddc-2999-4a11-a482-0fa4761c6e91",
+                    "name" : "sugar_syrup",
+                    "type" : {
+                        "id" : "329c0f22-b68e-4a58-9240-07c27e28b928",
+                        "name" : "mixer",
+                        "displayName" : "Mixer"
+                    },
+                    "displayName" : "Sugar Syrup"
+                },
+                {
+                    "name" : "lemon_juice",
+                    "type" : {
+                    "displayName" : "Mixer",
+                         "name" : "mixer",
+                         "id" : "329c0f22-b68e-4a58-9240-07c27e28b928"
+                    },
+                    "displayName" : "Lemon Juice",
+                    "isAlcoholic" : false,
+                    "id" : "02524d99-430d-4bbc-a50e-023d0e06c576"
+                },
+                {
+                    "id" : "95447D32-2670-4B25-AA74-A194B9A16CB7",
+                    "isAlcoholic" : true,
+                    "name" : "champagne",
+                    "displayName" : "Champagne",
+                    "type" : {
+                        "id" : "004cc01f-5fb4-48bd-8f5e-88a329ba5641",
+                        "name" : "wine",
+                        "displayName" : "Wine"
+                    }
+                }
+               ]
       },
       {
          "isIBAOffical" : true,
@@ -1328,8 +1376,10 @@
                "name" : "shaker"
             },
             {
-               "id" : "c975c48b-08b5-4df6-ab39-72e341ec6286",
-               "name" : "cocktail_strainer"
+                "description" : "used to remove ice from a mixed drink as it is being poured",
+                "name" : "strainer",
+                "id" : "5c047dce-3e1d-444e-95d1-f958bcc99b65",
+                "displayName" : "Cocktail Strainer"
             }
          ],
          "ingredients" : [
@@ -2078,6 +2128,52 @@
       {
          "isAlcoholic" : true,
          "displayName" : "Sea Breeze",
+         "ingredients" : [
+                {
+                    "displayName" : "Vodka",
+                    "type" : {
+                        "displayName" : "Liquor",
+                        "name" : "liquor",
+                        "id" : "ede26bf6-a32b-4a14-9447-7339ade75902"
+                    },
+                    "name" : "vodka",
+                    "isAlcoholic" : true,
+                    "id" : "3b1a66a8-7d02-4631-b67e-d31d36e5c180"
+                },
+                {
+                    "id" : "2fa6c271-3841-448e-9daa-9c437407b8b8",
+                    "isAlcoholic" : false,
+                    "name" : "cranberry_juice",
+                    "displayName" : "Cranberry Juice",
+                    "type" : {
+                        "id" : "329c0f22-b68e-4a58-9240-07c27e28b928",
+                        "name" : "mixer",
+                        "displayName" : "Mixer"
+                    }
+                },
+                {
+                    "id" : "96EBF49A-F1B6-4A28-8ADC-DB4AA88635BD",
+                    "isAlcoholic" : false,
+                    "displayName" : "GrapeFruit Juice",
+                    "type" : {
+                        "name" : "mixer",
+                        "displayName" : "Mixer",
+                        "id" : "329c0f22-b68e-4a58-9240-07c27e28b928"
+                    },
+                    "name" : "grapefruit_juice"
+                },
+                {
+                    "type" : {
+                        "name" : "garnish",
+                        "displayName" : "Garnish",
+                        "id" : "7cdf7c27-f221-4b08-bcee-261d81b02701"
+                    },
+                    "displayName" : "Lime",
+                    "name" : "lime",
+                    "isAlcoholic" : false,
+                    "id" : "2eb8dfbf-0e55-443f-b543-930bd80d27aa"
+                }
+         ],
          "description" : "Pour 4 cl of Vodka, 12 cl of Cranberry Juice, and 3 cl of Grapefruit Juice into a lowball glass with ice and garnish with lime wedge.",
          "name" : "sea_breeze",
          "glass" : {
@@ -2204,8 +2300,10 @@
          "name" : "singapore_sling",
          "tools" : [
             {
-               "name" : "cocktail_strainer",
-               "id" : "c975c48b-08b5-4df6-ab39-72e341ec6286"
+                "description" : "used to remove ice from a mixed drink as it is being poured",
+                "name" : "strainer",
+                "id" : "5c047dce-3e1d-444e-95d1-f958bcc99b65",
+                "displayName" : "Cocktail Strainer"
             },
             {
                "displayName" : "Shaker",
@@ -2484,9 +2582,55 @@
             "displayName" : "Martini",
             "name" : "martini"
          },
+         "ingredients": [
+                {
+                    "isAlcoholic" : true,
+                    "id" : "3b0ff7b4-ae32-4834-8eb4-9dbd11d2b5d3",
+                    "displayName" : "White Rum",
+                    "type" : {
+                        "id" : "ede26bf6-a32b-4a14-9447-7339ade75902",
+                        "displayName" : "Liquor",
+                        "name" : "liquor"
+                    },
+                    "name" : "white_rum"
+                },
+                {
+                    "name" : "maraschino",
+                    "displayName" : "Maraschino",
+                    "type" : {
+                         "displayName" : "Liqueur",
+                         "name" : "liqueur",
+                         "id" : "bd27bf5c-3697-4934-9b0c-8dfa04fc76fe"
+                    },
+                    "id" : "2e52010f-5ec8-4ec8-832c-e735c0d07947",
+                    "isAlcoholic" : true
+                },
+                {
+                    "id" : "82ffd2fb-6b3a-4cb7-8e7d-720609ce1381",
+                    "isAlcoholic" : false,
+                    "type" : {
+                        "name" : "mixer",
+                        "displayName" : "Mixer",
+                        "id" : "329c0f22-b68e-4a58-9240-07c27e28b928"
+                    },
+                    "displayName" : "Lime Juice",
+                    "name" : "lime_juice"
+                },
+                {
+                    "id" : "96EBF49A-F1B6-4A28-8ADC-DB4AA88635BD",
+                    "isAlcoholic" : false,
+                    "displayName" : "GrapeFruit Juice",
+                    "type" : {
+                        "name" : "mixer",
+                        "displayName" : "Mixer",
+                        "id" : "329c0f22-b68e-4a58-9240-07c27e28b928"
+                        },
+                    "name" : "grapefruit_juice"
+                }
+               ],
          "description" : "Pour 6 cl of White Rum, 1.5 cl of Marachino, 4 cl of Grapefruit Juice and 1.5 cl of lime juice in to a shaker, shake briskly, pour into a martini glass.",
          "isIBAOffical" : true,
-         "name" : "hemingway_speciak",
+         "name" : "hemingway_special",
          "tools" : [
             {
                "name" : "shaker",
@@ -2495,8 +2639,10 @@
                "description" : "a device used to mix beverages by shaking"
             },
             {
-               "id" : "c975c48b-08b5-4df6-ab39-72e341ec6286",
-               "name" : "cocktail_strainer"
+                "description" : "used to remove ice from a mixed drink as it is being poured",
+                "name" : "strainer",
+                "id" : "5c047dce-3e1d-444e-95d1-f958bcc99b65",
+                "displayName" : "Cocktail Strainer"
             }
          ],
          "isAlcoholic" : true,
@@ -2839,6 +2985,30 @@
                "name" : "bar_spoon"
             }
          ],
+        "ingredients": [
+            {
+                "id" : "95447D32-2670-4B25-AA74-A194B9A16CB7",
+                "isAlcoholic" : true,
+                "name" : "champagne",
+                "displayName" : "Champagne",
+                "type" : {
+                    "id" : "004cc01f-5fb4-48bd-8f5e-88a329ba5641",
+                    "name" : "wine",
+                    "displayName" : "Wine"
+                    }
+            },
+            {
+                "id" : "400e982d-803d-4c9c-ae1d-bfba747b18b9",
+                "isAlcoholic" : false,
+                "name" : "orange_juice",
+                "displayName" : "Orange Juice",
+                "type" : {
+                    "id" : "329c0f22-b68e-4a58-9240-07c27e28b928",
+                    "displayName" : "Mixer",
+                    "name" : "mixer"
+                    }
+            }
+        ],
          "glass" : {
             "name" : "champagne",
             "displayName" : "Champagne",
@@ -3043,6 +3213,14 @@
             }
          ],
          "displayName" : "Cuba Libre",
+         "tools": [
+            {
+                "displayName" : "Bar Spoon",
+                "description" : "a utensil to mix drinks",
+                "name" : "bar_spoon",
+                "id" : "97ed428f-5c97-4aaa-b79c-d697988e0da1"
+            }
+            ],
          "isAlcoholic" : true
       },
       {
@@ -3346,8 +3524,10 @@
          ],
          "tools" : [
             {
-               "id" : "c975c48b-08b5-4df6-ab39-72e341ec6286",
-               "name" : "cocktail_strainer"
+                "description" : "used to remove ice from a mixed drink as it is being poured",
+                "name" : "strainer",
+                "id" : "5c047dce-3e1d-444e-95d1-f958bcc99b65",
+                "displayName" : "Cocktail Strainer"
             },
             {
                "name" : "shaker",
@@ -3637,8 +3817,10 @@
                "name" : "shaker"
             },
             {
-               "id" : "c975c48b-08b5-4df6-ab39-72e341ec6286",
-               "name" : "cocktail_strainer"
+                "description" : "used to remove ice from a mixed drink as it is being poured",
+                "name" : "strainer",
+                "id" : "5c047dce-3e1d-444e-95d1-f958bcc99b65",
+                "displayName" : "Cocktail Strainer"
             }
          ],
          "isAlcoholic" : true,
@@ -4030,8 +4212,10 @@
                "displayName" : "Shaker"
             },
             {
-               "id" : "c975c48b-08b5-4df6-ab39-72e341ec6286",
-               "name" : "cocktail_strainer"
+                "description" : "used to remove ice from a mixed drink as it is being poured",
+                "name" : "strainer",
+                "id" : "5c047dce-3e1d-444e-95d1-f958bcc99b65",
+                "displayName" : "Cocktail Strainer"
             }
          ],
          "ingredients" : [
@@ -4134,8 +4318,10 @@
          ],
          "tools" : [
             {
-               "name" : "cocktail_strainer",
-               "id" : "c975c48b-08b5-4df6-ab39-72e341ec6286"
+                "description" : "used to remove ice from a mixed drink as it is being poured",
+                "name" : "strainer",
+                "id" : "5c047dce-3e1d-444e-95d1-f958bcc99b65",
+                "displayName" : "Cocktail Strainer"
             },
             {
                "name" : "shaker",

@@ -215,4 +215,11 @@ final class DrinkService{
         })
         task.resume()
     }
+    
+    //gets generated drinks without contacting the server
+    func generateDrinks(ingredients: [Ingredient]) -> [Drink]{
+        var gDrinks: [Drink] = []
+        let allDrinks = getAllDrinksFromCoreData()
+        return []
+    }
 }
