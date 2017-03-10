@@ -51,7 +51,8 @@
             }
          ],
          "name" : "god_father",
-         "isIBAOffical" : true
+         "isIBAOffical" : true,
+         "id" : "332D681C-9311-4A14-B690-2D9255117BFF"
       },
       {
          "description" : "Pour 1.5 cl of Gin, 1.5 cl of Tequila, 1.5 cl of Vodka, 1.5 cl of White Rum, 1.5 cl of Triple Sec, 3.0 cl of Gomme Syrup, 2.5 cl of Lemon juice, and 1 dash of cola into a highball glass and stir gently, serve with a straw.",
@@ -170,11 +171,13 @@
          "displayName" : "Long Island Ice Tea",
          "isAlcoholic" : true,
          "isIBAOffical" : true,
-         "name" : "long_island_ice_tea"
+         "name" : "long_island_ice_tea",
+         "id" : "96067E9B-3056-46EB-A2A0-EE3FB5966599"
       },
       {
          "name" : "mint_julep",
          "isIBAOffical" : true,
+         "id" : "E2474B34-C993-4FE4-899F-270F94EA5073",
          "displayName" : "Mint Julep",
          "isAlcoholic" : true,
          "ingredients" : [
@@ -527,6 +530,7 @@
             }
          ],
          "isAlcoholic" : true,
+         "id" : "FB63EB7C-2DEA-4809-955A-BD402ADC9580",
          "displayName" : "Black Russian"
       },
       {
@@ -603,6 +607,7 @@
       {
          "isIBAOffical" : true,
          "name" : "mojito",
+         "id" : "07EA82D3-CF9C-4515-A1C8-CB80708B4BD6",
          "tools" : [
             {
                "displayName" : "Muddler",
@@ -835,6 +840,7 @@
       },
       {
          "name" : "french_75",
+         "id" : "99678924-96C3-4013-A937-96E3FF0CEAA9",
          "isIBAOffical" : true,
          "displayName" : "French 75",
          "isAlcoholic" : true,
@@ -859,7 +865,7 @@
          },
          "color" : {
             "blue" : 255,
-            "alpha" : 0.1,
+            "alpha" : 0.2,
             "id" : "7c290c3b-b387-4e10-9d5d-74dbeff62fbb",
             "green" : 255,
             "displayName" : "Clear",
@@ -1084,6 +1090,7 @@
             "displayName" : "Lowball"
          },
          "displayName" : "Caiprinha",
+         "id" : "1663EB13-5AE3-4ECD-963A-B95DC7B9D237",
          "isAlcoholic" : true,
          "ingredients" : [
             {
@@ -1148,6 +1155,7 @@
             "id" : "3dac23bb-e251-4575-ba5a-dd7722e8e9fe"
          },
          "displayName" : "French Connection",
+         "id" : "051CEDFF-E8AE-4E5B-8EDB-1E0F40CA39A7",
          "isAlcoholic" : true,
          "ingredients" : [
             {
@@ -1365,6 +1373,7 @@
          },
          "description" : "Pour 2 cl of Kirsch, 4 cl of Dry Vermouth, and 3 dashes of Strawberry Syrup into a shaker with ice, shake, strain into glass.",
          "name" : "rose",
+         "id" : "B5ED978A-B8B4-44D6-806E-8462B1A3095A",
          "isIBAOffical" : true,
          "displayName" : "Rose",
          "isAlcoholic" : true,
@@ -1545,6 +1554,7 @@
             }
          ],
          "displayName" : "Horse's Neck",
+         "id" : "EEBC4A01-CEE1-4929-B9DB-6A6CAC3BD12D",
          "isAlcoholic" : true,
          "isIBAOffical" : true,
          "name" : "horses_neck",
@@ -1566,6 +1576,7 @@
       },
       {
          "displayName" : "Bloody Mary",
+         "id" : "36903881-E069-429A-BF75-4617EFACA894",
          "isAlcoholic" : true,
          "tools" : [
             {
@@ -1754,7 +1765,7 @@
             "green" : 255,
             "displayName" : "Clear",
             "id" : "7c290c3b-b387-4e10-9d5d-74dbeff62fbb",
-            "alpha" : 0,
+            "alpha" : 0.2,
             "red" : 255,
             "name" : "clear"
          }
@@ -1776,6 +1787,7 @@
             "name" : "lowball"
          },
          "isAlcoholic" : true,
+         "id" : "14E66166-7A70-4974-8A8A-5B5065652B80",
          "displayName" : "God Mother",
          "ingredients" : [
             {
@@ -1957,6 +1969,7 @@
       {
          "description" : "Add dash of Angostura bitter onto sugar cube and drop it into champagne flute. Add 1 cl of cognac followed by pouring 9 cl of chilled champagne, garnish with a cherry.",
          "displayName" : "Champagne Cocktail",
+         "id" : "15129A6F-5A96-45C8-8660-733B47DDB4DE",
          "isAlcoholic" : true,
          "isIBAOffical" : true,
          "glass" : {
@@ -2114,7 +2127,7 @@
             "red" : 255,
             "green" : 255,
             "displayName" : "Clear",
-            "alpha" : 0,
+            "alpha" : 0.2,
             "id" : "7c290c3b-b387-4e10-9d5d-74dbeff62fbb",
             "blue" : 255
          },
@@ -2128,6 +2141,7 @@
       {
          "isAlcoholic" : true,
          "displayName" : "Sea Breeze",
+         "id" : "053F1E93-B888-402F-9F50-A9B33659748F",
          "ingredients" : [
                 {
                     "displayName" : "Vodka",
@@ -2297,6 +2311,7 @@
          },
          "description" : "Pour 3 cl of Gin, 1.5 cl of Cherry Liqueur, 0.75 cl of Triple Sec, 0.75 DOM Benedictine, 1 cl of Grenedine Syrup, 12 cl of Pineapple Juice, 1.5 cl of Lime Juice, and 1 dash of Angostura bitters into a shaker, shake, and  strain and pour into a glass, garnish with a cherry or a pineapple slice.",
          "isIBAOffical" : true,
+         "id" : "99C91A65-8579-4FC7-8577-24D682DEC4CF",
          "name" : "singapore_sling",
          "tools" : [
             {
@@ -2385,7 +2400,8 @@
       },
       {
          "isAlcoholic" : true,
-         "displayName" : "Golden Dream",
+         "displayName" : "Harvey Wallbanger",
+         "id" : "E5B611BC-B818-4733-B1CC-9C5DD3AF033C",
          "ingredients" : [
             {
                "name" : "vodka",
@@ -2496,6 +2512,7 @@
          ],
          "isAlcoholic" : true,
          "displayName" : "Moscow Mule",
+         "id" : "F249C2D3-FAD1-45BA-97B7-CD0E2FC379E3",
          "isIBAOffical" : true,
          "name" : "moscow_mule",
          "description" : "Pour 4.5 cl Vodka and 12 cl of Ginger Beer into glass, top with 0.5 cl of lime juice, and garnish with Lime.",
@@ -2509,7 +2526,7 @@
             "green" : 255,
             "displayName" : "Clear",
             "id" : "7c290c3b-b387-4e10-9d5d-74dbeff62fbb",
-            "alpha" : 0,
+            "alpha" : 0.2,
             "red" : 255,
             "name" : "clear"
          }
@@ -2532,6 +2549,7 @@
          "description" : "Pour 10 cl Prosecco and 5 cl of peach puree, into a Champagne flute and gently stir.",
          "isIBAOffical" : true,
          "name" : "bellini",
+         "id" : "F32BF6D7-0A76-4B71-B70E-424D39CC876D",
          "ingredients" : [
             {
                "id" : "3f9087c4-3aa3-4f30-8386-be9723b27a31",
@@ -2631,6 +2649,7 @@
          "description" : "Pour 6 cl of White Rum, 1.5 cl of Marachino, 4 cl of Grapefruit Juice and 1.5 cl of lime juice in to a shaker, shake briskly, pour into a martini glass.",
          "isIBAOffical" : true,
          "name" : "hemingway_special",
+         "id" : "679BBB79-0F45-40DC-B009-4F872F000215",
          "tools" : [
             {
                "name" : "shaker",
@@ -2666,6 +2685,7 @@
          "description" : "Pour 1 cl of Creme de Cassis into a champagne flute, top with 9 cl of dry White Wine.",
          "isIBAOffical" : true,
          "name" : "kir",
+         "id" : "2D92F9F0-10A0-4D26-B940-134D6A6C62D2",
          "ingredients" : [
             {
                "name" : "creme_de_cassis",
@@ -2916,7 +2936,7 @@
             "name" : "clear",
             "red" : 255,
             "id" : "7c290c3b-b387-4e10-9d5d-74dbeff62fbb",
-            "alpha" : 0,
+            "alpha" : 0.2,
             "green" : 255,
             "displayName" : "Clear",
             "blue" : 255
@@ -2973,6 +2993,7 @@
          "displayName" : "Dry Martini"
       },
       {
+         "id" : "A7072D3E-BAB4-4575-9104-0CE3EBC95527",
          "name" : "mimosa",
          "isIBAOffical" : true,
          "displayName" : "Mimosa",
@@ -3027,6 +3048,7 @@
       },
       {
          "displayName" : "Pina Colada",
+         "id" : "217A1C62-8CE9-41A5-AFBB-3CDA98DE115E",
          "isAlcoholic" : true,
          "ingredients" : [
             {
@@ -3213,6 +3235,7 @@
             }
          ],
          "displayName" : "Cuba Libre",
+         "id" : "0CD3448E-39DE-4891-8E11-B16283150F70",
          "tools": [
             {
                 "displayName" : "Bar Spoon",
@@ -3343,7 +3366,7 @@
             "name" : "clear",
             "blue" : 255,
             "id" : "7c290c3b-b387-4e10-9d5d-74dbeff62fbb",
-            "alpha" : 0,
+            "alpha" : 0.2,
             "green" : 255,
             "displayName" : "Clear"
          }
@@ -3359,7 +3382,7 @@
             "red" : 255,
             "displayName" : "Clear",
             "green" : 255,
-            "alpha" : 0,
+            "alpha" : 0.2,
             "id" : "7c290c3b-b387-4e10-9d5d-74dbeff62fbb",
             "blue" : 255
          },
@@ -3464,6 +3487,7 @@
             "name" : "highball"
          },
          "displayName" : "Mai-Tai",
+         "id" : "798250C9-2C62-4941-99B8-F1BC67D8F232",
          "isAlcoholic" : true,
          "ingredients" : [
             {
@@ -3825,6 +3849,7 @@
          ],
          "isAlcoholic" : true,
          "displayName" : "Margarita",
+         "id" : "D3EB9EA9-2987-4BDC-B208-3C006749A189",
          "isIBAOffical" : true,
          "name" : "margarita"
       },
@@ -4035,6 +4060,7 @@
             }
          ],
          "isAlcoholic" : true,
+         "id" : "090680A8-4779-459F-BAEA-B7335ABD77A3",
          "displayName" : "Tequila Sunrise"
       },
       {
@@ -4055,6 +4081,7 @@
          },
          "isAlcoholic" : true,
          "displayName" : "Sex On The Beach",
+         "id" : "812B554F-8C6D-4A69-8026-245EE5849B72",
          "ingredients" : [
             {
                "name" : "vodka",
@@ -4204,6 +4231,7 @@
          "description" : "Pour 2 cl Galliano, 2 cl of Triple Sec, 2 cl of Orange Juice and 1 cl of Cream in to a shaker, shake briskly, pour into a martini glass.",
          "isIBAOffical" : true,
          "name" : "golden_dream",
+         "id" : "2A03E797-6EFE-4212-9F14-4AAE24D4DDBD",
          "tools" : [
             {
                "name" : "shaker",
@@ -4270,6 +4298,7 @@
       {
          "isIBAOffical" : true,
          "name" : "cosmopolitan",
+         "id" : "5871415C-C7DD-4942-BFE9-FE66148B22A9",
          "ingredients" : [
             {
                "name" : "vodka",

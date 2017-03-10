@@ -287,22 +287,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hJ3-KC-vCA">
-                                <rect key="frame" x="28" y="185" width="320" height="297"/>
+                                <rect key="frame" x="28" y="205.5" width="320" height="256.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aiz-GS-cRl">
-                                        <rect key="frame" x="98" y="0.0" width="124" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFE-IQ-Mjl">
-                                        <rect key="frame" x="141.5" y="40.5" width="37.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFE-IQ-Mjl">
+                                        <rect key="frame" x="105.5" y="0.0" width="109" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dij-oi-MbH">
-                                        <rect key="frame" x="0.0" y="81" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="40.5" width="320" height="216"/>
                                     </pickerView>
                                 </subviews>
                             </stackView>
@@ -315,7 +309,6 @@
                     </view>
                     <connections>
                         <outlet property="ingredientPicker" destination="dij-oi-MbH" id="nIO-VW-yOc"/>
-                        <outlet property="ingredientTypeLabel" destination="Aiz-GS-cRl" id="crz-V8-8fY"/>
                         <outlet property="typeDisplayLabel" destination="GFE-IQ-Mjl" id="KC0-KB-Gg3"/>
                     </connections>
                 </viewController>

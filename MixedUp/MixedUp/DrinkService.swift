@@ -140,11 +140,13 @@ final class DrinkService{
     
     func getAllDrinksFromCoreData() -> [Drink]{
         let mainQueueContext = self.coreDataStack.mainQueueContext
-        let drinksFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Drink")
+        let drinksDescription = NSEntityDescription.entity(forEntityName: "Drink", in: mainQueueContext)
+        let fetch = NSFetchRequest<NSFetchRequestResult>()
+        fetch.entity = drinksDescription
         var fetchedDrinks: [Drink] = []
         
         do {
-            fetchedDrinks = try mainQueueContext.fetch(drinksFetch) as! [Drink]
+            fetchedDrinks = try mainQueueContext.fetch(fetch) as! [Drink]
             return fetchedDrinks
         } catch {
             print("Failed to fetch employees: \(error)")
@@ -185,41 +187,40 @@ final class DrinkService{
     
     
     func getGeneratedDrinks(user: User, completion: @escaping (ResourceResult<[Drink]>) -> ()){
-        let inventory = user.inventory?.allObjects as! [Ingredient]
-        let names = inventory.map {$0.name!}
-        let string = names.joined(separator: ",")
-        let stringURL = "https://n9hfoxnwqg.execute-api.us-east-2.amazonaws.com/alpha/drinks?fromInventory=\(string)"
-        let url = URL(string: stringURL)!
-        let request = requestBuilder(url: url, method: "GET")
-        let task = session.dataTask(with: request,  completionHandler: {
-            (data, response, error) -> Void in
-            var result = self.processDrinkRequest(data: data, error: error as NSError?)
-            
-            if case .success(let drinks) = result {
-                let ids = drinks.map{$0.id}
-                let predicate = NSPredicate(format: "id IN %@ ",ids)
-                let sortByName = NSSortDescriptor(key: "displayName", ascending: true)
-                
-                
-                do {
-                    try self.coreDataStack.saveChanges()
-                    
-                    let mainQueueDrinks = try self.fetchMainQueueDrinks(predicate: predicate, sortDescriptors: [sortByName])
-                    result = .success(mainQueueDrinks)
-                }
-                catch let error {
-                    result = .failure(.system(error))
-                }
-            }
-            completion(result)
-        })
-        task.resume()
+        DispatchQueue.global(qos: .default).async{
+            var drinks: [Drink] = []
+            drinks = self.generateDrinks(user: user)
+            completion(.success(drinks))
+        }
     }
     
     //gets generated drinks without contacting the server
-    func generateDrinks(ingredients: [Ingredient]) -> [Drink]{
-        var gDrinks: [Drink] = []
-        let allDrinks = getAllDrinksFromCoreData()
-        return []
+    func generateDrinks(user: User) -> [Drink]{
+        let inventory = user.inventory?.allObjects as! [Ingredient]
+        var genDrinks: Set<Drink> = []
+        var allDrinks: Set<Drink> = Set(getAllDrinksFromCoreData())
+        allDrinks = allDrinks.union(user.favoriteDrinks as! Set<Drink>)
+        var hasAll = true
+        for drink in allDrinks{
+            hasAll = true
+            while hasAll{
+                for ingredient in drink.ingredients!{
+                    if !inventory.contains(ingredient as! Ingredient){
+                        hasAll = false
+                        break
+                    }
+                }
+                if hasAll{
+                    genDrinks.insert(drink)
+                    break
+                }
+            }
+        }
+        return Array(genDrinks)
     }
 }
+
+
+
+
+

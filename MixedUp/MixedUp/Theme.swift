@@ -22,6 +22,7 @@ struct Theme {
     static var warningLabelColor = UIColor.red
     static var cellLabelFont = UIFont(name: Theme.fontKey, size: 13)!
     static var boldLabelFont = UIFont(name: fontBoldKey, size: 19)!
+    static var largeLabelFont = UIFont(name: fontBoldKey, size: 22)!
     
     static func styleDark(){
         labelColor = UIColor.black //(colorLiteralRed: (206/255), green: (213/255), blue: (224/255), alpha: 1.0)
