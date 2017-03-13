@@ -27,7 +27,8 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     var tools: [Tool] = []
     var drinkTools: Set<Tool> = []
     var type: IngredientType? = nil
-    var ingredients: [Ingredient] = []
+    var ingredients: Set<Ingredient> = []
+   
     var drink: Drink? = nil
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var drinkNameLabel: UILabel!
@@ -71,13 +72,6 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         } catch{
             print("could not get object from CoreData")
         }
-        self.drink = NSEntityDescription.insertNewObject(forEntityName: Drink.entityName, into: (self.coreDataStack?.mainQueueContext)!) as? Drink
-        drink?.isAlcoholic = true
-        drink?.isIBAOfficial = false
-        drink?.displayName = ""
-        drink?.name = ""
-        drink?.glass = glass
-        drink?.color = color
         setUpLabels()
         setUpStackView()
         refreshStackView()
@@ -86,24 +80,19 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func addIngredientTapped(_ sender: Any) {
-        ingredientTypePicker.isHidden = false
+        if saveToFavoritesButton.isUserInteractionEnabled {
+            ingredientTypePicker.isHidden = false
+        }
     }
     @IBAction func addToolTapped(_ sender: Any) {
-        toolsPicker.isHidden = false
+        if saveToFavoritesButton.isUserInteractionEnabled{
+            toolsPicker.isHidden = false
+        }
     }
     
     func tap(_ gesture: UITapGestureRecognizer) {
         drinkNameTextField.resignFirstResponder()
         recipeInstructions.resignFirstResponder()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-       // if let _ = user, let fDrinks = user?.favoriteDrinks, let context = coreDataStack?.mainQueueContext, let d = drink{
-         //   if !(fDrinks.contains(d)){
-          //      context.delete(d)
-           // }
-        //}
     }
     
     
@@ -120,7 +109,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func setUpIngredientStack(){
-        let drinkIngredients: Set<Ingredient> = Set(drink?.ingredients?.allObjects as! [Ingredient])
+        let drinkIngredients: Set<Ingredient> = ingredients
         var isShown = false
         for ingredient in drinkIngredients {
             for button in ingredientStackView.arrangedSubviews{
@@ -141,11 +130,19 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func createDrinkTapped(_ sender: UIButton) {
-        guard (drink?.ingredients?.count)! > 0 , drinkNameTextField.text != nil, drinkNameTextField.text != "" else {
+        guard ingredients.count > 0 , drinkNameTextField.text != nil, drinkNameTextField.text != "" else {
             successLabel.isHidden = false
             successLabel.text = "Could not save drink, try adding more information"
             return
         }
+        self.drink = NSEntityDescription.insertNewObject(forEntityName: Drink.entityName, into: (self.coreDataStack?.mainQueueContext)!) as? Drink
+        drink?.isAlcoholic = true
+        drink?.isIBAOfficial = false
+        drink?.displayName = ""
+        drink?.name = ""
+        drink?.glass = glass
+        drink?.color = color
+        
         if let user = user,
             let _ = drinkStore,
             let name = drinkNameTextField.text,
@@ -153,9 +150,10 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             let drink = drink
         {
             drink.stringDescription = instructions
+            drink.ingredients = ingredients as NSSet?
             drink.displayName = name
             drink.isIBAOfficial = false
-            drink.isAlcoholic = Util.getIsAlcoholic(ingredients: ingredients)
+            drink.isAlcoholic = Util.getIsAlcoholic(ingredients: Array(ingredients))
             let result = (drinkStore?.createCoreDataDrink(newDrink: drink, inContext: (coreDataStack?.mainQueueContext)!))!
             switch result{
             case .success(let drink):
@@ -168,6 +166,10 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
                 try coreDataStack?.saveChanges()
                 sender.isUserInteractionEnabled = false
                 sender.setTitle("Saved!", for: .normal)
+                recipeInstructions.isUserInteractionEnabled = false
+                drinkNameTextField.isUserInteractionEnabled = false
+                ingredientStackView.isUserInteractionEnabled = false
+                toolsStack.isUserInteractionEnabled = false
             }catch{
                 print("couldn't save")
             }
@@ -188,12 +190,12 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func removeIngredient(_ sender: UIButton){
-        var drinkIngredients: Set<Ingredient> = Set(drink?.ingredients?.allObjects as! [Ingredient])
+        var drinkIngredients: Set<Ingredient> = ingredients
         for ingredient in drinkIngredients{
             let title = sender.title(for: .normal)
             if (title?.contains(ingredient.displayName!))!{
                 drinkIngredients.remove(ingredient)
-                ingredient.removeFromDrink(drink!)
+                ingredients.remove(ingredient)
                 sender.removeFromSuperview()
             }
         }
@@ -204,7 +206,6 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             let title = sender.title(for: .normal)
             if (title?.contains(tool.displayName!))! {
                 drinkTools.remove(tool)
-                tool.removeFromDrinks(drink!)
                 sender.removeFromSuperview()
             }
         }
@@ -224,7 +225,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             toolsStack.removeArrangedSubview(theToolLabel)
         }
         let theIngredientLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-        if (drink?.ingredients?.count) ?? 0 > 0 {
+        if ingredients.count > 0 {
             theIngredientLabel.center = CGPoint(x: 160, y: 285)
             theIngredientLabel.textAlignment = .center
             theIngredientLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
@@ -267,7 +268,6 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             let addVC = storyBoard.instantiateViewController(withIdentifier: "AddtoRecipe") as! AddToRecipeViewController
             addVC.defaults = defaults
             addVC.ingredientStore = ingredientStore
-            addVC.drink = drink
             if row != 0 {
                 let type = ingredientTypes[row - 1]
                 addVC.type = type

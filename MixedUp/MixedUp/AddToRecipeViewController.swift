@@ -19,7 +19,6 @@ class AddToRecipeViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
     }
     var ingredient: Ingredient? = nil
-    var drink: Drink? = nil
     @IBOutlet weak var selectLabel: UILabel!
     @IBOutlet weak var ingredientPicker: UIPickerView!
     
@@ -62,13 +61,13 @@ class AddToRecipeViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     func addIngredient(_ sender: UIButton){
-        if let drink = drink, let ingredient = ingredient {
-            drink.ingredients = drink.ingredients?.adding(ingredient) as NSSet?
-        }
+        if let ingredient = ingredient{
         let arrayCount: Int = Int((navigationController?.viewControllers.count)!)
         if arrayCount >= 2 {
-            let uiVC: UIViewController = (navigationController?.viewControllers[arrayCount - 2])!
+            let uiVC = (navigationController?.viewControllers[arrayCount - 2])! as! RecipeDetailViewController
+            uiVC.ingredients.insert(ingredient)
             let _ = self.navigationController?.popToViewController(uiVC, animated: true)
+            }
         }
     }
     
