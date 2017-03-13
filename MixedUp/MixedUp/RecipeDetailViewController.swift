@@ -62,18 +62,22 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         mainStackView.insertArrangedSubview(toolsStack, at: 12)
         mainStackView.insertArrangedSubview(ingredientStackView, at: 8)
         scrollView.showsVerticalScrollIndicator = false
+        saveToFavoritesButton.isUserInteractionEnabled = true
+        saveToFavoritesButton.setTitle("Save to Favorites", for: .normal)
         do{
             ingredientTypes = try typeStore?.fetchMainQueueTypes(predicate: nil, sortDescriptors: nil) ?? []
             tools = try toolStore?.fetchMainQueueTools(predicate: nil, sortDescriptors: nil) ?? []
             refresh()
         } catch{
-            print("could not get objectd from CoreData")
+            print("could not get object from CoreData")
         }
         self.drink = NSEntityDescription.insertNewObject(forEntityName: Drink.entityName, into: (self.coreDataStack?.mainQueueContext)!) as? Drink
         drink?.isAlcoholic = true
         drink?.isIBAOfficial = false
         drink?.displayName = ""
         drink?.name = ""
+        drink?.glass = glass
+        drink?.color = color
         setUpLabels()
         setUpStackView()
         refreshStackView()
@@ -92,6 +96,16 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         drinkNameTextField.resignFirstResponder()
         recipeInstructions.resignFirstResponder()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+       // if let _ = user, let fDrinks = user?.favoriteDrinks, let context = coreDataStack?.mainQueueContext, let d = drink{
+         //   if !(fDrinks.contains(d)){
+          //      context.delete(d)
+           // }
+        //}
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -133,15 +147,11 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             return
         }
         if let user = user,
-            let color = color,
-            let glass = glass,
             let _ = drinkStore,
             let name = drinkNameTextField.text,
             let instructions = recipeInstructions.text,
             let drink = drink
         {
-            drink.glass = glass
-            drink.color = color
             drink.stringDescription = instructions
             drink.displayName = name
             drink.isIBAOfficial = false
@@ -156,8 +166,8 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
             user.addToFavoriteDrinks(drink)
             do {
                 try coreDataStack?.saveChanges()
-                self.successLabel.isHidden = false
-                self.successLabel.text = "Saved drink!"
+                sender.isUserInteractionEnabled = false
+                sender.setTitle("Saved!", for: .normal)
             }catch{
                 print("couldn't save")
             }
