@@ -169,6 +169,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
                 recipeInstructions.isUserInteractionEnabled = false
                 drinkNameTextField.isUserInteractionEnabled = false
                 ingredientStackView.isUserInteractionEnabled = false
+                successLabel.isHidden = true
                 toolsStack.isUserInteractionEnabled = false
             }catch{
                 print("couldn't save")
