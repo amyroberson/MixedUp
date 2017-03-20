@@ -16,7 +16,11 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
     var userStore: UserService? = nil
     var drinkStore: DrinkService? = nil
     var user: User? = nil
-    var favoriteDrinks:  [Drink] = []
+    var favoriteDrinks:  [Drink] = []{
+        didSet{
+            createRandomButton()
+        }
+    }
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -28,13 +32,7 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
         if let user = user {
             favoriteDrinks = Array(user.favoriteDrinks ?? []) as! [Drink]
         }
-        let button: UIButton = UIButton(type: .custom)
-        button.setTitle("Random", for: .normal)
-        button.setTitleColor(UIColor(red: 0, green: 0.4784, blue: 1, alpha: 1.0), for:.normal)
-        button.addTarget(self, action: #selector(FavoritesViewController.randomDrinkPressed), for: UIControlEvents.touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 90, height: 51)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
+        
         collectionView.showsVerticalScrollIndicator = false
     }
     
@@ -47,6 +45,19 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate {
             Theme.styleDark()
         }
     }
+    
+    func createRandomButton(){
+        if favoriteDrinks.count > 1 {
+            let button: UIButton = UIButton(type: .custom)
+            button.setTitle("Random", for: .normal)
+            button.setTitleColor(UIColor(red: 0, green: 0.4784, blue: 1, alpha: 1.0), for:.normal)
+            button.addTarget(self, action: #selector(FavoritesViewController.randomDrinkPressed), for: UIControlEvents.touchUpInside)
+            button.frame = CGRect(x: 0, y: 0, width: 90, height: 51)
+            let barButton = UIBarButtonItem(customView: button)
+            self.navigationItem.rightBarButtonItem = barButton
+        }
+    }
+    
     
     func randomDrinkPressed(){
         if favoriteDrinks.count > 0 {

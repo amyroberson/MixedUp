@@ -65,6 +65,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
         scrollView.showsVerticalScrollIndicator = false
         saveToFavoritesButton.isUserInteractionEnabled = true
         saveToFavoritesButton.setTitle("Save to Favorites", for: .normal)
+        
         do{
             ingredientTypes = try typeStore?.fetchMainQueueTypes(predicate: nil, sortDescriptors: nil) ?? []
             tools = try toolStore?.fetchMainQueueTools(predicate: nil, sortDescriptors: nil) ?? []

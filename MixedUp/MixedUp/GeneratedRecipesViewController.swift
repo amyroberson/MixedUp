@@ -16,7 +16,11 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
     var userStore: UserService? = nil
     var drinkStore: DrinkService? = nil
     var user: User? = nil
-    var drinks: [Drink] = []
+    var drinks: [Drink] = []{
+        didSet{
+           createRandomButton()
+        }
+    }
     @IBOutlet weak var needMoreIngredientsLabel: UILabel!
     
     override func viewDidLoad() {
@@ -28,13 +32,6 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
         setUpLabel()
         needMoreIngredientsLabel.isHidden = true
         view.backgroundColor = Theme.viewBackgroundColor
-        let button: UIButton = UIButton(type: .custom)
-        button.setTitle("Random", for: .normal)
-        button.setTitleColor(UIColor(red: 0, green: 0.4784, blue: 1, alpha: 1.0), for:.normal)
-        button.addTarget(self, action: #selector(FavoritesViewController.randomDrinkPressed), for: UIControlEvents.touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 90, height: 51)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
         collectionView.showsVerticalScrollIndicator = false
     }
     
@@ -53,6 +50,18 @@ class GeneratedRecipesViewController: UIViewController, UICollectionViewDelegate
             Theme.styleLight()
         } else {
             Theme.styleDark()
+        }
+    }
+    
+    func createRandomButton(){
+        if drinks.count > 1 {
+            let button: UIButton = UIButton(type: .custom)
+            button.setTitle("Random", for: .normal)
+            button.setTitleColor(UIColor(red: 0, green: 0.4784, blue: 1, alpha: 1.0), for:.normal)
+            button.addTarget(self, action: #selector(FavoritesViewController.randomDrinkPressed), for: UIControlEvents.touchUpInside)
+            button.frame = CGRect(x: 0, y: 0, width: 90, height: 51)
+            let barButton = UIBarButtonItem(customView: button)
+            self.navigationItem.rightBarButtonItem = barButton
         }
     }
     

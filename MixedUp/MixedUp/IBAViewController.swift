@@ -40,7 +40,7 @@ class IBAViewController: UIViewController, UICollectionViewDelegate, UISearchBar
         })
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
-        self.navigationItem.title = "IBA Drink Recipes"
+        self.navigationItem.title = "Drink Recipes"
         drinkSearchBar.delegate = self
         drinkSearchBar.returnKeyType = UIReturnKeyType.done
         drinkSearchBar.placeholder = "Search by Name and Ingredients"
